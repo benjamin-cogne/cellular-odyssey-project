@@ -1,7 +1,7 @@
-// focus « génétique mendélienne » : case de l'accueil, données, fiches, halos, étiquettes, panneau, réactions. Arguments : langue (fr|en), cellules (ex. 012)
+// focus « génétique mendélienne » : case de l'accueil, données, fiches, étiquettes, panneau, réactions. Arguments : langue (fr|en), cellules (ex. 012)
 const {open}=require('./tl.js');const lang=process.argv[2]||'fr',cts=(process.argv[3]||'012').split('').map(Number);
 (async()=>{for(const ct of cts){const {b,pg,errs,ev}=await open(ct,{vp:{width:1100,height:620},lang:lang+',mg'});
-  const st=()=>ev(()=>({halos:[mgS.length,dMs.n,dMc.n],lab:MGL.filter(l=>l.style.display!='none').map(l=>l.textContent),it:$('it').textContent,im:$('im').textContent.slice(0,150)}));
+  const st=()=>ev(()=>({near:mgS.length,lab:MGL.filter(l=>l.style.display!='none').map(l=>l.textContent),it:$('it').textContent,im:$('im').textContent.slice(0,150)}));
   console.log('cell',ct,JSON.stringify(await ev(()=>{let K=mgK(),E=Object.values(MG).flat();
     return{MEN,box:$('mgc').checked,cards:Object.keys(MG).filter(k=>I[k]).length,here:K.length,entries:E.length,noRef:E.filter(e=>!e[4]).length,noMim:E.filter(e=>!e[3]).map(e=>e[0]),
       badRx:Object.keys(MGR).filter(k=>{let P=RXP.find(P=>P[0]==k);return!P||Object.keys(MGR[k]).some(s=>!P[6][s]||!MGR[k][s])}),btn:$('mgb').style.display+'|'+$('mgb').textContent}})));
@@ -20,6 +20,6 @@ const {open}=require('./tl.js');const lang=process.argv[2]||'fr',cts=(process.ar
   console.log(' in mito',JSON.stringify(await st()));await pg.screenshot({path:'mg_'+lang+ct+'_mit.png'});
   await pg.click('#rxb');await pg.waitForTimeout(400);console.log(' rx menu',JSON.stringify(await ev(()=>[...$('pmo').querySelectorAll('button')].map(b=>b.textContent))));
   await pg.click('#pmo button[data-r="pkrb"]');await pg.waitForTimeout(300);await pg.click('#pmo button[data-r="l0krb"]');await pg.waitForTimeout(1500);
-  console.log(' rx step',JSON.stringify(await ev(()=>({t:$('pmt').textContent,mg:($('pmx').querySelector('.mgr')||{}).textContent,halos:dMs.n}))));await pg.screenshot({path:'mg_'+lang+ct+'_rx.png'});
-  await ev(()=>{MEN=0;return 1});await pg.waitForTimeout(500);console.log(' off',JSON.stringify(await ev(()=>({halos:dMs.n,mgH:mgH('lam'),btn:(mgN(),$('mgb').style.display)}))));
+  console.log(' rx step',JSON.stringify(await ev(()=>({t:$('pmt').textContent,mg:($('pmx').querySelector('.mgr')||{}).textContent,lab:MGL.filter(l=>l.style.display!='none').length}))));await pg.screenshot({path:'mg_'+lang+ct+'_rx.png'});
+  await ev(()=>{MEN=0;return 1});await pg.waitForTimeout(500);console.log(' off',JSON.stringify(await ev(()=>({lab:MGL.filter(l=>l.style.display!='none').length,mgH:mgH('lam'),btn:(mgN(),$('mgb').style.display)}))));
   console.log(' errors',JSON.stringify(errs));await b.close()}})();
