@@ -106,7 +106,7 @@ function phys(){let r=z*.42,h=0;nI=0;nD=1e9;if(ORG)return pO(r);
     for(o of SH){c=cpt(o,p);m=ds(p,c)-o.R;if(m<dS)dS=m;if(m<r+.003)p=ma(c,nm(sb(p,c)),o.R+r+.003)}
     for(o of OX){c=cpt(o,p);m=ds(p,c)-o.r;let k=o.dc&&o.dc[1]-ds(p,o.dc[0]);if(k>m)m=k,c=0;if(m<dO)dO=m;{let w=o.bg?m+.03:m;if(w<nD&&m<.5+.35*o.r)nD=w,nI=o}if(m<r+.003&&!o.sf)p=c?ma(c,nm(sb(p,c)),o.r+r+.003):ma(o.dc[0],nm(sb(p,o.dc[0])),o.dc[1]-r-.003)}       // dc : cupule creusée dans une épine (fente synaptique)
     for(o of VS){let ab=sb(o.b,o.a),e;c=ma(o.a,ab,cl(dt(sb(p,o.a),ab)/dt(ab,ab),0,1));e=ds(p,c)-o.R;m=abs(e)-o.th;if(e<0)LU=o;if(m<dO)dO=m;if(m<nD&&m<min(1.2,.3*o.R))nD=m,nI=o;
-      if(m<r+.002&&(o.bbb||z>.16))p=ma(c,nm(sb(p,c)),o.R+(e<0?-1:1)*(o.th+r+.002)),o.bbb&&ds(p,TCY)>1.4&&say('Barrière hémato-encéphalique : jonctions serrées, aucun passage. Rejoignez l\'anneau doré (repère ◎) pour traverser par transcytose.',5)}
+      if(m<r+.002&&(o.bbb||z>.16))p=ma(c,nm(sb(p,c)),o.R+(e<0?-1:1)*(o.th+r+.002)),(o.bbb?ds(p,TCY)>1.4&&say('Barrière hémato-encéphalique : jonctions serrées, aucun passage. Rejoignez l\'anneau doré (repère ◎) pour traverser par transcytose.',5):AP||say('Paroi du vaisseau : le vaisseau est trop gros pour la traverser. Rétrécissez-le sous 160 nm (Q, − ou molette).',3))}
     if(lu!=-1&&!lu!=!LU&&!(LU||lu).bbb&&go)say(CT?'Vous passez par une fenêtre de la cellule endothéliale : 100 à 150 nm de diamètre.':'Vous traversez la paroi mince et discontinue du sinusoïde.',5);
     if(dS<=nD)nI=0;DM=min(max(min(dS,dO),.55),ds(p,e0));for(o of SY)DM=min(DM,max(.016,(ds(p,o.cc)-.17)*.42));       // près d'une synapse, le vaisseau rapetisse jusqu'à pouvoir entrer dans la fenteif(ds(p,TC)>TR)p=ma(TC,nm(sb(p,TC)),TR);
     {let q=sb(p,e0),a=dt(q,v0),l=ln(sb(q,ml(v0,a)));if(a>0&&a<.6&&l<.6)p=ma(p,nm(sb(ma(e0,v0,a),p)),min(l,.012+l*.06))}       // capture par le récepteur : à moins de 600 nm, le vaisseau est ramené dans l'axe du puits
@@ -117,7 +117,7 @@ function phys(){let r=z*.42,h=0;nI=0;nD=1e9;if(ORG)return pO(r);
       if(z<.041&&lt<.06){let a=max(.003,.024-r)+max(0,abs(ax-Rn+.02)-.03)*1.5,w=sb(q,ml(b,ax));if(lt>a)w=ml(w,(a+(lt-a)*.7)/lt);p=ad(Nc,ad(ml(b,ax),w));       // canal du pore : entonnoir
         if((ax<Rn-.02?2:1)!=reg){reg=3-reg;if(reg>1&&!seenN)seenN=1,poi=2,say('Vous êtes dans le noyau. Suivez le repère « Gène '+G.sy+' », puis rétrécissez jusqu\'à 2–5 nm pour lire l\'ADN.',9)}}
       else{let d=nm(q);if(reg>1){if(dN>Rn-.06-r)p=ma(Nc,d,Rn-.06-r),h=1}else if(dN<Rn+.005+r)p=ma(Nc,d,Rn+.005+r),h=1;
-        if(h&&lt<.1&&z>.041)say('Pore nucléaire : canal central ≈ 40 nm. Rétrécissez le vaisseau à 40 nm ou moins.')}}
+        if(h&&lt<.1&&z>.041)say('Pore nucléaire : canal central ≈ 40 nm. Rétrécissez le vaisseau à 40 nm ou moins (Q, − ou molette).')}}
     let a=reg<2?hit(CY,r):hit(NU,r),b=reg>1&&ln(p)<GR+.2&&hit(DN,r),c=hit(dyc,r);reg>1&&hit(LMC,r);if(a||b||c)p=ma(p,u,abs(vel)*.004);h=a||b||c||h;
     if(h)vel*=.985}}
 // endocytose scénarisée

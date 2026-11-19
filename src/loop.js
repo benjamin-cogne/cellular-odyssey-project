@@ -60,8 +60,9 @@ function hud(d){
   else k=reg<2&&rk()!='cyt'?rk():reg<2&&ds(p,Cc)>Rc-.15-z?mdk(p):abs(ds(p,Nc)-Rn+.02)<.2+z?pore()[0]<.12?'npc':reg>1?'lam':'ne':reg<2?'cyt':'nuc';
   sn(k);let t=I[k],ti=t[0],tx=t[1],o=reg>1&&ct<0&&(k=='nuc'||k=='spk')&&nuI();if(o)ti=o[0],tx=o[1];if(pinT>0)pinT-=.2,ti='▸ '+pin[0],tx=pin[1];btT();
   ti+tx!=hI&&($('it').textContent=ti,$('ix').textContent=tx,hI=ti+tx);
-  let q='';if(reg>1&&z<.1&&ln(p)<GR){let b=1e9,j=0,i,g=GP.p,e;for(i=0;i<g.length;i++)e=g[i],x=e[0]-p[0],y=e[1]-p[1],w=e[2]-p[2],x=x*x+y*y+w*w,x<b&&(b=x,j=i);
-    if(sqrt(b)<6*z+.012){i=j-UP;let F=ft(i),o,c,va;s='';
+  let q='';if(reg>1&&z<.6&&ln(p)<GR){let b=1e9,j=0,i,g=GP.p,e;for(i=0;i<g.length;i++)e=g[i],x=e[0]-p[0],y=e[1]-p[1],w=e[2]-p[2],x=x*x+y*y+w*w,x<b&&(b=x,j=i);
+    if(z>=.1)!PM&&sqrt(b)<.6&&(q='<b>'+G.sy+'</b><br>'+'Rétrécissez le vaisseau sous 100 nm pour lire la séquence (Q, − ou molette).');          // avertissement de taille
+    else if(sqrt(b)<6*z+.012){i=j-UP;let F=ft(i),o,c,va;s='';
       for(o=-12;o<13;o++)c=SQ(i+o),s+=(CU[i+o]?'<i class="N">‖</i>':'')+'<i class="'+(c||'N')+(o?'':' m')+'">'+(c||'·')+'</i>';
       va=F&&[0,-1,1,-2,2].map(o=>VAR[i+o]||NT[i+o]).find(x=>x);
       q='<b>'+G.sy+' · '+fnm(i)+(F==4&&G.ir?' ('+fkb(G.I[XN[i]].n)+')':'')+(F?' · '+hg(i):'')+(F==3?cod(i):'')+'</b><br>5′ '+s+' 3′'+(va?'<br><u>'+va+'</u>':'')}}
