@@ -85,4 +85,6 @@ Séquences et annotations : GRCh38/hg38 via le UCSC Genome Browser ; les gènes 
 
 ## Licence
 
-Aucune licence n'a encore été choisie. Tant qu'un fichier `LICENSE` n'est pas ajouté, le régime par défaut s'applique : tous droits réservés.
+Publié sous [licence MIT](LICENSE), © 2026 Benjamin Cogné. Elle couvre le code et les textes de ce dépôt.
+
+Les extraits de séquence humaine proviennent de l'assemblage GRCh38/hg38, que l'UCSC diffuse en libre accès pour un usage public ; voir la [page de crédits de l'UCSC](https://genome.ucsc.edu/goldenPath/credits.html) pour ses conditions.
