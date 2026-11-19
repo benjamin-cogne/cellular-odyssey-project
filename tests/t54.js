@@ -1,0 +1,11 @@
+const {open}=require('./tl.js');
+(async()=>{for(const ct of [1]){const {b,pg,errs}=await open(ct,{file:'index.html',vp:{width:360,height:300}});
+ await pg.keyboard.down('Space');
+ await pg.waitForFunction(()=>/Liaison au récepteur|Invagination/.test(document.getElementById('cap').textContent),null,{timeout:400000}).catch(e=>console.log('no dock'));
+ await pg.keyboard.up('Space');console.log(ct,'docked:',await pg.evaluate(()=>document.getElementById('cap').textContent.slice(0,60)));
+ await pg.waitForFunction(()=>document.getElementById('xit').style.display=='block',null,{timeout:500000});
+ console.log('inside:',await pg.evaluate(()=>document.getElementById('st').textContent+' | '+document.getElementById('atb').textContent));
+ await pg.click('#xit');await pg.waitForTimeout(2500);console.log('outside:',await pg.evaluate(()=>document.getElementById('st').textContent+' | '+document.getElementById('cap').textContent.slice(0,50)));
+ await pg.click('#atb');await pg.waitForTimeout(300);await pg.evaluate(()=>document.querySelector('#atl button:nth-of-type(2)').click());await pg.waitForTimeout(500);
+ console.log('atlas→',await pg.evaluate(()=>document.getElementById('mk').textContent+' | '+document.getElementById('it').textContent));
+ await pg.screenshot({path:'min_t'+ct+'.png'});console.log('errors',errs.slice(0,3));await b.close()}})();

@@ -1,0 +1,19 @@
+{
+  "name": "odyssee-cellulaire",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jeu éducatif 3D (WebGL2, fichier HTML unique) : du tissu à la transcription d'un gène, à l'échelle moléculaire. Educational 3D game, from tissue down to gene transcription.",
+  "scripts": {
+    "i18n": "node i18n/mk.js",
+    "dev": "node i18n/mk.js && node build.js",
+    "build": "node i18n/mk.js && node build.js min && node --check dist/all.js",
+    "check-seq": "node tools/check-seq.js"
+  },
+  "devDependencies": {
+    "acorn": "^8.19.0",
+    "terser": "^5.51.2"
+  },
+  "optionalDependencies": {
+    "playwright": "^1.63.0"
+  }
+}

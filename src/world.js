@@ -1,0 +1,214 @@
+// ================= fiches scientifiques =================
+const I={
+ext:['Moelle osseuse — milieu extracellulaire','Vous flottez dans un îlot érythroblastique. La cellule devant vous est un érythroblaste basophile (≈16 µm), précurseur du globule rouge, encore nucléé. Les petites protéines bilobées sont des holo-transferrines (80 kDa) qui portent chacune 2 ions Fe³⁺.'],
+mem:['Membrane plasmique','Bicouche de phospholipides d\'environ 5 nm d\'épaisseur, plusieurs millions de lipides par µm². Asymétrique : phosphatidylcholine et sphingomyéline côté externe, phosphatidylsérine et phosphatidyléthanolamine côté cytosolique, riche en cholestérol. Imperméable aux ions et aux macromolécules : il faut un récepteur pour entrer.'],
+tfr:['Récepteur de la transferrine TfR1 (CD71)','Homodimère transmembranaire (2 × 95 kDa, ponts disulfure). Chaque dimère fixe deux holo-transferrines avec une affinité nanomolaire. L\'érythroblaste en expose plusieurs centaines de milliers pour capter le fer de l\'hème. Posez-vous sur le puits balisé (taille ≤ 30 nm).'],
+pit:['Puits recouvert de clathrine','L\'adaptateur AP-2 reconnaît le motif YTRF de la queue de TfR1 et recrute la clathrine. Les triskèles (3 chaînes lourdes + 3 légères) s\'assemblent en cage de pentagones et d\'hexagones qui courbe la membrane.'],
+cyt:['Cytosol','Gel aqueux très encombré : 200–300 g/L de protéines. pH ≈ 7,2 ; K⁺ ≈ 140 mM, Na⁺ ≈ 10 mM, Ca²⁺ libre ≈ 100 nM. Dans l\'érythroblaste il se remplit peu à peu d\'hémoglobine. Les grains beiges sont des polysomes libres. Évitez les organites !'],
+rib:['Polysome libre','Plusieurs ribosomes 80S (25–30 nm ; 4 ARNr et ≈80 protéines ; sous-unités 40S et 60S) traduisent le même ARNm à ≈5 acides aminés par seconde. Leur abondance rend le cytoplasme basophile : ils fabriquent surtout les globines α et β, protéines cytosoliques (donc pas sur le RE).'],
+mit:['Mitochondrie','Deux membranes : l\'externe est perméable (porines VDAC) ; l\'interne, repliée en crêtes, porte la chaîne respiratoire et l\'ATP synthase (gradient de protons). Matrice : cycle de Krebs, β-oxydation, ADN mitochondrial circulaire de 16 569 pb (37 gènes, hérédité maternelle ; points jaunes). Ici elle fabrique aussi l\'hème : ALAS2 ouvre la voie dans la matrice, la ferrochélatase la termine en insérant Fe²⁺ dans la protoporphyrine IX. Le fer entre par la mitoferrine-1.'],
+rer:['Réticulum endoplasmique rugueux','Citernes aplaties (lumière ≈50 nm) en continuité avec la membrane nucléaire externe, couvertes de ribosomes arrimés au translocon Sec61. Synthèse des protéines membranaires et sécrétées (dont TfR1), repliement (BiP, calnexine), ponts disulfure, N-glycosylation.'],
+sel:['Réticulum endoplasmique lisse','Réseau de tubules de ≈60 nm de diamètre (réticulons ; jonctions à trois voies formées par les atlastines). Synthèse des phospholipides et du cholestérol, réserve de Ca²⁺ (≈0,5 mM contre 100 nM dans le cytosol), contacts avec les mitochondries.'],
+gol:['Appareil de Golgi','Pile polarisée de 4 à 6 citernes : face cis (arrivée des vésicules COPII venues du RE) → citernes médianes → face trans et réseau trans-golgien (tri). Maturation des N-glycanes, O-glycosylation, sulfatation. Étiquette mannose-6-phosphate pour les enzymes lysosomales ; retour vers le RE par les vésicules COPI.'],
+cen:['Centrosome','Deux centrioles perpendiculaires (9 triplets de microtubules, ≈0,2 × 0,45 µm) dans un matériel péricentriolaire où les anneaux de γ-tubuline nucléent les microtubules. Dupliqué une seule fois par cycle, en phase S.'],
+mt:['Microtubule','Tube creux de 25 nm : 13 protofilaments de dimères α/β-tubuline (8 nm). Polarisé : extrémité − au centrosome, + en périphérie, avec instabilité dynamique (hydrolyse du GTP). Rail des kinésines (vers +) et de la dynéine (vers −).'],
+ves:['Vésicule de transport','Sac membranaire de 50–100 nm. Celles qui bougent sont tractées le long d\'un microtubule par une kinésine : pas de 8 nm, 1 ATP par pas, ≈1 µm/s (vitesse réelle ici). Adressage par les GTPases Rab, fusion par les SNARE.'],
+lys:['Lysosome','pH 4,5–5 maintenu par la V-ATPase ; une soixantaine d\'hydrolases acides digèrent protéines, lipides, sucres et acides nucléiques (endocytose, autophagie). Membrane protégée par les glycoprotéines LAMP. Un déficit enzymatique = maladie de surcharge lysosomale.'],
+per:['Peroxysome','Simple membrane, pas d\'ADN. β-oxydation des acides gras à très longue chaîne, synthèse des plasmalogènes ; la catalase y détruit H₂O₂. Protéines importées déjà repliées (signal PTS1 « -SKL », peroxines PEX).'],
+end:['Endosome précoce','Compartiment de tri tubulo-vésiculaire (pH ≈ 6, Rab5). C\'est ici que le fer quitte la transferrine ; les récepteurs repartent vers la surface par les tubules de recyclage (Rab4, Rab11).'],
+mvb:['Endosome tardif — corps multivésiculaire','Les complexes ESCRT font bourgeonner vers l\'intérieur des vésicules de ≈50 nm chargées de récepteurs à éliminer. Il fusionne avec un lysosome — ou avec la membrane plasmique en libérant des exosomes : c\'est ainsi que le réticulocyte se débarrasse de TfR1.'],
+ne:['Enveloppe nucléaire',"Deux bicouches séparées par l'espace périnucléaire (30–50 nm), qui se rejoignent au bord de chaque pore. L'externe prolonge le RE et porte des ribosomes ; l'interne a ses protéines propres (LBR, émerine, LAP2, MAN1, SUN1/2) et repose sur la lamina. À chaque mitose, CDK1 phosphoryle lamines et nucléoporines : l'enveloppe se défait, puis se reforme autour des chromosomes en télophase."],
+npc:['Pore nucléaire (NPC)','≈110–120 MDa, une trentaine de nucléoporines en symétrie d\'ordre 8 : anneaux cytoplasmique, interne et nucléaire, filaments cytoplasmiques, panier nucléaire. Diamètre externe ≈120 nm ; canal central ≈40 nm empli de nucléoporines FG désordonnées. Diffusion libre jusqu\'à ≈40 kDa ; au-delà, importines/exportines et gradient Ran-GTP. Le vaisseau doit mesurer ≤ 40 nm.'],
+nuc:['Nucléoplasme','Canaux interchromatiniens où diffusent ARN, facteurs de transcription et d\'épissage. 46 chromosomes décondensés (interphase) : 6,1 milliards de paires de bases, soit ≈2 m d\'ADN dans un noyau de 8 µm.'],
+chr:['','Chaque chromosome est une fibre continue repliée dans son propre territoire (1 nœud par mégabase, repliement schématique). Les teintes suivent les bandes G quand l\'API UCSC répond : claires = bandes R riches en gènes, sombres = bandes G, rouge = centromère. Les chromosomes riches en gènes (17, 19, 22) sont plutôt au centre du noyau, les pauvres (4, 13, 18) en périphérie.'],
+xi:['Corps de Barr — X inactif','Caryotype 46,XX : l\'un des deux X est inactivé au hasard dans chaque cellule (lyonisation). Le long ARN non codant XIST (points roses) recouvre le chromosome en cis et recrute PRC2 (H3K27me3) : chromatine compacte plaquée contre l\'enveloppe.'],
+nol:['Nucléole',"Le plus gros condensat du noyau : pas de membrane, mais trois phases liquides emboîtées et non miscibles. Il se forme autour des organisateurs nucléolaires, les répétitions d'ADN ribosomique des bras courts des chromosomes 13, 14, 15, 21 et 22 (environ 400 copies par génome diploïde, nombre très variable d'une personne à l'autre ; la moitié environ sont actives). Sa surface est bordée d'hétérochromatine (domaines NAD, ≈ 4 % du génome). Il se dissout à la mitose et se reforme en télophase. Rétrécissez à 30 nm ou moins et approchez : vous pouvez y entrer."],
+spk:['Speckle nucléaire',"Condensat de forme irrégulière (20 à 50 par noyau), fait de granules interchromatiniens de 20–25 nm. Au cœur (rose) : les protéines SON et SRRM2, sans lesquelles il se dissout. Autour : protéines SR (cyan) et snRNP (bleu). En périphérie : le long ARN non codant MALAT1 (orange). Ni ADN ni transcription à l'intérieur : c'est une réserve de facteurs d'épissage qui échange sans cesse avec le nucléoplasme. Les gènes placés à son contact sont épissés plus efficacement — c'est le cas de HBB juste à côté."],
+cb:['Corps de Cajal',"Sphère de 0,1 à 2 µm décrite en 1903 par Santiago Ramón y Cajal dans des neurones (« corps accessoire » du nucléole). Charpente : la coïline (orange). Atelier des petits RNP : retouche chimique des snRNA par les scaRNP (vert) ; assemblage de U4/U6 puis du tri-snRNP U4/U6·U5 et recyclage après chaque épissage (bleu) ; maturation de snoRNP ; assemblage de la télomérase dans les cellules qui l'expriment. Nombreux dans les neurones et les cellules en prolifération rapide, rares ou absents dans beaucoup de cellules adultes au repos ; il se reforme quand la transcription repart."],
+pml:['Corps PML',"Coque sphérique de protéine PML (0,1 à 1 µm ; 10 à 30 par noyau). PML s'assemble par son motif RBCC (famille TRIM) ; elle est SUMOylée et porte un motif d'interaction avec SUMO, ce qui attire à l'intérieur des dizaines de protéines elles-mêmes SUMOylées. Rôles : séquestrer, modifier ou faire dégrader ces partenaires ; réponse au stress oxydant et aux dommages de l'ADN, sénescence, défense antivirale. Leucémie aiguë promyélocytaire, t(15;17) : la fusion PML::RARA les disperse en micro-ponctuations ; le trioxyde d'arsenic, qui se fixe sur PML, et l'acide rétinoïque les reforment."],
+lam:['Lamina nucléaire',"Feutrage de filaments plaqué sous la membrane interne, entre les pores. Cryo-tomographie : filaments de 3,5 nm seulement (10 nm pour les filaments intermédiaires du cytoplasme), longs d'environ 380 nm, décorés tous les 20 nm par leurs domaines globulaires, le tout dans une couche de 14 nm ; ils couvrent la moitié de la surface. Lamines B contre la membrane (bleu), lamines A et C côté chromatine (orangé) : deux réseaux concentriques qui se recouvrent. Rôles : résistance mécanique du noyau, ancrage des pores et de l'hétérochromatine. À la mitose, CDK1 phosphoryle les lamines et le feutrage se dissout."],
+lmA:['Lamines A et C',"Deux isoformes du gène LMNA (1q22), par épissage alternatif. La prélamine A est farnésylée puis coupée par la protéase ZMPSTE24 : la lamine A mûre n'a plus d'ancre lipidique. Abondantes dans les cellules différenciées, elles règlent la rigidité du noyau. Laminopathies : dystrophie musculaire d'Emery-Dreifuss, cardiomyopathie dilatée avec troubles de conduction, lipodystrophie de Dunnigan, neuropathie axonale. Progéria de Hutchinson-Gilford : c.1824C>T (p.Gly608=) active un site d'épissage cryptique de l'exon 11 ; la progérine, amputée de 50 acides aminés, perd le site de coupure, reste farnésylée et déforme l'enveloppe."],
+lmB:['Lamines B1 et B2',"Gènes LMNB1 et LMNB2. Elles gardent leur groupe farnésyle, qui les ancre dans la membrane interne : c'est le réseau le plus externe. Présentes dans presque toutes les cellules dès l'embryon. Duplication de LMNB1 : leucodystrophie autosomique dominante de l'adulte. "+["Chez la souris, pendant la maturation de l'érythroblaste, la caspase-3 coupe la lamine B et ouvre transitoirement l'enveloppe : une partie des histones s'échappe, étape nécessaire à la condensation du noyau avant son expulsion.","","Chez la souris, sans lamine B1 ou B2, les neurones migrent mal et le cortex est désorganisé : le noyau doit résister à la déformation pendant la migration."][CT]],
+lbr:['Récepteur de la lamine B (LBR)',"Protéine à huit segments transmembranaires de la membrane interne. Son domaine nucléoplasmique lie la lamine B, HP1 et les histones de l'hétérochromatine : c'est le premier système d'accrochage de l'hétérochromatine à l'enveloppe, utilisé par les cellules jeunes ; les lamines A/C prennent le relais au cours de la différenciation. Sa partie membranaire est une stérol réductase de la voie du cholestérol. Mutation hétérozygote : anomalie de Pelger-Huët (noyaux des polynucléaires peu segmentés) ; homozygote : dysplasie de Greenberg."],
+lad:['Hétérochromatine associée à la lamina (LAD)',"Plus de 1 300 domaines de 0,1 à 10 Mb touchent la lamina, soit plus d'un tiers du génome : pauvres en gènes, peu transcrits, marqués par H3K9me2/3, à bords nets souvent marqués par CTCF. Chapelets de nucléosomes (11 nm) dessinés ici accrochés à LBR. Les gènes qui s'activent au cours de la différenciation quittent souvent la périphérie."],
+eme:['Émerine et protéines à domaine LEM',"Émerine, LAP2β, MAN1 : protéines de la membrane interne dont le domaine LEM lie BAF (petite bille claire), un dimère qui ponte l'ADN. Elles relient la chromatine à l'enveloppe et à la lamina, et aident l'enveloppe à se reformer après la mitose. L'émerine (gène EMD, Xq28) est absente dans la dystrophie musculaire d'Emery-Dreifuss liée à l'X."],
+linc:['Complexe LINC (SUN–KASH)',"Trimère de SUN1 ou SUN2 ancré dans la membrane interne et retenu par la lamina ; sa tige traverse l'espace périnucléaire et ses trois domaines SUN saisissent les peptides KASH de trois nesprines de la membrane externe, elles-mêmes reliées à l'actine, aux microtubules (par kinésine et dynéine) et aux filaments intermédiaires. Le LINC transmet les forces du cytosquelette au noyau : positionnement et migration du noyau, mécanotransduction."],
+son:['SON et SRRM2 — cœur du speckle',"Deux très grandes protéines en grande partie désordonnées, riches en répétitions sérine-arginine. Retirer les deux dissout les speckles. L'anticorps « SC35 », marqueur historique des speckles, reconnaît en réalité surtout SRRM2. Variants perte de fonction de SON (syndrome ZTTK) ou de SRRM2 : troubles du neurodéveloppement."],
+srp:['Protéines SR',"SRSF1 à SRSF12 : un ou deux domaines de liaison à l'ARN (RRM) et une queue riche en dipeptides arginine-sérine. Phosphorylées par SRPK1 et les kinases CLK, elles quittent le speckle pour rejoindre les gènes en cours de transcription : fixées sur les exons (séquences ESE), elles aident U1 et U2AF à reconnaître les sites d'épissage. Déphosphorylées, elles reviennent."],
+snp:['snRNP en réserve',"U1, U2, U4/U6 et U5 : un petit ARN nucléaire riche en uridine, un anneau de sept protéines Sm (LSm pour U6) et des protéines propres. Entre deux cycles d'épissage, ils séjournent dans les speckles ; ils sont assemblés et retouchés dans les corps de Cajal."],
+mal:['MALAT1',"Long ARN non codant d'environ 8,7 kb, l'un des ARN les plus abondants du noyau, concentré à la périphérie des speckles. Son extrémité 3′ n'est pas polyadénylée : elle est coupée par la RNase P, ce qui libère un petit ARN de type ARNt, puis protégée par une triple hélice. Il module la phosphorylation des protéines SR et l'épissage alternatif ; surexprimé dans de nombreux cancers."],
+coi:['Coïline',"Protéine signature du corps de Cajal (gène COIL). Elle s'associe à elle-même par son extrémité N-terminale et lie, par ses arginines diméthylées, le complexe SMN et les snRNP. Sans coïline (souris), les corps de Cajal se réduisent à des corps résiduels et les snRNP ne s'y concentrent plus."],
+sca:['scaRNP',"Petits ARN propres aux corps de Cajal, cousins des snoRNA : à boîtes C/D (avec la fibrillarine) pour méthyler un ribose en 2′-O, à boîtes H/ACA (avec la dyskérine) pour créer une pseudouridine — ici sur les snRNA U1, U2, U4 et U5, aux positions qui toucheront le pré-ARNm. Un motif, la boîte CAB, lu par la protéine TCAB1 (WRAP53), les retient dans le corps de Cajal. L'ARN de la télomérase porte la même boîte : sans TCAB1, la télomérase n'atteint plus les télomères."],
+tri:["snRNP en cours d'assemblage","Après un passage par le cytoplasme (pose de l'anneau Sm, triméthylation de la coiffe), les snRNP rentrent dans le noyau et s'arrêtent ici. U4 et U6 sont appariés avec l'aide de SART3, puis rejoints par U5 : le tri-snRNP U4/U6·U5 est prêt pour le spliceosome. Après chaque épissage, U4, U5 et U6 séparés reviennent se réassembler ; la forte concentration locale accélère cette étape."],
+gem:['Gem — complexe SMN',"« Gemini of Cajal bodies » : corps jumeau, le plus souvent confondu avec le corps de Cajal. Le complexe SMN (SMN et Gemin2 à 8) pose dans le cytoplasme l'anneau de sept protéines Sm autour de chaque snRNA, puis accompagne le snRNP à son retour. Perte des deux copies de SMN1 (5q13) : amyotrophie spinale. La copie SMN2, dont l'exon 7 est le plus souvent sauté, ne compense qu'en partie ; le nusinersen et le risdiplam corrigent cet épissage."],
+pmc:['Protéines clientes du corps PML',"SP100, DAXX et ATRX (dépôt de l'histone H3.3), SUMO, l'ubiquitine ligase RNF4 qui reconnaît les chaînes de SUMO et adresse les protéines au protéasome, p53 et les enzymes qui le modifient (CBP, HIPK2). Dans les cellules qui allongent leurs télomères par recombinaison, sans télomérase (ALT), des corps PML englobent les télomères."],
+psp:['Paraspeckle',"Corps d'environ 0,3 µm construit sur un ARN : NEAT1_2 (≈ 23 kb), avec les protéines NONO, SFPQ et PSPC1 (famille DBHS), FUS et quelques dizaines d'autres. Toujours voisin d'un speckle, d'où son nom. Il retient dans le noyau des ARN porteurs de longues régions double brin éditées (adénosine → inosine) et séquestre des protéines, surtout en cas de stress. Il dépend de la transcription continue de NEAT1. Très net dans les cellules en culture ; dans les tissus, seulement dans certains types cellulaires ou sous stress : il est montré ici à titre d'illustration."],
+nea:['ARN NEAT1','Long ARN non codant transcrit par la polymérase II, sans queue poly(A) (extrémité 3′ protégée par une triple hélice, comme MALAT1). Dans le paraspeckle, chaque molécule est pliée en épingle : ses deux extrémités sont en surface, son milieu au centre, avec NONO et SFPQ (billes vertes) — organisation cœur-coquille.'],
+hlb:['Corps du locus des histones (HLB)',"Posé sur les gènes des histones dépendantes de la réplication : le grand groupe de 6p22 (une cinquantaine de gènes) et celui de 1q21. Il concentre NPAT, FLASH et le snRNP U7. En phase S, la cycline E–CDK2 phosphoryle NPAT et la transcription s'emballe. Le pré-ARNm d'histone n'a ni intron ni queue poly(A) : il est coupé après une tige-boucle reconnue par SLBP, à l'endroit désigné par U7. L'érythroblaste, qui se divise encore, doit doubler son stock d'histones à chaque cycle."],
+nolI:['Intérieur du nucléole',"Trois phases emboîtées. Centre fibrillaire (FC, sphère claire) : réserve de la machinerie de transcription. Composant fibrillaire dense (DFC, vert) : premières retouches du pré-ARNr. Composant granulaire (GC, tout le reste) : assemblage des sous-unités. Le pré-ARNr naît à la frontière FC/DFC et mûrit en s'éloignant : un flux radial, du centre vers la surface. Un nucléole humain compte plusieurs dizaines d'unités FC/DFC, chacune avec 2 ou 3 gènes actifs ; une dizaine sont dessinées ici."],
+fc:['Centre fibrillaire (FC)',"Réserve de la machinerie : ARN polymérase I (violet), UBF, facteur SL1, protéine treacle (jaune pâle). Il contient l'ADN ribosomique ; les gènes actifs sont à sa surface, à la frontière avec le DFC. Mutations de TCOF1 (treacle), POLR1C ou POLR1D : syndrome de Treacher Collins, par défaut de ribosomes dans les cellules des crêtes neurales."],
+rdn:["Gène d'ARN ribosomique (ADNr)","Unité répétée d'environ 43 kb : 13,3 kb transcrits, puis un espaceur intergénique d'environ 30 kb qui porte promoteur, enhancers et terminateurs. Le promoteur (bille jaune) est reconnu par UBF et par SL1 (TBP et ses TAF propres à la polymérase I), qui recrutent la polymérase par RRN3. Au bout du gène (bille rouge), la protéine TTF-1 fixée sur les terminateurs arrête la polymérase. Les copies actives ont perdu leurs nucléosomes réguliers et sont couvertes d'UBF ; les copies silencieuses sont méthylées et compactes. Étiré, le gène mesurerait 4,5 µm : il est dessiné enroulé à la surface du centre fibrillaire."],
+po1:['ARN polymérase I',"Treize sous-unités, un seul produit : le pré-ARNr 47S. Une centaine de polymérases se suivent sur chaque gène actif, une tous les 130 pb environ — l'« arbre de Noël » des étalements de Miller. Vitesse ≈ 95 nucléotides par seconde : le gène est parcouru en 2 min 20 (vitesse réelle ici). L'ARN ribosomique forme environ 80 % de l'ARN d'une cellule. Insensible à l'α-amanitine ; bloquée par l'actinomycine D à faible dose."],
+ssu:['Pré-ARNr naissant et processome SSU',"Chaque polymérase traîne son transcrit, d'autant plus long qu'elle a avancé. Dès sa sortie, l'extrémité 5′ est saisie par la fibrillarine, qui la tire vers le DFC, et par le snoRNP U3. La région 5′ETS–18S se replie avec environ 70 facteurs en processome SSU, particule de 4,5 MDa (bille bleu-vert au bout du transcrit), ébauche de la petite sous-unité. Ordre des régions du 47S : 5′ETS – 18S – ITS1 – 5,8S – ITS2 – 28S – 3′ETS. Près de la moitié sera éliminée."],
+fbl:['Fibrillarine et snoRNP à boîtes C/D',"La fibrillarine est la méthyltransférase des snoRNP C/D, avec NOP56, NOP58 et SNU13. Le petit ARN guide s'apparie à l'ARNr et désigne le nucléotide dont le ribose sera méthylé en 2′-O (donneur : SAM) : un peu plus de 100 sites sur les ARNr humains. Son domaine riche en glycine et arginine la fait condenser en 18 à 24 amas autour de chaque centre fibrillaire : ce sont eux qui forment le DFC et qui orientent le pré-ARNr vers l'extérieur. Le snoRNP U3 est un C/D à part : il ne méthyle pas, il guide les premiers clivages."],
+dkc:['Dyskérine et snoRNP à boîtes H/ACA',"Dyskérine (DKC1), NOP10, NHP2 et GAR1 autour d'un ARN guide en double épingle. La dyskérine convertit l'uridine désignée en pseudouridine (Ψ) : une centaine de sites sur les ARNr humains. La même protéine stabilise l'ARN de la télomérase, qui porte un domaine H/ACA : ses mutations causent la dyskératose congénitale liée à l'X (télomères courts, insuffisance médullaire)."],
+pdf:['Périphérie du DFC (PDFC)',"Sous-phase décrite en 2023 à la bordure externe du DFC. La protéine URB1 (orange) y retient l'extrémité 3′ du pré-ARNr, le temps que le snoRNA U8 la reconnaisse et que le 3′ETS soit retiré. Sans URB1, les intermédiaires mal coupés sont détruits par l'exosome et la production de 28S chute."],
+p60:['Particule pré-60S',"Ébauche de la grande sous-unité, assemblée dans le composant granulaire : ARNr 28S et 5,8S encore reliés par l'ITS2, ARNr 5S, protéines RPL et des dizaines de facteurs d'assemblage (GTPases, hélicases, ATPases AAA+ comme la midasine). L'ITS2 est coupé puis rogné par l'exosome. La particule quitte le nucléole, finit de mûrir dans le nucléoplasme et sort par un pore avec l'exportine CRM1 et son adaptateur NMD3 ; dernières retouches dans le cytoplasme. Teinte plus claire vers la surface : particules plus mûres."],
+p40:['Particule pré-40S',"Ébauche de la petite sous-unité : après les clivages du 5′ETS et de l'ITS1, le processome SSU se défait et libère une particule portant l'ARNr 18S encore allongé en 3′ et les protéines RPS. Elle traverse vite le composant granulaire, sort du noyau par un pore (CRM1) ; dans le cytoplasme, l'endonucléase NOB1 fait la dernière coupure. Anémie de Blackfan-Diamond : une protéine ribosomique manque à moitié (RPS19 dans un quart des cas) ; le stress nucléolaire stabilise p53 et bloque d'abord les érythroblastes."],
+npm:['Nucléophosmine (NPM1)',"Protéine la plus abondante du composant granulaire. Pentamère (anneau rose) dont les régions acides lient les motifs riches en arginine des protéines nucléolaires, et dont le domaine C-terminal lie l'ARNr : ces liaisons multiples et faibles font la phase liquide du GC. Une particule qui mûrit offre de moins en moins de prises et finit par quitter le nucléole. NPM1 est mutée dans environ un tiers des leucémies aiguës myéloïdes de l'adulte : la protéine mutée part dans le cytoplasme."],
+r5s:['RNP 5S',"Le quatrième ARNr, 5S (121 nucléotides), est le seul transcrit hors du nucléole : par l'ARN polymérase III, à partir de gènes répétés en 1q42. Il arrive lié aux protéines RPL5 et RPL11 et formera la protubérance centrale de la grande sous-unité. Quand la fabrication des ribosomes est perturbée, ce RNP 5S resté libre se fixe sur MDM2, ce qui stabilise p53 : c'est le signal du stress nucléolaire."],
+g0:['Fibre de chromatine de 10 nm','« Collier de perles » : un nucléosome tous les ≈200 pb, reliés par ≈50 pb d\'ADN de liaison. Dans le corps du gène, les nucléosomes (omis ici pour lire la séquence) sont démontés puis remontés au passage de la polymérase par FACT et SPT6.'],
+nsm:['Nucléosome','147 pb d\'ADN enroulées 1,65 tour en superhélice gauche autour d\'un octamère d\'histones : deux exemplaires chacune de H3 (bleu), H4 (vert), H2A (jaune) et H2B (rouge). Diamètre 11 nm. Les queues N-terminales portent les marques épigénétiques ; ici (perles vertes) H3K4me3 et H3K27ac, signatures d\'une chromatine active.'],
+dna:['ADN — double hélice B','Deux brins antiparallèles, hélice droite de 2 nm de diamètre, 10,5 pb par tour, 0,34 nm par paire de bases, grand et petit sillons. A (vert) s\'apparie à T (rouge) par 2 liaisons hydrogène, G (jaune) à C (bleu) par 3.'],
+pro:['Promoteur de HBB','Boîtes CACCC (−90, fixe le facteur érythroïde KLF1), CCAAT (−76, NF-Y) et ATA (CATAAA, −30, fixe TBP). Le complexe de pré-initiation (TFIIA, B, D, E, F, H et Médiateur) place l\'ARN polymérase II au site +1. Les variants d\'ici (ex. c.-78A>G) donnent des β⁺-thalassémies.'],
+lcr:['LCR — Locus Control Region','Super-enhancer situé ≈50 kb en amont de HBB (sites hypersensibles HS1 à HS5). GATA1, TAL1 et le pont LDB1 le rabattent en boucle contre le promoteur : sans lui, presque pas de β-globine.'],
+u5:['5′UTR de HBB — 50 nt','Transcrit mais non traduit. Le site +1 est le A qui recevra la coiffe. Le ribosome balaie depuis la coiffe jusqu\'au premier AUG.'],
+ex:['Exon codant de HBB','Trois exons : codons 1–31, 31–105 et 106–147 (numérotation HGVS, Met = 1). Les repères roses marquent des variants pathogènes classiques : HbS, HbC, HbE et plusieurs β-thalassémies.'],
+in:['Intron de HBB','IVS1 = 130 pb, IVS2 = 850 pb. Commence par GT (site donneur), finit par AG (site accepteur) précédé d\'un tract polypyrimidique et du A de branchement. Transcrit puis excisé. Des variants introniques créent des sites d\'épissage cryptiques (ex. c.93-21G>A, « IVS1-110 »).'],
+u3:['3′UTR de HBB — 132 nt','Contient le signal de polyadénylation AATAAA, une vingtaine de nucléotides avant le site de clivage. c.*110T>C (AATAAA→AACAAA) cause une β⁺-thalassémie.'],
+dn:['Zone de terminaison','Après le site poly(A), la polymérase continue quelques centaines de pb. L\'exonucléase XRN2 (rouge) dégrade l\'ARN résiduel 5′→3′, rattrape la polymérase et la décroche : modèle « torpille ».'],
+pol:['ARN polymérase II','12 sous-unités, ≈550 kDa. Elle ouvre une bulle de ≈12 pb, lit le brin matrice 3′→5′ et allonge l\'ARN 5′→3′ à ≈30 nt/s (vitesse réelle ici), après une pause vers +40 levée par P-TEFb. Sa queue CTD (52 répétitions YSPTSPS) est phosphorylée sur Ser5 (orange : initiation, coiffe) puis Ser2 (cyan : élongation, épissage, clivage).'],
+spl:['Spliceosome','U1 reconnaît le site donneur GU (bleu clair), U2 le A de branchement (vert), U2AF le site accepteur AG. Le tri-snRNP U4/U6·U5 complète le spliceosome (mauve) : deux transestérifications libèrent l\'intron en lasso et soudent les exons. Un complexe EJC (rose) est déposé 20–24 nt en amont de chaque jonction.'],
+rna:['Pré-ARNm de β-globine','Coiffe 7-méthylguanosine + complexe CBC (blanc) dès 25 nt. Exons dorés, introns bleus, queue poly(A) verte (≈200 A ajoutés par la poly(A) polymérase après clivage par CPSF). L\'épissage est co-transcriptionnel.'],
+mrn:['mRNP en cours d\'export','ARNm mûr : 626 nt + poly(A), compacté avec CBC, EJC et PABPN1. Le complexe TREX recrute le récepteur d\'export NXF1–NXT1 ; passage du pore, coiffe en tête, par un canal interchromatinien. Suivez-le !'],
+ply:['Polysome de β-globine','Cinq ribosomes traduisent l\'ARNm à ≈5 codons/s : 147 codons, chaîne β de 146 acides aminés après retrait de la Met initiale (point rouge = chaîne naissante). 2 α + 2 β + 4 hèmes = hémoglobine A.']},
+VAR={'-88':'c.-138C>T (−88) : β⁺-thal','-87':'c.-137C>G (−87) : β⁺-thal','-30':'c.-80T>A (−30) : β⁺-thal','-29':'c.-79A>G (−29) : β⁺-thal','-28':'c.-78A>G (−28) : β⁺-thal',
+66:'c.17_18delCT : β⁰-thal (décalage)',68:'c.19G>A p.(Glu7Lys) : HbC',69:'c.20A>T p.(Glu7Val) : HbS, drépanocytose',76:'c.27dupG : β⁰-thal (décalage)',128:'c.79G>A p.(Glu27Lys) : HbE',
+142:'c.92+1G>A : β⁰-thal (site donneur)',146:'c.92+5G>C : β⁺-thal',147:'c.92+6T>C : β⁺-thal',251:'c.93-21G>A (IVS1-110) : β⁺-thal, site cryptique',297:'c.118C>T p.(Gln40*) : β⁰-thal',
+305:'c.126_129delCTTT : β⁰-thal (décalage)',495:'c.315+1G>A : β⁰-thal',1148:'c.316-197C>T (IVS2-654) : β-thal, site cryptique',1239:'c.316-106C>G (IVS2-745) : β⁺-thal',1583:'c.*110T>C : β⁺-thal (signal poly(A))'};
+Object.assign(I,CF.I,G.i);if(G.sy!='HBB')for(let k in VAR)delete VAR[k];
+
+// ================= constantes du monde (µm) =================
+const Rc=CF.Rc,Rn=4,Nc=[1.3,.5,-.9],Cc=ad(Nc,CF.of),A0=nm([.15,1,.1]),dax=nm(ad(ml(A0,-1),[.25,0,.1])),Rb=.65,
+// neurone : prolongements [direction, rayon, longueur, type] — axone, dendrite apicale, trois dendrites basales
+PRC=CT>1?[[dax,.4,22,'axn'],[A0,1.1,16,'den']].concat([.9,3,5.1].map(g=>{let x=pp(A0);return[nm(ad(ml(A0,-.5),ad(ml(x,cos(g)),ml(cr(A0,x),sin(g))))),.55,11,'den']})):[],
+Cb=ma(Cc,dax,Rc+22+sqrt(Rb*Rb-.16)),Ce=CT>1?Cb:Cc,Re=CT>1?Rb:Rc,v0=CT>1?pp(dax):nm([1,(1+sqrt(5))/2,0]),e0=ma(Ce,v0,Re),rv=.05,SH=[{c:Cc,R:Rc}],OX=[],HO=[],
+[tX,,tZ]=fr(v0),NOL=ad(Nc,[-1.6,1.2,.9]),WX=nm([.2,1,.3]),
+CY=[],NU=[],DN=[],occ=[],EX=[],
+cS=(l,p,r,i,x)=>l.push(Object.assign({a:p,b:p,r,i,q:p,R:r},x)),
+cC=(l,a,b,r,i)=>l.push({a,b,r,i,q:lp(a,b,.5),R:ds(a,b)/2+r}),
+cE=(l,c,X,Y,Z,s,i)=>l.push({e:1,c,X,Y,Z,s,i,q:c,R:max(s[0],s[1],s[2])}),
+free=(p,r)=>occ.every(o=>ds(o[0],p)>o[1]+r),
+cyp=(r,x=0)=>{for(let i=0;i<300;i++){let p=ma(Cc,rd(),Rc*cbrt(R()));if(ds(p,Cc)<Rc-r-.15&&ds(p,Nc)>Rn+r+.15+x&&free(p,r))return p}};
+PRC.forEach(([d,r,l,k],i)=>SH.push({a:ma(Cc,d,Rc-r-.2),b:i?ma(Cc,d,Rc+l-r):Cb,R:r,k,d}));CT>1&&SH.push({c:Cb,R:Rb,k:'btn'});
+
+// ---- couches
+// rg : 1 = décor cytoplasmique, 2 = intérieur du noyau, 3 = noyau vu de loin ; ex : visible depuis l'extérieur de la cellule
+const Lmem=Ly(M5,1e9,0,{al:1,G:1,two:1,ex:1,rg:1}),Lhd=Ly(MO,.22,.03,{G:1,ex:1,rg:1}),Lpr=Ly(M1,2.5,.4,{ex:1,rg:1}),Lmt=Ly(MW,1e9,0,{al:1,ex:1,rg:1}),Lox=Ly(M1,40,4,{ex:1,rg:1}),Lox0=Ly(M0,14,3,{ex:1,rg:1}),Loxc=Ly(MC,40,4,{ex:1,rg:1}),Lprc=Ly(MD,.7,.4,{ex:1,rg:1}),
+Lves=Ly(M3,1e9,0,{al:1,G:2,z0:1,two:1,ex:1}),Lcg=Ly(MC,1e9,0,{G:2,z0:1,ex:1}),Lcr=Ly(M1,1e9,0,{G:2,z0:1,ex:1}),
+Lo=Ly(M2,60,4,{rg:1}),Lo1=Ly(M2,2.2,2,{rg:1}),Lo0=Ly(M1,60,2,{nl:Lo1,rg:1}),Lcs=Ly(M1,3.5,2,{rg:1}),La=Ly(M2,60,4,{al:1,rg:1}),Lt=Ly(MC,25,4,{rg:1}),Lv=Ly(M1,9,3,{rg:1}),Lr=Ly(M0,2.6,1.6,{rg:1}),
+Lne=Ly(M4,1e9,0,{al:1,two:1}),Lp1=Ly(M0,1,1.2),Lp1c=Ly(MD,1,1.2),Lpa=Ly(M1,1,1.2,{al:1}),Lp0=Ly(M0,60,1.2,{nl:Lp1}),
+Lon=Ly(M2,60,0),Lan=Ly(M2,60,0,{al:1}),Lk=Ly(MC,1.3,1,{dim:1,G:3}),Lkj=Ly(M0,1.3,1,{dim:1,G:3}),Lkf=Ly(MD,60,1,{nl:Lk,dim:1,G:3}),Lkh=Ly(MC,60,0,{G:3}),
+Lq1=Ly(M1,.3,.25,{rg:2,vz:60}),Lq1c=Ly(MD,.3,.25,{rg:2,vz:60,G:1}),Lq0=Ly(M0,12,.25,{rg:2,nl:Lq1}),Lq0c=Ly(MD,12,.25,{rg:2,nl:Lq1}),Lqm=Ly(M0,.8,.25,{rg:2,vz:200}),Ldq=Ly(MD,1e9,0,{G:2}),Lg=Ly(M0,3.5,1,{rg:2}),
+Ld=Ly(MD,.26,.03,{vz:40,rg:2}),Ldf=Ly(MD,6,.03,{nl:Ld,rg:2}),Lh=Ly(M1,1.2,.1,{vz:150,rg:2}),Lhf=Ly(M0,8,.1,{nl:Lh,rg:2}),Lm=Ly(M0,.45,.1,{vz:60,rg:2}),
+Lsh=Ly(M2,1e9,0,{z0:1,ex:1}),Lshc=Ly(MC,1e9,0,{z0:1,ex:1}),Lsha=Ly(M2,1e9,0,{al:1,z0:1,ex:1}),Ldb=Ly(MO,.6,0,{vz:120}),Ldm=Ly(M1,12,0),
+Dk=(p,X,Y,Z,c)=>{El(Lo1,p,X,Y,Z,c);El(Lo0,p,X,Y,Z,c)};
+
+// ================= membrane plasmique et site d'entrée =================
+S(Lmem,Cc,Rc,K(CF.mc,.8));
+const onM=(x,y,h)=>{let d=nm(ad(ad(ml(v0,Re),ml(tX,x)),ml(tZ,y)));return[ma(Ce,d,Re+h),d]};
+for(let i=-80;i<81;i++)for(let j=-80;j<81;j++){let x=.00085*(i+j/2),y=.00085*.866*j,r=hypot(x,y),c=R()<.85?K(0xfb6):R()<.5?K(0xfe9):K(0xe74);   // têtes polaires
+  if(r>.041&&r<.058)S(Lhd,onM(x,y,.0021)[0],.00052,c);
+  if(r>.041&&r<.049)S(Lhd,onM(x,y,-.0021)[0],.00052,K(0xda5))}
+function tfr(L,Lc,q,d,ld){let s=pp(d),t=cr(s,d),k;     // récepteur d'entrée : TfR1 (dimère), LDLR ou TrkB (dimère), avec ou sans ligand
+  if(CT==1){Lc&&Cy(Lc,ma(q,d,-.0025),ma(q,d,.006),.0007,K(0x7a5));S(L,ma(q,d,.007),.0024,K(0x4b8));for(k=0;k<4;k++)S(L,ad(ma(q,d,.0095+k*.0013),ml(s,.001*k)),.0011,K(0x8d6));ld&&tf(L,ad(ma(q,d,.025),ml(s,.004)),d,t);return}
+  for(k of[-1,1]){
+    Lc&&Cy(Lc,ma(ma(q,d,-.0025),s,k*.0012),ma(ma(q,d,.0045),s,k*.002),.0007,K(CT?0x86c:0x4a9));
+    CT?(S(L,ma(ma(q,d,.0055),s,k*.002),.002,K(0x86c)),S(L,ma(ma(q,d,.0085),s,k*.0026),.0022,K(0xa8e))):El(L,ma(ma(q,d,.0075),s,k*.0034),ml(s,.0036),ml(d,.003),ml(t,.0028),K(0x3cb));
+    ld&&!CT&&tf(L,ma(ma(q,d,.0072),s,k*.0088),d,t)}
+  ld&&CT&&tf(L,ma(q,d,.0118),d,s)}
+function tf(L,q,d,t){
+  if(CT==1){S(L,q,.011,K(0xec5));for(let k=0;k<9;k++)S(L,ad(q,ml(ad(ml(t,cos(k*.7)),ml(cr(d,t),sin(k*.7))),.0105)),.0022,K(0xb53));return}      // LDL et sa ceinture d'apoB-100
+  if(CT){S(L,ma(q,t,.0014),.0017,K(0xfd6));S(L,ma(q,t,-.0014),.0017,K(0xeb4));return}                                                  // dimère de BDNF
+  S(L,ma(ma(q,d,.0016),t,.0014),.0024,K(0xdb6));S(L,ma(ma(q,d,-.0016),t,-.0014),.0024,K(0xc95));
+  S(L,ma(q,d,.0016),.0008,[3,.4,.2,1]);S(L,ma(q,d,-.0016),.0008,[3,.4,.2,1])}
+for(let i=0;i<CF.nr;i++){let r=.06+.5*sqrt(R()),a=rr(0,TAU),[q,d]=onM(r*cos(a),r*sin(a),0);tfr(Lpr,Lprc,q,d,R()<.6)}
+for(let i=0;i<max(60,CF.nr);i++){let d=rd();tf(Lpr,ad(ad(ma(e0,v0,rr(.02,.5)),ml(tX,rr(-.5,.5))),ml(tZ,rr(-.5,.5))),d,pp(d))}
+// puits/vésicule recouverte (coordonnées locales, déplacée par matrice modèle)
+S(Lves,[0,0,0],rv,K(CF.mc,.6));
+{let c=I1F.map(([a,b,c])=>nm(ad(ad(a,b),c))),m=new Map,e=[];
+ I1F.forEach((f,i)=>{for(let k=0;k<3;k++){let a=f[k],b=f[(k+1)%3],s=[a,b].map(v=>v.map(x=>x.toFixed(3))+'').sort()+'';m.has(s)?e.push([m.get(s),i]):m.set(s,i)}});
+ e.sort(()=>R()-.5).forEach(([a,b])=>Cy(Lcg,ml(c[a],.0585),ml(c[b],.0585),.0013,K(0x9bd)));
+ tfr(Lcr,0,ml(v0,-rv),v0,0);
+ for(let i=0;i<(CT==1?4:9);i++){let d=nm(ad(ml(v0,-1),ml(rd(),.85)));tfr(Lcr,0,ml(d,rv),ml(d,-1),1)}
+ for(let i=0;i<16;i++){let d=nm(ad(ml(v0,-1),ml(rd(),.9)));S(Lcr,ml(d,rv+.0042),.003,K(0xa6d))}}     // adaptateurs AP-2
+
+// ================= noyau : enveloppe, pores =================
+S(Lne,Nc,Rn,K(0x86d,.5));S(Lne,Nc,Rn-.04,K(0x548,.45));
+const PD=[];
+for(let i=0;i<1500;i++){let y=1-2*(i+.5)/1500,r=sqrt(1-y*y),a=i*2.399963,d=nm(ad([r*cos(a),y,r*sin(a)],ml(rd(),.012))),c=ma(Nc,d,Rn-.02),[x,,w]=fr(d);PD.push(d);
+  El(Lp0,c,ml(x,.058),ml(d,.035),ml(w,.058),K(0x325));El(Lpa,c,ml(x,.026),ml(d,.032),ml(w,.026),K(0xfff,.2));
+  for(let k=0;k<8;k++){let g=k*TAU/8,h=ad(ml(x,cos(g)),ml(w,sin(g))),tw=ad(ml(x,cos(g+.5)),ml(w,sin(g+.5))),e=ad(ma(c,d,-.105),ml(h,.02));
+    S(Lp1,ad(ma(c,d,.03),ml(h,.047)),.0135,K(0xcaf));S(Lp1,ma(c,h,.04),.0125,K(0x86c));S(Lp1,ad(ma(c,d,-.03),ml(h,.047)),.0135,K(0xa8d));
+    Cy(Lp1c,ad(ma(c,d,.04),ml(h,.047)),ad(ma(c,d,.085),ml(tw,.055)),.003,K(0xdbf));Cy(Lp1c,ad(ma(c,d,-.04),ml(h,.045)),e,.003,K(0x97c));S(Lp1,e,.006,K(0x97c))}}
+for(let i=0;i<2200;i++){let d=rd();PD.every(q=>dt(q,d)<.9998)&&S(Lr,ma(Nc,d,Rn+.0115),.0115,K(0xcb8))}      // ribosomes de la membrane externe
+const d0=PD.reduce((a,b)=>dt(a,Nc)<dt(b,Nc)?a:b),PS=ma(Nc,d0,Rn+(G.sec?.05:.42));       // pore d'export le plus proche du gène
+
+// ================= locus du gène : modèle, chemin de l'ADN =================
+const SEQ=G.q,SQ=i=>i<-G.up||i>=G.L?'':SEQ[i+G.up],FT=new Uint8Array(G.L).fill(4),XN=new Uint8Array(G.L);G.I=[];
+G.ex.forEach(([a,b],k)=>{for(let i=a;i<b;i++)FT[i]=i<G.cs||i>=G.ce?2:3,XN[i]=k;if(k){for(let i=G.ex[k-1][1];i<a;i++)XN[i]=k-1;G.I.push({a:G.ex[k-1][1],b:a,n:G.ir?G.ir[k-1]:a-G.ex[k-1][1]})}});
+// codes d'annotation : 0 flanc, 1 promoteur, 2 UTR, 3 exon codant, 4 intron, 9 aval, 10 poly(A)
+const ft=i=>i<-G.pr?0:i<0?1:i<G.L?FT[i]:i<G.L+500?9:0,fk=i=>{let f=ft(i);return f==2?i<G.cs?'u5':'u3':['g0','pro',,'ex','in',,,,,'dn'][f]},
+FC=[K(0x778),K(0xc6f),K(0xfb7),K(0xfd3),K(0x59c),,,,,K(0x966),K(0x5d5)],
+m2i=m=>{for(let[a,b]of G.ex){if(m<b-a)return a+m;m-=b-a}return G.L},i2m=i=>{let m=0;for(let[a,b]of G.ex){if(i<b)return m+max(0,i-a);m+=b-a}return m},CM=i2m(G.cs),CME=i2m(G.ce),
+// ---------- signaux lus dans la séquence réelle. Ce sont des motifs (candidats), pas des sites validés expérimentalement.
+NT=Object.assign({},G.nt),sub=(a,n)=>{let s='';for(let k=0;k<n;k++)s+=SQ(a+k)||'N';return s},rU=s=>s.replace(/T/g,'U'),MR=G.ex.map(([a,b])=>SEQ.slice(G.up+a,G.up+b)).join(''),
+// signal de polyadénylation : hexamère le mieux classé (AATAAA d'abord) entre 45 et 7 nt avant le site de clivage
+PAS=(()=>{let w=sub(G.L-45,39),h,i;for(h of['AATAAA','ATTAAA','AGTAAA','TATAAA','CATAAA','GATAAA','AATATA','AATACA','AATAGA','ACTAAA','AAGAAA','AATGAA'])if((i=w.lastIndexOf(h))>=0)return{x:G.L-45+i,h,d:45-i};return 0})(),
+// point de branchement candidat de chaque intron : meilleur accord avec le consensus YNYURAY entre 18 et 44 nt avant l'accepteur
+BP=G.I.map(J=>{let b=0,d,s,v,y=c=>c=='C'||c=='T';for(d=18;d<45&&J.b-d-5>J.a+5;d++){s=sub(J.b-d-5,7);if(s[5]!='A')continue;
+    v=3*(s[3]=='T')+y(s[2])+y(s[6])+.5*(s[4]=='A'||s[4]=='G')+.5*y(s[0])-.04*abs(d-27);if(!b||v>b.v)b={x:J.b-d,d,s,v}}
+  return b||{x:max(J.a+2,J.b-33),d:0,s:''}}),
+// sites m6A candidats : motifs DRACH de l'ARNm les plus proches du codon stop (≤ 4), hors jonctions d'exons
+M6=(()=>{let o=[],m,i,re=/[AGT][AG]AC[ACT]/y;for(m=max(0,CME-150);m<min(MR.length-5,CME+250);m++){re.lastIndex=m;i=m2i(m);if(re.test(MR)&&m2i(m+4)==i+4)o.push([abs(m+2-CME),i+2,MR.substr(m,5)])}
+  return o.sort((a,b)=>a[0]-b[0]).slice(0,4).sort((a,b)=>a[1]-b[1])})(),
+CU={},
+BC={A:K(0x4c4),C:K(0x48f),G:K(0xfc3),T:K(0xf55),'':K(0x556)},CO={A:'T',C:'G',G:'C',T:'A','':''};
+function mkPath(P,t,u,spec,W){let p=[],T=[],N=[],nu=[],fl=[];
+  for(let[ty,n,kap]of spec){
+    if(ty){u=rot(u,t,rr(0,TAU));let A=cr(t,u),C=ma(P,u,.00418),ph=1.65*TAU,a,e;
+      for(let i=0;i<=147;i++){a=i/147*ph;e=ad(ml(u,-cos(a)),ml(t,sin(a)));P=ad(ma(C,e,.00418),ml(A,-.0025*a/TAU));
+        if(i<147)p.push(P),T.push(nm(ad(ad(ml(u,sin(a)),ml(t,cos(a))),ml(A,-.095)))),N.push(e),fl.push(1)}
+      nu.push([ma(C,A,-.002),A,u,t]);[t,u]=[ad(ml(u,sin(a)),ml(t,cos(a))),ml(e,-1)]}
+    else for(let i=0;i<n;i++){p.push(P);T.push(t);N.push(u);fl.push(0);P=ma(P,t,.00034);
+      if(kap){let a=kap.call?kap(i):kap;t=rot(t,W,a);u=rot(u,W,a)}else{let k=rd();t=nm(rot(t,k,.012));u=nm(cr(cr(t,u),t))}}}
+  return{p,T,N,nu,fl}}
+function join(b,f){b.p.reverse();b.T.reverse();b.N.reverse();b.fl.reverse();b.T=b.T.map(t=>ml(t,-1));
+  let h={p:b.p.concat(f.p),T:b.T.concat(f.T),N:b.N.concat(f.N),fl:b.fl.concat(f.fl),nu:b.nu.concat(f.nu),o:[0]};
+  for(let j=1;j<h.p.length;j++){let n=h.N[j-1];h.o[j]=h.o[j-1]+atan2(dt(n,cr(h.T[j],h.N[j])),dt(n,h.N[j]))}
+  return h}
+for(let k in G.vc)VAR[m2i(CM+ +k-1)]=G.vc[k];
+if(PAS)for(let k=0;k<6;k++)NT[PAS.x+k]='Signal de polyadénylation '+PAS.h+' (lu dans la séquence) : il commence '+PAS.d+' nt avant le site de clivage';
+BP.forEach((b,k)=>{if(b.d)NT[b.x]='Point de branchement candidat de l\'intron '+(k+1)+' : A à '+b.d+' nt de l\'accepteur ('+b.s+', '+(b.v<4?'accord partiel avec le':'bon accord avec le')+' consensus YNYURAY ; prédit, non validé)'});
+M6.forEach(m=>{NT[m[1]]='Motif DRACH ('+m[2]+') : site m⁶A candidat — seule une partie de ces motifs est méthylée'});
+(G.cu||[]).forEach(c=>{CU[c.x]=c;I['cu'+c.k]=['Intron '+(c.k+1)+' raccourci','Coupure d\'affichage : '+c.n.toLocaleString(LG?'en-US':'fr-FR')+' pb du milieu de cet intron ('+G.I[c.k].n.toLocaleString(LG?'en-US':'fr-FR')+' pb en réalité) ne sont pas modélisés. Seuls ses '+c.f+' premiers et '+c.f+' derniers nucléotides, qui portent le site donneur, le point de branchement, le tract polypyrimidique et le site accepteur, sont représentés avec leur séquence réelle.']});
+const NS=[];for(let i=0;i<8;i++)NS.push([0,i?50:20],[1]);
+const t0=pp(WX),uB=mkPath(ml(t0,-.00034),ml(t0,-1),cr(WX,t0),NS),UP=uB.p.length+G.pr,
+NB=G.pr+G.L+500,SR=(()=>{let T=647,n=max(2,Math.round(sqrt(NB*.00034/.14))),S=max(300,Math.round(NB/n)-T),P=S+T;return i=>i%P<S?1e-7:(i/P&1?-1:1)*PI/T})(),      // gène long : rangées reliées par des demi-tours de 70 nm de rayon, dans le plan perpendiculaire aux ARN naissants
+GP=join(uB,mkPath([0,0,0],t0,cr(WX,t0),[[0,NB,NB<5200?3.2/NB:SR]].concat(NS),WX)),
+gO=GP.p[UP],gC=ml(GP.p.slice(UP,UP+G.L).reduce(ad),1/G.L);
+// recentrage : le site +1 à l'origine
+for(let h of[GP])h.p=h.p.map(q=>sb(q,gO)),h.nu.forEach(n=>n[0]=sb(n[0],gO));
+const GR=max(1.4,GP.p.reduce((m,q)=>max(m,ln(q)),0)+.15),SPK=ad(sb(gC,gO),ml(WX,.5)),
+lT=GP.T[UP+G.eo],lO=ma(GP.p[UP+G.eo],nm(cr(lT,WX)),.024),LS=[[0,145],[1],[0,45],[1],[0,50],[1],[0,45],[1],[0,50],[1],[0,45],[1]],
+LP=join(mkPath(ma(lO,WX,-.00034),ml(WX,-1),lT,LS),mkPath(lO,WX,lT,LS));
+function dna(h,fi,fs,ex){let n=h.p.length,a,b,j;
+  for(j=0;j<n;j++){let P=h.p[j],t=h.T[j],N=h.N[j],B=cr(t,N),th=j*.5984+h.o[j],f=fi(j),c=FC[f],s=fs(j),
+    x=ma(ma(P,N,.00095*cos(th)),B,.00095*sin(th)),y=ma(ma(P,N,.00095*cos(th+2.3)),B,.00095*sin(th+2.3)),m=lp(x,y,.5);
+    if(j)Cy(Ld,a,x,.00028,c),Cy(Ld,b,y,.00028,ml(c,.6).concat(1));
+    Cy(Ld,x,m,.00017,BC[s]);Cy(Ld,m,y,.00017,BC[CO[s]]);a=x;b=y;
+    if(j%10==0&&j+10<n)Cy(Ldf,P,h.p[j+10],.001,c);
+    if(j%12==0&&j+12<n&&!h.fl[j]&&!h.fl[j+12])cC(DN,P,h.p[j+12],.0012,f<0?'lcr':fk(j-UP));
+    if(j%30==0)EX.push([P,ex]);
+    if(f>0&&VAR[j-UP])S(Lm,ma(P,nm(sb(x,P)),.0019),.0005,[3,.5,2,1]);else if(f>0&&NT[j-UP])S(Lm,ma(P,nm(sb(x,P)),.0019),.0004,[.6,2.6,3,1])}
+  h.nu.forEach(([c,A,u,t],i)=>{let HC=[0x47e,0x5c6,0xed5,0xe55],s,k;
+    for(s of[-1,1]){for(k=0;k<4;k++){let g=k*TAU/4+(s>0?.7:0);S(Lh,ad(ma(c,A,s*.0014),ad(ml(u,.0019*cos(g)),ml(t,.0019*sin(g)))),.0019,K(HC[k]))}
+      let d=nm(ad(ml(u,-s),ml(t,.4))),e=ad(ma(c,A,s*.0012),ml(d,.0085));Cy(Ld,ad(ma(c,A,s*.0012),ml(d,.004)),e,.00022,K(0x47e));S(Lm,e,.0007,K(0x5f5))}
+    S(Lhf,c,.0048,K(0x99b));cS(DN,c,.0052,'nsm')})}
+FC[-1]=K(0xb7e);dna(GP,j=>ft(j-UP),j=>SQ(j-UP),.35);
+for(let x in CU){let P=GP.p[UP+ +x],t=GP.T[UP+ +x];for(let e of[-.0012,.0012])S(Lh,ma(P,t,e),.0026,K(0x889));cS(DN,P,.0042,'cu'+CU[x].k)}dna(LP,j=>-1,j=>'',.12);
+// facteurs du promoteur et pont LCR
+{let P=i=>GP.p[UP+i],sd=i=>nm(cr(GP.T[UP+i],WX)),b=(p,r,c)=>S(Lh,p,r,K(c));
+ G.tf.forEach(([o,r,c])=>b(ma(P(o),sd(o),-.0032),r,c));b(ma(P(-30),sd(-30),-.0045),.0055,0xb8e);b(ma(P(-12),sd(-12),.005),.005,0x7ab);
+ b(ma(ma(P(-45),WX,-.011),sd(-45),-.006),.009,0x6a9);cS(DN,ma(ma(P(-45),WX,-.011),sd(-45),-.006),.009,'pro');
+ b(ma(lO,WX,.006),.0028,0xd6c);b(ma(lO,WX,-.005),.003,0xc94);b(lp(lO,P(G.eo),.5),.0034,0xfd6);b(ma(lp(lO,P(G.eo),.5),WX,.006),.0026,0xd6c);cS(DN,lp(lO,P(G.eo),.5),.006,'lcr')}

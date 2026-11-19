@@ -1,0 +1,12 @@
+const {open}=require('./tl.js');
+(async()=>{const {b,pg,errs}=await open(1,{file:'index.html',vp:{width:844,height:390},mobile:1});
+ await pg.keyboard.down('Space');await pg.waitForFunction(()=>/Liaison/.test(document.getElementById('cap').textContent),null,{timeout:400000});await pg.keyboard.up('Space');
+ await pg.waitForFunction(()=>document.getElementById('rxb').style.display=='block',null,{timeout:500000});
+ await pg.click('#rxb');console.log('menu:',await pg.evaluate(()=>document.getElementById('pmt').textContent+' | '+document.getElementById('pmo').textContent));
+ await pg.click('#pmo button[data-r="pgly"]');await pg.click('#pmo button[data-r="l1gly"]');await pg.waitForTimeout(4000);
+ console.log('step:',await pg.evaluate(()=>document.getElementById('pmt').textContent+' | labels: '+[...document.querySelectorAll('.ql')].filter(e=>e.style.display!='none').map(e=>e.textContent).join(', ')));
+ await pg.evaluate(()=>[...document.querySelectorAll('#pmo button')].find(b=>b.textContent=='La glucokinase').click());await pg.waitForTimeout(3000);
+ console.log('step2:',await pg.evaluate(()=>document.getElementById('pmt').textContent+' | labels: '+[...document.querySelectorAll('.ql')].filter(e=>e.style.display!='none').map(e=>e.textContent).join(', ')));
+ await pg.screenshot({path:'min_rx.png'});
+ await pg.evaluate(()=>[...document.querySelectorAll('#pmo button')].find(b=>b.textContent=='Quitter').click());await pg.waitForTimeout(1500);
+ console.log('back:',await pg.evaluate(()=>document.getElementById('st').textContent+' | rxb '+document.getElementById('rxb').style.display),errs.slice(0,3));await b.close()})();

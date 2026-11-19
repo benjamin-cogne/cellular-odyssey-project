@@ -1,0 +1,12 @@
+const {open}=require('./tl.js');
+(async()=>{const {b,pg,errs,ev}=await open(0,{vp:{width:844,height:390}});
+ const pf=()=>ev(()=>{let t=0,n=0;const o=dr;dr=function(h,i,a,c){t+=h.L.m.n/3*h.n;n++;return o(h,i,a,c)};cam(.1);nolT();lamT();draw();dr=o;let t0=performance.now();for(let i=0;i<20;i++){phys();nolT();lmP=0;lamT()}return Math.round(t)+' tris '+n+' draws cpu '+((performance.now()-t0)/20).toFixed(2)+'ms'});
+ const at=async(n,js)=>{await ev(js);await pg.waitForTimeout(600);console.log(n,await pf())};
+ await at('nucleus mid',()=>{reg=2;ct=-1;seenN=1;p=ma(Nc,[0,1,0],2);z=.1;f=[0,-1,0];u=pp(f);cf=f;cu=u;return 1});
+ await at('speckle',()=>{p=ma(SPL[0][0],[1,0,0],SPL[0][1]*.7);z=.02;f=[-1,0,0];u=pp(f);cf=f;cu=u;return 1});
+ await at('envelope z30',()=>{p=ma(Nc,[0,1,0],Rn-.2);z=.03;f=[0,1,0];u=pp(f);cf=f;cu=u;return 1});
+ await at('envelope z150',()=>{p=ma(Nc,[0,1,0],Rn-.6);z=.15;f=[0,1,0];u=pp(f);cf=f;cu=u;return 1});
+ await ev(()=>{let o=NOC;OC=[];let B=mkNol(o);fin();o.zm=.036;ORG=o;p=B;z=.012;f=nm(sb(NOU[0].U,p));u=pp(f);cf=f;cu=u;return 1});await pg.waitForTimeout(600);console.log('nucleolus unit',await pf());
+ await at('nucleolus GC',()=>{p=ma(NOL,[0,1,0],.8);f=[0,-1,0];u=pp(f);cf=f;cu=u;return 1});
+ await at('nucleolus z36',()=>{p=ma(NOL,[0,0,1],.5);z=.036;f=[0,0,-1];u=pp(f);cf=f;cu=u;return 1});
+ console.log('errors',errs.slice(0,3));await b.close()})();

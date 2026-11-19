@@ -1,0 +1,88 @@
+# Odyssée cellulaire
+
+*[Version française](README.fr.md)*
+
+An educational 3D game in a single HTML file. Aboard the nano-ship *Nautile* you arrive with the blood in a human tissue, enter a cell by endocytosis, explore its cytoplasm and organelles, pass through a nuclear pore and shrink down to 2 nm to read a gene while it is being transcribed.
+
+The whole game is one self-contained page: a hand-written WebGL2 engine, no framework, no runtime dependency, no assets. It runs offline, on desktop and on phones, in French and in English.
+
+## Play
+
+Once GitHub Pages is enabled (see [Publishing](#publishing)), the game is served at `https://<account>.github.io/<repository>/`.
+
+To play locally, build it and open `dist/index.html` in a browser:
+
+```bash
+npm ci
+npm run build
+```
+
+## What is in it
+
+- **Three cells, one patient.** An erythroblast in the bone marrow (gene *HBB*), a hepatocyte in the liver (*HAMP*) and a cortical neuron (*FOS*), linked by the bloodstream.
+- **Cytoplasm and organelles.** Mitochondria, endoplasmic reticulum, Golgi and the nucleolus can be entered; every structure has a clickable card, collected in an atlas.
+- **Nucleus.** Pores, lamina (A- and B-type lamins, LBR, emerin), nucleolus (FC / DFC / GC, Pol I transcription, pre-ribosome flux), speckles, Cajal bodies, PML bodies, paraspeckles.
+- **Genes, base by base.** The three built-in genes use the real hg38 sequence, with promoter signals, exons, introns and splice sites. An "I am RNA polymerase II" mode walks through initiation, capping, pausing, splicing, polyadenylation and termination.
+- **Any gene.** A search box loads another human gene through the UCSC Genome Browser API (Ensembl as fallback). This is the only network access in the game.
+- **19 chemical pathways at molecular scale**, shown where they happen: Krebs cycle, respiratory chain, β-oxidation, haem synthesis, urea cycle, N-glycosylation, glycolysis, translation, ubiquitination, Na⁺/K⁺ pump, RNA polymerisation, capping, epigenetic marks, rRNA modification and more. Each has a narrated level and an expert level with a quiz.
+- **Synapses and nerve impulse (neuron).** Two excitatory synapses built molecule by molecule with a 20 nm cleft the ship can enter, and a 12-step guided tour that follows a signal from a stimulated spine to the next neuron, with an oscilloscope tracing the membrane potential.
+
+## Scientific status
+
+This is a teaching aid, not a reference.
+
+- Geometries are schematic, molecule counts are reduced and animations are slowed down by several orders of magnitude.
+- Numbers on the cards are orders of magnitude. Some were checked against the literature when the game was written; others were not.
+- The 57 references used are listed in the game, on the start screen under *Sources*, with their PMID.
+- The content has not been peer reviewed. Corrections are welcome: please open an issue with a reference.
+
+## Repository layout
+
+| Path | Content |
+| --- | --- |
+| `src/` | Game sources: `shell.html` (page, CSS, static text) and 15 JavaScript files. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
+| `src/seq/` | Genomic sequences of *HBB*, *HAMP* and *FOS* (hg38, gene plus upstream promoter). |
+| `build.js` | Concatenates the sources, applies the translation pass and minifies. |
+| `i18n/` | English translations and the tools that apply them. |
+| `tests/` | Browser tests driven by Playwright. See [tests/README.md](tests/README.md). |
+| `tools/` | `check-seq.js`, a sanity check of the embedded sequences. |
+| `dist/` | Build output, not committed. |
+
+## Building
+
+Developed and tested with Node.js 22.
+
+| Command | Result |
+| --- | --- |
+| `npm run build` | `dist/index.html`, the minified single file to publish (≈ 510 kB, ≈ 210 kB gzipped). |
+| `npm run dev` | `dist/dev.html`, not minified, with the test hook `window.__ev`. |
+| `npm run check-seq` | Checks reading frames, splice sites and promoter signals of the embedded sequences. |
+
+The order in which `build.js` concatenates the source files matters; it is listed at the top of that file.
+
+## Translations
+
+The sources are written in French. At build time every translated French string literal is replaced by `(LG ? "English" : 'French')`, so both languages ship in the same file and the language can be switched on the start screen.
+
+To add or change text:
+
+1. Write the French string in the source.
+2. Add its translation to `i18n/en/extra.json`, keyed by the exact French text.
+3. Run `npm run build`. Strings without a translation are listed in `dist/i18n-missing.json`; many entries there are identical in both languages and need nothing.
+
+Very short fragments (units, single lowercase words) are not picked up by the extractor; write them as `LG ? 'en' : 'fr'` in the source. Static page text is translated by the `HT` table in `src/start.js`.
+
+## Publishing
+
+The workflow in `.github/workflows/pages.yml` builds the game and deploys it to GitHub Pages on every push to `main`. Enable it once in the repository settings: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+## Credits
+
+Concept, scientific direction and review: Benjamin Cogné.
+Code and texts were written with Claude (Anthropic) under his direction, over successive design iterations.
+
+Sequences and annotations: GRCh38/hg38 through the UCSC Genome Browser; custom genes are fetched live from the UCSC and Ensembl REST APIs.
+
+## Licence
+
+No licence has been chosen yet. Until a `LICENSE` file is added, the default applies: all rights reserved.

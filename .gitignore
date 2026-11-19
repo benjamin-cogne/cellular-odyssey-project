@@ -1,0 +1,6 @@
+node_modules/
+dist/
+i18n/en.json
+*.png
+*.log
+.DS_Store
