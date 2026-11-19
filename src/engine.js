@@ -1,5 +1,6 @@
 'use strict';
-let LG=0;       // langue : 0 français, 1 anglais (le build double chaque chaîne traduite : LG?anglais:français)
+let LG=0,       // langue : 0 français, 1 anglais (le build double chaque chaîne traduite : LG?anglais:français)
+MEN=0;          // focus « génétique mendélienne » (case de l'écran d'accueil) : voir mendel.js
 // ================= utilitaires =================
 const {sin,cos,sqrt,PI,min,max,abs,floor,hypot,cbrt,atan2,acos,asin,ceil,atan,tan,sign}=Math,TAU=2*PI,$=i=>document.getElementById(i);
 let sd=4242;

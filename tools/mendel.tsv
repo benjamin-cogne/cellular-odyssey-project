@@ -1,0 +1,451 @@
+# Focus « génétique mendélienne » : fiche → gène → maladie. Voir tools/mk-mendel.js pour le format et docs/MENDELIAN.md pour la version lisible.
+# clé	gène	OMIM	transmission	nom français	nom anglais	PMID	référence
+tfr@0	TFRC	616740	AR	Déficit immunitaire 46	Immunodeficiency 46	26642240	Jabara HH, Nat Genet 2016
+tfr@1	LDLR	143890	AD	Hypercholestérolémie familiale	Familial hypercholesterolaemia	10978268	Bertolini S, Arterioscler Thromb Vasc Biol 2000
+tfr@1	APOB	144010	AD	Hypercholestérolémie par déficit en apoB-100	Hypercholesterolaemia due to defective apoB-100	2280177	Innerarity TL, J Lipid Res 1990
+tfr@1	PCSK9	603776	AD	Hypercholestérolémie familiale de type 3	Familial hypercholesterolaemia type 3	12730697	Abifadel M, Nat Genet 2003
+tfr@2	NTRK2	617830	AD	Encéphalopathie développementale et épileptique 58	Developmental and epileptic encephalopathy 58	29100083	Hamdan FF, Am J Hum Genet 2017
+tfr@2	NTRK2	613886	AD	Obésité, hyperphagie et retard du développement	Obesity, hyperphagia and developmental delay	15494731	Yeo GS, Nat Neurosci 2004
+pit	DNM2	160150	AD	Myopathie centronucléaire dominante	Dominant centronuclear myopathy	16227997	Bitoun M, Nat Genet 2005
+pit	DNM2	606482	AD	Maladie de Charcot-Marie-Tooth intermédiaire dominante B	Charcot-Marie-Tooth disease, dominant intermediate B	15731758	Züchner S, Nat Genet 2005
+pit	CLTC	617854	AD	Déficience intellectuelle autosomique dominante 56	Intellectual developmental disorder, autosomal dominant 56	26822784	DeMari J, Am J Med Genet A 2016
+mem@0	ANK1	182900	AD	Sphérocytose héréditaire de type 1	Hereditary spherocytosis type 1	8640229	Eber SW, Nat Genet 1996
+mem@0	SPTB	616649	AD	Sphérocytose héréditaire de type 2	Hereditary spherocytosis type 2	8102379	Becker PS, J Clin Invest 1993
+mem@0	SLC4A1	612653	AD	Sphérocytose héréditaire de type 4	Hereditary spherocytosis type 4	8282779	Jarolim P, J Clin Invest 1994
+mem@1	SLC2A2	227810	AR	Syndrome de Fanconi-Bickel	Fanconi-Bickel syndrome	30950137	Enogieru OJ, Hum Mutat 2019
+mem@1	SLC10A1	619256	AR	Hypercholanémie familiale 2	Familial hypercholanaemia 2	24867799	Vaz FM, Hepatology 2015
+cyt@0	G6PD	300908	XL	Anémie hémolytique par déficit en G6PD	Haemolytic anaemia due to G6PD deficiency	18177777	Cappellini MD, Lancet 2008
+cyt@0	HBA1	604131	AR	α-thalassémie	Alpha-thalassaemia	29032940	Farashi S, Blood Cells Mol Dis 2018
+cyt@1	PAH	261600	AR	Phénylcétonurie	Phenylketonuria	11180595	Acosta A, Hum Mutat 2001
+cyt@1	FAH	276700	AR	Tyrosinémie de type I	Tyrosinaemia type I	1401056	Phaneuf D, J Clin Invest 1992
+cyt@1	ALDOB	229600	AR	Intolérance héréditaire au fructose	Hereditary fructose intolerance	3383242	Cross NC, Cell 1988
+cyt@2	SOD1	105400	AD	Sclérose latérale amyotrophique 1	Amyotrophic lateral sclerosis 1	8446170	Rosen DR, Nature 1993
+rib	RPS19	105650	AD	Anémie de Diamond-Blackfan 1	Diamond-Blackfan anaemia 1	9988267	Draptchinskaia N, Nat Genet 1999
+rib	RPL5	612561	AD	Anémie de Diamond-Blackfan 6	Diamond-Blackfan anaemia 6	19061985	Gazda HT, Am J Hum Genet 2008
+rib	RPSA	271400	AD	Asplénie congénitale isolée	Isolated congenital asplenia	23579497	Bolze A, Science 2013
+mit	MFN2	609260	AD	Maladie de Charcot-Marie-Tooth 2A2A	Charcot-Marie-Tooth disease type 2A2A	15064763	Züchner S, Nat Genet 2004
+mit	OPA1	165500	AD	Atrophie optique dominante 1	Optic atrophy 1	30165240	Ham M, Mitochondrion 2019
+mit	DNM1L	614388	AD	Encéphalopathie par défaut de fission mitochondriale et peroxysomale 1	Encephalopathy due to defective mitochondrial and peroxisomal fission 1	26604000	Vanstone JR, Eur J Hum Genet 2016
+rer	SIL1	248800	AR	Syndrome de Marinesco-Sjögren	Marinesco-Sjögren syndrome	16282977	Senderek J, Nat Genet 2005
+rer	EIF2AK3	226980	AR	Syndrome de Wolcott-Rallison	Wolcott-Rallison syndrome	10932183	Delépine M, Nat Genet 2000
+rer	WFS1	222300	AR	Syndrome de Wolfram 1	Wolfram syndrome 1	25211237	Matsunaga K, PLoS One 2014
+sel	ATL1	182600	AD	Paraplégie spastique 3A	Spastic paraplegia 3A	16401858	Namekawa M, Neurology 2006
+sel	REEP1	610250	AD	Paraplégie spastique 31	Spastic paraplegia 31	16826527	Züchner S, Am J Hum Genet 2006
+sel	DHCR7	270400	AR	Syndrome de Smith-Lemli-Opitz	Smith-Lemli-Opitz syndrome	9634533	Wassif CA, Am J Hum Genet 1998
+sel@1	UGT1A1	218800	AR	Syndrome de Crigler-Najjar de type I	Crigler-Najjar syndrome type I	1568736	Bosma PJ, Hepatology 1992
+sel@1	G6PC1	232200	AR	Glycogénose de type Ia (von Gierke)	Glycogen storage disease Ia (von Gierke)	8733042	Chevalier-Porst F, J Med Genet 1996
+sel@1	DHCR7	270400	AR	Syndrome de Smith-Lemli-Opitz	Smith-Lemli-Opitz syndrome	9634533	Wassif CA, Am J Hum Genet 1998
+gol	GNPTAB	252500	AR	Mucolipidose II (maladie à cellules I)	Mucolipidosis II (I-cell disease)	16465621	Kudo M, Am J Hum Genet 2006
+gol	ATP7A	309400	XL	Maladie de Menkes	Menkes disease	8981948	Tümer Z, Am J Hum Genet 1997
+gol	COG7	608779	AR	Anomalie congénitale de la glycosylation IIe	Congenital disorder of glycosylation IIe	15107842	Wu X, Nat Med 2004
+gol@1	ATP7B	277900	AR	Maladie de Wilson	Wilson disease	8298639	Bull PC, Nat Genet 1993
+gol@1	GNPTAB	252500	AR	Mucolipidose II (maladie à cellules I)	Mucolipidosis II (I-cell disease)	16465621	Kudo M, Am J Hum Genet 2006
+gol@1	COG7	608779	AR	Anomalie congénitale de la glycosylation IIe	Congenital disorder of glycosylation IIe	15107842	Wu X, Nat Med 2004
+cen	PCNT	210720	AR	Nanisme microcéphalique ostéodysplasique primordial de type II	Microcephalic osteodysplastic primordial dwarfism type II	18174396	Rauch A, Science 2008
+cen	ASPM	608716	AR	Microcéphalie primaire 5	Primary microcephaly 5	19028728	Nicholas AK, J Med Genet 2009
+cen	CEP290	610188	AR	Syndrome de Joubert 5	Joubert syndrome 5	16682970	Valente EM, Nat Genet 2006
+mt	TUBA1A	611603	AD	Lissencéphalie 3	Lissencephaly 3	20466733	Kumar RA, Hum Mol Genet 2010
+mt	TUBB3	600638	AD	Fibrose congénitale des muscles oculomoteurs 3A	Congenital fibrosis of extraocular muscles 3A	20074521	Tischfield MA, Cell 2010
+mt	SPAST	182601	AD	Paraplégie spastique 4	Spastic paraplegia 4	10610178	Hazan J, Nat Genet 1999
+ves	COPA	616414	AD	Syndrome COPA (atteinte auto-immune du poumon, des articulations et du rein)	COPA syndrome (autoimmune interstitial lung, joint and kidney disease)	27048656	Vece TJ, J Clin Immunol 2016
+ves	SAR1B	246700	AR	Maladie de rétention des chylomicrons	Chylomicron retention disease	12692552	Jones B, Nat Genet 2003
+ves	TRAPPC2	313400	XL	Dysplasie spondylo-épiphysaire tardive	Spondyloepiphyseal dysplasia tarda	10431248	Gedeon AK, Nat Genet 1999
+lys	GBA1	230800	AR	Maladie de Gaucher de type I	Gaucher disease type I	3353383	Tsuji S, Proc Natl Acad Sci U S A 1988
+lys	HEXA	272800	AR	Maladie de Tay-Sachs	Tay-Sachs disease	31388111	Mistri M, J Hum Genet 2019
+lys	GAA	232300	AR	Maladie de Pompe (glycogénose II)	Pompe disease (glycogen storage disease II)	16917947	Montalvo AL, Hum Mutat 2006
+lys	NPC1	257220	AR	Maladie de Niemann-Pick de type C1	Niemann-Pick disease type C1	9211849	Carstea ED, Science 1997
+per	PEX1	214100	AR	Syndrome de Zellweger (trouble de la biogenèse des peroxysomes 1A)	Zellweger syndrome (peroxisome biogenesis disorder 1A)	9398847	Reuber BE, Nat Genet 1997
+per	ABCD1	300100	XL	Adrénoleucodystrophie liée à l'X	X-linked adrenoleukodystrophy	7825602	Ligtenberg MJ, Am J Hum Genet 1995
+per	PHYH	266500	AR	Maladie de Refsum	Refsum disease	9326940	Jansen GA, Nat Genet 1997
+per@1	AGXT	259900	AR	Hyperoxalurie primitive de type 1	Primary hyperoxaluria type 1	1703535	Purdue PE, J Cell Biol 1990
+per@1	PEX1	214100	AR	Syndrome de Zellweger (trouble de la biogenèse des peroxysomes 1A)	Zellweger syndrome (peroxisome biogenesis disorder 1A)	9398847	Reuber BE, Nat Genet 1997
+per@1	ABCD1	300100	XL	Adrénoleucodystrophie liée à l'X	X-linked adrenoleukodystrophy	7825602	Ligtenberg MJ, Am J Hum Genet 1995
+end	OCRL	309000	XL	Syndrome de Lowe	Lowe syndrome	9199559	Lin T, Am J Hum Genet 1997
+end	VPS35	614203	AD	Maladie de Parkinson 17	Parkinson disease 17	21763482	Vilariño-Güell C, Am J Hum Genet 2011
+end@0	SLC11A2	206100	AR	Anémie hypochrome microcytaire avec surcharge en fer 1	Hypochromic microcytic anaemia with iron overload 1	15459009	Mims MP, Blood 2005
+end@0	TF	209300	AR	Atransferrinémie	Atransferrinaemia	11110675	Beutler E, Blood 2000
+mvb	CHMP2B	600795	AD	Démence frontotemporale liée au chromosome 3	Frontotemporal dementia, chromosome 3-linked	16041373	Skibinski G, Nat Genet 2005
+mvb	VPS4A	619273	AD	Syndrome CIMDAG	CIMDAG syndrome	33186545	Rodger C, Am J Hum Genet 2020
+ne	TOR1A	128100	AD	Dystonie de torsion 1 (DYT1)	Torsion dystonia 1 (DYT1)	9288096	Ozelius LJ, Nat Genet 1997
+ne	TMEM43	604400	AD	Dysplasie ventriculaire droite arythmogène 5	Arrhythmogenic right ventricular dysplasia 5	18313022	Merner ND, Am J Hum Genet 2008
+npc	NUP107	618348	AR	Syndrome de Galloway-Mowat 7	Galloway-Mowat syndrome 7	28280135	Rosti RO, J Med Genet 2017
+npc	NUP93	616892	AR	Syndrome néphrotique de type 12	Nephrotic syndrome type 12	26878725	Braun DA, Nat Genet 2016
+npc	AAAS	231550	AR	Syndrome triple A (Allgrove)	Triple A (Allgrove) syndrome	29255950	Kurnaz E, Eur J Pediatr 2018
+nol	TCOF1	154500	AD	Syndrome de Treacher Collins 1	Treacher Collins syndrome 1	15150774	Dixon J, Am J Med Genet A 2004
+nol	POLR1C	248390	AR	Syndrome de Treacher Collins 3	Treacher Collins syndrome 3	21131976	Dauwerse JG, Nat Genet 2011
+fc	TCOF1	154500	AD	Syndrome de Treacher Collins 1	Treacher Collins syndrome 1	15150774	Dixon J, Am J Med Genet A 2004
+fc	UBTF	617672	AD	Neurodégénérescence de l'enfant avec atrophie cérébrale	Childhood-onset neurodegeneration with brain atrophy	28777933	Edvardson S, Am J Hum Genet 2017
+po1	POLR1A	616462	AD	Dysostose acrofaciale de type Cincinnati	Acrofacial dysostosis, Cincinnati type	25913037	Weaver KN, Am J Hum Genet 2015
+po1	POLR1C	248390	AR	Syndrome de Treacher Collins 3	Treacher Collins syndrome 3	21131976	Dauwerse JG, Nat Genet 2011
+po1	POLR1D	613717	AD	Syndrome de Treacher Collins 2	Treacher Collins syndrome 2	21131976	Dauwerse JG, Nat Genet 2011
+dkc	DKC1	305000	XL	Dyskératose congénitale liée à l'X	X-linked dyskeratosis congenita	9590285	Heiss NS, Nat Genet 1998
+dkc	NHP2	613987	AR	Dyskératose congénitale autosomique récessive 2	Dyskeratosis congenita, autosomal recessive 2	18523010	Vulliamy T, Proc Natl Acad Sci U S A 2008
+pdf	SNORD118	614561	AR	Leucoencéphalopathie avec calcifications et kystes	Leukoencephalopathy with calcifications and cysts	27571260	Jenkinson EM, Nat Genet 2016
+p60	SBDS	260400	AR	Syndrome de Shwachman-Diamond	Shwachman-Diamond syndrome	12496757	Boocock GR, Nat Genet 2003
+p60	RPL35A	612528	AD	Anémie de Diamond-Blackfan 5	Diamond-Blackfan anaemia 5	18535205	Farrar JE, Blood 2008
+p60	DNAJC21	617052	AR	Insuffisance médullaire 3	Bone marrow failure syndrome 3	27346687	Tummala H, Am J Hum Genet 2016
+p40	RPS19	105650	AD	Anémie de Diamond-Blackfan 1	Diamond-Blackfan anaemia 1	9988267	Draptchinskaia N, Nat Genet 1999
+p40	RPS26	613309	AD	Anémie de Diamond-Blackfan 10	Diamond-Blackfan anaemia 10	20116044	Doherty L, Am J Hum Genet 2010
+p40	RPS24	610629	AD	Anémie de Diamond-Blackfan 3	Diamond-Blackfan anaemia 3	17186470	Gazda HT, Am J Hum Genet 2006
+r5s	RPL5	612561	AD	Anémie de Diamond-Blackfan 6	Diamond-Blackfan anaemia 6	19061985	Gazda HT, Am J Hum Genet 2008
+r5s	RPL11	612562	AD	Anémie de Diamond-Blackfan 7	Diamond-Blackfan anaemia 7	19061985	Gazda HT, Am J Hum Genet 2008
+npm	NPM1	0	AD	Insuffisance médullaire de type dyskératose congénitale	Dyskeratosis congenita-like bone marrow failure	31570891	Nachmani D, Nat Genet 2019
+g0	MECP2	312750	XL	Syndrome de Rett	Rett syndrome	10577905	Wan M, Am J Hum Genet 1999
+g0	NIPBL	122470	AD	Syndrome de Cornelia de Lange 1	Cornelia de Lange syndrome 1	17661813	Selicorni A, Clin Genet 2007
+g0	CHD7	214800	AD	Syndrome CHARGE	CHARGE syndrome	15300250	Vissers LE, Nat Genet 2004
+nsm	H3-3A	619720	AD	Syndrome de Bryant-Li-Bhoj 1	Bryant-Li-Bhoj neurodevelopmental syndrome 1	33268356	Bryant L, Sci Adv 2020
+nsm	H4C3	619758	AD	Syndrome de Tessadori-Bicknell-van Haaften 1	Tessadori-Bicknell-van Haaften neurodevelopmental syndrome 1	28920961	Tessadori F, Nat Genet 2017
+nsm	H1-4	617537	AD	Syndrome de Rahman	Rahman syndrome	28475857	Tatton-Brown K, Am J Hum Genet 2017
+dna	XPA	278700	AR	Xeroderma pigmentosum, groupe A	Xeroderma pigmentosum, group A	2234061	Tanaka K, Nature 1990
+dna	ATM	208900	AR	Ataxie-télangiectasie	Ataxia-telangiectasia	7792600	Savitsky K, Science 1995
+dna	BLM	210900	AR	Syndrome de Bloom	Bloom syndrome	7585968	Ellis NA, Cell 1995
+pro@0	HBB	613985	AR	β-thalassémie (variants du promoteur)	Beta-thalassaemia (promoter variants)	23637309	Thein SL, Cold Spring Harb Perspect Med 2013
+u5@0	HBB	613985	AR	β-thalassémie	Beta-thalassaemia	23637309	Thein SL, Cold Spring Harb Perspect Med 2013
+ex@0	HBB	603903	AR	Drépanocytose	Sickle cell disease	29542687	Kato GJ, Nat Rev Dis Primers 2018
+ex@0	HBB	613985	AR	β-thalassémie	Beta-thalassaemia	23637309	Thein SL, Cold Spring Harb Perspect Med 2013
+ex@0	HBB	617980	AD	Érythrocytose 6 (hémoglobine hyperaffine)	Erythrocytosis 6 (high-affinity haemoglobin)	35052472	Filser M, Genes (Basel) 2022
+in@0	HBB	613985	AR	β-thalassémie (variants d'épissage)	Beta-thalassaemia (splicing variants)	23637309	Thein SL, Cold Spring Harb Perspect Med 2013
+u3@0	HBB	613985	AR	β-thalassémie (signal de polyadénylation)	Beta-thalassaemia (polyadenylation signal)	23637309	Thein SL, Cold Spring Harb Perspect Med 2013
+rna@0	HBB	613985	AR	β-thalassémie (variants d'épissage)	Beta-thalassaemia (splicing variants)	23637309	Thein SL, Cold Spring Harb Perspect Med 2013
+ply@0	HBB	603902	AD	β-thalassémie dominante à inclusions	Dominant inclusion-body beta-thalassaemia	1971109	Thein SL, Proc Natl Acad Sci U S A 1990
+ply@0	HBB	140700	AD	Anémie à corps de Heinz	Heinz body anaemia	7655024	Srivastava P, Blood 1995
+pro@1	HAMP	613313	AR	Hémochromatose juvénile de type 2B	Juvenile haemochromatosis type 2B	12469120	Roetto A, Nat Genet 2003
+u5@1	HAMP	613313	AR	Hémochromatose juvénile de type 2B	Juvenile haemochromatosis type 2B	12469120	Roetto A, Nat Genet 2003
+ex@1	HAMP	613313	AR	Hémochromatose juvénile de type 2B	Juvenile haemochromatosis type 2B	12469120	Roetto A, Nat Genet 2003
+in@1	HAMP	613313	AR	Hémochromatose juvénile de type 2B	Juvenile haemochromatosis type 2B	12469120	Roetto A, Nat Genet 2003
+ply@1	HAMP	613313	AR	Hémochromatose juvénile de type 2B	Juvenile haemochromatosis type 2B	12469120	Roetto A, Nat Genet 2003
+pol	POLR2A	618603	AD	Trouble du neurodéveloppement avec hypotonie et troubles du comportement	Neurodevelopmental disorder with hypotonia and variable intellectual and behavioural abnormalities	31353023	Haijes HA, Am J Hum Genet 2019
+spl	PRPF31	600138	AD	Rétinite pigmentaire 11	Retinitis pigmentosa 11	32014492	Wheway G, Exp Eye Res 2020
+spl	EFTUD2	610536	AD	Dysostose mandibulofaciale avec microcéphalie	Mandibulofacial dysostosis with microcephaly	22305528	Lines MA, Am J Hum Genet 2012
+spl	SF3B4	154400	AD	Dysostose acrofaciale de Nager	Nager acrofacial dysostosis	22541558	Bernier FP, Am J Hum Genet 2012
+mrn	THOC2	300957	XL	Déficience intellectuelle liée à l'X 12	Intellectual developmental disorder, X-linked 12	26166480	Kumar R, Am J Hum Genet 2015
+mrn	THOC6	613680	AR	Syndrome de Beaulieu-Boycott-Innes	Beaulieu-Boycott-Innes syndrome	23621916	Beaulieu CL, Orphanet J Rare Dis 2013
+mrn	GLE1	253310	AR	Syndrome de contractures congénitales létales 1	Lethal congenital contracture syndrome 1	18204449	Nousiainen HO, Nat Genet 2008
+trb	SPTA1	130600	AD	Elliptocytose héréditaire 2	Hereditary elliptocytosis 2	9075575	Gallagher PG, Blood Cells Mol Dis 1996
+trb	PIEZO1	194380	AD	Stomatocytose héréditaire déshydratée (xérocytose)	Dehydrated hereditary stomatocytosis (xerocytosis)	23695678	Albuisson J, Nat Commun 2013
+trb	PKLR	266200	AR	Déficit en pyruvate kinase érythrocytaire	Red cell pyruvate kinase deficiency	1896471	Kanno H, Proc Natl Acad Sci U S A 1991
+tpl	ITGA2B	273800	AR	Thrombasthénie de Glanzmann	Glanzmann thrombasthenia	8282784	Poncz M, J Clin Invest 1994
+tpl	GP1BA	231200	AR	Syndrome de Bernard-Soulier	Bernard-Soulier syndrome	24934643	Savoia A, Hum Mutat 2014
+tpl	NBEAL2	139090	AR	Syndrome des plaquettes grises	Grey platelet syndrome	21765411	Albers CA, Nat Genet 2011
+tlu	F8	306700	XL	Hémophilie A	Haemophilia A	3097553	Youssoufian H, Nature 1986
+tlu	F9	306900	XL	Hémophilie B	Haemophilia B	9450791	Weinmann AF, Br J Haematol 1998
+tlu	VWF	193400	AD	Maladie de von Willebrand de type 1	Von Willebrand disease type 1	16985174	Goodeve A, Blood 2007
+tvs@2	SLC2A1	606777	AD	Déficit en transporteur du glucose GLUT1	GLUT1 deficiency syndrome 1	10980529	Wang D, Hum Mutat 2000
+tvs@2	OCLN	251290	AR	Pseudo-TORCH 1 (polymicrogyrie avec calcifications en bandes)	Pseudo-TORCH syndrome 1	20727516	O'Driscoll MC, Am J Hum Genet 2010
+tvs@2	MFSD2A	616486	AR	Microcéphalie primaire 15	Primary microcephaly 15	26005868	Guemez-Gamboa A, Nat Genet 2015
+tma	SLC40A1	606069	AD	Hémochromatose de type 4 (maladie de la ferroportine)	Haemochromatosis type 4 (ferroportin disease)	11431687	Njajou OT, Nat Genet 2001
+tma	HMOX1	614034	AR	Déficit en hème oxygénase 1	Haem oxygenase 1 deficiency	9884342	Yachie A, J Clin Invest 1999
+te1	GATA1	300367	XL	Thrombopénie liée à l'X avec anémie dysérythropoïétique	X-linked thrombocytopenia with dyserythropoietic anaemia	10700180	Nichols KE, Nat Genet 2000
+te1	EPOR	133100	AD	Érythrocytose familiale 1	Familial erythrocytosis 1	8506290	de la Chapelle A, Proc Natl Acad Sci U S A 1993
+te3	ALAS2	300751	XL	Anémie sidéroblastique liée à l'X	X-linked sideroblastic anaemia	7949148	Cotter PD, Blood 1994
+te3	SLC25A38	205950	AR	Anémie sidéroblastique 2	Sideroblastic anaemia 2	19412178	Guernsey DL, Nat Genet 2009
+te4	CDAN1	224120	AR	Anémie dysérythropoïétique congénitale de type Ia	Congenital dyserythropoietic anaemia type Ia	16098079	Tamary H, Br J Haematol 2005
+te4	SEC23B	224100	AR	Anémie dysérythropoïétique congénitale de type II	Congenital dyserythropoietic anaemia type II	19561605	Schwarz K, Nat Genet 2009
+te4	KLF1	613673	AD	Anémie dysérythropoïétique congénitale de type IV	Congenital dyserythropoietic anaemia type IV	21055716	Arnaud L, Am J Hum Genet 2010
+tmk	MPL	604498	AR	Thrombopénie amégacaryocytaire congénitale	Congenital amegakaryocytic thrombocytopenia	11133753	Ballmaier M, Blood 2001
+tmk	RUNX1	601399	AD	Thrombopathie familiale avec prédisposition aux leucémies myéloïdes	Familial platelet disorder with associated myeloid malignancy	10508512	Song WJ, Nat Genet 1999
+tmk	ANKRD26	188000	AD	Thrombopénie 2	Thrombocytopenia 2	21211618	Pippucci T, Am J Hum Genet 2011
+tpp	MYH9	155100	AD	Macrothrombopénie liée à MYH9	MYH9-related macrothrombocytopenia	24890873	Verver E, Clin Genet 2015
+tpp	TUBB1	613112	AD	Macrothrombopénie liée à la tubuline β1	Beta-1 tubulin-related macrothrombocytopenia	18849486	Kunishima S, Blood 2009
+tpp	ACTN1	615193	AD	Trouble plaquettaire hémorragique 15	Bleeding disorder, platelet-type, 15	23434115	Kunishima S, Am J Hum Genet 2013
+tad	AGPAT2	608594	AR	Lipodystrophie congénitale généralisée de type 1	Congenital generalised lipodystrophy type 1	11967537	Agarwal AK, Nat Genet 2002
+tad	BSCL2	269700	AR	Lipodystrophie congénitale généralisée de type 2	Congenital generalised lipodystrophy type 2	11479539	Magré J, Nat Genet 2001
+tad	PPARG	604367	AD	Lipodystrophie partielle familiale de type 3	Familial partial lipodystrophy type 3	11788685	Agarwal AK, J Clin Endocrinol Metab 2002
+tgr	ELANE	202700	AD	Neutropénie congénitale sévère 1	Severe congenital neutropenia 1	33968054	Rydzynska Z, Front Immunol 2021
+tgr	HAX1	610738	AR	Neutropénie congénitale sévère 3 (maladie de Kostmann)	Severe congenital neutropenia 3 (Kostmann disease)	17187068	Klein C, Nat Genet 2007
+tgr	G6PC3	612541	AR	Neutropénie congénitale sévère 4	Severe congenital neutropenia 4	19118303	Boztug K, N Engl J Med 2009
+tnp	CYBB	306400	XL	Granulomatose septique chronique liée à l'X	X-linked chronic granulomatous disease	2556453	Dinauer MC, J Clin Invest 1989
+tnp	ITGB2	116920	AR	Déficit d'adhérence leucocytaire de type 1	Leukocyte adhesion deficiency type 1	1968911	Arnaout MA, J Clin Invest 1990
+tnp	LYST	214500	AR	Syndrome de Chediak-Higashi	Chediak-Higashi syndrome	8896560	Nagle DL, Nat Genet 1996
+ths	FANCA	227650	AR	Anémie de Fanconi, groupe A	Fanconi anaemia, group A	10094191	Wijker M, Eur J Hum Genet 1999
+ths	GATA2	614172	AD	Déficit en GATA2 (déficit immunitaire 21)	GATA2 deficiency (immunodeficiency 21)	21670465	Hsu AP, Blood 2011
+ths	TERT	613989	AD	Dyskératose congénitale autosomique dominante 2	Dyskeratosis congenita, autosomal dominant 2	16247010	Armanios M, Proc Natl Acad Sci U S A 2005
+act	ACTB	243310	AD	Syndrome de Baraitser-Winter 1	Baraitser-Winter syndrome 1	22366783	Rivière JB, Nat Genet 2012
+act	WAS	301000	XL	Syndrome de Wiskott-Aldrich	Wiskott-Aldrich syndrome	8069912	Derry JM, Cell 1994
+act	FLNA	300049	XL	Hétérotopie nodulaire périventriculaire 1	Periventricular nodular heterotopia 1	9883725	Fox JW, Neuron 1998
+ifl	VIM	116300	AD	Cataracte 30	Cataract 30	19126778	Müller M, Hum Mol Genet 2009
+ifl	DES	601419	AD	Myopathie myofibrillaire 1 (desminopathie)	Myofibrillar myopathy 1 (desminopathy)	22395865	Hedberg C, Eur J Hum Genet 2012
+prt	PSMB8	256040	AR	Syndrome auto-inflammatoire associé au protéasome 1	Proteasome-associated autoinflammatory syndrome 1	21129723	Agarwal AK, Am J Hum Genet 2010
+prt	PSMD12	617516	AD	Syndrome de Stankiewicz-Isidor	Stankiewicz-Isidor syndrome	28132691	Küry S, Am J Hum Genet 2017
+frt	FTL	600886	AD	Syndrome hyperferritinémie-cataracte	Hyperferritinaemia-cataract syndrome	7493028	Beaumont C, Nat Genet 1995
+frt	FTL	606159	AD	Neuroferritinopathie (NBIA3)	Neuroferritinopathy (NBIA3)	11438811	Curtis AR, Nat Genet 2001
+aut	WDR45	300894	XL	Neurodégénérescence avec surcharge cérébrale en fer 5 (BPAN)	Neurodegeneration with brain iron accumulation 5 (BPAN)	23176820	Haack TB, Am J Hum Genet 2012
+aut	EPG5	242840	AR	Syndrome de Vici	Vici syndrome	23222957	Cullup T, Nat Genet 2013
+aut	ATG7	619422	AR	Ataxie spinocérébelleuse autosomique récessive 31	Spinocerebellar ataxia, autosomal recessive 31	34161705	Collier JJ, N Engl J Med 2021
+pbd	DDX6	618653	AD	Déficience intellectuelle avec trouble du langage et dysmorphie faciale	Intellectual developmental disorder with impaired language and dysmorphic facies	31422817	Balak C, Am J Hum Genet 2019
+crs	MICOS13	618329	AR	Déficit combiné de la phosphorylation oxydative 37	Combined oxidative phosphorylation deficiency 37	27623147	Guarani V, Elife 2016
+crs	TAFAZZIN	302060	XL	Syndrome de Barth	Barth syndrome	20812380	Steward CG, Prenat Diagn 2010
+crs	CHCHD10	615911	AD	Démence frontotemporale et/ou sclérose latérale amyotrophique 2	Frontotemporal dementia and/or amyotrophic lateral sclerosis 2	24934289	Bannwarth S, Brain 2014
+c1	NDUFS1	618226	AR	Déficit en complexe I mitochondrial, type nucléaire 5	Mitochondrial complex I deficiency, nuclear type 5	20382551	Hoefs SJ, Mol Genet Metab 2010
+c1	NDUFV1	618225	AR	Déficit en complexe I mitochondrial, type nucléaire 4	Mitochondrial complex I deficiency, nuclear type 4	34807224	Zanette V, Genet Mol Biol 2021
+c1	NDUFS4	252010	AR	Déficit en complexe I mitochondrial, type nucléaire 1	Mitochondrial complex I deficiency, nuclear type 1	11181577	Petruzzella V, Hum Mol Genet 2001
+c2	SDHA	252011	AR	Déficit en complexe II mitochondrial, type nucléaire 1	Mitochondrial complex II deficiency, nuclear type 1	7550341	Bourgeron T, Nat Genet 1995
+c2	SDHB	115310	AD	Paragangliomes héréditaires 4	Hereditary paragangliomas 4	11404820	Astuti D, Am J Hum Genet 2001
+c2	SDHD	168000	AD	Paragangliomes héréditaires 1 (transmission paternelle)	Hereditary paragangliomas 1 (paternal transmission)	10657297	Baysal BE, Science 2000
+c3	BCS1L	603358	AR	Syndrome GRACILE	GRACILE syndrome	12215968	Visapää I, Am J Hum Genet 2002
+c3	UQCRB	615158	AR	Déficit en complexe III mitochondrial, type nucléaire 3	Mitochondrial complex III deficiency, nuclear type 3	12709789	Haut S, Hum Genet 2003
+c3	TTC19	615157	AR	Déficit en complexe III mitochondrial, type nucléaire 2	Mitochondrial complex III deficiency, nuclear type 2	21278747	Ghezzi D, Nat Genet 2011
+c4	SURF1	220110	AR	Déficit en complexe IV mitochondrial, type nucléaire 1 (syndrome de Leigh)	Mitochondrial complex IV deficiency, nuclear type 1 (Leigh syndrome)	9837813	Tiranti V, Am J Hum Genet 1998
+c4	SCO2	604377	AR	Déficit en complexe IV mitochondrial, type nucléaire 2	Mitochondrial complex IV deficiency, nuclear type 2	10545952	Papadopoulou LC, Nat Genet 1999
+c4	COX10	619046	AR	Déficit en complexe IV mitochondrial, type nucléaire 3	Mitochondrial complex IV deficiency, nuclear type 3	10767350	Valnot I, Hum Mol Genet 2000
+c5	TMEM70	614052	AR	Déficit en complexe V mitochondrial, type nucléaire 2	Mitochondrial complex V deficiency, nuclear type 2	18953340	Cízková A, Nat Genet 2008
+c5	ATP5F1A	620358	AD	Déficit en complexe V mitochondrial, type nucléaire 4A	Mitochondrial complex V deficiency, nuclear type 4A	34483339	Lines MA, Eur J Hum Genet 2021
+mtd	POLG	203700	AR	Syndrome de déplétion de l'ADN mitochondrial 4A (Alpers)	Mitochondrial DNA depletion syndrome 4A (Alpers type)	30451971	Rahman S, Nat Rev Neurol 2019
+mtd	TWNK	609286	AD	Ophtalmoplégie externe progressive dominante 3	Progressive external ophthalmoplegia, autosomal dominant 3	11431692	Spelbrink JN, Nat Genet 2001
+mtd	TFAM	617156	AR	Syndrome de déplétion de l'ADN mitochondrial 15	Mitochondrial DNA depletion syndrome 15	27448789	Stiles AR, Mol Genet Metab 2016
+mrb	MRPS22	611719	AR	Déficit combiné de la phosphorylation oxydative 5	Combined oxidative phosphorylation deficiency 5	17873122	Saada A, J Med Genet 2007
+mrb	MRPS34	617664	AR	Déficit combiné de la phosphorylation oxydative 32	Combined oxidative phosphorylation deficiency 32	28777931	Lake NJ, Am J Hum Genet 2017
+pdh	PDHA1	312170	XL	Déficit en pyruvate déshydrogénase E1α	Pyruvate dehydrogenase E1-alpha deficiency	20002125	Barnerias C, Dev Med Child Neurol 2010
+pdh	PDHB	614111	AR	Déficit en pyruvate déshydrogénase E1β	Pyruvate dehydrogenase E1-beta deficiency	15138885	Brown RM, Hum Genet 2004
+pdh	DLD	246900	AR	Déficit en dihydrolipoamide déshydrogénase (E3)	Dihydrolipoamide dehydrogenase (E3) deficiency	8506365	Liu TC, Proc Natl Acad Sci U S A 1993
+rerI@1	SERPINA1	613490	AR	Déficit en α1-antitrypsine	Alpha-1-antitrypsin deficiency	34408833	Foil KE, Ther Adv Chronic Dis 2021
+tlc	SEC61A1	617056	AD	Néphropathie tubulo-interstitielle autosomique dominante 5	Autosomal dominant tubulointerstitial kidney disease 5	27392076	Bolar NA, Am J Hum Genet 2016
+tlc	SRP54	618752	AD	Neutropénie congénitale sévère 8	Severe congenital neutropenia 8	28972538	Carapito R, J Clin Invest 2017
+tlc	STT3A	615596	AR	Anomalie congénitale de la glycosylation Iw	Congenital disorder of glycosylation Iw	23842455	Shrimal S, Hum Mol Genet 2013
+srk	ATP2A2	124200	AD	Maladie de Darier	Darier disease	10441324	Ruiz-Perez VL, Hum Mol Genet 1999
+srk	ITPR1	117360	AD	Ataxie spinocérébelleuse 29	Spinocerebellar ataxia 29	22986007	Huang L, Orphanet J Rare Dis 2012
+srk	RYR1	145600	AD	Hyperthermie maligne (susceptibilité 1)	Malignant hyperthermia susceptibility 1	10790202	McCarthy TV, Hum Mutat 2000
+pdi	P4HB	112240	AD	Syndrome de Cole-Carpenter 1	Cole-Carpenter syndrome 1	25683117	Rauch F, Am J Hum Genet 2015
+cnx	UGGT1	621381	AR	Anomalie congénitale de la glycosylation IIcc	Congenital disorder of glycosylation IIcc	40267907	Dardas Z, Am J Hum Genet 2025
+gp	SEC23B	224100	AR	Anémie dysérythropoïétique congénitale de type II	Congenital dyserythropoietic anaemia type II	19561605	Schwarz K, Nat Genet 2009
+gp	SEC24D	616294	AR	Syndrome de Cole-Carpenter 2	Cole-Carpenter syndrome 2	25683121	Garbes L, Am J Hum Genet 2015
+gle	MGAT2	212066	AR	Anomalie congénitale de la glycosylation IIa	Congenital disorder of glycosylation IIa	8808595	Tan J, Am J Hum Genet 1996
+gle	B4GALT1	607091	AR	Anomalie congénitale de la glycosylation IId	Congenital disorder of glycosylation IId	11901181	Hansske B, J Clin Invest 2002
+gle	SLC35A2	300896	XL	Anomalie congénitale de la glycosylation IIm	Congenital disorder of glycosylation IIm	23561849	Ng BG, Am J Hum Genet 2013
+lat	TJP2	615878	AR	Cholestase intrahépatique familiale progressive 4	Progressive familial intrahepatic cholestasis 4	24614073	Sambrotta M, Nat Genet 2014
+lat	CLDN1	607626	AR	Ichtyose avec cholangite sclérosante néonatale	Neonatal ichthyosis-sclerosing cholangitis syndrome	15521008	Hadj-Rabia S, Gastroenterology 2004
+bc	ABCB11	601847	AR	Cholestase intrahépatique familiale progressive 2	Progressive familial intrahepatic cholestasis 2	9806540	Strautnieks SS, Nat Genet 1998
+bc	ATP8B1	211600	AR	Cholestase intrahépatique familiale progressive 1	Progressive familial intrahepatic cholestasis 1	9500542	Bull LN, Nat Genet 1998
+bc	ABCB4	602347	AR	Cholestase intrahépatique familiale progressive 3	Progressive familial intrahepatic cholestasis 3	9419367	de Vree JM, Proc Natl Acad Sci U S A 1998
+bc	ABCC2	237500	AR	Syndrome de Dubin-Johnson	Dubin-Johnson syndrome	11477083	Mor-Cohen R, J Biol Chem 2001
+gly	GYS2	240600	AR	Glycogénose de type 0 hépatique	Glycogen storage disease 0, liver	32395408	Kamenets EA, JIMD Rep 2020
+gly	AGL	232400	AR	Glycogénose de type III (maladie de Cori)	Glycogen storage disease III (Cori disease)	27106217	Sentner CP, J Inherit Metab Dis 2016
+gly	GBE1	232500	AR	Glycogénose de type IV (maladie d'Andersen)	Glycogen storage disease IV (Andersen disease)	8613547	Bao Y, J Clin Invest 1996
+ld	PNPLA2	610717	AR	Maladie de surcharge en lipides neutres avec myopathie	Neutral lipid storage disease with myopathy	18952067	Campagna F, Biochem Biophys Res Commun 2008
+ld	ABHD5	275630	AR	Syndrome de Chanarin-Dorfman	Chanarin-Dorfman syndrome	18339307	Bruno C, Biochem Biophys Res Commun 2008
+ld	MTTP	200100	AR	Abêtalipoprotéinémie	Abetalipoproteinaemia	17275380	Benayoun L, Mol Genet Metab 2007
+tkc	GBA1	230800	AR	Maladie de Gaucher de type I	Gaucher disease type I	3353383	Tsuji S, Proc Natl Acad Sci U S A 1988
+tkc	SLC40A1	606069	AD	Hémochromatose de type 4 (maladie de la ferroportine)	Haemochromatosis type 4 (ferroportin disease)	11431687	Njajou OT, Nat Genet 2001
+thp	SERPINA1	613490	AR	Déficit en α1-antitrypsine	Alpha-1-antitrypsin deficiency	34408833	Foil KE, Ther Adv Chronic Dis 2021
+thp	ATP7B	277900	AR	Maladie de Wilson	Wilson disease	8298639	Bull PC, Nat Genet 1993
+thp	HFE	235200	AR	Hémochromatose de type 1	Haemochromatosis type 1	18199861	Allen KJ, N Engl J Med 2008
+tpc	PRF1	603553	AR	Lymphohistiocytose hémophagocytaire familiale 2	Familial haemophagocytic lymphohistiocytosis 2	19487666	Chia J, Proc Natl Acad Sci U S A 2009
+tpc	UNC13D	608898	AR	Lymphohistiocytose hémophagocytaire familiale 3	Familial haemophagocytic lymphohistiocytosis 3	14622600	Feldmann J, Cell 2003
+lf	CLN3	204200	AR	Céroïde-lipofuscinose neuronale 3	Neuronal ceroid lipofuscinosis 3	7553855	International Batten Disease Consortium, Cell 1995
+lf	TPP1	204500	AR	Céroïde-lipofuscinose neuronale 2	Neuronal ceroid lipofuscinosis 2	9295267	Sleat DE, Science 1997
+lf	PPT1	256730	AR	Céroïde-lipofuscinose neuronale 1	Neuronal ceroid lipofuscinosis 1	7637805	Vesa J, Nature 1995
+nf	NEFL	607684	AD	Maladie de Charcot-Marie-Tooth 2E	Charcot-Marie-Tooth disease type 2E	10841809	Mersiyanova IV, Am J Hum Genet 2000
+nf	NEFH	616924	AD	Maladie de Charcot-Marie-Tooth 2CC	Charcot-Marie-Tooth disease type 2CC	27040688	Rebelo AP, Am J Hum Genet 2016
+nf	GAN	256850	AR	Neuropathie à axones géants 1	Giant axonal neuropathy 1	11062483	Bomont P, Nat Genet 2000
+ais	SCN2A	613721	AD	Encéphalopathie développementale et épileptique 11	Developmental and epileptic encephalopathy 11	15028761	Kamiya K, J Neurosci 2004
+ais	ANK3	615493	AR	Déficience intellectuelle autosomique récessive 37	Intellectual developmental disorder, autosomal recessive 37	23390136	Iqbal Z, Hum Mol Genet 2013
+axn	KIF5A	604187	AD	Paraplégie spastique 10	Spastic paraplegia 10	30057544	Cuchanski M, Case Rep Neurol 2018
+axn	KIF1A	610357	AR	Paraplégie spastique 30	Spastic paraplegia 30	22258533	Klebe S, Eur J Hum Genet 2012
+axn	MAPT	600274	AD	Démence frontotemporale avec syndrome parkinsonien	Frontotemporal dementia with parkinsonism	9641683	Hutton M, Nature 1998
+den	FMR1	300624	XL	Syndrome de l'X fragile	Fragile X syndrome	28176767	Quartier A, Eur J Hum Genet 2017
+btn	PRRT2	128200	AD	Dyskinésie paroxystique kinésigénique 1	Episodic kinesigenic dyskinesia 1	22101681	Chen WJ, Nat Genet 2011
+sv	SYP	300802	XL	Déficience intellectuelle liée à l'X 96	Intellectual developmental disorder, X-linked 96	19377476	Tarpey PS, Nat Genet 2009
+sv	DNAJC5	162350	AD	Céroïde-lipofuscinose neuronale 4 (maladie de Kufs)	Neuronal ceroid lipofuscinosis 4 (Kufs disease)	21820099	Nosková L, Am J Hum Genet 2011
+spo	SYNGAP1	612621	AD	Déficience intellectuelle autosomique dominante 5	Intellectual developmental disorder, autosomal dominant 5	26989088	Mignot C, J Med Genet 2016
+spn	SYNGAP1	612621	AD	Déficience intellectuelle autosomique dominante 5	Intellectual developmental disorder, autosomal dominant 5	26989088	Mignot C, J Med Genet 2016
+syf	LGI1	600512	AD	Épilepsie temporale latérale autosomique dominante	Autosomal dominant lateral temporal lobe epilepsy	12205652	Gu W, Ann Neurol 2002
+syf	ADAM22	617933	AR	Encéphalopathie développementale et épileptique 61	Developmental and epileptic encephalopathy 61	27066583	Muona M, Neurol Genet 2016
+glt	SLC1A2	617105	AD	Encéphalopathie développementale et épileptique 41	Developmental and epileptic encephalopathy 41	27476654	Epi4K Consortium, Am J Hum Genet 2016
+snr	SNAP25	616330	AD	Syndrome myasthénique congénital 18	Congenital myasthenic syndrome 18	25381298	Shen XM, Neurology 2014
+snr	STX1B	616172	AD	Épilepsie généralisée avec crises fébriles plus 9	Generalised epilepsy with febrile seizures plus 9	25362483	Schubert J, Nat Genet 2014
+snr	VAMP2	618760	AD	Trouble du neurodéveloppement avec hypotonie et mouvements choréiques	Neurodevelopmental disorder with hypotonia and autistic features	30929742	Salpietro V, Am J Hum Genet 2019
+cpx	CPLX1	617976	AR	Encéphalopathie développementale et épileptique 63	Developmental and epileptic encephalopathy 63	28422131	Redler S, Eur J Hum Genet 2017
+syt	SYT1	618218	AD	Syndrome de Baker-Gordon	Baker-Gordon syndrome	30107533	Baker K, Brain 2018
+m18	STXBP1	612164	AD	Encéphalopathie développementale et épileptique 4	Developmental and epileptic encephalopathy 4	32643187	Abramov D, J Neurochem 2021
+m13	UNC13A	621456	AD	Trouble du neurodéveloppement avec retard de langage, mouvements anormaux et épilepsie	Neurodevelopmental disorder with speech delay, movement abnormalities and seizures	41125872	Asadollahi R, Nat Genet 2025
+rim	RIMS1	603649	AD	Dystrophie des cônes et des bâtonnets 7	Cone-rod dystrophy 7	12659814	Johnson S, Genomics 2003
+cav	CACNA1A	108500	AD	Ataxie épisodique de type 2	Episodic ataxia type 2	8898206	Ophoff RA, Cell 1996
+cav	CACNA1A	141500	AD	Migraine hémiplégique familiale 1	Familial hemiplegic migraine 1	8898206	Ophoff RA, Cell 1996
+cav	CACNA1A	617106	AD	Encéphalopathie développementale et épileptique 42	Developmental and epileptic encephalopathy 42	27476654	Epi4K Consortium, Am J Hum Genet 2016
+vat	ATP6V1A	618012	AD	Encéphalopathie développementale et épileptique 93	Developmental and epileptic encephalopathy 93	29668857	Fassio A, Brain 2018
+vat	ATP6V0A1	619970	AD	Encéphalopathie développementale et épileptique 104	Developmental and epileptic encephalopathy 104	34909687	Bott LC, Brain Commun 2021
+vat	ATP6V1B2	124480	AD	Syndrome DOOD (surdité, onychodystrophie)	Deafness-onychodystrophy syndrome (DDOD)	24913193	Yuan Y, Cell Res 2014
+bsn	PCLO	608027	AR	Hypoplasie pontocérébelleuse de type 3	Pontocerebellar hypoplasia type 3	25832664	Ahmed MY, Neurology 2015
+bsn	BSN	0	AD	Trouble du neurodéveloppement lié à BSN	BSN-related neurodevelopmental disorder	40393460	Guzman SG, Am J Hum Genet 2025
+lip	PPFIA3	621122	AD	Syndrome neurodéveloppemental de Paul-Chao	Paul-Chao neurodevelopmental syndrome	38723631	Paul MS, Am J Hum Genet 2024
+syn1	SYN1	300491	XL	Épilepsie liée à l'X avec troubles des apprentissages	X-linked epilepsy with variable learning disabilities and behaviour disorders	14985377	Garcia CC, J Med Genet 2004
+ccp	AP2M1	618587	AD	Déficience intellectuelle 60 avec épilepsie	Intellectual developmental disorder 60 with seizures	31104773	Helbig I, Am J Hum Genet 2019
+ccp	CLTC	617854	AD	Déficience intellectuelle autosomique dominante 56	Intellectual developmental disorder, autosomal dominant 56	26822784	DeMari J, Am J Med Genet A 2016
+dyn	DNM1	616346	AD	Encéphalopathie développementale et épileptique 31A	Developmental and epileptic encephalopathy 31A	25262651	EuroEPINOMICS-RES Consortium, Am J Hum Genet 2014
+nrx	NRXN1	614325	AR	Syndrome de type Pitt-Hopkins 2	Pitt-Hopkins-like syndrome 2	19896112	Zweier C, Am J Hum Genet 2009
+nlg	NLGN3	300425	XL	Autisme lié à l'X 1	Autism, X-linked 1	12669065	Jamain S, Nat Genet 2003
+nlg	NLGN4X	300495	XL	Déficience intellectuelle liée à l'X avec autisme	X-linked intellectual developmental disorder with autism	14963808	Laumonnier F, Am J Hum Genet 2004
+cad	CDH2	618929	AD	Syndrome ACOG (agénésie du corps calleux, anomalies cardiaques, oculaires et génitales)	ACOG syndrome (agenesis of corpus callosum, cardiac, ocular and genital anomalies)	31585109	Accogli A, Am J Hum Genet 2019
+amp	GRIA2	618917	AD	Trouble du neurodéveloppement avec troubles du langage et du comportement	Neurodevelopmental disorder with language impairment and behavioural abnormalities	31300657	Salpietro V, Nat Commun 2019
+amp	GRIA3	300699	XL	Déficience intellectuelle liée à l'X de type Wu	Intellectual developmental disorder, X-linked, syndromic, Wu type	17989220	Wu Y, Proc Natl Acad Sci U S A 2007
+amp	GRIA4	617864	AD	Trouble du neurodéveloppement avec ou sans épilepsie et anomalies de la marche	Neurodevelopmental disorder with or without seizures and gait abnormalities	29220673	Martin S, Am J Hum Genet 2017
+nmd	GRIN1	614254	AD	Trouble du neurodéveloppement avec mouvements anormaux et épilepsie (GRIN1)	Neurodevelopmental disorder with or without hyperkinetic movements and seizures (GRIN1)	27164704	Lemke JR, Neurology 2016
+nmd	GRIN2A	245570	AD	Épilepsie focale avec trouble du langage	Focal epilepsy with speech disorder	30544257	Strehlow V, Brain 2019
+nmd	GRIN2B	613970	AD	Déficience intellectuelle autosomique dominante 6	Intellectual developmental disorder, autosomal dominant 6	28377535	Platzer K, J Med Genet 2017
+p95	DLG4	618793	AD	Déficience intellectuelle autosomique dominante 62	Intellectual developmental disorder, autosomal dominant 62	29460436	Moutton S, Clin Genet 2018
+shk	SHANK3	606232	AD	Syndrome de Phelan-McDermid	Phelan-McDermid syndrome	16284256	Bonaglia MC, J Med Genet 2006
+cmk	CAMK2A	617798	AD	Déficience intellectuelle autosomique dominante 53	Intellectual developmental disorder, autosomal dominant 53	29100089	Küry S, Am J Hum Genet 2017
+cmk	CAMK2B	617799	AD	Déficience intellectuelle autosomique dominante 54	Intellectual developmental disorder, autosomal dominant 54	29100089	Küry S, Am J Hum Genet 2017
+sac	ACTG1	614583	AD	Syndrome de Baraitser-Winter 2	Baraitser-Winter syndrome 2	22366783	Rivière JB, Nat Genet 2012
+nav	SCN8A	614558	AD	Encéphalopathie développementale et épileptique 13	Developmental and epileptic encephalopathy 13	31904124	Gardella E, Epilepsia 2019
+nav	SCN8A	617080	AD	Épilepsie infantile familiale bénigne 5	Benign familial infantile seizures 5	26677014	Gardella E, Ann Neurol 2016
+kvc	KCNQ2	613720	AD	Encéphalopathie développementale et épileptique 7	Developmental and epileptic encephalopathy 7	24318194	Orhan G, Ann Neurol 2014
+kvc	KCNQ3	121201	AD	Épilepsie néonatale familiale bénigne 2	Benign familial neonatal seizures 2	9425900	Charlier C, Nat Genet 1998
+kvc	KCNA1	160120	AD	Ataxie épisodique de type 1	Episodic ataxia type 1	11026449	Eunson LH, Ann Neurol 2000
+nka	ATP1A3	614820	AD	Hémiplégie alternante de l'enfant 2	Alternating hemiplegia of childhood 2	22842232	Heinzen EL, Nat Genet 2012
+nka	ATP1A3	128235	AD	Dystonie-parkinsonisme à début rapide (DYT12)	Rapid-onset dystonia-parkinsonism (DYT12)	15260953	de Carvalho Aguiar P, Neuron 2004
+nka	ATP1A2	602481	AD	Migraine hémiplégique familiale 2	Familial hemiplegic migraine 2	12539047	De Fusco M, Nat Genet 2003
+k2p	KCNK9	612292	AD	Syndrome de Birk-Barel (allèle maternel)	Birk-Barel syndrome (maternal allele)	18678320	Barel O, Am J Hum Genet 2008
+k2p	KCNK4	618381	AD	Syndrome FHEIG	FHEIG syndrome	30290154	Bauer CK, Am J Hum Genet 2018
+ank	ANK3	615493	AR	Déficience intellectuelle autosomique récessive 37	Intellectual developmental disorder, autosomal recessive 37	23390136	Iqbal Z, Hum Mol Genet 2013
+ank	SPTBN4	617519	AR	Trouble du neurodéveloppement avec hypotonie, neuropathie et surdité	Neurodevelopmental disorder with hypotonia, neuropathy and deafness	28540413	Knierim E, Hum Genet 2017
+tpe	NOTCH3	125310	AD	CADASIL	CADASIL	8878478	Joutel A, Nature 1996
+tpe	PDGFRB	615007	AD	Calcifications idiopathiques des noyaux gris centraux 4	Idiopathic basal ganglia calcification 4	30979360	Mathorne SW, BMC Neurol 2019
+tef	MLC1	604004	AR	Leucoencéphalopathie mégalencéphalique avec kystes sous-corticaux 1	Megalencephalic leukoencephalopathy with subcortical cysts 1	11254442	Leegwater PA, Am J Hum Genet 2001
+tef	HEPACAM	613925	AR	Leucoencéphalopathie mégalencéphalique avec kystes sous-corticaux 2A	Megalencephalic leukoencephalopathy with subcortical cysts 2A	21419380	López-Hernández T, Am J Hum Genet 2011
+tas	GFAP	203450	AD	Maladie d'Alexander	Alexander disease	11138011	Brenner M, Nat Genet 2001
+tol	PLP1	312080	XL	Maladie de Pelizaeus-Merzbacher	Pelizaeus-Merzbacher disease	29486744	Lyahyai J, BMC Pediatr 2018
+tol	GJC2	608804	AR	Leucodystrophie hypomyélinisante 2	Hypomyelinating leukodystrophy 2	15192806	Uhlenberg B, Am J Hum Genet 2004
+tmy	PLP1	312920	XL	Paraplégie spastique 2	Spastic paraplegia 2	24095575	Matsufuji M, Pediatr Neurol 2013
+tmy	MAG	616680	AR	Paraplégie spastique 75	Spastic paraplegia 75	24482476	Novarino G, Science 2014
+tnr	CNTNAP1	618186	AR	Neuropathie hypomyélinisante congénitale 3	Congenital hypomyelinating neuropathy 3	29511323	Low KJ, Eur J Hum Genet 2018
+tnr	NFASC	618356	AR	Trouble du neurodéveloppement avec hypotonie centrale et périphérique	Neurodevelopmental disorder with central and peripheral motor dysfunction	30124836	Smigiel R, Hum Mol Genet 2018
+tnr	GLDN	617194	AR	Syndrome de contractures congénitales létales 11	Lethal congenital contracture syndrome 11	27616481	Maluenda J, Am J Hum Genet 2016
+tmg	TREM2	618193	AR	Maladie de Nasu-Hakola 2	Nasu-Hakola disease 2	12080485	Paloneva J, Am J Hum Genet 2002
+tmg	TYROBP	221770	AR	Maladie de Nasu-Hakola 1	Nasu-Hakola disease 1	10888890	Paloneva J, Nat Genet 2000
+tmg	CSF1R	221820	AD	Leucoencéphalopathie héréditaire diffuse à sphéroïdes 1	Hereditary diffuse leukoencephalopathy with spheroids 1	25935893	Lynch DS, J Neurol Neurosurg Psychiatry 2016
+tin	SCN1A	607208	AD	Syndrome de Dravet	Dravet syndrome	12754708	Claes L, Hum Mutat 2003
+tin	GAD1	619124	AR	Encéphalopathie développementale et épileptique 89	Developmental and epileptic encephalopathy 89	32282878	Chatron N, Brain 2020
+tin	ARX	308350	XL	Encéphalopathie développementale et épileptique 1	Developmental and epileptic encephalopathy 1	19738637	Fullston T, Eur J Hum Genet 2010
+tib	GABRA1	615744	AD	Encéphalopathie développementale et épileptique 19	Developmental and epileptic encephalopathy 19	24623842	Carvill GL, Neurology 2014
+tib	GABRG2	618396	AD	Encéphalopathie développementale et épileptique 74	Developmental and epileptic encephalopathy 74	27864268	Shen D, Brain 2017
+tib	ARHGEF9	300607	XL	Encéphalopathie développementale et épileptique 8	Developmental and epileptic encephalopathy 8	29130122	Wang JY, Neurogenetics 2018
+lam	LMNA	176670	AD	Progéria de Hutchinson-Gilford	Hutchinson-Gilford progeria syndrome	12714972	Eriksson M, Nature 2003
+lam	ZMPSTE24	275210	AR	Dermopathie restrictive létale	Lethal restrictive dermopathy	22718200	Barrowman J, Hum Mol Genet 2012
+lam	LMNB1	169500	AD	Leucodystrophie autosomique dominante de l'adulte	Adult-onset autosomal dominant leukodystrophy	16951681	Padiath QS, Nat Genet 2006
+lmA	LMNA	181350	AD	Dystrophie musculaire d'Emery-Dreifuss 2	Emery-Dreifuss muscular dystrophy 2	15148145	Mercuri E, Arch Neurol 2004
+lmA	LMNA	115200	AD	Cardiomyopathie dilatée 1A	Dilated cardiomyopathy 1A	10580070	Fatkin D, N Engl J Med 1999
+lmA	LMNA	151660	AD	Lipodystrophie partielle familiale de type 2 (Dunnigan)	Familial partial lipodystrophy type 2 (Dunnigan)	10655060	Shackleton S, Nat Genet 2000
+lmB	LMNB1	169500	AD	Leucodystrophie autosomique dominante de l'adulte	Adult-onset autosomal dominant leukodystrophy	16951681	Padiath QS, Nat Genet 2006
+lmB	LMNB1	619179	AD	Microcéphalie primaire 26	Primary microcephaly 26	32910914	Cristofoli F, Am J Hum Genet 2020
+lmB	LMNB2	619180	AD	Microcéphalie primaire 27	Primary microcephaly 27	33033404	Parry DA, Genet Med 2021
+lbr	LBR	169400	AD	Anomalie de Pelger-Huët	Pelger-Huët anomaly	12118250	Hoffmann K, Nat Genet 2002
+lbr	LBR	215140	AR	Dysplasie squelettique de Greenberg	Greenberg skeletal dysplasia	12618959	Waterham HR, Am J Hum Genet 2003
+eme	EMD	310300	XL	Dystrophie musculaire d'Emery-Dreifuss 1	Emery-Dreifuss muscular dystrophy 1	21697856	Brown CA, J Hum Genet 2011
+eme	LEMD3	166700	AD	Syndrome de Buschke-Ollendorff	Buschke-Ollendorff syndrome	32519343	Xu Z, J Cutan Pathol 2021
+eme	LEMD2	619322	AD	Syndrome progéroïde de Marbach-Rustad	Marbach-Rustad progeroid syndrome	30905398	Marbach F, Am J Hum Genet 2019
+linc	SYNE1	610743	AR	Ataxie spinocérébelleuse autosomique récessive 8	Spinocerebellar ataxia, autosomal recessive 8	27086870	Synofzik M, Brain 2016
+linc	SYNE1	612998	AD	Dystrophie musculaire d'Emery-Dreifuss 4	Emery-Dreifuss muscular dystrophy 4	17761684	Zhang Q, Hum Mol Genet 2007
+linc	SYNE4	615540	AR	Surdité autosomique récessive 76	Deafness, autosomal recessive 76	23348741	Horn HF, J Clin Invest 2013
+spk	SON	617140	AD	Syndrome ZTTK	ZTTK syndrome	27545680	Kim JH, Am J Hum Genet 2016
+spk	SRRM2	620439	AD	Déficience intellectuelle autosomique dominante 72	Intellectual developmental disorder, autosomal dominant 72	35567594	Cuinat S, Genet Med 2022
+son	SON	617140	AD	Syndrome ZTTK	ZTTK syndrome	27545680	Kim JH, Am J Hum Genet 2016
+son	SRRM2	620439	AD	Déficience intellectuelle autosomique dominante 72	Intellectual developmental disorder, autosomal dominant 72	35567594	Cuinat S, Genet Med 2022
+srp	SRSF1	620489	AD	Trouble du neurodéveloppement avec dysmorphie et anomalies du comportement	Neurodevelopmental disorder with dysmorphic facies and behavioural abnormalities	37071997	Bogaert E, Am J Hum Genet 2023
+snp	PRPF8	600059	AD	Rétinite pigmentaire 13	Retinitis pigmentosa 13	11468273	McKie AB, Hum Mol Genet 2001
+snp	SNRNP200	610359	AD	Rétinite pigmentaire 33	Retinitis pigmentosa 33	23029027	Liu T, PLoS One 2012
+snp	RNU4-2	620851	AD	Syndrome ReNU (trouble du neurodéveloppement lié à RNU4-2)	ReNU syndrome (RNU4-2-related neurodevelopmental disorder)	38991538	Chen Y, Nature 2024
+sca	WRAP53	613988	AR	Dyskératose congénitale autosomique récessive 3	Dyskeratosis congenita, autosomal recessive 3	21205863	Zhong F, Genes Dev 2011
+sca	TERC	127550	AD	Dyskératose congénitale autosomique dominante 1	Dyskeratosis congenita, autosomal dominant 1	11574891	Vulliamy T, Nature 2001
+tri	RNU4ATAC	210710	AR	Nanisme microcéphalique ostéodysplasique primordial de type I	Microcephalic osteodysplastic primordial dwarfism type I	23794361	Abdel-Salam GM, Am J Med Genet A 2013
+tri	PRPF3	601414	AD	Rétinite pigmentaire 18	Retinitis pigmentosa 18	11773002	Chakarova CF, Hum Mol Genet 2002
+gem	SMN1	253300	AR	Amyotrophie spinale de type 1	Spinal muscular atrophy type 1	7813012	Lefebvre S, Cell 1995
+gem	GEMIN5	619333	AR	Trouble du neurodéveloppement avec atrophie cérébelleuse et troubles moteurs	Neurodevelopmental disorder with cerebellar atrophy and motor dysfunction	33963192	Kour S, Nat Commun 2021
+gem	GEMIN4	617913	AR	Trouble du neurodéveloppement avec microcéphalie, cataracte et anomalies rénales	Neurodevelopmental disorder with microcephaly, cataracts and renal abnormalities	25558065	Alazami AM, Cell Rep 2015
+pmc	ATRX	301040	XL	Syndrome ATR-X (α-thalassémie et déficience intellectuelle liées à l'X)	ATR-X syndrome (alpha-thalassaemia/intellectual disability, X-linked)	16813605	Badens C, Clin Genet 2006
+psp	NONO	300967	XL	Déficience intellectuelle liée à l'X, syndromique 34	Intellectual developmental disorder, X-linked, syndromic 34	26571461	Mircsof D, Nat Neurosci 2015
+psp	FUS	608030	AD	Sclérose latérale amyotrophique 6	Amyotrophic lateral sclerosis 6	19251627	Kwiatkowski TJ, Science 2009
+rx:krb:0	PDHA1	312170	XL	Déficit en pyruvate déshydrogénase E1α	Pyruvate dehydrogenase E1-alpha deficiency	20002125	Barnerias C, Dev Med Child Neurol 2010
+rx:krb:2	ACO2	614559	AR	Dégénérescence cérébello-rétinienne infantile	Infantile cerebellar-retinal degeneration	22405087	Spiegel R, Am J Hum Genet 2012
+rx:krb:3	IDH3A	619007	AR	Rétinite pigmentaire 90	Retinitis pigmentosa 90	28412069	Pierrache LHM, Ophthalmology 2017
+rx:krb:4	OGDH	203740	AR	Déficit en α-cétoglutarate déshydrogénase	Oxoglutarate dehydrogenase deficiency	32383294	Yap ZY, J Inherit Metab Dis 2021
+rx:krb:5	SUCLA2	612073	AR	Syndrome de déplétion de l'ADN mitochondrial 5	Mitochondrial DNA depletion syndrome 5	15877282	Elpeleg O, Am J Hum Genet 2005
+rx:krb:5	SUCLG1	245400	AR	Syndrome de déplétion de l'ADN mitochondrial 9	Mitochondrial DNA depletion syndrome 9	20693550	Rouzier C, J Med Genet 2010
+rx:krb:6	SDHA	252011	AR	Déficit en complexe II mitochondrial, type nucléaire 1	Mitochondrial complex II deficiency, nuclear type 1	7550341	Bourgeron T, Nat Genet 1995
+rx:krb:7	FH	606812	AR	Déficit en fumarase	Fumarase deficiency	8200987	Bourgeron T, J Clin Invest 1994
+rx:krb:7	FH	150800	AD	Léiomyomatose héréditaire et cancer rénal	Hereditary leiomyomatosis and renal cell cancer	11865300	Tomlinson IP, Nat Genet 2002
+rx:krb:8	MDH2	617339	AR	Encéphalopathie développementale et épileptique 51	Developmental and epileptic encephalopathy 51	27989324	Ait-El-Mkadem S, Am J Hum Genet 2017
+rx:oxp:0	=c1
+rx:oxp:1	=c2
+rx:oxp:2	=c3
+rx:oxp:3	=c4
+rx:oxp:4	=c5
+rx:box:0	ACADM	201450	AR	Déficit en acyl-CoA déshydrogénase des acides gras à chaîne moyenne (MCAD)	Medium-chain acyl-CoA dehydrogenase (MCAD) deficiency	9158144	Andresen BS, Hum Mol Genet 1997
+rx:box:0	ACADVL	201475	AR	Déficit en acyl-CoA déshydrogénase des acides gras à très longue chaîne (VLCAD)	Very long-chain acyl-CoA dehydrogenase (VLCAD) deficiency	8845838	Andresen BS, Hum Mol Genet 1996
+rx:box:1	ECHS1	616277	AR	Déficit en énoyl-CoA hydratase à chaîne courte 1	Mitochondrial short-chain enoyl-CoA hydratase 1 deficiency	25125611	Peters H, Brain 2014
+rx:box:2	HADH	231530	AR	Déficit en 3-hydroxyacyl-CoA déshydrogénase	3-hydroxyacyl-CoA dehydrogenase deficiency	23430856	Popa FI, JIMD Rep 2012
+rx:box:2	HADHA	609016	AR	Déficit en 3-hydroxyacyl-CoA déshydrogénase des acides gras à longue chaîne (LCHAD)	Long-chain 3-hydroxyacyl-CoA dehydrogenase (LCHAD) deficiency	7811722	IJlst L, Biochim Biophys Acta 1994
+rx:box:3	HADHB	620300	AR	Déficit en protéine trifonctionnelle mitochondriale 2	Mitochondrial trifunctional protein deficiency 2	9259266	Orii KE, Hum Mol Genet 1997
+rx:hem:0	ALAS2	300751	XL	Anémie sidéroblastique liée à l'X	X-linked sideroblastic anaemia	7949148	Cotter PD, Blood 1994
+rx:hem:0	ALAS2	300752	XL	Protoporphyrie liée à l'X	X-linked protoporphyria	25615817	Brancaleoni V, Clin Genet 2016
+rx:hem:1	ALAD	612740	AR	Porphyrie par déficit en ALA déshydratase	ALA dehydratase deficiency porphyria	2063868	Plewinska M, Am J Hum Genet 1991
+rx:hem:2	HMBS	176000	AD	Porphyrie aiguë intermittente	Acute intermittent porphyria	27539938	Chen B, Hum Mutat 2016
+rx:hem:2	UROS	263700	AR	Porphyrie érythropoïétique congénitale (maladie de Günther)	Congenital erythropoietic porphyria (Günther disease)	28334762	Blouin JM, Hum Mol Genet 2017
+rx:hem:2	UROD	176100	AD	Porphyrie cutanée tardive familiale	Familial porphyria cutanea tarda	9792863	Mendez M, Am J Hum Genet 1998
+rx:hem:2	CPOX	121300	AD	Coproporphyrie héréditaire	Hereditary coproporphyria	9888388	Rosipal R, Hum Mutat 1999
+rx:hem:2	PPOX	176200	AD	Porphyrie variegata	Variegate porphyria	12357337	von und zu Fraunberg M, Eur J Hum Genet 2002
+rx:hem:3	FECH	177000	AR	Protoporphyrie érythropoïétique 1	Erythropoietic protoporphyria 1	20105171	Whatley SD, Br J Dermatol 2010
+rx:ure:0	CPS1	237300	AR	Déficit en carbamoyl-phosphate synthétase 1	Carbamoyl phosphate synthetase 1 deficiency	8486760	Hoshide R, J Clin Invest 1993
+rx:ure:1	OTC	311250	XL	Déficit en ornithine transcarbamylase	Ornithine transcarbamylase deficiency	26059767	Caldovic L, J Genet Genomics 2015
+rx:ure:2	ASS1	215700	AR	Citrullinémie de type I	Citrullinaemia type I	2358466	Kobayashi K, J Biol Chem 1990
+rx:ure:3	ASL	207900	AR	Acidurie argininosuccinique	Argininosuccinic aciduria	2263616	Walker DC, Proc Natl Acad Sci U S A 1990
+rx:ure:4	ARG1	207800	AR	Argininémie	Argininaemia	2365823	Haraguchi Y, J Clin Invest 1990
+rx:ngl:0	STT3A	615596	AR	Anomalie congénitale de la glycosylation Iw	Congenital disorder of glycosylation Iw	23842455	Shrimal S, Hum Mol Genet 2013
+rx:ngl:0	DDOST	614507	AR	Anomalie congénitale de la glycosylation Ir	Congenital disorder of glycosylation Ir	22305527	Jones MA, Am J Hum Genet 2012
+rx:ngl:1	MOGS	606056	AR	Anomalie congénitale de la glycosylation IIb	Congenital disorder of glycosylation IIb	10788335	De Praeter CM, Am J Hum Genet 2000
+rx:ngl:2	GANAB	600666	AD	Polykystose rénale 3	Polycystic kidney disease 3	27259053	Porath B, Am J Hum Genet 2016
+rx:ngl:2	PRKCSH	174050	AD	Polykystose hépatique 1	Polycystic liver disease 1	12577059	Drenth JP, Nat Genet 2003
+rx:ngl:3	GANAB	600666	AD	Polykystose rénale 3	Polycystic kidney disease 3	27259053	Porath B, Am J Hum Genet 2016
+rx:ngl:3	UGGT1	621381	AR	Anomalie congénitale de la glycosylation IIcc	Congenital disorder of glycosylation IIcc	40267907	Dardas Z, Am J Hum Genet 2025
+rx:ngl:4	MAN1B1	614202	AR	Déficience intellectuelle autosomique récessive 15	Intellectual developmental disorder, autosomal recessive 15	21763484	Rafiq MA, Am J Hum Genet 2011
+rx:dsb:0	P4HB	112240	AD	Syndrome de Cole-Carpenter 1	Cole-Carpenter syndrome 1	25683117	Rauch F, Am J Hum Genet 2015
+rx:gcx:3	MGAT2	212066	AR	Anomalie congénitale de la glycosylation IIa	Congenital disorder of glycosylation IIa	8808595	Tan J, Am J Hum Genet 1996
+rx:gcx:4	B4GALT1	607091	AR	Anomalie congénitale de la glycosylation IId	Congenital disorder of glycosylation IId	11901181	Hansske B, J Clin Invest 2002
+rx:gcx:5	ST3GAL3	611090	AR	Déficience intellectuelle autosomique récessive 12	Intellectual developmental disorder, autosomal recessive 12	21907012	Hu H, Am J Hum Genet 2011
+rx:m6p:0	GNPTAB	252500	AR	Mucolipidose II (maladie à cellules I)	Mucolipidosis II (I-cell disease)	16465621	Kudo M, Am J Hum Genet 2006
+rx:m6p:0	GNPTAB	252600	AR	Mucolipidose III α/β	Mucolipidosis III alpha/beta	15633164	Steet RA, Am J Med Genet A 2005
+rx:m6p:0	GNPTG	252605	AR	Mucolipidose III γ	Mucolipidosis III gamma	10712439	Raas-Rothschild A, J Clin Invest 2000
+rx:gly:0	HK1	235700	AR	Anémie hémolytique par déficit en hexokinase	Haemolytic anaemia due to hexokinase deficiency	7655856	Bianchi M, Blood Cells Mol Dis 1995
+rx:gly:0	GCK	125851	AD	Diabète MODY 2	Maturity-onset diabetes of the young type 2	19790256	Osbak KK, Hum Mutat 2009
+rx:gly:1	GPI	613470	AR	Anémie hémolytique par déficit en glucose-phosphate isomérase	Haemolytic anaemia due to glucose phosphate isomerase deficiency	8499925	Walker JI, Hum Mol Genet 1993
+rx:gly:2	PFKM	232800	AR	Glycogénose de type VII (maladie de Tarui)	Glycogen storage disease VII (Tarui disease)	2140573	Nakajima H, J Biol Chem 1990
+rx:gly:3	ALDOA	611881	AR	Glycogénose de type XII	Glycogen storage disease XII	8598869	Kreuder J, N Engl J Med 1996
+rx:gly:3	ALDOB	229600	AR	Intolérance héréditaire au fructose	Hereditary fructose intolerance	3383242	Cross NC, Cell 1988
+rx:gly:4	TPI1	615512	AR	Anémie hémolytique par déficit en triose-phosphate isomérase	Haemolytic anaemia due to triosephosphate isomerase deficiency	9338582	Arya R, Hum Mutat 1997
+rx:gly:6	PGK1	300653	XL	Déficit en phosphoglycérate kinase 1	Phosphoglycerate kinase 1 deficiency	6933565	Fujii H, Proc Natl Acad Sci U S A 1980
+rx:gly:7	PGAM2	261670	AR	Glycogénose de type X	Glycogen storage disease X	8447317	Tsujino S, Am J Hum Genet 1993
+rx:gly:8	ENO3	612932	AR	Glycogénose de type XIII	Glycogen storage disease XIII	11506403	Comi GP, Ann Neurol 2001
+rx:gly:9	PKLR	266200	AR	Déficit en pyruvate kinase érythrocytaire	Red cell pyruvate kinase deficiency	1896471	Kanno H, Proc Natl Acad Sci U S A 1991
+rx:pep:0	AARS1	613287	AD	Maladie de Charcot-Marie-Tooth 2N	Charcot-Marie-Tooth disease type 2N	20045102	Latour P, Am J Hum Genet 2010
+rx:pep:0	AARS1	616339	AR	Encéphalopathie développementale et épileptique 29	Developmental and epileptic encephalopathy 29	25817015	Simons C, Am J Hum Genet 2015
+rx:pep:1	AARS1	613287	AD	Maladie de Charcot-Marie-Tooth 2N	Charcot-Marie-Tooth disease type 2N	20045102	Latour P, Am J Hum Genet 2010
+rx:pep:1	GARS1	601472	AD	Maladie de Charcot-Marie-Tooth 2D	Charcot-Marie-Tooth disease type 2D	12690580	Antonellis A, Am J Hum Genet 2003
+rx:pep:2	RPL10	300998	XL	Déficience intellectuelle liée à l'X, syndromique 35	Intellectual developmental disorder, X-linked, syndromic 35	25316788	Brooks SS, Genetics 2014
+rx:pep:2	RPS19	105650	AD	Anémie de Diamond-Blackfan 1	Diamond-Blackfan anaemia 1	9988267	Draptchinskaia N, Nat Genet 1999
+rx:ubi:0	UBA1	301830	XL	Amyotrophie spinale liée à l'X 2	Spinal muscular atrophy, X-linked 2	18179898	Ramser J, Am J Hum Genet 2008
+rx:ubi:1	UBE2A	300860	XL	Déficience intellectuelle liée à l'X de type Nascimento	Intellectual developmental disorder, X-linked, syndromic, Nascimento type	16909393	Nascimento RM, Am J Hum Genet 2006
+rx:ubi:2	UBE3A	105830	AD	Syndrome d'Angelman (allèle maternel)	Angelman syndrome (maternal allele)	8988171	Kishino T, Nat Genet 1997
+rx:ubi:2	PRKN	600116	AR	Maladie de Parkinson juvénile 2	Juvenile Parkinson disease 2	29644727	Kasten M, Mov Disord 2018
+rx:gcg:0	PGM1	614921	AR	Anomalie congénitale de la glycosylation It	Congenital disorder of glycosylation It	24499211	Tegtmeyer LC, N Engl J Med 2014
+rx:gcg:1	UGP2	618744	AR	Encéphalopathie développementale et épileptique 83	Developmental and epileptic encephalopathy 83	31820119	Perenthaler E, Acta Neuropathol 2020
+rx:gcg:2	GYS2	240600	AR	Glycogénose de type 0 hépatique	Glycogen storage disease 0, liver	32395408	Kamenets EA, JIMD Rep 2020
+rx:gcg:3	PYGL	232700	AR	Glycogénose de type VI (maladie de Hers)	Glycogen storage disease VI (Hers disease)	9529348	Burwinkel B, Am J Hum Genet 1998
+rx:nak:0	=nka
+rx:nak:1	=nka
+rx:cat:0	CAT	614097	AR	Acatalasémie	Acatalasaemia	24025477	Góth L, Mutat Res 2013
+rx:pol:0	=pol
+rx:epi:0	DNMT1	614116	AD	Neuropathie héréditaire sensitive 1E	Hereditary sensory neuropathy type IE	23521649	Yuan J, J Peripher Nerv Syst 2013
+rx:epi:0	DNMT3A	615879	AD	Syndrome de Tatton-Brown-Rahman	Tatton-Brown-Rahman syndrome	24614070	Tatton-Brown K, Nat Genet 2014
+rx:epi:0	DNMT3B	242860	AR	Syndrome ICF 1 (déficit immunitaire, instabilité centromérique, dysmorphie faciale)	ICF syndrome 1 (immunodeficiency, centromeric instability, facial anomalies)	10647011	Xu GL, Nature 1999
+rx:epi:1	TET3	618798	AD	Syndrome de Beck-Fahrner	Beck-Fahrner syndrome	31928709	Beck DB, Am J Hum Genet 2020
+rx:epi:2	CREBBP	180849	AD	Syndrome de Rubinstein-Taybi 1	Rubinstein-Taybi syndrome 1	10699051	Petrij F, J Med Genet 2000
+rx:epi:2	EP300	613684	AD	Syndrome de Rubinstein-Taybi 2	Rubinstein-Taybi syndrome 2	24476420	Negri G, Clin Genet 2015
+rx:epi:3	HDAC8	300882	XL	Syndrome de Cornelia de Lange 5	Cornelia de Lange syndrome 5	24403048	Kaiser FJ, Hum Mol Genet 2014
+rx:epi:3	HDAC4	619797	AD	Trouble du neurodéveloppement avec hypotonie centrale et dysmorphie faciale	Neurodevelopmental disorder with central hypotonia and dysmorphic facies	33537682	Wakeling E, HGG Adv 2021
+rx:epi:4	KMT2D	147920	AD	Syndrome de Kabuki 1	Kabuki syndrome 1	20711175	Ng SB, Nat Genet 2010
+rx:epi:4	NSD1	117550	AD	Syndrome de Sotos	Sotos syndrome	15942875	Tatton-Brown K, Am J Hum Genet 2005
+rx:epi:4	EZH2	277590	AD	Syndrome de Weaver	Weaver syndrome	22190405	Tatton-Brown K, Oncotarget 2011
+rx:rrn:0	=po1
+rx:rrn:2	=dkc
+rx:rrn:4	EXOSC3	614678	AR	Hypoplasie pontocérébelleuse de type 1B	Pontocerebellar hypoplasia type 1B	22544365	Wan J, Nat Genet 2012
+rx:rrn:4	EXOSC8	616081	AR	Hypoplasie pontocérébelleuse de type 1C	Pontocerebellar hypoplasia type 1C	24989451	Boczonadi V, Nat Commun 2014

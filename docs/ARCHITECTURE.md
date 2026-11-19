@@ -5,7 +5,7 @@ The game is one HTML page. `build.js` produces it by pasting JavaScript into `sr
 ```
 engine.js
 function boot(CT, GX) {      // CT: 0 erythroblast, 1 hepatocyte, 2 neuron; GX: custom gene or undefined
-  cells.js … impulse.js      // 13 files, in the order listed in build.js
+  cells.js … mendel.js       // 15 files, in the order listed in build.js
 }
 start.js
 ```
@@ -32,6 +32,8 @@ The code is deliberately compact: short helper names, long lines, comments in Fr
 | `nucleolus-lamina.js` | Nucleolus interior and its animation, procedural lamina near the envelope. |
 | `reactions.js` | Chemical reaction mode: molecules (`MOL`), pathways (`RXP`), placement in the scenery, quiz. |
 | `impulse.js` | Nerve impulse mode: the 12 steps, their animations, the oscilloscope. |
+| `mendel-data.js` | Generated from `tools/mendel.tsv` by `tools/mk-mendel.js`: `MG` (card key → gene, disease, inheritance, OMIM, PMID), `MGC` (per-cell overrides) and `MGR` (pathway → step). Do not edit by hand. |
+| `mendel.js` | Mendelian genetics focus: halos and gene labels, card lines, "🧬 Genetics" panel, disorders shown on reaction steps. |
 | `start.js` | Cell selection, saved progress, language switch and static page text. |
 
 ## Rendering
@@ -67,6 +69,12 @@ One flag is non-zero at a time and replaces the normal flight controls in the fr
 - **Add a card.** Add `key: [title, text]` to `I`, give the key to a collider, add the English text to `i18n/en/extra.json`.
 - **Add a reaction pathway.** Add its molecules to `MOL` and an entry to `RXP` in `reactions.js`: `[key, location, cell, title, intro, summary, steps]`, each step being `[enzyme, inputs, outputs, text, expertText, question, right, wrong, wrong]`. `RXW` anchors steps to structures in the scenery.
 - **Add an impulse step.** Add its texts to `NXT` and an entry to `NXS` in `impulse.js`: camera target `c`, zoom `z`, view direction `v`, loop duration `T`, oscilloscope trace `o` and a draw function `d(phase, time)`.
+
+## Mendelian genetics focus
+
+The global flag `MEN` (declared in `engine.js`, set by the start-screen checkbox in `start.js`, saved in `localStorage.oc_mg`, forced by `#mg` in the address) turns the mode on. Nothing in the scenery is rebuilt: every frame `mgD()` draws translucent pink shells over the colliders whose card key has an entry in `MG`, the five nearest per key within range of the ship, and floats the gene symbols over the closest ones. `mgH(key)` returns the lines added to the card shown by `hud`, `mgRx(pathway, step)` adds the disorders of the current enzyme to the reaction panel, and the "🧬" button reuses the atlas overlay.
+
+The data lives in `tools/mendel.tsv`, one row per card key, gene and disease. `npm run mendel` turns it into `src/mendel-data.js` (French names), `i18n/en/mendel.json` (their English translations) and `docs/MENDELIAN.md`. To add an entry, add a row, run `npm run mendel` and `npm run check-mendel`, then build.
 
 ## Testing hook
 

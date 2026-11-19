@@ -58,8 +58,8 @@ function hud(d){
   s!=hS&&($('st').textContent=hS=s);
   let k;if(ct>=0)k='pit';else if(nI&&(!reg||nD<(/mt|nf|sv|ifl|prt|frt/.test(nI.i)?1.5*z+.01:min(8*z+.03,.4))))k=nI.i;else if(ORG)k=ORG.i+'I';else if(!reg){let m=ds(p,Ce)-Re,e=ds(p,e0);k=LU?'tlu':e<.13?'pit':m<.07?'mem':e<.75?'tfr':'ext'}
   else k=reg<2&&rk()!='cyt'?rk():reg<2&&ds(p,Cc)>Rc-.15-z?mdk(p):abs(ds(p,Nc)-Rn+.02)<.2+z?pore()[0]<.12?'npc':reg>1?'lam':'ne':reg<2?'cyt':'nuc';
-  sn(k);let t=I[k],ti=t[0],tx=t[1],o=reg>1&&ct<0&&(k=='nuc'||k=='spk')&&nuI();if(o)ti=o[0],tx=o[1];if(pinT>0)pinT-=.2,ti='▸ '+pin[0],tx=pin[1];btT();
-  ti+tx!=hI&&($('it').textContent=ti,$('ix').textContent=tx,hI=ti+tx);
+  sn(k);let t=I[k],ti=t[0],tx=t[1],o=reg>1&&ct<0&&(k=='nuc'||k=='spk')&&nuI();if(o)ti=o[0],tx=o[1];let mg=mgH(pinT>0?pinK:o?0:k);if(pinT>0)pinT-=.2,ti='▸ '+pin[0],tx=pin[1];btT();
+  ti+tx+mg!=hI&&($('it').textContent=ti,$('ix').textContent=tx,$('im').innerHTML=mg,hI=ti+tx+mg);
   let q='';if(reg>1&&z<.6&&ln(p)<GR){let b=1e9,j=0,i,g=GP.p,e;for(i=0;i<g.length;i++)e=g[i],x=e[0]-p[0],y=e[1]-p[1],w=e[2]-p[2],x=x*x+y*y+w*w,x<b&&(b=x,j=i);
     if(z>=.1)!PM&&sqrt(b)<.6&&(q='<b>'+G.sy+'</b><br>'+'Rétrécissez le vaisseau sous 100 nm pour lire la séquence (Q, − ou molette).');          // avertissement de taille
     else if(sqrt(b)<6*z+.012){i=j-UP;let F=ft(i),o,c,va;s='';
@@ -70,7 +70,7 @@ function hud(d){
 function tick(t){if(gen!=GEN)return;let d=min(.05,(t-last)/1e3)||0;last=t;
   aT+=d;if(++aN>40)Q=aT>1.3&&Q>.7?Q*.8:aT<.75&&Q<DPR?min(DPR,Q*1.15):Q,aT=aN=0;       // résolution adaptative
   if(go&&!NV)AP?apS(d):PM?pmS(d):RX?rxS(d):NX?nxS(d):ct<0?ctl(d):cine(d);nvT(d);
-  sim(d,ln(E)<GR+1.1,ds(E,PS)<4);PM&&pmD();oT();nolT();lamT();vesi(d);bcn();flm();RX&&rxD();NX&&nxD();synT();[dA.t,dA.j,dA.s,dB,dC.t,dC.j,dC.s,dD,dV,dE,dG,dF,dQa,dQb,dQe,dLm,dLb].forEach(up);
+  sim(d,ln(E)<GR+1.1,ds(E,PS)<4);PM&&pmD();oT();nolT();lamT();vesi(d);bcn();flm();RX&&rxD();NX&&nxD();synT();mgD();[dA.t,dA.j,dA.s,dB,dC.t,dC.j,dC.s,dD,dV,dE,dG,dF,dQa,dQb,dQe,dLm,dLb].forEach(up);
   cam(d);FG=lp(FG,reg?TGT[reg]:LU?FB:TGT[0],min(1,d*2));draw();hud(d);requestAnimationFrame(tick)}
 onkeydown=e=>{if(e.target.id=='q')return;keys[e.code]=1;/Arrow|Space/.test(e.code)&&e.preventDefault()};onkeyup=e=>{keys[e.code]=0};
 const PT=new Map;let pd0=0;        // mode polymérase : glisser = tourner, pincer = zoomer

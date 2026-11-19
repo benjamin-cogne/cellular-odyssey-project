@@ -25,6 +25,7 @@ npm run build
 - **Gènes, base par base.** Les trois gènes intégrés utilisent la séquence réelle hg38 : signaux du promoteur, exons, introns, sites d'épissage. Le mode « Je suis l'ARN polymérase II » parcourt initiation, coiffe, pause, épissage, polyadénylation et terminaison.
 - **N'importe quel gène.** Une recherche charge un autre gène humain par l'API du UCSC Genome Browser (repli sur Ensembl). C'est le seul accès réseau du jeu.
 - **19 voies chimiques à l'échelle moléculaire**, montrées là où elles se produisent : cycle de Krebs, chaîne respiratoire, β-oxydation, synthèse de l'hème, cycle de l'urée, N-glycosylation, glycolyse, traduction, ubiquitination, pompe Na⁺/K⁺, polymérisation de l'ARN, coiffe, marques épigénétiques, modification de l'ARNr, etc. Chacune a un niveau commenté et un niveau expert avec quiz.
+- **Focus génétique mendélienne.** Une case à cocher sur l'écran d'accueil met en évidence chaque structure, protéine ou étape de voie dont les gènes sont responsables d'une maladie mendélienne : halo rose et nom des gènes dans le décor, lignes « gène — maladie » sur les fiches, panneau « 🧬 Génétique » donnant la transmission, le numéro OMIM et une référence PubMed, et maladies liées à chaque enzyme dans les voies de réactions. 373 gènes ; la table complète est dans [docs/MENDELIAN.md](docs/MENDELIAN.md).
 - **Synapses et influx nerveux (neurone).** Deux synapses excitatrices construites molécule par molécule, avec une fente de 20 nm où le vaisseau peut entrer, et un parcours guidé en 12 étapes qui suit un signal d'une épine stimulée jusqu'au neurone suivant, avec un oscilloscope du potentiel de membrane.
 
 ## Statut scientifique
@@ -34,18 +35,19 @@ C'est un support pédagogique, pas une référence.
 - Les géométries sont schématiques, les nombres de molécules réduits, les animations ralenties de plusieurs ordres de grandeur.
 - Les chiffres des fiches sont des ordres de grandeur. Certains ont été vérifiés dans la littérature à l'écriture du jeu, d'autres non.
 - Les 57 références utilisées figurent dans le jeu, sur l'écran d'accueil, sous *Sources*, avec leur PMID.
+- Le focus mendélien reprend des associations gène–maladie classées « vertes » par [PanelApp Australia](https://panelapp-aus.org/) (Mendeliome v2.901 et panels spécialisés, novembre 2026). C'est une sélection de deux à quatre maladies connues par structure, pas une liste complète, et ce n'est pas un outil de diagnostic. `npm run check-mendel` revérifie la table auprès de PanelApp Australia.
 - Le contenu n'a pas été relu par des pairs. Les corrections sont bienvenues : ouvrez une issue avec une référence.
 
 ## Organisation du dépôt
 
 | Chemin | Contenu |
 | --- | --- |
-| `src/` | Sources du jeu : `shell.html` (page, CSS, textes fixes) et 15 fichiers JavaScript. Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
+| `src/` | Sources du jeu : `shell.html` (page, CSS, textes fixes) et 17 fichiers JavaScript. Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
 | `src/seq/` | Séquences génomiques de *HBB*, *HAMP* et *FOS* (hg38, gène et promoteur en amont). |
 | `build.js` | Concatène les sources, applique la passe de traduction et minifie. |
 | `i18n/` | Traductions anglaises et outils qui les appliquent. |
 | `tests/` | Tests en navigateur pilotés par Playwright. Voir [tests/README.md](tests/README.md). |
-| `tools/` | `check-seq.js`, contrôle des séquences embarquées. |
+| `tools/` | `check-seq.js`, contrôle des séquences embarquées. `mendel.tsv`, la table gène–maladie du focus mendélien, avec `mk-mendel.js` (génère les données du jeu) et `check-mendel.js` (la revérifie auprès de PanelApp Australia). |
 | `dist/` | Sortie du build, non versionnée. |
 
 ## Construction
@@ -54,9 +56,11 @@ Développé et testé avec Node.js 22.
 
 | Commande | Résultat |
 | --- | --- |
-| `npm run build` | `dist/index.html`, le fichier unique minifié à publier (≈ 510 ko, ≈ 210 ko compressé). |
+| `npm run build` | `dist/index.html`, le fichier unique minifié à publier (≈ 570 ko, ≈ 230 ko compressé). |
 | `npm run dev` | `dist/dev.html`, non minifié, avec le crochet de test `window.__ev`. |
 | `npm run check-seq` | Vérifie cadres de lecture, sites d'épissage et signaux du promoteur des séquences embarquées. |
+| `npm run mendel` | Régénère `src/mendel-data.js`, `i18n/en/mendel.json` et `docs/MENDELIAN.md` à partir de `tools/mendel.tsv`. À lancer après toute modification de la table, avant le build. |
+| `npm run check-mendel` | Vérifie chaque gène de `tools/mendel.tsv` auprès de l'API de PanelApp Australia (accès réseau requis). |
 
 L'ordre dans lequel `build.js` concatène les fichiers sources compte ; il est indiqué en tête de ce fichier.
 

@@ -25,6 +25,7 @@ npm run build
 - **Genes, base by base.** The three built-in genes use the real hg38 sequence, with promoter signals, exons, introns and splice sites. An "I am RNA polymerase II" mode walks through initiation, capping, pausing, splicing, polyadenylation and termination.
 - **Any gene.** A search box loads another human gene through the UCSC Genome Browser API (Ensembl as fallback). This is the only network access in the game.
 - **19 chemical pathways at molecular scale**, shown where they happen: Krebs cycle, respiratory chain, β-oxidation, haem synthesis, urea cycle, N-glycosylation, glycolysis, translation, ubiquitination, Na⁺/K⁺ pump, RNA polymerisation, capping, epigenetic marks, rRNA modification and more. Each has a narrated level and an expert level with a quiz.
+- **Mendelian genetics focus.** A checkbox on the start screen highlights every structure, protein and pathway step whose genes cause a Mendelian disorder: a pink halo and gene labels in the scenery, gene and disease lines on the cards, a "🧬 Genetics" panel listing inheritance, OMIM number and a PubMed reference, and the disorders of each enzyme in the reaction pathways. 373 genes; the full table is in [docs/MENDELIAN.md](docs/MENDELIAN.md).
 - **Synapses and nerve impulse (neuron).** Two excitatory synapses built molecule by molecule with a 20 nm cleft the ship can enter, and a 12-step guided tour that follows a signal from a stimulated spine to the next neuron, with an oscilloscope tracing the membrane potential.
 
 ## Scientific status
@@ -34,18 +35,19 @@ This is a teaching aid, not a reference.
 - Geometries are schematic, molecule counts are reduced and animations are slowed down by several orders of magnitude.
 - Numbers on the cards are orders of magnitude. Some were checked against the literature when the game was written; others were not.
 - The 57 references used are listed in the game, on the start screen under *Sources*, with their PMID.
+- The Mendelian focus lists gene–disease associations rated Green in [PanelApp Australia](https://panelapp-aus.org/) (Mendeliome v2.901 and specialised panels, November 2026). It is a selection of two to four well-known disorders per structure, not a complete list, and it is not a diagnostic resource. `npm run check-mendel` re-checks the table against PanelApp Australia.
 - The content has not been peer reviewed. Corrections are welcome: please open an issue with a reference.
 
 ## Repository layout
 
 | Path | Content |
 | --- | --- |
-| `src/` | Game sources: `shell.html` (page, CSS, static text) and 15 JavaScript files. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
+| `src/` | Game sources: `shell.html` (page, CSS, static text) and 17 JavaScript files. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
 | `src/seq/` | Genomic sequences of *HBB*, *HAMP* and *FOS* (hg38, gene plus upstream promoter). |
 | `build.js` | Concatenates the sources, applies the translation pass and minifies. |
 | `i18n/` | English translations and the tools that apply them. |
 | `tests/` | Browser tests driven by Playwright. See [tests/README.md](tests/README.md). |
-| `tools/` | `check-seq.js`, a sanity check of the embedded sequences. |
+| `tools/` | `check-seq.js`, a sanity check of the embedded sequences. `mendel.tsv`, the gene–disease table of the Mendelian focus, with `mk-mendel.js` (generates the game data) and `check-mendel.js` (re-checks it against PanelApp Australia). |
 | `dist/` | Build output, not committed. |
 
 ## Building
@@ -54,9 +56,11 @@ Developed and tested with Node.js 22.
 
 | Command | Result |
 | --- | --- |
-| `npm run build` | `dist/index.html`, the minified single file to publish (≈ 510 kB, ≈ 210 kB gzipped). |
+| `npm run build` | `dist/index.html`, the minified single file to publish (≈ 570 kB, ≈ 230 kB gzipped). |
 | `npm run dev` | `dist/dev.html`, not minified, with the test hook `window.__ev`. |
 | `npm run check-seq` | Checks reading frames, splice sites and promoter signals of the embedded sequences. |
+| `npm run mendel` | Regenerates `src/mendel-data.js`, `i18n/en/mendel.json` and `docs/MENDELIAN.md` from `tools/mendel.tsv`. Run it after editing the table, then build. |
+| `npm run check-mendel` | Checks every gene of `tools/mendel.tsv` against the PanelApp Australia API (needs network access). |
 
 The order in which `build.js` concatenates the source files matters; it is listed at the top of that file.
 

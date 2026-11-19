@@ -8,7 +8,9 @@
     "i18n": "node i18n/mk.js",
     "dev": "node i18n/mk.js && node build.js",
     "build": "node i18n/mk.js && node build.js min && node --check dist/all.js",
-    "check-seq": "node tools/check-seq.js"
+    "check-seq": "node tools/check-seq.js",
+    "mendel": "node tools/mk-mendel.js",
+    "check-mendel": "node tools/check-mendel.js"
   },
   "devDependencies": {
     "acorn": "^8.19.0",

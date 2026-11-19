@@ -161,7 +161,7 @@ rxA=(k,q,mx)=>{let b=0,bd=mx;for(let L of ORG?[OC]:reg>1?[NU,DN,dyc]:[CY,dyc])fo
 rxK=s=>s?s.split(' ').map(w=>w.split('*').pop()):[];
 function rxMenu(){let L=rxHere(),l=ORG?ORG.i:reg>1?'nuc':'cyt',o=RXP.filter(P=>P[1]!=l&&(P[2]<0||P[2]==CT)).length;$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';
   $('pmt').textContent='Réactions chimiques dans '+RXN[l];$('pmx').textContent='Choisissez une voie : vous verrez ses réactions à l\'échelle des atomes, là où elles ont lieu. Chaque étape laisse sa trace : la voie se dessine peu à peu. '+o+' autres voies vous attendent dans les autres compartiments (mitochondrie, réticulum, Golgi, cytosol, noyau, nucléole).';
-  $('pmo').innerHTML=L.map(P=>rxBtn(P[3]+' ('+P[6].length+')','p'+P[0])).join('')+rxBtn('Fermer','x')}
+  $('pmo').innerHTML=L.map(P=>rxBtn((MEN&&MGR[P[0]]?'🧬 ':'')+P[3]+' ('+P[6].length+')','p'+P[0])).join('')+rxBtn('Fermer','x')}
 // La voie est posée dans le décor : stations en cercle pour un cycle, en arc pour une voie linéaire, ou devant la structure où chaque étape a lieu.
 function rxGo(P,lv){AP=0;document.body.classList.add('rx');let W=RXW[P[0]][1],N=P[6],n=N.length,i,j,md=ORG?9:2,p1=W.r&&rxA(W.r,p,md),A=W.a?rxA(W.a,p,md):W.s?rxA(W.s[0],p1?p1.c:p,md):0,F=f.slice(),X,Y,St=[],
    SP=N.map(s=>[rxSp(s[1]),rxSp(s[2])]),US=SP.map(([a,b])=>{let x=a.concat(b);return(max(x.reduce((m,y)=>m+y.M.R,0)/x.length*1.35,max(...x.map(y=>y.M.R))*.72)+180)*1e-6}),U=max(...US),D=5.4*U,
@@ -186,7 +186,7 @@ function rxN(){let M=RX,N=M.P[6],n=N.length,W=RXW[M.P[0]],c=M.cy,U=M.U,fr=max(.9
    qs=I.map((x,k)=>{let r=M.R.length,q;while(r--&&!(M.R[r].x.k==x.k&&M.R[r].st==M.st-1));if(r>=0){q=M.R[r].q;ss.push(M.R[r].sc);M.R.splice(r,1);M.G.push({x,q});k!=ci&&j++;return q}ss.push(1);if(k==ci)return M.G.push({x,q:st.A}),st.A;return pos(2.85,-.9+(j++-(mc-1)/2)*1.5)}),
    qe=(j=0,I.map((x,k)=>k==ci?st.S:pos(1.3,-.3+(j++-(mc-1)/2)*1.3))),os=(j=0,O.map((x,k)=>k==co?st.S:pos(1.3,.3+(j++-(mo-1)/2)*1.3))),oe=(j=0,O.map((x,k)=>k==co?st.B:pos(3,.9+(j++-(mo-1)/2)*1.5)));
   M.S={i:I,o:O,e:s[0],ci,co,qs,qe,os,oe,ss};M.Ct=st.S;M.zt=cl(uu*fr,.0009,.012);M.zx=max(M.zx,cl((ds(st.S,M.St[0].S)+6*U)/3*fr,.012,.2));
-  $('pmt').textContent=(M.st+1)+'/'+n+' · '+s[0];$('pmx').textContent=s[M.lv?4:3];{let b=document.createElement('b'),w=W[1].w;b.className='pw';b.textContent='◎ '+(w&&w[M.st]||W[0])+' — ';$('pmx').prepend(b)}M.au=M.aT=6.5+max(3,s[3].length/17);
+  $('pmt').textContent=(M.st+1)+'/'+n+' · '+s[0];$('pmx').textContent=s[M.lv?4:3];{let b=document.createElement('b'),w=W[1].w;b.className='pw';b.textContent='◎ '+(w&&w[M.st]||W[0])+' — ';$('pmx').prepend(b)}mgRx(M.P[0],M.st);M.au=M.aT=6.5+max(3,s[3].length/17);
   $('pmo').innerHTML=(M.lv?'<p>'+s[5]+'</p>'+[6,7,8].map(k=>[R(),rxBtn(s[k],k==6?'ok':'no')]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]).join(''):'<div id=pmp><i></i></div>'+rxBtn('⏸ Pause','z')+rxBtn('Suivant ▸','ok'))+rxBtn('Quitter','q')}
 function rxS(d){let M=RX,fr=max(.98*fx,.86*fy);M.yaw-=(tjx+(keys.ArrowRight|0)-(keys.ArrowLeft|0))*d*1.5;M.pit=cl(M.pit+(tjy+(keys.ArrowUp|0)-(keys.ArrowDown|0))*d,-1.3,1.3);
   if(tzm)M.zt=0,z=cl(z*2**(tzm*1.5*d),.0009,M.zx);if(M.zt){z+=(M.zt-z)*min(1,d*3.5);abs(z/M.zt-1)<.015&&(M.zt=0)}

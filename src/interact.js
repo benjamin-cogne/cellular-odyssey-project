@@ -26,7 +26,7 @@ const GOL=[['du réseau trans-golgien','Station de tri : sulfatation des tyrosin
  ['cis','pH ≈ 6,7. Arrivée des vésicules COPII. Les mannosidases I retirent des mannoses (Man₉ → Man₅) ; la GlcNAc-phosphotransférase marque les enzymes lysosomales par le mannose-6-phosphate ; les protéines résidentes du RE (motif KDEL) repartent en vésicules COPI.']];GOL[3]=GOL[2];
 
 // ================= clic ou toucher : fiche de l'élément visé =================
-let pin=0,pinT=0,ORG=0,OC=[],PM=0,eC=0,S1=[],S5=[];
+let pin=0,pinK=0,pinT=0,ORG=0,OC=[],PM=0,eC=0,S1=[],S5=[];
 function pick(e){let x=e.clientX/cv.clientWidth*2-1,y=1-e.clientY/cv.clientHeight*2,D=nm(ad(ad(vf,ml(vr,x/fx)),ml(vu,y/fy))),b=[1e9],L,o,t,k,
   sp=(c,r,far)=>{let o=sb(c,E),t=dt(o,D),d=dt(o,o)-t*t;if(d>r*r)return 1e9;d=sqrt(r*r-d);return far?t+d:t-d>0?t-d:1e9},        // intersection rayon–sphère
   T=(t,v)=>{t>0&&t<b[0]&&(b=[t,v])},pt=t=>ma(E,D,t);
@@ -37,7 +37,7 @@ function pick(e){let x=e.clientX/cv.clientWidth*2-1,y=1-e.clientY/cv.clientHeigh
   if(!ORG&&reg>1){CN.forEach((N,c)=>N.p.forEach((q,i)=>T(sp(q,.05),{ch:[c,i,q]})));TG.U&&TG.U.forEach(W=>T(sp(W.c,.006),{un:W}));t=sp(Nc,Rn-.04,1);if(t<1e9){let d=nm(sb(pt(t),Nc));T(t,{i:PD.some(q=>dt(q,d)>.99985)?'npc':'lam'})}}
   if(!ORG&&reg==1){t=sp(Nc,Rn);if(t<1e9){let d=nm(sb(pt(t),Nc));T(t,{i:PD.some(q=>dt(q,d)>.99985)?'npc':'ne'})}t=sp(Cc,Rc,1);t<1e9&&T(t,{i:mdk(pt(t))})}
   if(!reg){t=sp(Ce,Re);if(t<1e9&&!(b[1]&&b[1].sf&&b[0]<t+.12))k=ds(pt(t),e0),T(t,{i:k<.07?'pit':k<.6?'tfr':'mem'})}
-  o=b[1];pin=!o?I[ORG?ORG.i+'I':reg==1?rk():['ext',,'nuc'][reg]]:o.ch?cI(o.ch):o.un?uI(o.un):I[o.i];o&&sn(o.i);pinT=8;hT=0}
+  o=b[1];pinK=!o?ORG?ORG.i+'I':reg==1?rk():['ext',,'nuc'][reg]:o.ch||o.un?0:o.i;pin=pinK?I[pinK]:o.ch?cI(o.ch):uI(o.un);o&&sn(o.i);pinT=8;hT=0}
 
 // ================= intérieur des organites (construit à l'entrée) =================
 const Lx0=Ly(M1,.3,.12,{rg:1,vz:110}),Lx1=Ly(M1,.5,.12,{rg:1,vz:110}),Lxc=Ly(MD,.5,.12,{rg:1,vz:110}),dO=dy(Ldb,900,[0,0,0],.3),
@@ -178,8 +178,8 @@ const AK=[],AG={};
  ['lam','lmA','lmB','lbr','lad','eme','linc'].forEach(k=>a(k,'Enveloppe et lamina'));['nolI','fc','rdn','po1','ssu','fbl','dkc','pdf','p60','p40','npm','r5s'].forEach(k=>a(k,'Dans le nucléole'));
  ['ves','pol','rna','spl','mrn','ply'].forEach(k=>a(k,'En mouvement'))}
 function atN(){$('atb').textContent='☰ Atlas '+AK.filter(k=>SN[k]).length+'/'+AK.length}
-function sn(k){if(k&&AG[k]&&!SN[k]){SN[k]=1;try{localStorage.oc_sn=JSON.stringify(SN)}catch(e){}atN()}}
-$('atb').onclick=()=>{if(!go||PM)return;let h='',g;for(let k of AK){if(AG[k]!=g)g=AG[k],h+='<h3>'+g+'</h3>';h+='<button data-k="'+k+'"'+(SN[k]?' class="sn"':'')+'>'+(SN[k]?'✓ ':'○ ')+esc(I[k][0])+'</button>'}
+function sn(k){if(k&&(AG[k]||MEN&&MG[k])&&!SN[k]){SN[k]=1;try{localStorage.oc_sn=JSON.stringify(SN)}catch(e){}atN();mgN()}}
+$('atb').onclick=()=>{if(!go||PM)return;let h='',g;$('ath').textContent='Atlas';for(let k of AK){if(AG[k]!=g)g=AG[k],h+='<h3>'+g+'</h3>';h+='<button data-k="'+k+'"'+(SN[k]?' class="sn"':'')+'>'+(SN[k]?'✓ ':'○ ')+esc(I[k][0])+'</button>'}
   $('atl').innerHTML=h;$('atm').textContent=AK.filter(k=>SN[k]).length+' structures vues sur '+AK.length+' dans ce tissu et cette cellule. Touchez un nom : sa fiche s\'affiche et le repère ◎ vous y conduit.';$('at').style.display='grid';NV=1};
 $('atc').onclick=()=>{$('at').style.display='none';NV=0};
 $('atl').onclick=e=>{let b=e.target.closest('button');if(!b)return;let k=b.dataset.k,B=0,q,o;
@@ -187,7 +187,7 @@ $('atl').onclick=e=>{let b=e.target.closest('button');if(!b)return;let k=b.datas
   if(!B&&AG[k]=='Dans le nucléole')B=[0,NOL];if(!B&&AG[k]=='Enveloppe et lamina')B=[0,ma(Nc,nm(sb(p,Nc)),Rn-.2)];
   $('at').style.display='none';NV=0;
   if(B){POI[NP]=POI[NP]||POI[2];POI[NP+1]=[I[k][0].slice(0,30),()=>B[1]];poi=NP+1;say('Repère ◎ placé sur : '+I[k][0]+'.',5)}
-  pin=I[k];pinT=B?5:12;hT=0};
+  pin=I[k];pinK=k;pinT=B?5:12;hT=0};
 atN();
 
 // ================= « Me conduire à l'entrée » : pilote automatique jusque devant le puits (ou devant le point de transcytose) =================
