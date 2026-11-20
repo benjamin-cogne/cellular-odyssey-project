@@ -1,7 +1,7 @@
 // ================= focus « génétique mendélienne » : données =================
 // FICHIER GÉNÉRÉ par tools/mk-mendel.js à partir de tools/mendel.tsv : ne pas le modifier à la main.
 // Associations gène–maladie : PanelApp Australia (gènes « verts »). Entrée : [gène, maladie, transmission, n° OMIM ou 0, PMID ou 0].
-// MG : fiche → entrées ; MGC[CT] : fiches propres à une cellule (remplacent celles de MG) ; MGR : voie de réaction → étape → entrées.
+// MG : fiche → entrées ; MGC[CT] : fiches propres à une cellule (remplacent celles de MG) ; MGR : voie de réaction → étape → entrées ; MGX : vue guidée → étape → entrées.
 const MG={pit:[["DNM2","Myopathie centronucléaire dominante","AD",160150,16227997],["DNM2","Maladie de Charcot-Marie-Tooth intermédiaire dominante B","AD",606482,15731758],["CLTC","Déficience intellectuelle autosomique dominante 56","AD",617854,26822784]],
 rib:[["RPS19","Anémie de Diamond-Blackfan 1","AD",105650,9988267],["RPL5","Anémie de Diamond-Blackfan 6","AD",612561,19061985],["RPSA","Asplénie congénitale isolée","AD",271400,23579497]],
 mit:[["MFN2","Maladie de Charcot-Marie-Tooth 2A2A","AD",609260,15064763],["OPA1","Atrophie optique dominante 1","AD",165500,30165240],["DNM1L","Encéphalopathie par défaut de fission mitochondriale et peroxysomale 1","AD",614388,26604000]],
@@ -228,4 +228,18 @@ epi:{"0":[["DNMT1","Neuropathie héréditaire sensitive 1E","AD",614116,23521649
  "4":[["KMT2D","Syndrome de Kabuki 1","AD",147920,20711175],["NSD1","Syndrome de Sotos","AD",117550,15942875],["EZH2","Syndrome de Weaver","AD",277590,22190405]]},
 rrn:{"0":MG.po1,
  "2":MG.dkc,
- "4":[["EXOSC3","Hypoplasie pontocérébelleuse de type 1B","AR",614678,22544365],["EXOSC8","Hypoplasie pontocérébelleuse de type 1C","AR",616081,24989451]]}};
+ "4":[["EXOSC3","Hypoplasie pontocérébelleuse de type 1B","AR",614678,22544365],["EXOSC8","Hypoplasie pontocérébelleuse de type 1C","AR",616081,24989451]]}},
+MGX={hx:{nuc:MG.nsm,
+ k4me3:[["KMT2A","Syndrome de Wiedemann-Steiner","AD",605130,22795537],["SETD1A","Trouble du neurodéveloppement avec retard de langage et dysmorphie faciale","AD",619056,32346159],["KDM5C","Déficience intellectuelle liée à l'X de type Claes-Jensen","XL",300534,15586325]],
+ k4me1:[["KMT2D","Syndrome de Kabuki 1","AD",147920,20711175],["KMT2C","Syndrome de Kleefstra 2","AD",617768,22726846],["KDM1A","Fente palatine, retard psychomoteur et traits faciaux particuliers","AD",616728,26656649]],
+ k27ac:[["CREBBP","Syndrome de Rubinstein-Taybi 1","AD",180849,10699051],["EP300","Syndrome de Rubinstein-Taybi 2","AD",613684,24476420],["BRD4","Syndrome de Cornelia de Lange 6","AD",620568,29379197]],
+ k16ac:[["KAT8","Syndrome de Li-Ghorbani-Weisz-Hubshman","AD",618974,31794431],["KANSL1","Syndrome de Koolen-de Vries","AD",610443,22544363],["MSL3","Syndrome de Basilicata-Akhtar","XL",301032,30224647]],
+ k36me3:[["SETD2","Syndrome de Luscan-Lumish","AD",616831,29681085],["NSD1","Syndrome de Sotos","AD",117550,15942875],["DNMT3A","Syndrome de Tatton-Brown-Rahman","AD",615879,24614070]],
+ h2bub:[["UBE2A","Déficience intellectuelle liée à l'X de type Nascimento","XL",300860,16909393]],
+ k27me3:[["EZH2","Syndrome de Weaver","AD",277590,29244146],["EED","Syndrome de Cohen-Gibson","AD",617561,25787343],["SUZ12","Syndrome d'Imagawa-Matsumoto","AD",618786,28229514],["KDM6A","Syndrome de Kabuki 2","XL",300867,22197486]],
+ h2aub:[["RNF2","Syndrome de Luo-Schoch-Yamamoto","AD",619460,33864376],["PCGF2","Syndrome de Turnpenny-Fry","AD",618371,30343942],["ASXL1","Syndrome de Bohring-Opitz","AD",605039,21706002],["BAP1","Syndrome de Küry-Isidor","AD",619762,35051358]],
+ k9me3:[["EHMT1","Syndrome de Kleefstra 1","AD",610253,16826528],["KMT5B","Déficience intellectuelle autosomique dominante 51","AD",617788,28191889],["KDM4B","Déficience intellectuelle autosomique dominante 65","AD",619320,33232677]],
+ gh2ax:[["ATM","Ataxie-télangiectasie","AR",208900,7792600],["RNF168","Syndrome RIDDLE","AR",611943,19203578],["ATR","Syndrome de Seckel 1","AR",210600,12640452]],
+ m5c:[["DNMT1","Neuropathie héréditaire sensitive 1E","AD",614116,25678562],["DNMT3B","Syndrome ICF 1 (déficit immunitaire, instabilité centromérique, dysmorphie faciale)","AR",242860,10647011],["MECP2","Syndrome de Rett","XL",312750,10577905],["TET3","Syndrome de Beck-Fahrner","AD",618798,31928709]],
+ biv:[["KMT2B","Dystonie 28 à début dans l'enfance","AD",617284,27839873]],
+ rem:[["ARID1B","Syndrome de Coffin-Siris 1","AD",135900,30349098],["SMARCA2","Syndrome de Nicolaides-Baraitser","AD",601358,22366787],["CHD7","Syndrome CHARGE","AD",214800,15300250],["SRCAP","Syndrome de Floating-Harbor","AD",136140,22265015]]}};

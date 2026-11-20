@@ -5,7 +5,7 @@ The game is one HTML page. `build.js` produces it by pasting JavaScript into `sr
 ```
 engine.js
 function boot(CT, GX) {      // CT: 0 erythroblast, 1 hepatocyte, 2 neuron; GX: custom gene or undefined
-  cells.js … mendel.js       // 16 files, in the order listed in build.js
+  cells.js … mendel.js       // 17 files, in the order listed in build.js
 }
 start.js
 ```
@@ -32,7 +32,8 @@ The code is deliberately compact: short helper names, long lines, comments in Fr
 | `nucleolus-lamina.js` | Nucleolus interior and its animation, procedural lamina near the envelope. |
 | `reactions.js` | Chemical reaction mode: molecules (`MOL`), pathways (`RXP`), placement in the scenery, quiz. |
 | `impulse.js` | Nerve impulse mode: the 12 steps, their animations, the oscilloscope. |
-| `snrnp.js` | snRNP assembly mode in the Cajal body: RNA builder (helices, loops, single strands), protein table, the eight steps and their animations. |
+| `snrnp.js` | Engine of the guided nanometre-scale views (`SXQ` registry, camera, panel, labels) and the snRNP assembly view in the Cajal body: RNA builder (helices, loops, single strands), protein table, eight steps. |
+| `histone.js` | Histone-code view: the nucleosome (DNA superhelix, octamer, tails residue by residue), marks, writers, readers and erasers, fifteen steps. |
 | `mendel-data.js` | Generated from `tools/mendel.tsv` by `tools/mk-mendel.js`: `MG` (card key → gene, disease, inheritance, OMIM, PMID), `MGC` (per-cell overrides) and `MGR` (pathway → step). Do not edit by hand. |
 | `mendel.js` | Mendelian genetics focus: gene labels, card lines, "🧬 Genetics" panel, disorders shown on reaction steps. |
 | `start.js` | Cell selection, saved progress, language switch and static page text. |
@@ -62,7 +63,7 @@ One flag is non-zero at a time and replaces the normal flight controls in the fr
 | `PM` | "I am RNA polymerase II" | `interact.js` |
 | `RX` | Chemical reactions | `reactions.js` |
 | `NX` | Nerve impulse | `impulse.js` |
-| `SX` | snRNP assembly (Cajal body) | `snrnp.js` |
+| `SX` | Guided nanometre-scale views: snRNP assembly (`SXQ.sn`), histone code (`SXQ.hx`) | `snrnp.js`, `histone.js` |
 
 `RX`, `NX` and `SX` share the side panel (`#pm`), the label pool (`QL`) and the orbit and zoom gestures.
 
@@ -72,6 +73,7 @@ One flag is non-zero at a time and replaces the normal flight controls in the fr
 - **Add a reaction pathway.** Add its molecules to `MOL` and an entry to `RXP` in `reactions.js`: `[key, location, cell, title, intro, summary, steps]`, each step being `[enzyme, inputs, outputs, text, expertText, question, right, wrong, wrong]`. `RXW` anchors steps to structures in the scenery.
 - **Add an impulse step.** Add its texts to `NXT` and an entry to `NXS` in `impulse.js`: camera target `c`, zoom `z`, view direction `v`, loop duration `T`, oscilloscope trace `o` and a draw function `d(phase, time)`.
 
+- **Add a guided view.** Register it in `SXQ` (steps `S`, texts `T`, title, intro and summary texts, summary framing and drawing, scene origin `o()`, `solo` to hide the scenery), add a button that calls `sxIn(key)`. Mark colours shared across the game are in `MKC` (`world.js`).
 - **Add an snRNP assembly step.** Add its texts to `SXT` and an entry to `SXS` in `snrnp.js`: loop duration `T`, view size `z`, camera target `c` (nm), legend `leg` and a draw function `d(phase)`. Scene coordinates are in nanometres; `sxH` builds a helix or stem-loop, `sxG` a single strand, `sxD1` draws an RNA, `sxD2` a protein, `sxD3` a seven-protein ring.
 
 ## Mendelian genetics focus

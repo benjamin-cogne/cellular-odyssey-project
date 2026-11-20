@@ -16,6 +16,8 @@ for(let i=0;i<6;i++){let e=document.createElement('div');e.className='ql g';e.st
 function mgH(k){let a=MEN&&k&&MG[k];return a?a.map(e=>'🧬 '+mgE(e)).join('<br>'):''}
 // maladies liées à l'enzyme de l'étape en cours, dans le panneau des réactions (appelé par rxN)
 function mgRx(k,s){let a=MEN&&MGR[k]&&MGR[k][s];if(!a)return;let b=document.createElement('span');b.className='mgr';b.innerHTML=a.map(e=>'🧬 '+mgF(e)).join('<br>');$('pmx').append(b)}
+// maladies liées aux protéines de l'étape en cours d'une vue guidée (appelé par sxN)
+function mgSx(q,k){let a=MEN&&MGX[q]&&MGX[q][k];if(!a)return;let b=document.createElement('span');b.className='mgr';b.innerHTML=a.map(e=>'🧬 '+mgF(e)).join('<br>');$('pmx').append(b)}
 // bouton « 🧬 Génétique » : compteur des fiches vues
 function mgN(){let b=$('mgb'),K=MEN?mgK():[];b.style.display=K.length?'block':'none';b.textContent='🧬 Génétique '+K.filter(k=>SN[k]).length+'/'+K.length}
 

@@ -1,15 +1,17 @@
 // Focus « génétique mendélienne » : transforme la table tools/mendel.tsv en données du jeu.
 //   node tools/mk-mendel.js   → src/mendel-data.js (français), i18n/en/mendel.json (français → anglais), docs/MENDELIAN.md (table lisible, avec références)
 // Colonnes de mendel.tsv (tabulations) : clé · gène · n° OMIM (0 = aucun) · transmission (AD, AR, XL) · nom français · nom anglais · PMID · référence
-//   clé       : clé de fiche (I[clé]) ; clé@n = seulement dans la cellule n (0 érythroblaste, 1 hépatocyte, 2 neurone) ; rx:voie:étape = étape d'une voie de réaction (RXP)
+//   clé       : clé de fiche (I[clé]) ; clé@n = seulement dans la cellule n (0 érythroblaste, 1 hépatocyte, 2 neurone) ; rx:voie:étape = étape d'une voie de réaction (RXP) ;
+//               vue:étape = étape d'une vue guidée (SXQ[vue], étape de clé k ; ex. hx:k27me3)
 //   « =clé »  en 2e colonne : reprend les lignes d'une autre fiche (ex. rx:oxp:0 → =c1)
 // Les associations viennent de PanelApp Australia (gènes « verts ») : node tools/check-mendel.js les revérifie en ligne.
 const fs=require('fs'),path=require('path'),P=(...a)=>path.join(__dirname,'..',...a);
 const rows=fs.readFileSync(P('tools/mendel.tsv'),'utf8').split('\n').filter(l=>l.trim()&&l[0]!='#').map(l=>l.split('\t'));
-const MG={},MGC=[{},{},{}],MGR={},EN={},refs={},J=JSON.stringify;
+const MG={},MGC=[{},{},{}],MGR={},MGX={},EN={},refs={},J=JSON.stringify;
 const ent=r=>'['+J(r[1])+','+J(r[4])+','+J(r[3])+','+(+r[2]||0)+','+(+r[6]||0)+']';
 for(const r of rows){const k=r[0];let T,kk=k;
   if(k.startsWith('rx:')){const[,p,s]=k.split(':');T=(MGR[p]=MGR[p]||{});kk=s}
+  else if(/^\w+:/.test(k)){const[v,s]=k.split(':');T=(MGX[v]=MGX[v]||{});kk=s}
   else if(k.includes('@')){const[a,c]=k.split('@');T=MGC[+c];kk=a}else T=MG;
   if(r[1][0]=='='){T[kk]='MG.'+r[1].slice(1);continue}
   if(r.length<6||!/^(AD|AR|XL)$/.test(r[3]))throw 'ligne invalide : '+r.join(' | ');
@@ -20,11 +22,12 @@ const obj=(T,ind)=>'{'+Object.keys(T).map(k=>(/^[A-Za-z_]\w*$/.test(k)?k:J(k))+'
 fs.writeFileSync(P('src/mendel-data.js'),`// ================= focus « génétique mendélienne » : données =================
 // FICHIER GÉNÉRÉ par tools/mk-mendel.js à partir de tools/mendel.tsv : ne pas le modifier à la main.
 // Associations gène–maladie : PanelApp Australia (gènes « verts »). Entrée : [gène, maladie, transmission, n° OMIM ou 0, PMID ou 0].
-// MG : fiche → entrées ; MGC[CT] : fiches propres à une cellule (remplacent celles de MG) ; MGR : voie de réaction → étape → entrées.
+// MG : fiche → entrées ; MGC[CT] : fiches propres à une cellule (remplacent celles de MG) ; MGR : voie de réaction → étape → entrées ; MGX : vue guidée → étape → entrées.
 const MG=${obj(MG,'')},
 MGC=[${MGC.map(T=>obj(T,' ')).join(',\n')}];
 Object.assign(MG,MGC[CT]);
-const MGR={${Object.keys(MGR).map(p=>p+':'+obj(MGR[p],' ')).join(',\n')}};
+const MGR={${Object.keys(MGR).map(p=>p+':'+obj(MGR[p],' ')).join(',\n')}},
+MGX={${Object.keys(MGX).map(p=>p+':'+obj(MGX[p],' ')).join(',\n')}};
 `);
 // traductions : on n'écrase pas une traduction déjà présente ailleurs dans le jeu
 const old={};for(const f of fs.readdirSync(P('i18n/en')).filter(f=>f.endsWith('.json')&&f!='mendel.json')){if(/^b\d+/.test(f))continue;Object.assign(old,JSON.parse(fs.readFileSync(P('i18n/en',f),'utf8')))}
@@ -37,7 +40,7 @@ const ct=['erythroblast','hepatocyte','neuron'],md=['# Mendelian genetics focus:
 '- **OMIM numbers:** the phenotype MIM number given by PanelApp Australia for that gene or, when PanelApp gives none, by the HPO gene-to-disease annotations.',
 '- **Inheritance:** AD autosomal dominant, AR autosomal recessive, XL X-linked; for the disease named on the row.',
 '- **Reference:** one PubMed article per gene–disease pair, chosen among those PanelApp Australia cites where one fits.',
-'- **Where:** card key in the game; `@0` erythroblast, `@1` hepatocyte, `@2` neuron; `rx:pathway:step` is a step of a chemical pathway.','',
+'- **Where:** card key in the game; `@0` erythroblast, `@1` hepatocyte, `@2` neuron; `rx:pathway:step` is a step of a chemical pathway; `hx:mark` is a step of the histone-code view.','',
 '| Where | Gene | Disease | Inh. | OMIM | Reference |','| --- | --- | --- | --- | --- | --- |'];
 for(const r of rows){if(r[1][0]=='='){md.push('| `'+r[0]+'` | | same as `'+r[1].slice(1)+'` | | | |');continue}
   md.push('| `'+r[0]+'` | *'+r[1]+'* | '+r[5]+' | '+r[3]+' | '+(+r[2]?'['+r[2]+'](https://omim.org/entry/'+r[2]+')':'—')+' | '+(+r[6]?(r[7]?r[7]+' ':'')+'[PMID '+r[6]+'](https://pubmed.ncbi.nlm.nih.gov/'+r[6]+'/)':'—')+' |')}

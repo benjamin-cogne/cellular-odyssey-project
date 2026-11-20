@@ -137,34 +137,45 @@ SXS=[
    sxDi({u6:1,q:1,S6:[0,0,0],pr:{SNU13:1,PRPF31:1,SART3:o,PRPF3:1,PRPF4:1,PPIH:1}});
    sxU5([15.8+k,7.8+k*.5,0],{m:1,p:1,q:1,pr:{PRPF8:1,EFTUD2:1,SNRNP200:1,SNRNP40:1,PRPF6:1,DDX23:1,TXNL4A:1,CD2BP2:o}});
    sxD2('SART1',[1,12.6,0],sxA(a,.42),[-.3,1,0]);sxD2('USP39',[-4.7,11.4,0],sxA(a,.48),[-.6,1,0]);sxD2('SNRNP27',[-8.6,8.4,0],sxA(a,.54),[-1,.6,0])}}];
-let SXK=[],sxHi=0;      // blocs de décor masqués pendant le mode ; conseil déjà affiché
+let SXK=[],sxHi=0,hxHi=0;      // blocs de décor masqués pendant le mode ; conseil déjà affiché
+// ---- moteur commun aux vues guidées à l'échelle du nanomètre. Une vue (SXQ[clé]) fournit : S étapes {T, z, c, leg, d(a), k, h}, T textes [titre, lieu, texte],
+// ti titre, in texte d'accueil, su texte du bilan, sc et sz cadrage du bilan, sd dessin du bilan, o() origine de la scène, solo : 1 pour masquer tout le décor ----
+const SXQ={sn:{S:SXS,T:SXT,ti:'Assemblage des snRNP',
+ in:'Huit étapes à l\'échelle du nanomètre : un snRNP U5 revient du cytoplasme, deux de ses nucléotides sont retouchés par un scaRNP, puis U4, U6 et U5 sont réunis en tri-snRNP, la pièce que le spliceosome attend. Les ARN sont dessinés nucléotide par nucléotide, en teintes chaudes ; chaque protéine est une sphère de sa couleur, en teintes froides, d\'autant plus grosse que la protéine est lourde. Glissez pour tourner autour de la scène, molette ou pincement pour zoomer. Les repliements des ARN sont schématiques.',
+ su:'En réunissant snRNP, scaRNP et facteurs d\'assemblage dans un petit volume, le corps de Cajal accélère chaque rencontre. Bilan : trois ARN (U4, U5, U6), deux anneaux Sm, un anneau LSm et une trentaine de protéines forment le tri-snRNP, qui apporte au spliceosome son cœur catalytique. Des variants de PRPF3, PRPF4, PRPF6, PRPF8, PRPF31 ou SNRNP200 causent des rétinites pigmentaires dominantes ; ceux de RNU4-2, le gène du snRNA U4, un trouble du neurodéveloppement.',
+ sc:[5.5,7],sz:.018,sd:()=>{sxDi({u6:1,q:1,S6:[0,0,0],pr:{SNU13:1,PRPF31:1,PRPF3:1,PRPF4:1,PPIH:1}});sxU5([15.8,7.8,0],{m:1,p:1,q:1,pr:{PRPF8:1,EFTUD2:1,SNRNP200:1,SNRNP40:1,PRPF6:1,DDX23:1,TXNL4A:1}});sxD2('SART1',[1,12.6,0],1);sxD2('USP39',[-4.7,11.4,0],1);sxD2('SNRNP27',[-8.6,8.4,0],1)},
+ o:()=>{let C=CBS.reduce((a,b)=>ds(a,p)<ds(b,p)?a:b),O=ds(p,C)<.14?p.slice():ma(C,nm(sb(p,C)),.12);SXK=Lnb.ch.concat(Lnbc.ch).filter(h=>h.A>0&&ds(h.c,O)<h.r+.1);return O}}},        // dans le corps de Cajal ; ses billes voisines s'effacent
+sxLg=k=>k.pop?k:[SXR[k]?(k=='sca'?'scaRNA U85':'snRNA '+k):SXN[k]||k,kh(SXR[k]||SXP[k][1])];      // entrée de légende : clé d'un ARN ou d'une protéine, ou [nom, couleur]
 
-function sxN(k){let M=SX,n=SXS.length;M.st=cl(M.st+k,0,n);$('pm').scrollTop=0;M.t=0;M.pz=0;M.ta=0;M.yaw=M.pit=0;let S=SXS[M.st],T=SXT[M.st];
-  if(!S){M.Ct=sxW([5.5,7,0]);M.zt=.018;$('pmt').textContent='Assemblage des snRNP — bilan';
-    $('pmx').textContent='En réunissant snRNP, scaRNP et facteurs d\'assemblage dans un petit volume, le corps de Cajal accélère chaque rencontre. Bilan : trois ARN (U4, U5, U6), deux anneaux Sm, un anneau LSm et une trentaine de protéines forment le tri-snRNP, qui apporte au spliceosome son cœur catalytique. Des variants de PRPF3, PRPF4, PRPF6, PRPF8, PRPF31 ou SNRNP200 causent des rétinites pigmentaires dominantes ; ceux de RNU4-2, le gène du snRNA U4, un trouble du neurodéveloppement.';
-    $('pmo').innerHTML=rxBtn('Rejouer','Sr')+rxBtn('Terminer','Sq');return}
-  M.Ct=sxW([S.c[0],S.c[1],0]);M.zt=S.z*(innerWidth<innerHeight?1.35:1);        // écran en hauteur : vue un peu plus large
+function sxN(k){let M=SX,Q=M.Q,n=Q.S.length;M.st=cl(M.st+k,0,n);$('pm').scrollTop=0;M.t=0;M.pz=0;M.ta=0;M.yaw=M.pit=0;let S=Q.S[M.st],T=Q.T[M.st],w=innerWidth<innerHeight?1.35:1;        // écran en hauteur : vue un peu plus large
+  if(!S){M.Ct=sxW([Q.sc[0],Q.sc[1],0]);M.zt=Q.sz*w;$('pmt').textContent=Q.ti+' — bilan';$('pmx').textContent=Q.su;
+    $('pmo').innerHTML=rxBtn('Rejouer','Sr')+rxBtn('Sommaire','Sm')+rxBtn('Terminer','Sq');return}
+  M.Ct=sxW([S.c[0],S.c[1],S.c[2]||0]);M.zt=S.z*w;
   $('pmt').textContent=(M.st+1)+'/'+n+' · '+T[0];$('pmx').textContent=T[2];{let b=document.createElement('b');b.className='pw';b.textContent='◎ '+T[1]+' — ';$('pmx').prepend(b)}
-  {let l=document.createElement('span');l.className='sxl';l.innerHTML=S.leg.map(k=>'<span><i style="background:'+kh(SXR[k]||SXP[k][1])+'"></i>'+esc(SXR[k]?(k=='sca'?'scaRNA U85':'snRNA '+k):SXN[k]||k)+'</span>').join('');$('pmx').append(l)}
-  $('pmo').innerHTML=rxBtn('⏸ Pause','Sz')+(M.st?rxBtn('◂ Précédent','Sb'):'')+rxBtn('Suivant ▸','Sn')+rxBtn('Quitter','Sq')}
-function sxGo(){let C=CBS.reduce((a,b)=>ds(a,p)<ds(b,p)?a:b),d=ds(p,C),O=d<.14?p.slice():ma(C,nm(sb(p,C)),.12),X=nm(cr(f,u));AP=0;document.body.classList.add('rx');
-  SX={st:-1,t:0,ta:0,yaw:0,pit:0,O,X,Y:cr(X,f),Z:ml(f,-1),Cc:p.slice(),Ct:O,fb:f.slice(),ub:cr(X,f),p0:p,fs:f,us:u,z0:z,zt:0,zx:.09,pz:0};vel=0;
-  cap.style.opacity=0;shp.forEach(h=>h.A=0);SXK=Lnb.ch.concat(Lnbc.ch).filter(h=>h.A>0&&ds(h.c,O)<h.r+.1);SXK.forEach(h=>h.A=0);        // le vaisseau et les billes voisines du décor s'effacent
+  {let l=document.createElement('span');l.className='sxl';l.innerHTML=S.leg.map(sxLg).map(([t,c])=>'<span><i style="background:'+c+'"></i>'+esc(t)+'</span>').join('');$('pmx').append(l)}
+  mgSx(M.q,S.k);
+  $('pmo').innerHTML=rxBtn('⏸ Pause','Sz')+(M.st?rxBtn('◂ Précédent','Sb'):'')+rxBtn('Suivant ▸','Sn')+rxBtn('Sommaire','Sm')+rxBtn('Quitter','Sq')}
+function sxGo(q){let Q=SXQ[q],X=nm(cr(f,u)),O;AP=0;SXK=[];O=Q.o();document.body.classList.add('rx');
+  SX={q,Q,solo:Q.solo,st:-1,t:0,ta:0,yaw:0,pit:0,O,X,Y:cr(X,f),Z:ml(f,-1),Cc:p.slice(),Ct:O,fb:f.slice(),ub:cr(X,f),p0:p,fs:f,us:u,z0:z,zt:0,zx:.09,pz:0};vel=0;
+  cap.style.opacity=0;shp.forEach(h=>h.A=0);SXK.forEach(h=>h.A=0);        // le vaisseau s'efface
   $('hl').style.display=mk.style.display='none';for(let k of['ent','pmb','xit','gui','bld','tcy','rxb','nxb','hr'])$(k).style.display='none';
   $('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';sxN(1)}
 function sxEnd(){let M=SX;document.body.classList.remove('rx');z=M.z0;p=M.p0;f=M.fs;u=M.us;SX=0;dSx0.n=dSx1.n=0;QL.forEach(e=>e.style.display='none');shp.forEach(h=>h.A=1);SXK.forEach(h=>h.A=1);SXK=[];
   $('pm').style.display='none';$('hl').style.display='flex';$('hr').style.display=mk.style.display='';hT=0}
-function sxS(d){let M=SX,S=SXS[M.st];M.yaw-=(tjx+(keys.ArrowRight|0)-(keys.ArrowLeft|0))*d*1.5;M.pit=cl(M.pit+(tjy+(keys.ArrowUp|0)-(keys.ArrowDown|0))*d,-1.3,1.3);
+function sxS(d){let M=SX,S=M.Q.S[M.st];M.yaw-=(tjx+(keys.ArrowRight|0)-(keys.ArrowLeft|0))*d*1.5;M.pit=cl(M.pit+(tjy+(keys.ArrowUp|0)-(keys.ArrowDown|0))*d,-1.3,1.3);
   if(tzm)M.zt=0,z=cl(z*2**(tzm*1.5*d),.0015,M.zx);if(M.zt){z*=(M.zt/z)**min(1,d*2.6);abs(z/M.zt-1)<.01&&(M.zt=0)}
-  M.pz||(M.t+=d);if(S){M.ta=min(M.t/S.T,1);if(M.t>S.T*1.45)M.t=0}        // l'état final reste affiché un moment, puis la boucle se rejoue
+  M.pz||(M.t+=d);if(S){M.ta=min(M.t/S.T,1);if(M.t>S.T*(S.h||1.45))M.t=0}        // l'état final reste affiché un moment, puis la boucle se rejoue
   M.Cc=lp(M.Cc,M.Ct,min(1,d*4.5));let v=rot(M.fb,M.ub,M.yaw),r=nm(cr(M.ub,v));v=rot(v,r,M.pit*.8);f=v;u=nm(cr(v,r));p=ad(M.Cc,innerWidth>innerHeight?ml(vr,-z*1.6):ml(vu,z*.9));vel=0;nI=0}
-function sxD(){let M=SX,S=SXS[M.st];nxl=0;dSx0.n=dSx1.n=0;dSx0.c=dSx1.c=M.O;
-  if(S)S.d(M.ta);else{sxDi({u6:1,q:1,S6:[0,0,0],pr:{SNU13:1,PRPF31:1,PRPF3:1,PRPF4:1,PPIH:1}});sxU5([15.8,7.8,0],{m:1,p:1,q:1,pr:{PRPF8:1,EFTUD2:1,SNRNP200:1,SNRNP40:1,PRPF6:1,DDX23:1,TXNL4A:1}});sxD2('SART1',[1,12.6,0],1);sxD2('USP39',[-4.7,11.4,0],1);sxD2('SNRNP27',[-8.6,8.4,0],1)}
+function sxD(){let M=SX,S=M.Q.S[M.st];nxl=0;dSx0.n=dSx1.n=0;dSx0.c=dSx1.c=M.O;
+  if(S)S.d(M.ta,S);else M.Q.sd();
   for(let i=nxl;i<QL.length;i++)QL[i].style.display='none';up(dSx0);up(dSx1)}
+// écran d'accueil d'une vue (appelé par son bouton)
+function sxIn(q){if(!go||PM||RX||NX||SX||AP)return;let Q=SXQ[q];$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';$('pmt').textContent=Q.ti;$('pmx').textContent=Q.in;
+  $('pmo').innerHTML=rxBtn('Commencer','Sg'+q)+rxBtn('Fermer','Sx')}
 {const h0=$('pmo').onclick;$('pmo').onclick=e=>{let b=e.target.closest('button'),r=b&&b.dataset.r,M=SX;if(!r||r[0]!='S')return h0(e);
-  if(r=='Sx')return $('pm').style.display='none';if(r=='Sg')return sxGo();if(!M)return;
+  if(r=='Sx')return $('pm').style.display='none';if(r[1]=='g')return sxGo(r.slice(2));if(!M)return;
   if(r=='Sq')return sxEnd();if(r=='Sr'){M.st=-1;return sxN(1)}if(r=='Sb')return sxN(-1);
+  if(r=='Sm'){M.pz=1;$('pmt').textContent=M.Q.ti+' — sommaire';$('pmx').textContent='';$('pmo').innerHTML=M.Q.T.map((T,i)=>rxBtn((i+1)+' · '+T[0],'Sj'+i)).join('')+rxBtn('Bilan','Sj'+M.Q.S.length);return}        // aller directement à une étape
+  if(r[1]=='j'){M.st=+r.slice(2)-1;return sxN(1)}
   if(r=='Sz'){M.pz=!M.pz;b.textContent=M.pz?'▶ Reprendre':'⏸ Pause';return}sxN(1)}}
-$('sxb').onclick=()=>{if(!go||PM||RX||NX||SX||AP)return;$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';$('pmt').textContent='Assemblage des snRNP';
-  $('pmx').textContent='Huit étapes à l\'échelle du nanomètre : un snRNP U5 revient du cytoplasme, deux de ses nucléotides sont retouchés par un scaRNP, puis U4, U6 et U5 sont réunis en tri-snRNP, la pièce que le spliceosome attend. Les ARN sont dessinés nucléotide par nucléotide, en teintes chaudes ; chaque protéine est une sphère de sa couleur, en teintes froides, d\'autant plus grosse que la protéine est lourde. Glissez pour tourner autour de la scène, molette ou pincement pour zoomer. Les repliements des ARN sont schématiques.';
-  $('pmo').innerHTML=rxBtn('Commencer','Sg')+rxBtn('Fermer','Sx')};
+$('sxb').onclick=()=>sxIn('sn');

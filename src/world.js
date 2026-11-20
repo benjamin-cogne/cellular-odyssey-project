@@ -1,3 +1,6 @@
+// ================= code couleur des marques de la chromatine =================
+// Celui des cartes d'états de la chromatine (ChromHMM, Roadmap Epigenomics) : rouge promoteur actif, jaune et orange enhancer, vert gène transcrit, gris Polycomb, bleu-violet hétérochromatine.
+const MKC={k4me3:0xff3b30,k4me1:0xffd60a,k27ac:0xff9500,k16ac:0xffc680,k36me3:0x34c759,k79me2:0x1f9e4a,h2bub:0x30d5c8,k27me3:0xa9afb6,h2aub:0x7d848c,k9me3:0x8a91d0,k20me3:0xb3a6ee,s10ph:0xff2d92,gh2ax:0xff7ad9,m5c:0x3a82f7};
 // ================= fiches scientifiques =================
 const I={
 ext:['Moelle osseuse — milieu extracellulaire','Vous flottez dans un îlot érythroblastique. La cellule devant vous est un érythroblaste basophile (≈16 µm), précurseur du globule rouge, encore nucléé. Les petites protéines bilobées sont des holo-transferrines (80 kDa) qui portent chacune 2 ions Fe³⁺.'],
