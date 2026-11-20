@@ -25,6 +25,7 @@ npm run build
 - **Gènes, base par base.** Les trois gènes intégrés utilisent la séquence réelle hg38 : signaux du promoteur, exons, introns, sites d'épissage. Le mode « Je suis l'ARN polymérase II » parcourt initiation, coiffe, pause, épissage, polyadénylation et terminaison.
 - **N'importe quel gène.** Une recherche charge un autre gène humain par l'API du UCSC Genome Browser (repli sur Ensembl). C'est le seul accès réseau du jeu.
 - **19 voies chimiques à l'échelle moléculaire**, montrées là où elles se produisent : cycle de Krebs, chaîne respiratoire, β-oxydation, synthèse de l'hème, cycle de l'urée, N-glycosylation, glycolyse, traduction, ubiquitination, pompe Na⁺/K⁺, polymérisation de l'ARN, coiffe, marques épigénétiques, modification de l'ARNr, etc. Chacune a un niveau commenté et un niveau expert avec quiz.
+- **Assemblage des snRNP (corps de Cajal).** Près d'un corps de Cajal, une vue guidée en huit étapes construit le tri-snRNP U4/U6·U5 à l'échelle du nanomètre : retour d'un snRNP U5, 2′-O-méthylation et pseudouridylation de U5 par le scaRNA U85, protéines propres à U5, snRNP U4 et U6, appariement U4/U6 avec SART3, arrimage de U5. Chaque snRNA est dessiné nucléotide par nucléotide dans une teinte chaude ; chacune des 39 protéines est une sphère nommée, d'une teinte froide qui lui est propre et d'une taille liée à sa masse.
 - **Focus génétique mendélienne.** Une case à cocher sur l'écran d'accueil met en évidence chaque structure, protéine ou étape de voie dont les gènes sont responsables d'une maladie mendélienne : nom des gènes au-dessus des structures proches dans le décor, lignes « gène — maladie » sur les fiches, panneau « 🧬 Génétique » donnant la transmission, le numéro OMIM et une référence PubMed, et maladies liées à chaque enzyme dans les voies de réactions. 373 gènes ; la table complète est dans [docs/MENDELIAN.md](docs/MENDELIAN.md).
 - **Synapses et influx nerveux (neurone).** Deux synapses excitatrices construites molécule par molécule, avec une fente de 20 nm où le vaisseau peut entrer, et un parcours guidé en 12 étapes qui suit un signal d'une épine stimulée jusqu'au neurone suivant, avec un oscilloscope du potentiel de membrane.
 
@@ -42,7 +43,7 @@ C'est un support pédagogique, pas une référence.
 
 | Chemin | Contenu |
 | --- | --- |
-| `src/` | Sources du jeu : `shell.html` (page, CSS, textes fixes) et 17 fichiers JavaScript. Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
+| `src/` | Sources du jeu : `shell.html` (page, CSS, textes fixes) et 18 fichiers JavaScript. Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
 | `src/seq/` | Séquences génomiques de *HBB*, *HAMP* et *FOS* (hg38, gène et promoteur en amont). |
 | `build.js` | Concatène les sources, applique la passe de traduction et minifie. |
 | `i18n/` | Traductions anglaises et outils qui les appliquent. |
@@ -56,7 +57,7 @@ Développé et testé avec Node.js 22.
 
 | Commande | Résultat |
 | --- | --- |
-| `npm run build` | `dist/index.html`, le fichier unique minifié à publier (≈ 570 ko, ≈ 230 ko compressé). |
+| `npm run build` | `dist/index.html`, le fichier unique minifié à publier (≈ 600 ko, ≈ 240 ko compressé). |
 | `npm run dev` | `dist/dev.html`, non minifié, avec le crochet de test `window.__ev`. |
 | `npm run check-seq` | Vérifie cadres de lecture, sites d'épissage et signaux du promoteur des séquences embarquées. |
 | `npm run mendel` | Régénère `src/mendel-data.js`, `i18n/en/mendel.json` et `docs/MENDELIAN.md` à partir de `tools/mendel.tsv`. À lancer après toute modification de la table, avant le build. |

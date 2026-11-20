@@ -37,6 +37,7 @@ Scripts that use `ev(...)` need `dist/dev.html`; those marked *minified* drive `
 | `t111.js` | Nerve impulse: all 12 steps. Arguments: language, `p` for portrait, level. |
 | `t112.js` | Free flight into the synaptic cleft, picking molecules. |
 | `t113.js` | *Minified.* Nerve impulse then synapse visit. Argument: language. |
+| `t121.js` | snRNP assembly in the Cajal body: button, the eight steps and the summary, exit. Argument: language. |
 | `t120.js` | Mendelian genetics focus: data integrity, card lines, labels, panel, reaction steps. Arguments: language, cells (e.g. `012`). |
 
-`t20`, `t90`, `t112`, `t113` and `t120` were run from this layout; `t22`, `t94`, `t96`, `t98` and `t111` were run on the same sources before the files were reorganised. The older scripts have not been rerun since earlier versions of the game.
+`t20`, `t90`, `t112`, `t113`, `t120` and `t121` were run from this layout; `t22`, `t94`, `t96`, `t98` and `t111` were run on the same sources before the files were reorganised. The older scripts have not been rerun since earlier versions of the game.

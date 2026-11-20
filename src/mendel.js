@@ -20,7 +20,7 @@ function mgRx(k,s){let a=MEN&&MGR[k]&&MGR[k][s];if(!a)return;let b=document.crea
 function mgN(){let b=$('mgb'),K=MEN?mgK():[];b.style.display=K.length?'block':'none';b.textContent='🧬 Génétique '+K.filter(k=>SN[k]).length+'/'+K.length}
 
 // étiquettes de gènes (appelé à chaque image par tick)
-function mgD(){let on=MEN&&go&&!RX&&!NX&&!PM&&ct<0,t=performance.now()/1e3,n=0,d,o,c,R;
+function mgD(){let on=MEN&&go&&!RX&&!NX&&!SX&&!PM&&ct<0,t=performance.now()/1e3,n=0,d,o,c,R;
   if(!on)mgS=[];
   else if(t-mgT>.3){mgT=t;let C=[],rg=20*z+.05,m={},L;        // toutes les 0,3 s : la structure marquée la plus proche de chaque fiche, à portée du vaisseau
     for(L of ORG?[OC]:reg>1?[NU,DN,dyc,LMC,MGP]:reg?[CY,dyc,SYX,MGP]:[OX,SYI,MGP.slice(-1)])for(o of L){if(!MG[o.i])continue;

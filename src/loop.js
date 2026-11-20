@@ -5,7 +5,7 @@ function vis(h){if(!h.n||h.A<=0)return 0;let m=h.m,d=sb(m?[m[12],m[13],m[14]]:h.
   let g=L.rg,q=ds(p,Nc);if(L.io&&(L.io>0)!=(ORG&&ORG.i=='nol')||L.tx&&TXH||!L.ex&&!h.ex&&!reg&&ct<1.5&&!NX||g==1&&reg>1&&q<Rn-.35||g==2&&reg<2&&q>Rn+.3||g==3&&(reg>1||q<Rn+.25))return 0;if(m)return 1;if(s>ev(L)||s>FAR||s>4.5*FR()||L.nl&&s<.85*ev(L.nl))return 0;
   return!(l>h.r&&acos(cl(dt(d,vf)/l,-1,1))-asin(h.r/l)>HF)}
 function dr(h,i,a,cf){let L=h.L,m=h.m,d=h.d;if(m)MM.set(m);else MM.fill(0),MM[0]=MM[5]=MM[10]=MM[15]=1;MM[12]=d[0];MM[13]=d[1];MM[14]=d[2];
-  gl.uniformMatrix4fv(U.M,false,MM);gl.uniform1f(U.T,L.m.t);gl.uniform1f(U.G,L.G);gl.uniform1f(U.A,h.A);gl.uniform1f(U.B,RX&&!L.rx?.7:NX&&L.nxd?NX.dm:L.dim&&TG.on?.3:1);
+  gl.uniformMatrix4fv(U.M,false,MM);gl.uniform1f(U.T,L.m.t);gl.uniform1f(U.G,L.G);gl.uniform1f(U.A,h.A);gl.uniform1f(U.B,SX&&!L.sx?.22:RX&&!L.rx?.7:NX&&L.nxd?NX.dm:L.dim&&TG.on?.3:1);
   let fc=RX&&ORG&&L.sh;!fc&&(L.m.t||L.al&&!cf||ORG)?gl.disable(2884):gl.enable(2884);gl.cullFace(fc||cf==1?1028:1029);gl.bindVertexArray(h.v);gl.drawArraysInstanced(4,0,L.m.n,h.n)}
 let TXH=0;
 function draw(){TXH=reg&&(reg>1||shF(p)[1]<-2.5);let W=cv.clientWidth*Q|0,H=cv.clientHeight*Q|0,n=z*.25,fa=FAR=z*6e3,A=(fa+n)/(n-fa),B=2*fa*n/(n-fa),tl=[],L,h,a,c=vesC();
@@ -21,8 +21,8 @@ function draw(){TXH=reg&&(reg>1||shF(p)[1]<-2.5);let W=cv.clientWidth*Q|0,H=cv.c
   gl.disable(3042);gl.depthMask(true);
   for(L of LY)for(h of L.ch)vis(h)&&(L.al?L.two?(tl.push([h,h.k,1]),h.k>2*h.r&&tl.push([h,h.k-2*h.r,2])):tl.push([h,h.k,0]):dr(h));
   gl.enable(3042);gl.blendFunc(770,771);gl.depthMask(false);tl.sort((a,b)=>b[1]-a[1]).forEach(e=>dr(e[0],0,0,e[2]));gl.depthMask(true)}
-function cam(d){let k=min(1,d*8);cf=nm(lp(cf,f,k));cu=nm(lp(cu,u,k));vr=nm(cr(cf,cu));let w=cr(vr,cf),r=cr(f,u);vf=nm(ma(cf,w,NX?0:-.2));vu=cr(vr,vf);
-  E=ad(ma(p,cf,-3.4*z*(1+.3*BO)),ml(w,NX?0:1.05*z));       // influx nerveux : caméra à la hauteur du sujet, sans plongée
+function cam(d){let k=min(1,d*8);cf=nm(lp(cf,f,k));cu=nm(lp(cu,u,k));vr=nm(cr(cf,cu));let w=cr(vr,cf),r=cr(f,u);vf=nm(ma(cf,w,NX||SX?0:-.2));vu=cr(vr,vf);
+  E=ad(ma(p,cf,-3.4*z*(1+.3*BO)),ml(w,NX||SX?0:1.05*z));       // influx nerveux : caméra à la hauteur du sujet, sans plongée
   SM.splice(0,16,-r[0]*z,-r[1]*z,-r[2]*z,0,u[0]*z,u[1]*z,u[2]*z,0,f[0]*z,f[1]*z,f[2]*z,0,p[0],p[1],p[2],1)}
 function ctl(d){let o=(...a)=>a.some(k=>keys[k])|0,jx=cl(o('ArrowRight','KeyD')-o('ArrowLeft','KeyA')+tjx,-1,1),jy=cl(o('ArrowUp','KeyW')-o('ArrowDown','KeyS')+tjy,-1,1),bo=o('ControlLeft','ControlRight','KeyF')|tbo,      // turbo : Ctrl, F ou le bouton ⚡ (pousse aussi vers l'avant)
   th=cl(o('Space')-o('ShiftLeft','ShiftRight','KeyX')+tth+bo,-1,1),zm=cl(o('KeyE','Equal','NumpadAdd')-o('KeyQ','Minus','NumpadSubtract')+tzm,-1,1);
@@ -69,16 +69,16 @@ function hud(d){
   q=q||lqS();q!=hQ&&($('sq').innerHTML=hQ=q)}
 function tick(t){if(gen!=GEN)return;let d=min(.05,(t-last)/1e3)||0;last=t;
   aT+=d;if(++aN>40)Q=aT>1.3&&Q>.7?Q*.8:aT<.75&&Q<DPR?min(DPR,Q*1.15):Q,aT=aN=0;       // résolution adaptative
-  if(go&&!NV)AP?apS(d):PM?pmS(d):RX?rxS(d):NX?nxS(d):ct<0?ctl(d):cine(d);nvT(d);
-  sim(d,ln(E)<GR+1.1,ds(E,PS)<4);PM&&pmD();oT();nolT();lamT();vesi(d);bcn();flm();RX&&rxD();NX&&nxD();synT();mgD();[dA.t,dA.j,dA.s,dB,dC.t,dC.j,dC.s,dD,dV,dE,dG,dF,dQa,dQb,dQe,dLm,dLb].forEach(up);
+  if(go&&!NV)AP?apS(d):PM?pmS(d):RX?rxS(d):NX?nxS(d):SX?sxS(d):ct<0?ctl(d):cine(d);nvT(d);
+  sim(d,ln(E)<GR+1.1,ds(E,PS)<4);PM&&pmD();oT();nolT();lamT();vesi(d);bcn();flm();RX&&rxD();NX&&nxD();SX&&sxD();synT();mgD();[dA.t,dA.j,dA.s,dB,dC.t,dC.j,dC.s,dD,dV,dE,dG,dF,dQa,dQb,dQe,dLm,dLb].forEach(up);
   cam(d);FG=lp(FG,reg?TGT[reg]:LU?FB:TGT[0],min(1,d*2));draw();hud(d);requestAnimationFrame(tick)}
 onkeydown=e=>{if(e.target.id=='q')return;keys[e.code]=1;/Arrow|Space/.test(e.code)&&e.preventDefault()};onkeyup=e=>{keys[e.code]=0};
 const PT=new Map;let pd0=0;        // mode polymérase : glisser = tourner, pincer = zoomer
-cv.onpointerdown=e=>{if(PM||RX||NX)cv.setPointerCapture(e.pointerId),PT.set(e.pointerId,[e.clientX,e.clientY]),pd0=0;else go&&!NV&&pick(e)};
-cv.onpointermove=e=>{let a=PT.get(e.pointerId),x=e.clientX,y=e.clientY;if(!a||!(PM||RX||NX))return;PT.set(e.pointerId,[x,y]);
-  if(PT.size>1){let[q,r]=[...PT.values()],h=hypot(q[0]-r[0],q[1]-r[1])||1;pd0&&(z=cl(z*pd0/h,RX||NX?.0009:.003,(RX||NX).zx||.2),RX&&(RX.zt=0),NX&&(NX.zt=0));pd0=h}else{let M=PM||RX||NX;M.yaw+=(x-a[0])*.006;M.pit=cl(M.pit-(y-a[1])*.006,-1.2,1.2)}};
+cv.onpointerdown=e=>{if(PM||RX||NX||SX)cv.setPointerCapture(e.pointerId),PT.set(e.pointerId,[e.clientX,e.clientY]),pd0=0;else go&&!NV&&pick(e)};
+cv.onpointermove=e=>{let a=PT.get(e.pointerId),x=e.clientX,y=e.clientY;if(!a||!(PM||RX||NX||SX))return;PT.set(e.pointerId,[x,y]);
+  if(PT.size>1){let[q,r]=[...PT.values()],h=hypot(q[0]-r[0],q[1]-r[1])||1;pd0&&(z=cl(z*pd0/h,RX||NX?.0009:SX?.0015:.003,(RX||NX||SX).zx||.2),RX&&(RX.zt=0),NX&&(NX.zt=0),SX&&(SX.zt=0));pd0=h}else{let M=PM||RX||NX||SX;M.yaw+=(x-a[0])*.006;M.pit=cl(M.pit-(y-a[1])*.006,-1.2,1.2)}};
 cv.onpointerup=cv.onpointercancel=e=>{PT.delete(e.pointerId);pd0=0};
-onwheel=e=>{ct<0&&(reg?(z=cl(z*2**(-e.deltaY*.002),RX||NX?.0009:.002,(RX||NX).zx||.4),RX&&(RX.zt=0),NX&&(NX.zt=0)):ZM=cl(ZM*2**(-e.deltaY*.002),.35,4))};
+onwheel=e=>{ct<0&&(reg?(z=cl(z*2**(-e.deltaY*.002),RX||NX?.0009:SX?.0015:.002,(RX||NX||SX).zx||.4),RX&&(RX.zt=0),NX&&(NX.zt=0),SX&&(SX.zt=0)):ZM=cl(ZM*2**(-e.deltaY*.002),.35,4))};
 {let J=$('joy'),n=J.firstChild;
  J.onpointerdown=J.onpointermove=e=>{if(e.type[7]=='d')J.setPointerCapture(e.pointerId);else if(!J.hasPointerCapture(e.pointerId))return;
    let b=J.getBoundingClientRect(),x=(e.clientX-b.left)/b.width*2-1,y=(e.clientY-b.top)/b.height*2-1,l=max(1,hypot(x,y));tjx=x/l;tjy=-y/l;n.style.transform=`translate(${tjx*34}px,${-tjy*34}px)`};

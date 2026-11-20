@@ -1,7 +1,7 @@
 // ================= synapses détaillées du neurone =================
 // Deux synapses excitatrices sont construites molécule par molécule : SY[0], reçue par une épine de notre dendrite apicale, et SY[1], que notre bouton forme sur l'épine d'un voisin.
 // La membrane postsynaptique est une calotte concentrique au bouton : la fente mesure 20 nm partout (modes G 4 à 7 du shader).
-let NX=0,nxl=0;        // mode « influx nerveux » (pi.js)
+let NX=0,nxl=0,SX=0;        // mode « influx nerveux » (pi.js)
 const SY=[],SYX=[],SYI=[],SB=new Float32Array(16),AIS={nav:[],kv:[],nka:[],k2p:[]},
 Lsm=[4,5,6,7].map(G=>Ly(M4,60,0,{al:1,two:1,ex:1,rg:1,G})),Lsa=Ly(M3,60,3,{al:1,ex:1,rg:1}),Ls0=Ly(M1,1.6,.7,{ex:1,rg:1}),Ls1=Ly(M2,5,.9,{ex:1,rg:1}),Ls2=Ly(M2,1.6,.7,{ex:1,rg:1}),Lsc=Ly(MD,1.6,.7,{ex:1,rg:1}),
 Lsd=Ly(M2,1e9,0,{ex:1,rg:1}),Lsdc=Ly(MD,1e9,0,{ex:1,rg:1});
