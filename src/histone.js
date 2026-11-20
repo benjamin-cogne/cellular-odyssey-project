@@ -12,7 +12,7 @@ Object.assign(SXN,{SETD1A:'SET1A (COMPASS)',EP300:'p300 (EP300)',KAT8:'MOF (KAT8
  KDM6A:'UTX (KDM6A)',SMARCA4:'BRG1 (SMARCA4)',MECP2:'MeCP2',TAF3:'TAF3 (TFIID)',CBX2:'CBX2 (PRC1)',H1:'H1, histone de liaison'});
 const HXH=[0x6f8fd8,0x6fbf8a,0xd8c878,0xd88a8a],      // H3, H4, H2A, H2B : les teintes de la fiche « Nucléosome », adoucies pour laisser ressortir les marques
 HXO=[[0,[-.8,1.3,.6]],[0,[.8,1.3,-.6]],[1,[-1.6,0,1.1]],[1,[1.6,0,-1.1]],[2,[.7,-1.2,1.4]],[3,[-.7,-1.6,1.5]],[2,[-.7,-1.2,-1.4]],[3,[.7,-1.6,-1.5]]],      // l'octamère : huit domaines globulaires
-hxk=k=>kd(kc(MKC[k]),/k27me3|h2aub/.test(k)?1.05:1.7),      // couleur d'une marque, vive (les gris de Polycomb restent gris)
+hxk=k=>kd(kc(MKC[k]),/k27me3|h2aub/.test(k)?1.05:/k9me3|k20me3/.test(k)?1.25:1.7),      // couleur d'une marque, vive (les gris de Polycomb restent gris)
 // point de l'axe de l'ADN à la position i (en pb, 0 à 146 sur le nucléosome ; au-delà : ADN de liaison, droit) et son repère local
 hxC=i=>{let R=4.18,z=2.39/TAU,j=cl(i,0,146),th=(j-73)*1.65*TAU/146,ph=PI/2+th,N=[cos(ph),sin(ph),0],T=nm([-R*sin(ph),R*cos(ph),-z]);return{C:ma([R*cos(ph),R*sin(ph),-z*th],T,(i-j)*.34),N,B:cr(T,N)}},
 hxS=(i,sh,o)=>{let{C,N,B}=hxC(i),a=(i-sh)*TAU/10.2+o;return ad(C,ad(ml(N,cos(a)),ml(B,sin(a))))},      // un nucléotide : brin o = 0 ou 2,4 rad (petit sillon) ; sh : glissement de l'ADN, en pb

@@ -5,7 +5,7 @@ The game is one HTML page. `build.js` produces it by pasting JavaScript into `sr
 ```
 engine.js
 function boot(CT, GX) {      // CT: 0 erythroblast, 1 hepatocyte, 2 neuron; GX: custom gene or undefined
-  cells.js … mendel.js       // 17 files, in the order listed in build.js
+  cells.js … mendel.js       // 18 files, in the order listed in build.js
 }
 start.js
 ```
@@ -34,6 +34,7 @@ The code is deliberately compact: short helper names, long lines, comments in Fr
 | `impulse.js` | Nerve impulse mode: the 12 steps, their animations, the oscilloscope. |
 | `snrnp.js` | Engine of the guided nanometre-scale views (`SXQ` registry, camera, panel, labels) and the snRNP assembly view in the Cajal body: RNA builder (helices, loops, single strands), protein table, eight steps. |
 | `histone.js` | Histone-code view: the nucleosome (DNA superhelix, octamer, tails residue by residue), marks, writers, readers and erasers, fifteen steps. |
+| `chromstate.js` | Chromatin states along the gene: per-cell state tables (`KMS`), mark beads on the locus nucleosomes and along the DNA (`kmD`), state line of the sequence panel (`kmQ`), "◆ Chromatin" button. |
 | `mendel-data.js` | Generated from `tools/mendel.tsv` by `tools/mk-mendel.js`: `MG` (card key → gene, disease, inheritance, OMIM, PMID), `MGC` (per-cell overrides) and `MGR` (pathway → step). Do not edit by hand. |
 | `mendel.js` | Mendelian genetics focus: gene labels, card lines, "🧬 Genetics" panel, disorders shown on reaction steps. |
 | `start.js` | Cell selection, saved progress, language switch and static page text. |

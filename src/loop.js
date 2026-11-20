@@ -65,7 +65,7 @@ function hud(d){
     else if(sqrt(b)<6*z+.012){i=j-UP;let F=ft(i),o,c,va;s='';
       for(o=-12;o<13;o++)c=SQ(i+o),s+=(CU[i+o]?'<i class="N">‖</i>':'')+'<i class="'+(c||'N')+(o?'':' m')+'">'+(c||'·')+'</i>';
       va=F&&[0,-1,1,-2,2].map(o=>VAR[i+o]||NT[i+o]).find(x=>x);
-      q='<b>'+G.sy+' · '+fnm(i)+(F==4&&G.ir?' ('+fkb(G.I[XN[i]].n)+')':'')+(F?' · '+hg(i):'')+(F==3?cod(i):'')+'</b><br>5′ '+s+' 3′'+(va?'<br><u>'+va+'</u>':'')}}
+      q='<b>'+G.sy+' · '+fnm(i)+(F==4&&G.ir?' ('+fkb(G.I[XN[i]].n)+')':'')+(F?' · '+hg(i):'')+(F==3?cod(i):'')+'</b><br>5′ '+s+' 3′'+(va?'<br><u>'+va+'</u>':'')+kmQ(i)}}
   q=q||lqS();q!=hQ&&($('sq').innerHTML=hQ=q)}
 function tick(t){if(gen!=GEN)return;let d=min(.05,(t-last)/1e3)||0;last=t;
   aT+=d;if(++aN>40)Q=aT>1.3&&Q>.7?Q*.8:aT<.75&&Q<DPR?min(DPR,Q*1.15):Q,aT=aN=0;       // résolution adaptative
