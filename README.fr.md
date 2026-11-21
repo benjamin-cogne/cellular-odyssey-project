@@ -83,7 +83,7 @@ Les fragments très courts (unités, mots isolés en minuscules) échappent à l
 
 ## Publication
 
-Le workflow `.github/workflows/pages.yml` construit le jeu et le déploie sur GitHub Pages à chaque push sur `main`. À activer une fois dans les réglages du dépôt : **Settings → Pages → Build and deployment → Source : GitHub Actions**.
+Le workflow `.github/workflows/pages.yml` construit le jeu et le déploie sur GitHub Pages à chaque push sur `main` ou `dev` : la branche `main` est servie à la racine du site, la branche `dev` dans `/dev/` (aperçu du travail en cours). À activer une fois dans les réglages du dépôt : **Settings → Pages → Build and deployment → Source : GitHub Actions**.
 
 ## Crédits
 

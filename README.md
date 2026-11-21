@@ -83,7 +83,7 @@ Very short fragments (units, single lowercase words) are not picked up by the ex
 
 ## Publishing
 
-The workflow in `.github/workflows/pages.yml` builds the game and deploys it to GitHub Pages on every push to `main`. Enable it once in the repository settings: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+The workflow in `.github/workflows/pages.yml` builds the game and deploys it to GitHub Pages on every push to `main` or `dev`: the `main` branch is served at the root of the site, the `dev` branch under `/dev/` (a preview of work in progress). Enable it once in the repository settings: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
 ## Credits
 
