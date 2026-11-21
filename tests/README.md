@@ -40,6 +40,9 @@ Scripts that use `ev(...)` need `dist/dev.html`; those marked *minified* drive `
 | `t121.js` | snRNP assembly in the Cajal body: button, the eight steps and the summary, exit. Argument: language. |
 | `t122.js` | Histone code: data integrity, the fifteen steps and the summary, contents, exit. Arguments: language, `mg` for the Mendelian focus. |
 | `t123.js` | Chromatin states along the gene: states of the three cells, beads, sequence-panel line, switch to the alternative state. Argument: language. |
+| `t124.js` | Chromatin actors: cards, atlas and Mendelian entries of the fourteen new objects, their counts, and picking from eight sides. Arguments: language, cells. |
+| `t125.js` | "Decode this chromatin" quiz: data integrity, access from the histone-code view, ten questions with right and wrong answers, score, replay. Arguments: language, level (`hq` or `hQ`). |
+| `t126.js` | Epigenetic reaction pathways (`dme`, `epi`, `hpu`): heavy-atom balance of each step, expert mode step by step, Mendelian lines. Argument: language. |
 | `t120.js` | Mendelian genetics focus: data integrity, card lines, labels, panel, reaction steps. Arguments: language, cells (e.g. `012`). |
 
-`t20`, `t90`, `t112`, `t113`, `t120`, `t121`, `t122` and `t123` were run from this layout; `t22`, `t94`, `t96`, `t98` and `t111` were run on the same sources before the files were reorganised. The older scripts have not been rerun since earlier versions of the game.
+`t20`, `t90`, `t112`, `t113`, `t120`, `t121`, `t122`, `t123`, `t124`, `t125` and `t126` were run from this layout; `t22`, `t94`, `t96`, `t98` and `t111` were run on the same sources before the files were reorganised. The older scripts have not been rerun since earlier versions of the game.

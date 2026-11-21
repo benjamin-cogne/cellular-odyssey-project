@@ -139,7 +139,8 @@ SXS=[
    sxD2('SART1',[1,12.6,0],sxA(a,.42),[-.3,1,0]);sxD2('USP39',[-4.7,11.4,0],sxA(a,.48),[-.6,1,0]);sxD2('SNRNP27',[-8.6,8.4,0],sxA(a,.54),[-1,.6,0])}}];
 let SXK=[],sxHi=0,hxHi=0;      // blocs de décor masqués pendant le mode ; conseil déjà affiché
 // ---- moteur commun aux vues guidées à l'échelle du nanomètre. Une vue (SXQ[clé]) fournit : S étapes {T, z, c, leg, d(a), k, h}, T textes [titre, lieu, texte],
-// ti titre, in texte d'accueil, su texte du bilan, sc et sz cadrage du bilan, sd dessin du bilan, o() origine de la scène, solo : 1 pour masquer tout le décor ----
+// ti titre, in texte d'accueil, su texte du bilan, sc et sz cadrage du bilan, sd dessin du bilan, o() origine de la scène, solo : 1 pour masquer tout le décor ;
+// facultatifs : go boutons de départ, xb boutons ajoutés à l'accueil et au bilan, pn(M,S) panneau propre à la vue (quiz), cl(M,k) réponse à un bouton « Sh » ----
 const SXQ={sn:{S:SXS,T:SXT,ti:'Assemblage des snRNP',
  in:'Huit étapes à l\'échelle du nanomètre : un snRNP U5 revient du cytoplasme, deux de ses nucléotides sont retouchés par un scaRNP, puis U4, U6 et U5 sont réunis en tri-snRNP, la pièce que le spliceosome attend. Les ARN sont dessinés nucléotide par nucléotide, en teintes chaudes ; chaque protéine est une sphère de sa couleur, en teintes froides, d\'autant plus grosse que la protéine est lourde. Glissez pour tourner autour de la scène, molette ou pincement pour zoomer. Les repliements des ARN sont schématiques.',
  su:'En réunissant snRNP, scaRNP et facteurs d\'assemblage dans un petit volume, le corps de Cajal accélère chaque rencontre. Bilan : trois ARN (U4, U5, U6), deux anneaux Sm, un anneau LSm et une trentaine de protéines forment le tri-snRNP, qui apporte au spliceosome son cœur catalytique. Des variants de PRPF3, PRPF4, PRPF6, PRPF8, PRPF31 ou SNRNP200 causent des rétinites pigmentaires dominantes ; ceux de RNU4-2, le gène du snRNA U4, un trouble du neurodéveloppement.',
@@ -148,9 +149,9 @@ const SXQ={sn:{S:SXS,T:SXT,ti:'Assemblage des snRNP',
 sxLg=k=>k.pop?k:[SXR[k]?(k=='sca'?'scaRNA U85':'snRNA '+k):SXN[k]||k,kh(SXR[k]||SXP[k][1])];      // entrée de légende : clé d'un ARN ou d'une protéine, ou [nom, couleur]
 
 function sxN(k){let M=SX,Q=M.Q,n=Q.S.length;M.st=cl(M.st+k,0,n);$('pm').scrollTop=0;M.t=0;M.pz=0;M.ta=0;M.yaw=M.pit=0;let S=Q.S[M.st],T=Q.T[M.st],w=innerWidth<innerHeight?1.35:1;        // écran en hauteur : vue un peu plus large
-  if(!S){M.Ct=sxW([Q.sc[0],Q.sc[1],0]);M.zt=Q.sz*w;$('pmt').textContent=Q.ti+' — bilan';$('pmx').textContent=Q.su;
-    $('pmo').innerHTML=rxBtn('Rejouer','Sr')+rxBtn('Sommaire','Sm')+rxBtn('Terminer','Sq');return}
-  M.Ct=sxW([S.c[0],S.c[1],S.c[2]||0]);M.zt=S.z*w;
+  if(!S){M.Ct=sxW([Q.sc[0],Q.sc[1],0]);M.zt=Q.sz*w;if(Q.pn)return Q.pn(M);$('pmt').textContent=Q.ti+' — bilan';$('pmx').textContent=Q.su;
+    $('pmo').innerHTML=rxBtn('Rejouer','Sr')+rxBtn('Sommaire','Sm')+(Q.xb||'')+rxBtn('Terminer','Sq');return}
+  M.Ct=sxW([S.c[0],S.c[1],S.c[2]||0]);M.zt=S.z*w;if(Q.pn)return Q.pn(M,S);
   $('pmt').textContent=(M.st+1)+'/'+n+' · '+T[0];$('pmx').textContent=T[2];{let b=document.createElement('b');b.className='pw';b.textContent='◎ '+T[1]+' — ';$('pmx').prepend(b)}
   {let l=document.createElement('span');l.className='sxl';l.innerHTML=S.leg.map(sxLg).map(([t,c])=>'<span><i style="background:'+c+'"></i>'+esc(t)+'</span>').join('');$('pmx').append(l)}
   mgSx(M.q,S.k);
@@ -171,9 +172,9 @@ function sxD(){let M=SX,S=M.Q.S[M.st];nxl=0;dSx0.n=dSx1.n=0;dSx0.c=dSx1.c=M.O;
   for(let i=nxl;i<QL.length;i++)QL[i].style.display='none';up(dSx0);up(dSx1)}
 // écran d'accueil d'une vue (appelé par son bouton)
 function sxIn(q){if(!go||PM||RX||NX||SX||AP)return;let Q=SXQ[q];$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';$('pmt').textContent=Q.ti;$('pmx').textContent=Q.in;
-  $('pmo').innerHTML=rxBtn('Commencer','Sg'+q)+rxBtn('Fermer','Sx')}
+  $('pmo').innerHTML=(Q.go||rxBtn('Commencer','Sg'+q))+(Q.xb||'')+rxBtn('Fermer','Sx')}
 {const h0=$('pmo').onclick;$('pmo').onclick=e=>{let b=e.target.closest('button'),r=b&&b.dataset.r,M=SX;if(!r||r[0]!='S')return h0(e);
-  if(r=='Sx')return $('pm').style.display='none';if(r[1]=='g')return sxGo(r.slice(2));if(!M)return;
+  if(r=='Sx')return $('pm').style.display='none';if(r[1]=='g'||r[1]=='i'){M&&sxEnd();return(r[1]=='g'?sxGo:sxIn)(r.slice(2))}if(!M)return;if(r[1]=='h')return M.Q.cl(M,+r.slice(2));        // Sg : lancer une vue ; Si : son écran d'accueil ; Sh : réponse d'un quiz
   if(r=='Sq')return sxEnd();if(r=='Sr'){M.st=-1;return sxN(1)}if(r=='Sb')return sxN(-1);
   if(r=='Sm'){M.pz=1;$('pmt').textContent=M.Q.ti+' — sommaire';$('pmx').textContent='';$('pmo').innerHTML=M.Q.T.map((T,i)=>rxBtn((i+1)+' · '+T[0],'Sj'+i)).join('')+rxBtn('Bilan','Sj'+M.Q.S.length);return}        // aller directement à une étape
   if(r[1]=='j'){M.st=+r.slice(2)-1;return sxN(1)}

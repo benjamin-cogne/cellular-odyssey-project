@@ -96,6 +96,42 @@ g0	CHD7	214800	AD	Syndrome CHARGE	CHARGE syndrome	15300250	Vissers LE, Nat Genet
 nsm	H3-3A	619720	AD	Syndrome de Bryant-Li-Bhoj 1	Bryant-Li-Bhoj neurodevelopmental syndrome 1	33268356	Bryant L, Sci Adv 2020
 nsm	H4C3	619758	AD	Syndrome de Tessadori-Bicknell-van Haaften 1	Tessadori-Bicknell-van Haaften neurodevelopmental syndrome 1	28920961	Tessadori F, Nat Genet 2017
 nsm	H1-4	617537	AD	Syndrome de Rahman	Rahman syndrome	28475857	Tatton-Brown K, Am J Hum Genet 2017
+h1	H1-4	617537	AD	Syndrome de Rahman	Rahman syndrome	28475857	Tatton-Brown K, Am J Hum Genet 2017
+h2az	SRCAP	136140	AD	Syndrome de Floating-Harbor	Floating-Harbor syndrome	22265015	Hood RL, Am J Hum Genet 2012
+h33	H3-3A	619720	AD	Syndrome de Bryant-Li-Bhoj 1	Bryant-Li-Bhoj neurodevelopmental syndrome 1	33268356	Bryant L, Sci Adv 2020
+h33	H3-3B	619721	AD	Syndrome de Bryant-Li-Bhoj 2	Bryant-Li-Bhoj neurodevelopmental syndrome 2	33268356	Bryant L, Sci Adv 2020
+h33	ATRX	301040	XL	Syndrome ATR-X (α-thalassémie avec déficience intellectuelle liée à l'X)	ATR-X syndrome (alpha-thalassaemia X-linked intellectual disability)	7697714	Gibbons RJ, Cell 1995
+baf	ARID1B	135900	AD	Syndrome de Coffin-Siris 1	Coffin-Siris syndrome 1	30349098	van der Sluijs PJ, Genet Med 2019
+baf	ARID1A	614607	AD	Syndrome de Coffin-Siris 2	Coffin-Siris syndrome 2	22426308	Tsurusaki Y, Nat Genet 2012
+baf	SMARCB1	614608	AD	Syndrome de Coffin-Siris 3	Coffin-Siris syndrome 3	22426308	Tsurusaki Y, Nat Genet 2012
+baf	SMARCA4	614609	AD	Syndrome de Coffin-Siris 4	Coffin-Siris syndrome 4	22426308	Tsurusaki Y, Nat Genet 2012
+baf	SMARCA2	601358	AD	Syndrome de Nicolaides-Baraitser	Nicolaides-Baraitser syndrome	22366787	Van Houdt JK, Nat Genet 2012
+coh	NIPBL	122470	AD	Syndrome de Cornelia de Lange 1	Cornelia de Lange syndrome 1	17661813	Selicorni A, Clin Genet 2007
+coh	SMC1A	300590	XL	Syndrome de Cornelia de Lange 2	Cornelia de Lange syndrome 2	16604071	Musio A, Nat Genet 2006
+coh	SMC3	610759	AD	Syndrome de Cornelia de Lange 3	Cornelia de Lange syndrome 3	17273969	Deardorff MA, Am J Hum Genet 2007
+coh	RAD21	614701	AD	Syndrome de Cornelia de Lange 4	Cornelia de Lange syndrome 4	22633399	Deardorff MA, Am J Hum Genet 2012
+coh	STAG2	301022	XL	Syndrome de Mullegama-Klein-Martinez	Mullegama-Klein-Martinez syndrome	28296084	Mullegama SV, Am J Med Genet A 2017
+ctcf	CTCF	615502	AD	Déficience intellectuelle autosomique dominante 21	Intellectual developmental disorder, autosomal dominant 21	23746550	Gregor A, Am J Hum Genet 2013
+hc	DNMT3B	242860	AR	Syndrome ICF 1 (déficit immunitaire, instabilité centromérique, dysmorphie faciale)	ICF syndrome 1 (immunodeficiency, centromeric instability, facial anomalies)	10647011	Xu GL, Nature 1999
+hc	ZBTB24	614069	AR	Syndrome ICF 2	ICF syndrome 2	21596365	de Greef JC, Am J Hum Genet 2011
+hc	CDCA7	616910	AR	Syndrome ICF 3	ICF syndrome 3	26216346	Thijssen PE, Nat Commun 2015
+hc	HELLS	616911	AR	Syndrome ICF 4	ICF syndrome 4	26216346	Thijssen PE, Nat Commun 2015
+hp1	CBX1	0	AD	Trouble du neurodéveloppement lié à CBX1	CBX1-related neurodevelopmental disorder	37087635	Kuroda Y, Genet Med 2023
+cenpa	KNL1	604321	AR	Microcéphalie primaire autosomique récessive 4	Primary microcephaly 4, autosomal recessive	22983954	Genin A, Hum Mol Genet 2012
+cenpa	CENPF	243605	AR	Syndrome de Strømme	Stromme syndrome	25564561	Waters AM, J Med Genet 2015
+prc1	RNF2	619460	AD	Syndrome de Luo-Schoch-Yamamoto	Luo-Schoch-Yamamoto syndrome	33864376	Luo X, Hum Mol Genet 2021
+prc1	PCGF2	618371	AD	Syndrome de Turnpenny-Fry	Turnpenny-Fry syndrome	30343942	Turnpenny PD, Am J Hum Genet 2018
+prc1	BCOR	300166	XL	Microphtalmie syndromique 2 (syndrome oculo-facio-cardio-dentaire)	Syndromic microphthalmia 2 (oculofaciocardiodental syndrome)	15004558	Ng D, Nat Genet 2004
+prc1	AUTS2	615834	AD	Déficience intellectuelle autosomique dominante 26	Intellectual developmental disorder, autosomal dominant 26	23332918	Beunders G, Am J Hum Genet 2013
+prc2	EZH2	277590	AD	Syndrome de Weaver	Weaver syndrome	22190405	Tatton-Brown K, Oncotarget 2011
+prc2	EED	617561	AD	Syndrome de Cohen-Gibson	Cohen-Gibson syndrome	25787343	Cohen AS, J Hum Genet 2015
+prc2	SUZ12	618786	AD	Syndrome d'Imagawa-Matsumoto	Imagawa-Matsumoto syndrome	28229514	Imagawa E, Hum Mutat 2017
+pcb	EZH2	277590	AD	Syndrome de Weaver	Weaver syndrome	22190405	Tatton-Brown K, Oncotarget 2011
+pcb	EED	617561	AD	Syndrome de Cohen-Gibson	Cohen-Gibson syndrome	25787343	Cohen AS, J Hum Genet 2015
+pcb	SUZ12	618786	AD	Syndrome d'Imagawa-Matsumoto	Imagawa-Matsumoto syndrome	28229514	Imagawa E, Hum Mutat 2017
+impm	CDKN1C	130650	AD	Syndrome de Beckwith-Wiedemann (allèle maternel)	Beckwith-Wiedemann syndrome (maternal allele)	8841187	Hatada I, Nat Genet 1996
+impm	CDKN1C	614732	AD	Syndrome IMAGe (allèle maternel)	IMAGe syndrome (maternal allele)	22634751	Arboleda VA, Nat Genet 2012
+impp	IGF2	616489	AD	Retard de croissance sévère avec faciès particulier (allèle paternel)	Severe growth restriction with distinctive facies (paternal allele)	26154720	Begemann M, N Engl J Med 2015
 dna	XPA	278700	AR	Xeroderma pigmentosum, groupe A	Xeroderma pigmentosum, group A	2234061	Tanaka K, Nature 1990
 dna	ATM	208900	AR	Ataxie-télangiectasie	Ataxia-telangiectasia	7792600	Savitsky K, Science 1995
 dna	BLM	210900	AR	Syndrome de Bloom	Bloom syndrome	7585968	Ellis NA, Cell 1995
@@ -434,17 +470,32 @@ rx:nak:0	=nka
 rx:nak:1	=nka
 rx:cat:0	CAT	614097	AR	Acatalasémie	Acatalasaemia	24025477	Góth L, Mutat Res 2013
 rx:pol:0	=pol
-rx:epi:0	DNMT1	614116	AD	Neuropathie héréditaire sensitive 1E	Hereditary sensory neuropathy type IE	23521649	Yuan J, J Peripher Nerv Syst 2013
-rx:epi:0	DNMT3A	615879	AD	Syndrome de Tatton-Brown-Rahman	Tatton-Brown-Rahman syndrome	24614070	Tatton-Brown K, Nat Genet 2014
-rx:epi:0	DNMT3B	242860	AR	Syndrome ICF 1 (déficit immunitaire, instabilité centromérique, dysmorphie faciale)	ICF syndrome 1 (immunodeficiency, centromeric instability, facial anomalies)	10647011	Xu GL, Nature 1999
-rx:epi:1	TET3	618798	AD	Syndrome de Beck-Fahrner	Beck-Fahrner syndrome	31928709	Beck DB, Am J Hum Genet 2020
-rx:epi:2	CREBBP	180849	AD	Syndrome de Rubinstein-Taybi 1	Rubinstein-Taybi syndrome 1	10699051	Petrij F, J Med Genet 2000
-rx:epi:2	EP300	613684	AD	Syndrome de Rubinstein-Taybi 2	Rubinstein-Taybi syndrome 2	24476420	Negri G, Clin Genet 2015
-rx:epi:3	HDAC8	300882	XL	Syndrome de Cornelia de Lange 5	Cornelia de Lange syndrome 5	24403048	Kaiser FJ, Hum Mol Genet 2014
-rx:epi:3	HDAC4	619797	AD	Trouble du neurodéveloppement avec hypotonie centrale et dysmorphie faciale	Neurodevelopmental disorder with central hypotonia and dysmorphic facies	33537682	Wakeling E, HGG Adv 2021
-rx:epi:4	KMT2D	147920	AD	Syndrome de Kabuki 1	Kabuki syndrome 1	20711175	Ng SB, Nat Genet 2010
-rx:epi:4	NSD1	117550	AD	Syndrome de Sotos	Sotos syndrome	15942875	Tatton-Brown K, Am J Hum Genet 2005
-rx:epi:4	EZH2	277590	AD	Syndrome de Weaver	Weaver syndrome	22190405	Tatton-Brown K, Oncotarget 2011
+rx:dme:0	DNMT1	614116	AD	Neuropathie héréditaire sensitive 1E	Hereditary sensory neuropathy type IE	23521649	Yuan J, J Peripher Nerv Syst 2013
+rx:dme:0	DNMT3A	615879	AD	Syndrome de Tatton-Brown-Rahman	Tatton-Brown-Rahman syndrome	24614070	Tatton-Brown K, Nat Genet 2014
+rx:dme:0	DNMT3B	242860	AR	Syndrome ICF 1 (déficit immunitaire, instabilité centromérique, dysmorphie faciale)	ICF syndrome 1 (immunodeficiency, centromeric instability, facial anomalies)	10647011	Xu GL, Nature 1999
+rx:dme:1	TET3	618798	AD	Syndrome de Beck-Fahrner	Beck-Fahrner syndrome	31928709	Beck DB, Am J Hum Genet 2020
+rx:dme:2	TET3	618798	AD	Syndrome de Beck-Fahrner	Beck-Fahrner syndrome	31928709	Beck DB, Am J Hum Genet 2020
+rx:dme:3	TET3	618798	AD	Syndrome de Beck-Fahrner	Beck-Fahrner syndrome	31928709	Beck DB, Am J Hum Genet 2020
+rx:dme:5	XRCC1	617633	AR	Ataxie spinocérébelleuse autosomique récessive 26	Spinocerebellar ataxia, autosomal recessive 26	28002403	Hoch NC, Nature 2017
+rx:epi:0	CREBBP	180849	AD	Syndrome de Rubinstein-Taybi 1	Rubinstein-Taybi syndrome 1	10699051	Petrij F, J Med Genet 2000
+rx:epi:0	EP300	613684	AD	Syndrome de Rubinstein-Taybi 2	Rubinstein-Taybi syndrome 2	24476420	Negri G, Clin Genet 2015
+rx:epi:1	HDAC8	300882	XL	Syndrome de Cornelia de Lange 5	Cornelia de Lange syndrome 5	24403048	Kaiser FJ, Hum Mol Genet 2014
+rx:epi:1	HDAC4	619797	AD	Trouble du neurodéveloppement avec hypotonie centrale et dysmorphie faciale	Neurodevelopmental disorder with central hypotonia and dysmorphic facies	33537682	Wakeling E, HGG Adv 2021
+rx:epi:2	KMT2D	147920	AD	Syndrome de Kabuki 1	Kabuki syndrome 1	20711175	Ng SB, Nat Genet 2010
+rx:epi:2	NSD1	117550	AD	Syndrome de Sotos	Sotos syndrome	15942875	Tatton-Brown K, Am J Hum Genet 2005
+rx:epi:2	EZH2	277590	AD	Syndrome de Weaver	Weaver syndrome	22190405	Tatton-Brown K, Oncotarget 2011
+rx:epi:3	KDM1A	616728	AD	Fente palatine, retard psychomoteur et traits faciaux particuliers	Cleft palate, psychomotor retardation and distinctive facial features	26656649	Chong JX, Genet Med 2016
+rx:epi:4	KDM5C	300534	XL	Déficience intellectuelle liée à l'X de type Claes-Jensen	Intellectual developmental disorder, X-linked, syndromic, Claes-Jensen type	15586325	Jensen LR, Am J Hum Genet 2005
+rx:epi:4	KDM6A	300867	XL	Syndrome de Kabuki 2	Kabuki syndrome 2	22197486	Lederer D, Am J Hum Genet 2012
+rx:epi:4	KDM6B	618505	AD	Trouble du neurodéveloppement avec traits épais et anomalies squelettiques distales	Neurodevelopmental disorder with coarse facies and mild distal skeletal abnormalities	31124279	Stolerman ES, Am J Med Genet A 2019
+rx:epi:4	PHF8	300263	XL	Déficience intellectuelle liée à l'X de type Siderius	Intellectual developmental disorder, X-linked, syndromic, Siderius type	16199551	Laumonnier F, J Med Genet 2005
+rx:hpu:0	ATM	208900	AR	Ataxie-télangiectasie	Ataxia-telangiectasia	7792600	Savitsky K, Science 1995
+rx:hpu:0	ATR	210600	AR	Syndrome de Seckel 1	Seckel syndrome 1	12640452	O'Driscoll M, Nat Genet 2003
+rx:hpu:2	RNF2	619460	AD	Syndrome de Luo-Schoch-Yamamoto	Luo-Schoch-Yamamoto syndrome	33864376	Luo X, Hum Mol Genet 2021
+rx:hpu:2	UBE2A	300860	XL	Déficience intellectuelle liée à l'X de type Nascimento	Intellectual developmental disorder, X-linked, syndromic, Nascimento type	16909393	Nascimento RM, Am J Hum Genet 2006
+rx:hpu:2	RNF168	611943	AR	Syndrome RIDDLE	RIDDLE syndrome	19203578	Stewart GS, Cell 2009
+rx:hpu:3	BAP1	619762	AD	Syndrome de Küry-Isidor	Küry-Isidor syndrome	35051358	Küry S, Am J Hum Genet 2022
+rx:hpu:3	MYSM1	618116	AR	Insuffisance médullaire 4	Bone marrow failure syndrome 4	24288411	Alsultan A, Blood 2013
 rx:rrn:0	=po1
 rx:rrn:2	=dkc
 rx:rrn:4	EXOSC3	614678	AR	Hypoplasie pontocérébelleuse de type 1B	Pontocerebellar hypoplasia type 1B	22544365	Wan J, Nat Genet 2012

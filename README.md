@@ -24,8 +24,10 @@ npm run build
 - **Nucleus.** Pores, lamina (A- and B-type lamins, LBR, emerin), nucleolus (FC / DFC / GC, Pol I transcription, pre-ribosome flux), speckles, Cajal bodies, PML bodies, paraspeckles.
 - **Genes, base by base.** The three built-in genes use the real hg38 sequence, with promoter signals, exons, introns and splice sites. An "I am RNA polymerase II" mode walks through initiation, capping, pausing, splicing, polyadenylation and termination.
 - **Any gene.** A search box loads another human gene through the UCSC Genome Browser API (Ensembl as fallback). This is the only network access in the game.
-- **19 chemical pathways at molecular scale**, shown where they happen: Krebs cycle, respiratory chain, β-oxidation, haem synthesis, urea cycle, N-glycosylation, glycolysis, translation, ubiquitination, Na⁺/K⁺ pump, RNA polymerisation, capping, epigenetic marks, rRNA modification and more. Each has a narrated level and an expert level with a quiz.
+- **21 chemical pathways at molecular scale**, shown where they happen: Krebs cycle, respiratory chain, β-oxidation, haem synthesis, urea cycle, N-glycosylation, glycolysis, translation, ubiquitination, Na⁺/K⁺ pump, RNA polymerisation, capping, the DNA methylation cycle (DNMT, three TET oxidations, TDG, base excision repair), histone acetylation and methylation (including the LSD1 and JmjC demethylases), histone phosphorylation and ubiquitination, rRNA modification and more. Each has a narrated level and an expert level with a quiz.
 - **Histone code.** Near the gene, a guided fifteen-step view shows a nucleosome at nanometre scale (147 bp of DNA, the histone octamer, the tails residue by residue) and one mark per step: H3K4me3, H3K4me1, H3K27ac, H4K16ac, H3K36me3, H2BK120ub1 with H3K79me2, H3K27me3, H2AK119ub1, H3K9me3, H3S10ph, γH2AX, DNA methylation, the bivalent promoter, remodellers and H2A.Z. Each mark comes with its writer, reader and eraser, and uses the colours of chromatin-state maps. With the Mendelian focus on, each step lists the disorders of its enzymes.
+- **Chromatin actors in the nucleus.** Clickable objects with their own cards: linker histone H1, the variants H2A.Z and H3.3, the BAF remodeller, a cohesin ring and two CTCF proteins at the foot of the enhancer–promoter loop; pericentromeric heterochromatin with HP1 and CENP-A at every centromere; Polycomb bodies (PRC1, PRC2) on the four HOX clusters; the imprinted H19/IGF2 locus, drawn differently on the maternal and paternal chromosome 11.
+- **"Decode this chromatin" quiz.** Reached from the histone-code view: ten nucleosomes carrying a few marks, four possible states each time, an explanation after every answer and a score. An expert level hides the names of the marks, which must then be read from their position, shape and colour.
 - **Chromatin states along the gene.** Coloured beads on the nucleosomes of the locus and along the gene's DNA show the expected marks: H3K4me3 and acetylation at the promoter, H3K4me1 and H3K27ac at enhancers, H3K79me2 then H3K36me3 in the gene body. A "◆ Chromatin" button switches each built-in gene to a documented alternative state: HBB in a non-erythroid cell (widespread H3K9 methylation), HAMP in iron deficiency (HDAC3-dependent loss of H3K9ac and H3K4me3), FOS in a resting neuron (poised promoter, enhancers with H3K4me1 only). The sequence panel names the state at the ship's position.
 - **snRNP assembly (Cajal body).** At a Cajal body, a guided eight-step view builds the U4/U6·U5 tri-snRNP at nanometre scale: return of a U5 core snRNP, 2′-O-methylation and pseudouridylation of U5 by the scaRNA U85, U5-specific proteins, U4 and U6 snRNPs, U4/U6 pairing with SART3, docking of U5. Each snRNA is drawn nucleotide by nucleotide in a warm colour; each of the 39 proteins is a labelled sphere of its own cool colour, sized by its mass.
 - **Mendelian genetics focus.** A checkbox on the start screen highlights every structure, protein and pathway step whose genes cause a Mendelian disorder: gene labels over nearby structures in the scenery, gene and disease lines on the cards, a "🧬 Genetics" panel listing inheritance, OMIM number and a PubMed reference, and the disorders of each enzyme in the reaction pathways. 373 genes; the full table is in [docs/MENDELIAN.md](docs/MENDELIAN.md).
@@ -45,7 +47,7 @@ This is a teaching aid, not a reference.
 
 | Path | Content |
 | --- | --- |
-| `src/` | Game sources: `shell.html` (page, CSS, static text) and 20 JavaScript files. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
+| `src/` | Game sources: `shell.html` (page, CSS, static text) and 22 JavaScript files. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
 | `src/seq/` | Genomic sequences of *HBB*, *HAMP* and *FOS* (hg38, gene plus upstream promoter). |
 | `build.js` | Concatenates the sources, applies the translation pass and minifies. |
 | `i18n/` | English translations and the tools that apply them. |
@@ -59,7 +61,7 @@ Developed and tested with Node.js 22.
 
 | Command | Result |
 | --- | --- |
-| `npm run build` | `dist/index.html`, the minified single file to publish (≈ 650 kB, ≈ 260 kB gzipped). |
+| `npm run build` | `dist/index.html`, the minified single file to publish (≈ 700 kB, ≈ 280 kB gzipped). |
 | `npm run dev` | `dist/dev.html`, not minified, with the test hook `window.__ev`. |
 | `npm run check-seq` | Checks reading frames, splice sites and promoter signals of the embedded sequences. |
 | `npm run mendel` | Regenerates `src/mendel-data.js`, `i18n/en/mendel.json` and `docs/MENDELIAN.md` from `tools/mendel.tsv`. Run it after editing the table, then build. |
