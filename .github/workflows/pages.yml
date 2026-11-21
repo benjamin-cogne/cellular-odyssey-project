@@ -1,10 +1,12 @@
-# Construit le jeu et le publie sur GitHub Pages à chaque push sur main.
+# Construit le jeu et le publie sur GitHub Pages : la branche main à la racine du site, la branche dev dans /dev/.
 # À activer une fois : Settings → Pages → Build and deployment → Source : « GitHub Actions ».
+# Le site est toujours déployé depuis main (l'environnement github-pages n'accepte par défaut que la branche par défaut) :
+# un push sur dev ne fait que relancer ce workflow sur main, qui reconstruit alors les deux branches.
 name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
   workflow_dispatch:
 
@@ -12,11 +14,23 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  # push sur dev : demande le déploiement à main
+  relay:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - run: gh workflow run pages.yml --ref main --repo "$GITHUB_REPOSITORY"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
   build:
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -24,6 +38,19 @@ jobs:
       - run: npm ci --omit=optional
       - run: npm run build
       - run: mkdir site && cp dist/index.html site/index.html
+      # la branche dev, construite à part et publiée dans /dev/
+      - uses: actions/checkout@v6
+        if: github.event_name != 'pull_request'
+        with:
+          ref: dev
+          path: _dev
+      - if: github.event_name != 'pull_request'
+        working-directory: _dev
+        run: |
+          npm ci --omit=optional
+          npm run build
+          mkdir -p ../site/dev
+          cp dist/index.html ../site/dev/index.html
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'
       - uses: actions/upload-pages-artifact@v4
@@ -32,7 +59,7 @@ jobs:
           path: site
 
   deploy:
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:
