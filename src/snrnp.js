@@ -4,7 +4,7 @@
 // de rayon proportionnel à la racine cubique de sa masse. Les structures secondaires sont schématiques : les longueurs sont exactes
 // (U4 141 nt, U5 116 nt, U6 107 nt : Mabin et al., RNA 2021), le nombre de paires de bases est approché, le scaRNA U85 est abrégé.
 // Unité de la scène : le nanomètre, dans un repère (X à droite, Y en haut, Z vers la caméra) posé dans le corps de Cajal au lancement.
-const Lsx0=Ly(M2,1e9,0,{sx:1}),Lsx1=Ly(MD,1e9,0,{sx:1}),dSx0=dy(Lsx0,2400,[0,0,0],1),dSx1=dy(Lsx1,2400,[0,0,0],1),
+const Lsx0=Ly(M2,1e9,0,{sx:1}),Lsx1=Ly(MD,1e9,0,{sx:1}),dSx0=dy(Lsx0,7000,[0,0,0],1),dSx1=dy(Lsx1,4000,[0,0,0],1),
 CBS=NU.filter(o=>o.i=='cb').map(o=>o.a),
 kc=h=>[(h>>16)/255,(h>>8&255)/255,(h&255)/255,1],kd=(c,k)=>[c[0]*k,c[1]*k,c[2]*k,1],kh=h=>'#'+('00000'+h.toString(16)).slice(-6),
 SXR={U5:0xf28c28,U4:0xf2c230,U6:0xee5a44,sca:0xefe6c8},      // ARN
@@ -148,7 +148,7 @@ const SXQ={sn:{S:SXS,T:SXT,ti:'Assemblage des snRNP',
  o:()=>{let C=CBS.reduce((a,b)=>ds(a,p)<ds(b,p)?a:b),O=ds(p,C)<.14?p.slice():ma(C,nm(sb(p,C)),.12);SXK=Lnb.ch.concat(Lnbc.ch).filter(h=>h.A>0&&ds(h.c,O)<h.r+.1);return O}}},        // dans le corps de Cajal ; ses billes voisines s'effacent
 sxLg=k=>k.pop?k:[SXR[k]?(k=='sca'?'scaRNA U85':'snRNA '+k):SXN[k]||k,kh(SXR[k]||SXP[k][1])];      // entrée de légende : clé d'un ARN ou d'une protéine, ou [nom, couleur]
 
-function sxN(k){let M=SX,Q=M.Q,n=Q.S.length;M.st=cl(M.st+k,0,n);$('pm').scrollTop=0;M.t=0;M.pz=0;M.ta=0;M.yaw=M.pit=0;let S=Q.S[M.st],T=Q.T[M.st],w=innerWidth<innerHeight?1.35:1;        // écran en hauteur : vue un peu plus large
+function sxN(k){let M=SX,Q=M.Q,n=Q.S.length;M.st=cl(M.st+k,0,n);$('pm').scrollTop=0;M.t=0;M.pz=0;M.ta=0;M.yaw=0;let S=Q.S[M.st],T=Q.T[M.st];M.pit=S&&S.pit||Q.pit||0;let w=innerWidth<innerHeight?1.35:1;        // écran en hauteur : vue un peu plus large
   if(!S){M.Ct=sxW([Q.sc[0],Q.sc[1],0]);M.zt=Q.sz*w;if(Q.pn)return Q.pn(M);$('pmt').textContent=Q.ti+' — bilan';$('pmx').textContent=Q.su;
     $('pmo').innerHTML=rxBtn('Rejouer','Sr')+rxBtn('Sommaire','Sm')+(Q.xb||'')+rxBtn('Terminer','Sq');return}
   M.Ct=sxW([S.c[0],S.c[1],S.c[2]||0]);M.zt=S.z*w;if(Q.pn)return Q.pn(M,S);
@@ -157,7 +157,7 @@ function sxN(k){let M=SX,Q=M.Q,n=Q.S.length;M.st=cl(M.st+k,0,n);$('pm').scrollTo
   mgSx(M.q,S.k);
   $('pmo').innerHTML=rxBtn('⏸ Pause','Sz')+(M.st?rxBtn('◂ Précédent','Sb'):'')+rxBtn('Suivant ▸','Sn')+rxBtn('Sommaire','Sm')+rxBtn('Quitter','Sq')}
 function sxGo(q){let Q=SXQ[q],X=nm(cr(f,u)),O;AP=0;SXK=[];O=Q.o();document.body.classList.add('rx');
-  SX={q,Q,solo:Q.solo,st:-1,t:0,ta:0,yaw:0,pit:0,O,X,Y:cr(X,f),Z:ml(f,-1),Cc:p.slice(),Ct:O,fb:f.slice(),ub:cr(X,f),p0:p,fs:f,us:u,z0:z,zt:0,zx:.09,pz:0};vel=0;
+  SX={q,Q,solo:Q.solo,st:-1,t:0,ta:0,yaw:0,pit:0,O,X,Y:cr(X,f),Z:ml(f,-1),Cc:p.slice(),Ct:O,fb:f.slice(),ub:cr(X,f),p0:p,fs:f,us:u,z0:z,zt:0,zx:Q.zx||.09,pz:0};vel=0;
   cap.style.opacity=0;shp.forEach(h=>h.A=0);SXK.forEach(h=>h.A=0);        // le vaisseau s'efface
   $('hl').style.display=mk.style.display='none';for(let k of['ent','pmb','xit','gui','bld','tcy','rxb','nxb','hr'])$(k).style.display='none';
   $('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';sxN(1)}
