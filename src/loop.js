@@ -71,7 +71,7 @@ function tick(t){if(gen!=GEN)return;let d=min(.05,(t-last)/1e3)||0;last=t;
   aT+=d;if(++aN>40)Q=aT>1.3&&Q>.7?Q*.8:aT<.75&&Q<DPR?min(DPR,Q*1.15):Q,aT=aN=0;       // résolution adaptative
   if(go&&!NV)AP?apS(d):PM?pmS(d):RX?rxS(d):NX?nxS(d):SX?sxS(d):ct<0?ctl(d):cine(d);nvT(d);
   sim(d,ln(E)<GR+1.1,ds(E,PS)<4);PM&&pmD();oT();nolT();lamT();vesi(d);bcn();flm();RX&&rxD();NX&&nxD();SX&&sxD();synT();mgD();[dA.t,dA.j,dA.s,dB,dC.t,dC.j,dC.s,dD,dV,dE,dG,dF,dQa,dQb,dQe,dLm,dLb].forEach(up);
-  cam(d);FG=lp(FG,reg?TGT[reg]:LU?FB:TGT[0],min(1,d*2));draw();hud(d);requestAnimationFrame(tick)}
+  cam(d);FG=lp(FG,SX&&SX.Q.bg||(reg?TGT[reg]:LU?FB:TGT[0]),min(1,d*2));draw();hud(d);requestAnimationFrame(tick)}
 onkeydown=e=>{if(e.target.id=='q')return;keys[e.code]=1;/Arrow|Space/.test(e.code)&&e.preventDefault()};onkeyup=e=>{keys[e.code]=0};
 const PT=new Map;let pd0=0;        // mode polymérase : glisser = tourner, pincer = zoomer
 cv.onpointerdown=e=>{if(PM||RX||NX||SX)cv.setPointerCapture(e.pointerId),PT.set(e.pointerId,[e.clientX,e.clientY]),pd0=0;else go&&!NV&&pick(e)};

@@ -25,6 +25,8 @@ npm run build
 - **Gènes, base par base.** Les trois gènes intégrés utilisent la séquence réelle hg38 : signaux du promoteur, exons, introns, sites d'épissage. Le mode « Je suis l'ARN polymérase II » parcourt initiation, coiffe, pause, épissage, polyadénylation et terminaison.
 - **N'importe quel gène.** Une recherche charge un autre gène humain par l'API du UCSC Genome Browser (repli sur Ensembl). C'est le seul accès réseau du jeu.
 - **21 voies chimiques à l'échelle moléculaire**, montrées là où elles se produisent : cycle de Krebs, chaîne respiratoire, β-oxydation, synthèse de l'hème, cycle de l'urée, N-glycosylation, glycolyse, traduction, ubiquitination, pompe Na⁺/K⁺, polymérisation de l'ARN, coiffe, cycle de méthylation de l'ADN (DNMT, trois oxydations par TET, TDG, réparation par excision de base), acétylation et méthylation des histones (dont les déméthylases LSD1 et JmjC), phosphorylation et ubiquitination des histones, modification de l'ARNr, etc. Chacune a un niveau commenté et un niveau expert avec quiz.
+- **Surface de la cellule et voies d'entrée.** Hors de la cellule, le bouton « ⇲ Voies d'entrée » laisse choisir sa route. L'endocytose par la clathrine se fait en vol ; les cavéoles, la macropinocytose et, dans le neurone, l'endocytose ultrarapide de la synapse sont des animations guidées à l'échelle du nanomètre, qui se terminent dans la cellule. Une quatrième vue montre les récepteurs de surface de la cellule en cours, leur ligand et le signal qu'ils déclenchent (TfR1, récepteur de l'EPO, KIT, intégrine ; récepteurs des LDL, de l'insuline, du glucagon et des asialoglycoprotéines ; TrkB, Cav2.1, mGluR2).
+- **Le cerveau.** L'entrée « Cerveau » de l'écran d'accueil (et le bouton « 🧠 Explorer le cerveau » dans le neurone) ouvre sept parcours : les cellules du cerveau à l'échelle du micromètre (neurone pyramidal, interneurones, cellules de Purkinje et grains, striatum et dopamine, astrocyte, oligodendrocyte, microglie, barrière et épendyme), puis six circuits sur une maquette du cerveau et du corps, suivis jusqu'à leurs effets dans le corps : voir (pupille, horloge circadienne), bouger (contraction du muscle, correction par le cervelet), apprendre et se souvenir, décider et se contrôler, stress (cœur, foie, frein du cortisol) et tenir le corps en équilibre (vasopressine et rein, respiration).
 - **Code des histones.** Près du gène, une vue guidée en quinze étapes montre un nucléosome à l'échelle du nanomètre (147 pb d'ADN, l'octamère d'histones, les queues résidu par résidu) et une marque par étape : H3K4me3, H3K4me1, H3K27ac, H4K16ac, H3K36me3, H2BK120ub1 avec H3K79me2, H3K27me3, H2AK119ub1, H3K9me3, H3S10ph, γH2AX, méthylation de l'ADN, promoteur bivalent, remodeleurs et H2A.Z. Chaque marque est montrée avec son écrivain, son lecteur et son effaceur, dans les couleurs des cartes d'états de la chromatine. Avec le focus mendélien, chaque étape indique les maladies liées à ses enzymes.
 - **Acteurs de la chromatine dans le noyau.** Des objets cliquables, chacun avec sa fiche : l'histone de liaison H1, les variants H2A.Z et H3.3, le remodeleur BAF, un anneau de cohésine et deux protéines CTCF au pied de la boucle enhancer–promoteur ; l'hétérochromatine péricentromérique avec HP1 et CENP-A à chaque centromère ; des corps Polycomb (PRC1, PRC2) sur les quatre groupes de gènes HOX ; le locus soumis à empreinte H19/IGF2, dessiné différemment sur le chromosome 11 maternel et sur le paternel.
 - **Quiz « décoder la chromatine ».** Accessible depuis le code des histones : dix nucléosomes portant quelques marques, quatre états possibles à chaque fois, une explication après chaque réponse et un score. Un niveau expert masque le nom des marques, qu'il faut alors lire à leur position, leur forme et leur couleur.
@@ -47,7 +49,7 @@ C'est un support pédagogique, pas une référence.
 
 | Chemin | Contenu |
 | --- | --- |
-| `src/` | Sources du jeu : `shell.html` (page, CSS, textes fixes) et 22 fichiers JavaScript. Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
+| `src/` | Sources du jeu : `shell.html` (page, CSS, textes fixes) et 24 fichiers JavaScript. Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
 | `src/seq/` | Séquences génomiques de *HBB*, *HAMP* et *FOS* (hg38, gène et promoteur en amont). |
 | `build.js` | Concatène les sources, applique la passe de traduction et minifie. |
 | `i18n/` | Traductions anglaises et outils qui les appliquent. |
@@ -61,7 +63,7 @@ Développé et testé avec Node.js 22.
 
 | Commande | Résultat |
 | --- | --- |
-| `npm run build` | `dist/index.html`, le fichier unique minifié à publier (≈ 700 ko, ≈ 280 ko compressé). |
+| `npm run build` | `dist/index.html`, le fichier unique minifié à publier (≈ 810 ko, ≈ 320 ko compressé). |
 | `npm run dev` | `dist/dev.html`, non minifié, avec le crochet de test `window.__ev`. |
 | `npm run check-seq` | Vérifie cadres de lecture, sites d'épissage et signaux du promoteur des séquences embarquées. |
 | `npm run mendel` | Régénère `src/mendel-data.js`, `i18n/en/mendel.json` et `docs/MENDELIAN.md` à partir de `tools/mendel.tsv`. À lancer après toute modification de la table, avant le build. |
