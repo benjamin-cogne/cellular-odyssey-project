@@ -27,6 +27,7 @@ The code is deliberately compact: short helper names, long lines, comments in Fr
 | `tissues.js` | Surrounding tissue, blood vessel and blood. Ends with the final `fin()`. |
 | `physics.js` | Dynamic objects, game state, controls, collisions, automatic ship sizing. |
 | `loop.js` | Rendering, camera, per-frame loop, HUD, pointer and keyboard input, points of interest. |
+| `chromatin.js` | Chromatin actors added to the nucleus, with their cards: H1, H2A.Z, H3.3, BAF, cohesin and CTCF on the detailed locus; pericentromeric heterochromatin, HP1 and CENP-A at each centromere; Polycomb bodies on the HOX clusters; the imprinted H19/IGF2 locus on both chromosomes 11. Uses its own random generator so the rest of the scenery is unchanged. Built right after `nucleus.js`. |
 | `genes.js` | Gene navigation: UCSC and Ensembl REST calls, custom gene construction, autopilot. |
 | `interact.js` | Picking and cards, atlas, organelle interiors (mitochondrion, ER, Golgi), mode buttons. |
 | `nucleolus-lamina.js` | Nucleolus interior and its animation, procedural lamina near the envelope. |
@@ -34,6 +35,7 @@ The code is deliberately compact: short helper names, long lines, comments in Fr
 | `impulse.js` | Nerve impulse mode: the 12 steps, their animations, the oscilloscope. |
 | `snrnp.js` | Engine of the guided nanometre-scale views (`SXQ` registry, camera, panel, labels) and the snRNP assembly view in the Cajal body: RNA builder (helices, loops, single strands), protein table, eight steps. |
 | `histone.js` | Histone-code view: the nucleosome (DNA superhelix, octamer, tails residue by residue), marks, writers, readers and erasers, fifteen steps. |
+| `decode.js` | "Decode this chromatin" quiz, a guided view with its own panel (`SXQ.hq`, expert level `SXQ.hQ`): rounds `HQ` (marks, right answer, decoys, explanation), states `HQA`. |
 | `chromstate.js` | Chromatin states along the gene: per-cell state tables (`KMS`), mark beads on the locus nucleosomes and along the DNA (`kmD`), state line of the sequence panel (`kmQ`), "◆ Chromatin" button. |
 | `mendel-data.js` | Generated from `tools/mendel.tsv` by `tools/mk-mendel.js`: `MG` (card key → gene, disease, inheritance, OMIM, PMID), `MGC` (per-cell overrides) and `MGR` (pathway → step). Do not edit by hand. |
 | `mendel.js` | Mendelian genetics focus: gene labels, card lines, "🧬 Genetics" panel, disorders shown on reaction steps. |
@@ -64,7 +66,7 @@ One flag is non-zero at a time and replaces the normal flight controls in the fr
 | `PM` | "I am RNA polymerase II" | `interact.js` |
 | `RX` | Chemical reactions | `reactions.js` |
 | `NX` | Nerve impulse | `impulse.js` |
-| `SX` | Guided nanometre-scale views: snRNP assembly (`SXQ.sn`), histone code (`SXQ.hx`) | `snrnp.js`, `histone.js` |
+| `SX` | Guided nanometre-scale views: snRNP assembly (`SXQ.sn`), histone code (`SXQ.hx`), chromatin quiz (`SXQ.hq`, `SXQ.hQ`) | `snrnp.js`, `histone.js`, `decode.js` |
 
 `RX`, `NX` and `SX` share the side panel (`#pm`), the label pool (`QL`) and the orbit and zoom gestures.
 
@@ -75,6 +77,8 @@ One flag is non-zero at a time and replaces the normal flight controls in the fr
 - **Add an impulse step.** Add its texts to `NXT` and an entry to `NXS` in `impulse.js`: camera target `c`, zoom `z`, view direction `v`, loop duration `T`, oscilloscope trace `o` and a draw function `d(phase, time)`.
 
 - **Add a guided view.** Register it in `SXQ` (steps `S`, texts `T`, title, intro and summary texts, summary framing and drawing, scene origin `o()`, `solo` to hide the scenery), add a button that calls `sxIn(key)`. Mark colours shared across the game are in `MKC` (`world.js`).
+- **Add a quiz round.** Add an entry to `HQ` in `decode.js`: right answer `a` and three decoys `w` (ranks in `HQA`), marks `m` as `[tail, residue, type, mark key, label offset, direction]` (tail `B` for H2BK120, `K` for H3K79, `C` for CpGs on the DNA), `z: 1` for an H2A.Z nucleosome, explanation `t`. A view can replace the standard panel with `pn(M,S)`, add start buttons with `go`, extra buttons with `xb`, and receive its own answer buttons (codes `Sh<n>`) in `cl(M,n)`.
+- **Add a chromatin object.** In `chromatin.js`, add its card to `I`, draw it on an existing layer and add a collider to `NU` (nucleus) or `DN` (detailed locus): the atlas and the Mendelian focus pick it up from the collider lists. Use the local generator `rn`/`rv`, not `R`/`rd`, so that the layout of everything built afterwards does not shift.
 - **Add an snRNP assembly step.** Add its texts to `SXT` and an entry to `SXS` in `snrnp.js`: loop duration `T`, view size `z`, camera target `c` (nm), legend `leg` and a draw function `d(phase)`. Scene coordinates are in nanometres; `sxH` builds a helix or stem-loop, `sxG` a single strand, `sxD1` draws an RNA, `sxD2` a protein, `sxD3` a seven-protein ring.
 
 ## Mendelian genetics focus
