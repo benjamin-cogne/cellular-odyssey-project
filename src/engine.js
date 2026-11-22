@@ -1,7 +1,7 @@
 'use strict';
 let LG=0,       // langue : 0 français, 1 anglais (le build double chaque chaîne traduite : LG?anglais:français)
 MEN=0;          // focus « génétique mendélienne » (case de l'écran d'accueil) : voir mendel.js
-const BRAIN=1;  // 1 : le mode « Cerveau » est proposé (bouton de l'écran d'accueil, bouton « 🧠 Explorer le cerveau », ses références) ; 0 : il est masqué. C'est la seule ligne qui diffère entre les branches dev (1) et main (0).
+const BRAIN=0;  // 1 : le mode « Cerveau » est proposé (bouton de l'écran d'accueil, bouton « 🧠 Explorer le cerveau », ses références) ; 0 : il est masqué. C'est la seule ligne qui diffère entre les branches dev (1) et main (0).
 BRAIN||document.body.classList.add('nb');
 // ================= utilitaires =================
 const {sin,cos,sqrt,PI,min,max,abs,floor,hypot,cbrt,atan2,acos,asin,ceil,atan,tan,sign}=Math,TAU=2*PI,$=i=>document.getElementById(i);
