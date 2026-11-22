@@ -100,9 +100,10 @@ function bnS(d,M){let o=(...a)=>a.some(k=>keys[k])|0,jx=cl(o('ArrowRight','KeyD'
 function bnD(M){let R=M.rd,S=R&&R.q[2][R.i];if(S)return S.d(M.ta,S);let q=bnQ(),n=0,s={};
   for(let c of BNC){if(s[c.i]||!c.s||n>9)continue;let m=lp(c.a,c.b,.5);if(ds(q,m)<c.r+5+14*z)s[c.i]=1,n++,sxL(ma(bX(m),vu,c.r+z*.45),BNI[c.i][0],c.i==M.nk?'e':'r')}}
 SXQ.bz={S:[{c:[0,0],z:1,T:9,leg:[],d:()=>{}}],T:[['','','']],ti:'Carte du cerveau',solo:1,zx:4,bg:[.035,.04,.07],o:()=>BNO.slice(),fs:bnS,fd:bnD,
- pn:M=>{if(!M.fly){M.fly=1;M.O=BNO.slice();M.X=[1,0,0];M.Y=[0,1,0];M.Z=[0,0,1];M.st=0;bnCh.forEach(h=>h.A=1);shp.forEach(h=>h.A=1);p=bnA([3,3,24]);f=nm([-.1,-.12,-1]);u=nm(cr(cr(f,[0,1,0]),f));cf=f;cu=u;z=.9;vel=0;
+ pn:M=>{if(!M.fly){M.fly=1;document.body.classList.remove('rx');document.body.classList.add('fl');      // vol libre : la manette et les boutons de pilotage restent à l'écran
+     M.O=BNO.slice();M.X=[1,0,0];M.Y=[0,1,0];M.Z=[0,0,1];M.st=0;bnCh.forEach(h=>h.A=1);shp.forEach(h=>h.A=1);p=bnA([3,3,24]);f=nm([-.1,-.12,-1]);u=nm(cr(cr(f,[0,1,0]),f));cf=f;cu=u;z=.9;vel=0;
      M.rd=0;M.ls=0;M.nk='bn0';if(SXQ.bz.r0){let q=SXQ.bz.r0;SXQ.bz.r0=0;return bnRd(M,q,0)}}bnPn(M)},
- en:M=>{bnCh.forEach(h=>h.A=0)},
+ en:M=>{bnCh.forEach(h=>h.A=0);document.body.classList.remove('fl')},
  cl:(M,k)=>{let R=M.rd;if(k==0){M.ls=1;return bnPn(M)}if(k==13){M.ls=2;return bnPn(M)}if(k==14){M.ls=0;return bnPn(M)}if(k==10)return bnRd(M,0);
    if(k>=100){M.ls=0;M.rd=0;M.go=bnVw(BNK[k-100]);M.nk='';return bnPn(M)}if(k<7)return bnRd(M,BQ[k],0);if(!R)return;
    if(k==15){R.fr=0;R.ph=0;R.pt=0;return bnPn(M)}if(k==11||k==12){R.i=cl(R.i+(k==11?1:-1),0,R.q[2].length);R.ph=0;R.pt=0;R.at=0;R.P=0;R.fr=0;bnPn(M)}}};

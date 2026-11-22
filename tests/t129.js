@@ -5,6 +5,7 @@ const {open}=require('./tl.js');const lang=process.argv[2]||'fr';
  const st=()=>ev(()=>$('pmt').textContent+' | '+[...$('pmo').querySelectorAll('button')].map(b=>b.textContent).join(' / ').slice(0,120));
  await ev(()=>bnMenu());console.log('menu',await st());await pg.click('#pmo button[data-r="B0"]');await pg.waitForTimeout(600);
  console.log('map',await st(),JSON.stringify(await ev(()=>({fly:SX.fly,ship:shp[0].A,model:bnCh.map(h=>h.n+':'+h.A).join(' '),colliders:BNC.length,cards:BNK.length,noCard:[...new Set(BNC.map(o=>o.i).concat(BRM.map(e=>e[4][0]||'l'+e[2])))].filter(k=>!BNI[k])}))));
+ console.log('controls on screen',await pg.evaluate(()=>['joy','bt'].map(k=>k+':'+getComputedStyle(document.getElementById(k)).display).join(' ')+' | body class '+document.body.className));
  console.log('thrust',JSON.stringify(await ev(()=>{let a=bnQ();keys.Space=1;for(let i=0;i<60;i++)bnS(.05,SX);keys.Space=0;return{moved:+ds(a,bnQ()).toFixed(1),z}})));
  for(const k of['th','am','hp','ht','ad','v1','m1','pfc','cb','l3','me','ey']){await ev(k=>{let v=bnVw(k);p=bnA(v.q);f=v.f;u=nm(cr(cr(f,[0,1,0]),f));z=v.z;vel=0;for(let i=0;i<8;i++)bnS(.05,SX);return 1},k);console.log(' near',k,'→',(await st()).slice(0,70))}
  await pg.screenshot({path:'brainmap_'+lang+'.png'});
