@@ -47,6 +47,7 @@ Scripts that use `ev(...)` need `dist/dev.html`; those marked *minified* drive `
 | `t128.js` | The brain: hub menu, cell gallery and six circuits step by step; model integrity. Arguments: language, views. |
 | `t129.js` | Brain map in free flight: static model, card of the nearest structure, structure list and fly-to, the six rides (phases and distance to the pathway), manual takeover, exit. Game time is advanced by hand. Argument: language. |
 | `t130.js` | Cell neighbourhoods: entrances on the map, build of each place, card of the nearest cell, list and fly-to, return to the map, visit of the neuron. Argument: language. |
+| `t131.js` | Glial-cell interiors: entry button next to each glial cell of the neuron's tissue, build of the three places, card shown after flying to each organelle, Mendelian lines, every step of the "In action" sequences (phases, pathway followed, shapes drawn), exit to the neuron, entry from the cortical column and return. Argument: language. |
 | `t120.js` | Mendelian genetics focus: data integrity, card lines, labels, panel, reaction steps. Arguments: language, cells (e.g. `012`). |
 
-`t20`, `t90`, `t112`, `t113`, `t120`, `t121`, `t122` to `t130` were run from this layout; `t22`, `t94`, `t96`, `t98` and `t111` were run on the same sources before the files were reorganised. The older scripts have not been rerun since earlier versions of the game.
+`t20`, `t90`, `t112`, `t113`, `t120`, `t121`, `t122` to `t131` were run from this layout; `t22`, `t94`, `t96`, `t98` and `t111` were run on the same sources before the files were reorganised. The older scripts have not been rerun since earlier versions of the game.

@@ -11,7 +11,9 @@ bpPy=(g,sc,ap)=>{let o=[[[0,6*sc,0],[0,ap,0],2.2*sc,0]],i;for(i=0;i<6;i++)bGr(g,
   for(i=0;i<6;i++)bGr(g,[0,-3*sc,0],nm([cos(i*1.05),-.55,sin(i*1.05)]),38*sc,1.3*sc,3,.9,o);return o},
 bpAs=g=>{let o=[];for(let i=0;i<10;i++)bGr(g,[0,0,0],nm([cos(i*.63)*sqrt(1-(i/5-1)**2*.6),i/5-1,sin(i*.63)]),13,1.3,3,1.5,o);return o},
 bpMg=g=>{let o=[];for(let i=0;i<6;i++)bGr(g,[0,0,0],nm([cos(i*1.05),sin(i*1.05),(g()-.5)*1.2]),13,.9,3,1.3,o);return o},
-bpMk=(id,n,from,st,z0,R,I,lab,build,dyn)=>{let P={id,n,from,st,z0,R,I:Object.assign({},BPS,I),lab,build,dyn,C:[],O:[9000+BPK.length*5000,9000,0],L0:Ly(M2,1e9,0,{sx:1,ex:1}),L1:Ly(MD,1e9,0,{sx:1,ex:1}),ix:BPK.length};BPL[id]=P;BPK.push(P)},
+// options X : zm taille minimale du vaisseau, ci séquences guidées [clé, titre, étapes, textes, bilan], lk fiches qui ouvrent un autre lieu {clé de fiche : lieu}, sh cartes partagées omises
+bpMk=(id,n,from,st,z0,R,I,lab,build,dyn,X)=>{let P=Object.assign({id,n,from,st,z0,R,I:Object.assign({},X&&X.own?{}:BPS,I),lab,build,dyn,C:[],O:[9000+BPK.length*5000,9000,0],L0:Ly(M2,1e9,0,{sx:1,ex:1}),L1:Ly(MD,1e9,0,{sx:1,ex:1}),
+  L2:Ly(M3,1e9,0,{al:1,sx:1,ex:1}),L3:Ly(MW,1e9,0,{al:1,sx:1,ex:1}),ix:BPK.length,ci:[],lk:{}},X);BPL[id]=P;BPK.push(P)},
 bpOf=k=>BPK.find(P=>P.from.includes(k));
 const cA=0x8fbf6a,cPV=0x2fd07a,cGd=0xe8b04a,cRd=[.55,.16,.16,1];
 bpMk('cx','Colonne du cortex','l0,l1,l2,l3,m1,s1,pm,pfc,ofc,v1,ppc,it'.split(','),[60,520,560],9,1500,
@@ -36,7 +38,7 @@ bpMk('cx','Colonne du cortex','l0,l1,l2,l3,m1,s1,pm,pfc,ofc,v1,ppc,it'.split(','
   {let o=ad(p0,[70,-90,60]),c=kc(0x86d0f0);A.s(o,6,c,'chc',1);A.t(o,ad(p0,[3,-14,0]),.6,c,'chc');for(i=0;i<6;i++)A.s(ad(p0,[i%2?2.6:-2.6,-12-i*3.4,0]),1.4,c,'chc')}
   for(let[o,e]of[[[110,520,-10],[152,520,-42]],[[-160,60,40],[-190,150,66]],[[200,-420,-60],[178,-420,-76]]]){A.tr(bpAs(g),o,kc(cA),'ast',.4,3);A.s(o,6.5,kd(kc(cA),.8),'ast',1);A.t(o,e,1,kc(cA),'ast');A.s(e,5,kc(cA),'ast')}
   for(let o of[[-40,250,150],[90,-300,110]]){A.tr(bpMg(g),o,kc(0xe07a8a),'mgl',.4,2);A.s(o,4.6,kc(0xc0506a),'mgl',1)}},
- (P,t)=>{P.ax.forEach((a,i)=>brP(a,t*.5+i*.3,[1,.85,.25,1],4,2))});
+ (P,t)=>{P.ax.forEach((a,i)=>brP(a,t*.5+i*.3,[1,.85,.25,1],4,2))},{lk:{ast:'ga',mgl:'gm',oli:'go',my:'go'}});
 bpMk('cbm','Cortex du cervelet',['cb'],[0,120,520],9,700,
  {cbm:['Cortex du cervelet','Trois couches : en haut, la couche moléculaire, où s\'étalent les arbres des cellules de Purkinje ; au milieu, la rangée de leurs corps cellulaires ; en bas, la couche des grains.'],
   pk:['Cellule de Purkinje','Son arbre dendritique s\'étale dans un seul plan. C\'est la seule sortie du cortex du cervelet, et elle est inhibitrice : son axone gagne les noyaux profonds du cervelet. Elle reçoit de l\'ordre de 175 000 synapses de fibres parallèles (mesuré chez le rat).'],
@@ -107,35 +109,62 @@ bpMk('rtm','Rétine',['ey'],[20,60,330],6,460,
  (P,t)=>{let g=wyG(4);for(let i=0;i<14;i++){let u=(t*.3+g())%1;bS([(g()-.5)*190,250-350*u,(g()-.5)*24],1.3,[2.6,2.3,.8,1])}P.ax.forEach((a,i)=>brP(a,t*.5+i*.3,[1,.85,.25,1],2.4,2))});
 // ---- entrée, vol, fiches, sortie : en surcouche de la carte du cerveau (SXQ.bz) ----
 const bpQ=M=>sb(p,M.O),bpKs=P=>Object.keys(P.I).filter(k=>k!=P.id&&P.C.some(c=>c.i==k)),
-bpNr=M=>{let P=M.pl,q=bpQ(M),b=P.id,bd=max(16,7*z);for(let o of P.C){let ab=sb(o.b,o.a),t=o.a==o.b?0:cl(dt(sb(q,o.a),ab)/dt(ab,ab),0,1),d=ds(q,ma(o.a,ab,t))-o.r-(o.s?min(12,o.r):0);if(d<bd)bd=d,b=o.i}return b},
+bpNr=M=>{let P=M.pl,q=bpQ(M),b=P.id,bd=P.nr?1e9:max(16,7*z);for(let o of P.C){let ab=sb(o.b,o.a),t=o.a==o.b?0:cl(dt(sb(q,o.a),ab)/dt(ab,ab),0,1),d=ds(q,ma(o.a,ab,t))-o.r;
+   if(P.nr){d=max(0,d);if(d>3*(o.r+P.nr))continue;d+=.35*o.r}else d-=o.s?min(12,o.r):0;      // dans une cellule (P.nr) : un organite compte jusqu'à trois fois sa taille, et le plus petit l'emporte
+   if(d<bd)bd=d,b=o.i}return b},
 bpVw=(P,k)=>{let O=P.C.filter(o=>o.i==k&&o.s).sort((a,b)=>b.a[2]-a.a[2]),o=O[0]||P.C.find(o=>o.i==k),      // la cellule la plus en avant, pour que rien ne la masque
-  c=lp(o.a,o.b,.5),r=o.r,d=nm([.2,.15,1]);return{q:ma(c,d,r+(o.s?max(10,r*1.2):4)),f:ml(d,-1),z:cl(r*.4,1.5,8),k:2.2}};
-function bpIn(M,P){if(!P.ok){P.ax=[];P.L0.k=new Map;P.L1.k=new Map;      // fin() a déjà clos ces couches, encore vides : on les rouvre
-  let g=wyG(P.ix*17+5),O=P.O,C=P.C;P.build({s:(q,r,c,k,sl)=>{S(P.L0,ad(O,q),r,c);k&&C.push({a:q,b:q,r,i:k,s:sl})},t:(a,b,r,c,k)=>{Cy(P.L1,ad(O,a),ad(O,b),r,c);k&&C.push({a,b,r,i:k})},
-      tr:(T,o,c,k,mn=.5,ev=2)=>T.forEach(([a,b,r],j)=>{a=ad(o,a);b=ad(o,b);Cy(P.L1,ad(O,a),ad(O,b),max(r,mn),c);k&&j%ev==0&&C.push({a,b,r:max(r,mn),i:k})})},g,P);fin();P.ch=P.L0.ch.concat(P.L1.ch);P.ok=1}
-  M.bk={p,f,u,z};M.pl=P;M.rd=0;M.ls=0;M.go=0;M.nk=P.id;M.O=P.O.slice();bnCh.forEach(h=>h.A=0);P.ch.forEach(h=>h.A=1);p=ad(P.O,P.st);f=nm(sb([0,P.st[1]*.6,0],P.st));u=nm(cr(cr(f,[0,1,0]),f));cf=f;cu=u;z=P.z0;vel=0;bpPn(M)}
-function bpOut(M){let P=M.pl,b=M.bk;P.ch.forEach(h=>h.A=0);bnCh.forEach(h=>h.A=1);M.pl=0;M.O=BNO.slice();p=b.p;f=b.f;u=b.u;z=b.z;cf=f;cu=u;vel=0;M.nk='';M.ls=0;bnPn(M)}
-function bpPn(M){let P=M.pl,b=rxBtn,K=bpKs(P);$('pm').scrollTop=0;
+  c=lp(o.a,o.b,.5),r=o.r,d=nm([.2,.15,1]),D=max(2.6*r,.3);if(P.nr){let bs=-1e9;for(let e of[[.2,.15,1],[.2,.15,-1],[1,.15,.2],[-1,.15,.2],[.2,1,.15],[.2,-1,.15]]){e=nm(e);let m=1e9;      // dans une cellule : le côté le plus dégagé (ni le vaisseau ni la caméra dans un autre organite)
+      for(let j=1;j<4;j++){let q=ma(c,e,r+D*j/2.2);for(let w of P.C){if(w.i==k)continue;let ab=sb(w.b,w.a),t=w.a==w.b?0:cl(dt(sb(q,w.a),ab)/dt(ab,ab),0,1);m=min(m,ds(q,ma(w.a,ab,t))-w.r)}}if(m>bs)bs=m,d=e}
+    return{q:ma(c,d,r+D),f:ml(d,-1),z:cl(D*.12,P.zm,P.zx),k:2.2,i:k}}return{i:k,q:ma(c,d,r+(o.s?max(10,r*1.2):4)),f:ml(d,-1),z:cl(r*.4,1.5,8),k:2.2}};
+// entrée dans un lieu : il est construit à la première visite ; M.sk garde d'où l'on vient (carte, autre lieu) pour y revenir
+function bpIn(M,P,bk){if(!P.ok){P.ax=[];for(let L of[P.L0,P.L1,P.L2,P.L3])L.k=new Map;      // fin() a déjà clos ces couches, encore vides : on les rouvre
+    let g=wyG(P.ix*17+5),O=P.O,C=P.C;P.build({s:(q,r,c,k,sl)=>{S(P.L0,ad(O,q),r,c);k&&C.push({a:q,b:q,r,i:k,s:sl})},t:(a,b,r,c,k)=>{Cy(P.L1,ad(O,a),ad(O,b),r,c);k&&C.push({a,b,r,i:k})},
+      tr:(T,o,c,k,mn=.5,ev=2)=>T.forEach(([a,b,r],j)=>{a=ad(o,a);b=ad(o,b);Cy(P.L1,ad(O,a),ad(O,b),max(r,mn),c);k&&j%ev==0&&C.push({a,b,r:max(r,mn),i:k})}),
+      g:(q,r,c,k,sl)=>{S(P.L2,ad(O,q),r,c);k&&C.push({a:q,b:q,r,i:k,s:sl})},gt:(a,b,r,c,k)=>{Cy(P.L3,ad(O,a),ad(O,b),r,c);k&&C.push({a,b,r,i:k})}},g,P);fin();P.ch=P.L0.ch.concat(P.L1.ch,P.L2.ch,P.L3.ch);P.ok=1}
+  M.sk=M.sk||[];bk||M.sk.push({pl:M.pl,p,f,u,z});M.pl&&M.pl.ch.forEach(h=>h.A=0);M.pl=P;M.rd=0;M.ls=0;M.go=0;M.pk=0;M.nk=P.id;M.O=P.O.slice();bnCh.forEach(h=>h.A=0);P.ch.forEach(h=>h.A=1);
+  if(bk)p=bk.p,f=bk.f,u=bk.u,z=bk.z;else p=ad(P.O,P.st),f=nm(sb([0,P.st[1]*.6,0],P.st)),u=nm(cr(cr(f,[0,1,0]),f)),z=P.z0;cf=f;cu=u;vel=0;bpPn(M)}
+function bpOut(M){let P=M.pl,b=M.sk.pop();P.ch.forEach(h=>h.A=0);M.rd=0;M.ls=0;if(b&&b.pl)return bpIn(M,b.pl,b);M.pl=0;if(M.hm&&!M.sk.length)return sxEnd();
+  bnCh.forEach(h=>h.A=1);M.O=BNO.slice();p=b.p;f=b.f;u=b.u;z=b.z;cf=f;cu=u;vel=0;M.nk='';bnPn(M)}
+function bpPn(M){let P=M.pl,b=rxBtn,K=bpKs(P),R=M.rd,T=M.sk[M.sk.length-1];$('pm').scrollTop=0;
   if(M.ls==2){$('pmt').textContent=P.n;$('pmx').textContent='Touchez un nom : le vaisseau s\'y rend.';$('pmo').innerHTML=K.map((k,i)=>b(P.I[k][0],'Sh'+(100+i))).join('')+b('Retour','Sh14');return}
-  let c=P.I[M.nk]||P.I[P.id];$('pmt').textContent=c[0]+(LG?' · ship ':' · vaisseau ')+fm(z);$('pmx').textContent=c[1];
-  $('pmo').innerHTML=(P.id=='cx'&&/py/.test(M.nk)?b('Visiter ce neurone ▸','Sh17'):'')+b('Cellules de ce lieu','Sh13')+b('Retour à la carte','Sh16')}
+  if(M.ls==3){$('pmt').textContent=P.n+' : en action';$('pmx').textContent='Des séquences guidées : le vaisseau se place devant la scène, suit ce qui se déplace, puis revient ; « Suivant » passe à l\'étape d\'après. Dès que vous touchez aux commandes, vous reprenez la main.';
+    $('pmo').innerHTML=P.ci.map((c,i)=>b(c[1]+' ('+c[2].length+')','Sh'+(31+i))).join('')+b('Retour','Sh14');return}
+  if(R){let S=R.q[2][R.i],X=R.q[3][R.i],n=R.q[2].length;
+    if(!S){$('pmt').textContent=R.q[1]+' — bilan';$('pmx').textContent=R.q[4];$('pmo').innerHTML=b('Rejouer','Sh'+(31+P.ci.indexOf(R.q)))+b('Autre séquence','Sh30')+b('Vol libre','Sh10');return}
+    $('pmt').textContent=(R.i+1)+'/'+n+' · '+X[0];$('pmx').textContent=X[2];{let e=document.createElement('b');e.className='pw';e.textContent='◎ '+X[1]+' — ';$('pmx').prepend(e)}
+    $('pmo').innerHTML=(R.fr?b('▶ Reprendre','Sh15'):'')+(R.i?b('◂ Précédent','Sh12'):'')+b('Suivant ▸','Sh11')+b('Vol libre','Sh10');return}
+  let c=P.I[M.nk]||P.I[P.id],L=P.lk[M.nk];$('pmt').textContent=c[0]+(LG?' · ship ':' · vaisseau ')+fm(z);$('pmx').textContent=c[1];mgSx(P.id,M.nk);
+  $('pmo').innerHTML=(L?b('⤓ Entrer : '+BPL[L].n,'Sh18'):'')+(P.id=='cx'&&/py/.test(M.nk)?b('Visiter ce neurone ▸','Sh17'):'')+(P.ci.length?b('En action ▸','Sh30'):'')+b(P.own?'Organites':'Cellules de ce lieu','Sh13')+b(T&&T.pl?'Retour : '+T.pl.n:M.hm&&M.sk.length<2?'Quitter la cellule':'Retour à la carte','Sh16')}
+function bpRd(M,q){M.ls=0;M.go=0;M.rd=q?{q,i:0,ph:0,pt:0,at:0,P:0,fr:0}:0;M.pz=0;bpPn(M)}
 function bpS(d,M){let o=(...a)=>a.some(k=>keys[k])|0,jx=cl(o('ArrowRight','KeyD')-o('ArrowLeft','KeyA')+tjx,-1,1),jy=cl(o('ArrowUp','KeyW')-o('ArrowDown','KeyS')+tjy,-1,1),bo=o('ControlLeft','ControlRight','KeyF')|tbo,
-   th=cl(o('Space')-o('ShiftLeft','ShiftRight','KeyX')+tth+bo,-1,1),zm=cl(o('KeyE','Equal','NumpadAdd')-o('KeyQ','Minus','NumpadSubtract')+tzm,-1,1),P=M.pl,a=M.go;
-  M.t+=d;if(abs(jx)+abs(jy)+abs(th)>.05)a=M.go=0;
-  if(a){let k=min(1,d*a.k);p=lp(p,ad(P.O,a.q),k);f=nm(lp(f,a.f,k));u=nm(cr(cr(f,[0,1,0]),f));z+=(a.z-z)*min(1,d*2.4);vel=0;ds(bpQ(M),a.q)<1+z*.1&&(M.go=0)}
-  else{f=rot(f,u,-jx*1.5*d);let r=nm(cr(f,u));f=nm(rot(f,r,jy*1.2*d));u=cr(r,f);z=cl(z*2**(zm*1.5*d),.3,40);BO+=((bo&&th>0?1:0)-BO)*min(1,d*5);TH+=(max(0,th)-TH)*min(1,d*7);
+   th=cl(o('Space')-o('ShiftLeft','ShiftRight','KeyX')+tth+bo,-1,1),zm=cl(o('KeyE','Equal','NumpadAdd')-o('KeyQ','Minus','NumpadSubtract')+tzm,-1,1),P=M.pl,R=M.rd,S=R&&R.q[2][R.i],a=0;
+  M.t+=d;if(abs(jx)+abs(jy)+abs(th)>.05){M.go=0;if(R&&S&&!R.fr)R.fr=1,bpPn(M)}
+  if(M.go)a=M.go,ds(bpQ(M),a.q)<z*.3+.02*P.z0&&(M.pk=a.i,M.pq=a.q,M.go=0);      // arrivé : la fiche demandée reste affichée tant que le vaisseau ne s'éloigne pas
+  else if(R&&S&&!R.fr&&!M.pz){let sv=S.v.call?S.v():S.v,sc=S.c.call?S.c():S.c,V={q:sv,f:nm(sb(sc,sv)),z:S.z,k:1.8};R.pt+=d;      // 0 : devant la scène ; 1 : rejoindre le trajet ; 2 : le suivre ; 3 : revenir
+    if(R.ph==0){a=V;R.pt>4.2&&(R.ph=R.P&&(S.fo||!P.nr)?1:3,R.pt=0)}      // dans une cellule, le vaisseau ne suit le trajet que si l'étape le demande (fo)
+    else if(R.ph==1){let[q,t,L]=bnAt(R.P,0);a={q,f:t,z:cl(L*.035,P.zm||.3,S.z),k:2.4};R.pt>1.8&&(R.ph=2,R.pt=0)}
+    else if(R.ph==2){let[,,L]=bnAt(R.P,0),X=cl(L/S.z*.5,3.5,8),[q,t]=bnAt(R.P,min(1,R.pt/X));a={q,f:t,z:cl(L*.035,P.zm||.3,S.z),k:7};R.pt>X+.6&&(R.ph=3,R.pt=0)}
+    else a=V}
+  if(a){let k=min(1,d*a.k);p=lp(p,ad(P.O,a.q),k);f=nm(lp(f,a.f,k));u=nm(cr(cr(f,abs(f[1])>.97?[1,0,0]:[0,1,0]),f));z+=(a.z-z)*min(1,d*2.4);vel=0}
+  else{f=rot(f,u,-jx*1.5*d);let r=nm(cr(f,u));f=nm(rot(f,r,jy*1.2*d));u=cr(r,f);z=cl(z*2**(zm*1.5*d),P.zm||.3,P.zx||40);BO+=((bo&&th>0?1:0)-BO)*min(1,d*5);TH+=(max(0,th)-TH)*min(1,d*7);
     vel+=((th>0?th*(1+3*BO):th*.5)*z*7-vel)*min(1,d*(4+4*BO));p=ma(p,f,vel*d);let q=bpQ(M),r0=z*.42,l=ln(q);
-    for(let c of P.C)if(c.s){let e=sb(q,c.a),m=ln(e);m<c.r+r0&&(q=ma(c.a,m?ml(e,1/m):[0,1,0],c.r+r0))}      // corps cellulaires : pleins ; dendrites et axones se traversent
+    for(let c of P.C)if(c.s==1){let e=sb(q,c.a),m=ln(e);m<c.r+r0&&(q=ma(c.a,m?ml(e,1/m):[0,1,0],c.r+r0))}      // corps cellulaires : pleins ; dendrites et axones se traversent
     l>P.R&&(q=ml(q,P.R/l));p=ad(P.O,q)}
-  if((M.ct=(M.ct||0)+d)>.25&&!M.ls){M.ct=0;let k=bpNr(M),zs=fm(z);if(k!=M.nk||zs!=M.zs)M.nk=k,M.zs=zs,bpPn(M)}
+  if(R&&S&&!M.pz){R.at+=d;R.at>S.T*1.45&&(R.at=0);M.ta=min(R.at/S.T,1)}
+  if((M.ct=(M.ct||0)+d)>.25&&!M.ls&&!R){M.ct=0;let k=M.pk&&ds(bpQ(M),M.pq)<1.2*z+.03*P.z0?M.pk:(M.pk=0,bpNr(M)),zs=fm(z);if(k!=M.nk||zs!=M.zs)M.nk=k,M.zs=zs,bpPn(M)}
   nI=0}
-function bpD(M){let P=M.pl,q=bpQ(M),n=0,s={};P.dyn(P,M.t);for(let[a,t]of P.lab)bL(a,t,'r');
-  for(let c of P.C){if(s[c.i]||!c.s||n>7||c.i==M.nk)continue;let m=c.a;if(ds(q,m)<c.r+40+18*z)s[c.i]=1,n++,sxL(ma(bX(m),vu,c.r+z*.45),P.I[c.i][0],'r')}}
-{const Q=SXQ.bz,fs0=Q.fs,fd0=Q.fd,cl0=Q.cl,en0=Q.en,pn0=bnPn;
- Q.fs=(d,M)=>M.pl?bpS(d,M):fs0(d,M);Q.fd=M=>M.pl?bpD(M):fd0(M);Q.en=M=>{en0(M);M.pl&&M.pl.ch.forEach(h=>h.A=0)};
- Q.cl=(M,k)=>{let P=M.pl;if(k>=200)return bpIn(M,BPK[k-200]);if(!P)return cl0(M,k);
-   if(k==16)return bpOut(M);if(k==13){M.ls=2;return bpPn(M)}if(k==14){M.ls=0;return bpPn(M)}if(k>=100){M.ls=0;M.go=bpVw(P,bpKs(P)[k-100]);return bpPn(M)}
-   if(k==17){sxEnd();if(reg)return say('Vous voici de retour dans le neurone pyramidal de ce jeu.',8);vel=0;p=ma(e0,v0,.6);f=ml(v0,-1);u=pp(f);cf=f;cu=u;z=.06;say('Voici le neurone pyramidal de ce jeu, vu depuis son bouton synaptique : « ⇲ Voies d\'entrée » propose plusieurs façons d\'y entrer.',10)}};
- bnPn=M=>{if(M.pl)return bpPn(M);pn0(M);if(M.rd||M.ls==1)return;      // sur la carte : bouton d'entrée dans le quartier de la région survolée, et liste des six quartiers
+function bpD(M){let P=M.pl,q=bpQ(M),n=0,s={},R=M.rd,S=R&&R.q[2][R.i];if(S)return S.d(M.ta,S,P);P.dyn(P,M.t);for(let[a,t]of P.lab)bL(a,t,'r');
+  for(let c of P.C){if(s[c.i]||!c.s||n>7||c.i==M.nk)continue;let m=c.a;if(ds(q,m)<c.r+(40+18*z)*P.z0/9)s[c.i]=1,n++,sxL(ma(bX(m),vu,c.r+z*.45),P.I[c.i][0],'r')}}
+// entrée directe dans un lieu depuis le monde du neurone (cellules gliales) : la sortie ramène au neurone
+function bpGo(id){if(!go||PM||RX||NX||AP)return;SX&&sxEnd();SXQ.bz.p0=BPL[id];sxGo('bz')}
+{const Q=SXQ.bz,fs0=Q.fs,fd0=Q.fd,cl0=Q.cl,en0=Q.en,pn0=bnPn,pi0=Q.pn;
+ Q.pn=M=>{let P=Q.p0;if(P&&!M.fly){Q.p0=0;pi0(M);M.hm=1;M.sk=[];return bpIn(M,P)}pi0(M)};
+ Q.fs=(d,M)=>M.pl?bpS(d,M):fs0(d,M);Q.fd=M=>{dSx0.r=dSx1.r=1e6;M.pl?bpD(M):fd0(M)};Q.en=M=>{en0(M);dSx0.r=dSx1.r=1;M.pl&&M.pl.ch.forEach(h=>h.A=0)};      // en vol, le lot animé couvre tout le lieu : sans cela il disparaît dès que son centre sort de l'écran
+ Q.cl=(M,k)=>{let P=M.pl,R=M.rd;if(k>=200)return bpIn(M,BPK[k-200]);if(!P)return cl0(M,k);
+   if(k==16)return bpOut(M);if(k==13||k==30){M.ls=k==13?2:3;M.rd=0;return bpPn(M)}if(k==14){M.ls=0;return bpPn(M)}if(k>=100){M.ls=0;M.go=bpVw(P,bpKs(P)[k-100]);return bpPn(M)}
+   if(k==18)return bpIn(M,BPL[P.lk[M.nk]]);if(k>=31)return bpRd(M,P.ci[k-31]);if(k==10)return bpRd(M,0);
+   if(k==17){sxEnd();if(reg)return say('Vous voici de retour dans le neurone pyramidal de ce jeu.',8);vel=0;p=ma(e0,v0,.6);f=ml(v0,-1);u=pp(f);cf=f;cu=u;z=.06;return say('Voici le neurone pyramidal de ce jeu, vu depuis son bouton synaptique : « ⇲ Voies d\'entrée » propose plusieurs façons d\'y entrer.',10)}
+   if(!R)return;if(k==15){R.fr=0;R.ph=0;R.pt=0;return bpPn(M)}if(k==11||k==12){R.i=cl(R.i+(k==11?1:-1),0,R.q[2].length);R.ph=0;R.pt=0;R.at=0;R.P=0;R.fr=0;bpPn(M)}};
+ bnPn=M=>{if(M.pl)return bpPn(M);pn0(M);if(M.rd||M.ls==1)return;      // sur la carte : bouton d'entrée dans le quartier de la région survolée, et liste des lieux
    if(M.ls==2)return $('pmo').insertAdjacentHTML('afterbegin',BPK.map(P=>rxBtn('⤓ '+P.n,'Sh'+(200+P.ix))).join(''));
    let P=bpOf(M.nk);P&&$('pmo').insertAdjacentHTML('afterbegin',rxBtn('⤓ Entrer : '+P.n,'Sh'+(200+P.ix)))}}
