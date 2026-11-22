@@ -24,7 +24,8 @@ BRO={ht:[[2.6,-21,-1],2.1,0xd04a4a,(LG?'heart':'cœur')],lv:[[3.6,-27.5,-2.4],2.
  mu:[[8.6,-17.4,-3],1.5,0xc0504a,'muscle']},
 BRV=[[1.9,-3.4,0],[1.3,-9,-.6],[1.7,-17,-.9],[2.6,-21,-1],[1.5,-26,-1.6],[-.2,-29.4,-2.6],[-.2,-31.4,-2.6]],      // trajet du sang, de l'hypophyse au cœur puis aux surrénales et au rein
 BRE=[8.4,-2.3,-3.3],      // œil
-brD=(hl={},deep=[],body)=>{let i;for(let e of BRM){let k=e[4].find(k=>hl[k]);k?bS(e[0],e[1]*1.25,kd(bK(hl[k]),1.25)):bS(e[0],e[1],BRC[e[2]])}
+brD=(hl={},deep=[],body)=>{let i,F=SX.fly;for(let e of BRM){let k=e[4].find(k=>hl[k]);k?bS(e[0],e[1]*1.3,kd(bK(hl[k]),1.25)):F||bS(e[0],e[1],BRC[e[2]])}
+  if(F){for(let k of deep){if(k=='hp'){BRH.forEach(q=>bS(q,.46,kd(bK(0x4fc47a),1.5)));continue}let n=BRN[k];bS(n[0],n[1]*1.07,kd(bK(n[2]),1.5));sxL(ma(bX(n[0]),vu,n[1]+z*.5),n[3])}if(body)for(let k of body)if(k!='ey'){let o=BRO[k];sxL(ma(bX(o[0]),vu,-o[1]-z*.5),o[3],'r')}return}      // carte en vol libre : le modèle fixe est déjà là, on ne dessine que ce qui s'allume
   [[[-.6,-1.6,0],[-.9,-3,0],1],[[-.9,-3,0],[-1.2,-4.7,0],1.3],[[-1.2,-4.7,0],[-2,-6.9,0],.8],[[-2,-6.9,0],[-2.3,body?-34:-9.5,0],.45]].forEach(([a,b,r])=>bU(a,b,r,[.62,.56,.52,1]));      // tronc cérébral et moelle
   for(i=0;i<8;i++){let a=.35+i*.3,b=a+.3;bU([-.3+4*cos(a),-1+3.4*sin(a),0],[-.3+4*cos(b),-1+3.4*sin(b),0],.32,[.8,.8,.78,1])}      // corps calleux
   for(let k in BRN){let n=BRN[k],on=deep.includes(k);if(k=='th'||k=='hy'||on)bS(n[0],n[1],kd(bK(n[2]),on?1.3:.55));on&&sxL(ma(bX(n[0]),vu,n[1]+z*.045),n[3])}
@@ -32,7 +33,8 @@ brD=(hl={},deep=[],body)=>{let i;for(let e of BRM){let k=e[4].find(k=>hl[k]);k?b
   if(body)for(let k of body){if(k=='ey'){bS(BRE,1.15,[.9,.9,.94,1]);bS(ad(BRE,[1,0,0]),.52,[.3,.5,.7,1]);continue}let o=BRO[k];bS(o[0],o[1],bK(o[2]));k=='mu'&&(bS(ad(o[0],[1.6,-1.4,0]),1.2,bK(o[2])),bS(ad(o[0],[-1.4,1.3,0]),1.1,bK(o[2])));
     sxL(ma(bX(o[0]),vu,-o[1]-z*.05),o[3],'r')}},
 // trajet : ligne brisée P, impulsions lumineuses qui la parcourent (t : phase ; n : nombre ; nul : pas d'impulsion)
-brP=(P,t,c,r=.22,n=3)=>{let L=[0],i;for(i=1;i<P.length;i++)L[i]=L[i-1]+ds(P[i],P[i-1]),bU(P[i-1],P[i],r*.3,kd(c,.5));if(t==null)return;
+brP=(P,t,c,r=.22,n=3)=>{let L=[0],i;if(t!=null&&SX.fly&&SX.rd&&!SX.rd.P)SX.rd.P=P.map(q=>q.slice());      // premier trajet parcouru de l'étape : c'est celui que suit le vaisseau
+  for(i=1;i<P.length;i++)L[i]=L[i-1]+ds(P[i],P[i-1]),bU(P[i-1],P[i],r*.3,kd(c,.5));if(t==null)return;
   for(let k=0;k<n;k++){let s=(((t+k/n)%1)+1)%1*L[L.length-1];i=1;while(i<P.length-1&&L[i]<s)i++;bS(lp(P[i-1],P[i],(s-L[i-1])/(L[i]-L[i-1]||1)),r,[c[0]*2.6,c[1]*2.6,c[2]*2.6,1])}},
 bY=[1,.85,.25,1],bR=[1,.35,.3,1],bG=[.35,.9,.5,1],bB=[.4,.7,1,1],bV=[.75,.5,1,1],
 brN=k=>BRN[k][0],
@@ -162,8 +164,8 @@ BQ.forEach(([k,ti,S,T,sz,sc,inn,su,zx])=>{S.forEach(s=>{s.leg=s.leg||[];s.z*=k==
   sd:()=>k=='bc'?(bDr(bPy(),bK(0x6f9be8)),bDr(bAx(),bK(0xe8b04a),[0,0,0],1,.6),bS([0,0,0],9,bK(0x5a86d8))):brD({m1:0xff5a4a,v1:0xff5a4a,pfc:0x9a7cf0,cb:0x4fc4a0},['hp','am','st'],k=='bv'||k=='bb'||k=='bl'?[]:['ht','lv','kd','ad','mu','lu'])}});
 // menu du cerveau
 function bnMenu(){if(!go||PM||RX||NX||AP)return;SX&&sxEnd();$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';$('pmt').textContent='Explorer le cerveau';
-  $('pmx').textContent='Sept parcours. Le premier présente les cellules du cerveau, à l\'échelle du micromètre. Les six autres suivent un signal dans une région du cerveau, puis jusqu\'à ses effets dans le corps. Dans chaque vue : glissez pour tourner autour de la scène, molette ou pincement pour zoomer.';
-  $('pmo').innerHTML=BQ.map(q=>rxBtn(q[1]+' ('+q[2].length+')','Si'+q[0])).join('')+rxBtn('Fermer','Sx')}
+  $('pmx').textContent='La carte du cerveau se parcourt en vaisseau : chaque région, chaque noyau, chaque organe a sa fiche. Six parcours y suivent un signal jusqu\'à ses effets dans le corps ; le vaisseau accompagne le signal, et vous pouvez reprendre les commandes à tout moment. Une vue à part présente les cellules du cerveau, à l\'échelle du micromètre.';
+  $('pmo').innerHTML=rxBtn('Carte du cerveau : vol libre','B0')+BQ.slice(1).map((q,i)=>rxBtn(q[1]+' ('+q[2].length+')','B'+(i+1))).join('')+rxBtn(BQ[0][1]+' ('+BQ[0][2].length+')','Sibc')+rxBtn('Fermer','Sx')}
 $('bnb').onclick=bnMenu;
 {const h0=$('pmo').onclick;$('pmo').onclick=e=>{let b=e.target.closest('button');if(!b||b.dataset.r!='Wb')return h0(e);bnMenu()}}
 {const b0=btT;btT=()=>{b0();if(RX||NX||SX)return;$('bnb').style.display=go&&CT>1&&!AP&&!PM&&ct<0&&!ORG?'block':'none'}}

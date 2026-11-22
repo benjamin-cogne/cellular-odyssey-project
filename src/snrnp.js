@@ -140,7 +140,7 @@ SXS=[
 let SXK=[],sxHi=0,hxHi=0;      // blocs de décor masqués pendant le mode ; conseil déjà affiché
 // ---- moteur commun aux vues guidées à l'échelle du nanomètre. Une vue (SXQ[clé]) fournit : S étapes {T, z, c, leg, d(a), k, h}, T textes [titre, lieu, texte],
 // ti titre, in texte d'accueil, su texte du bilan, sc et sz cadrage du bilan, sd dessin du bilan, o() origine de la scène, solo : 1 pour masquer tout le décor ;
-// facultatifs : go boutons de départ, xb boutons ajoutés à l'accueil et au bilan, pn(M,S) panneau propre à la vue (quiz), cl(M,k) réponse à un bouton « Sh » ----
+// facultatifs : fs(d,M) et fd(M) remplacent le pas et le dessin (vol libre), en(M) est appelé à la sortie ; go boutons de départ, xb boutons ajoutés à l'accueil et au bilan, pn(M,S) panneau propre à la vue (quiz), cl(M,k) réponse à un bouton « Sh » ----
 const SXQ={sn:{S:SXS,T:SXT,ti:'Assemblage des snRNP',
  in:'Huit étapes à l\'échelle du nanomètre : un snRNP U5 revient du cytoplasme, deux de ses nucléotides sont retouchés par un scaRNP, puis U4, U6 et U5 sont réunis en tri-snRNP, la pièce que le spliceosome attend. Les ARN sont dessinés nucléotide par nucléotide, en teintes chaudes ; chaque protéine est une sphère de sa couleur, en teintes froides, d\'autant plus grosse que la protéine est lourde. Glissez pour tourner autour de la scène, molette ou pincement pour zoomer. Les repliements des ARN sont schématiques.',
  su:'En réunissant snRNP, scaRNP et facteurs d\'assemblage dans un petit volume, le corps de Cajal accélère chaque rencontre. Bilan : trois ARN (U4, U5, U6), deux anneaux Sm, un anneau LSm et une trentaine de protéines forment le tri-snRNP, qui apporte au spliceosome son cœur catalytique. Des variants de PRPF3, PRPF4, PRPF6, PRPF8, PRPF31 ou SNRNP200 causent des rétinites pigmentaires dominantes ; ceux de RNU4-2, le gène du snRNA U4, un trouble du neurodéveloppement.',
@@ -161,14 +161,14 @@ function sxGo(q){let Q=SXQ[q],X=nm(cr(f,u)),O;AP=0;SXK=[];O=Q.o();document.body.
   cap.style.opacity=0;shp.forEach(h=>h.A=0);SXK.forEach(h=>h.A=0);        // le vaisseau s'efface
   $('hl').style.display=mk.style.display='none';for(let k of['ent','pmb','xit','gui','bld','tcy','rxb','nxb','hr'])$(k).style.display='none';
   $('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';sxN(1)}
-function sxEnd(){let M=SX;document.body.classList.remove('rx');z=M.z0;p=M.p0;f=M.fs;u=M.us;SX=0;dSx0.n=dSx1.n=0;QL.forEach(e=>e.style.display='none');shp.forEach(h=>h.A=1);SXK.forEach(h=>h.A=1);SXK=[];
+function sxEnd(){let M=SX;M.Q.en&&M.Q.en(M);document.body.classList.remove('rx');z=M.z0;p=M.p0;f=M.fs;u=M.us;SX=0;dSx0.n=dSx1.n=0;QL.forEach(e=>e.style.display='none');shp.forEach(h=>h.A=1);SXK.forEach(h=>h.A=1);SXK=[];
   $('pm').style.display='none';$('hl').style.display='flex';$('hr').style.display=mk.style.display='';hT=0}
-function sxS(d){let M=SX,S=M.Q.S[M.st];M.yaw-=(tjx+(keys.ArrowRight|0)-(keys.ArrowLeft|0))*d*1.5;M.pit=cl(M.pit+(tjy+(keys.ArrowUp|0)-(keys.ArrowDown|0))*d,-1.3,1.3);
+function sxS(d){let M=SX,S=M.Q.S[M.st];if(M.Q.fs)return M.Q.fs(d,M);M.yaw-=(tjx+(keys.ArrowRight|0)-(keys.ArrowLeft|0))*d*1.5;M.pit=cl(M.pit+(tjy+(keys.ArrowUp|0)-(keys.ArrowDown|0))*d,-1.3,1.3);
   if(tzm)M.zt=0,z=cl(z*2**(tzm*1.5*d),.0015,M.zx);if(M.zt){z*=(M.zt/z)**min(1,d*2.6);abs(z/M.zt-1)<.01&&(M.zt=0)}
   M.pz||(M.t+=d);if(S){M.ta=min(M.t/S.T,1);if(M.t>S.T*(S.h||1.45))M.t=0}        // l'état final reste affiché un moment, puis la boucle se rejoue
   M.Cc=lp(M.Cc,M.Ct,min(1,d*4.5));let v=rot(M.fb,M.ub,M.yaw),r=nm(cr(M.ub,v));v=rot(v,r,M.pit*.8);f=v;u=nm(cr(v,r));p=ad(M.Cc,innerWidth>innerHeight?ml(vr,-z*1.6):ml(vu,z*.9));vel=0;nI=0}
 function sxD(){let M=SX,S=M.Q.S[M.st];nxl=0;dSx0.n=dSx1.n=0;dSx0.c=dSx1.c=M.O;
-  if(S)S.d(M.ta,S);else M.Q.sd();
+  if(M.Q.fd)M.Q.fd(M);else if(S)S.d(M.ta,S);else M.Q.sd();
   for(let i=nxl;i<QL.length;i++)QL[i].style.display='none';up(dSx0);up(dSx1)}
 // écran d'accueil d'une vue (appelé par son bouton)
 function sxIn(q){if(!go||PM||RX||NX||SX||AP)return;let Q=SXQ[q];$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';$('pmt').textContent=Q.ti;$('pmx').textContent=Q.in;
