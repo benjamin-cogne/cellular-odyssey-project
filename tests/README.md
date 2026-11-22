@@ -50,4 +50,6 @@ Scripts that use `ev(...)` need `dist/dev.html`; those marked *minified* drive `
 | `t131.js` | Glial-cell interiors: entry button next to each glial cell of the neuron's tissue, build of the three places, card shown after flying to each organelle, Mendelian lines, every step of the "In action" sequences (phases, pathway followed, shapes drawn), exit to the neuron, entry from the cortical column and return. Argument: language. |
 | `t120.js` | Mendelian genetics focus: data integrity, card lines, labels, panel, reaction steps. Arguments: language, cells (e.g. `012`). |
 
+`t128` to `t130` call the brain mode directly, so they run whatever the value of `BRAIN`.
+
 `t20`, `t90`, `t112`, `t113`, `t120`, `t121`, `t122` to `t131` were run from this layout; `t22`, `t94`, `t96`, `t98` and `t111` were run on the same sources before the files were reorganised. The older scripts have not been rerun since earlier versions of the game.
