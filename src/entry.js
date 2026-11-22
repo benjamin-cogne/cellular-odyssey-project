@@ -1,0 +1,168 @@
+// ================= surface de la cellule : récepteurs et voies d'entrée =================
+// Hors de la cellule, le bouton « ⇲ Voies d'entrée » propose plusieurs façons d'entrer. La voie de la clathrine reste le trajet en vol (physics.js) ;
+// les autres sont des vues guidées à l'échelle du nanomètre (moteur de snrnp.js) : cavéole (SXQ.wv), macropinocytose (SXQ.wm), endocytose ultrarapide
+// à la synapse (SXQ.wu, neurone) ; SXQ.wr montre les récepteurs de la surface de la cellule en cours. Repère des scènes : Y vers l'extérieur de la cellule,
+// membrane dans le plan XZ, distances en nm. Les membranes sont dessinées en billes ; la forme des protéines est schématique, leur taille est réaliste
+// (sauf dans la macropinocytose, à l'échelle du micromètre, où les protéines sont grossies).
+Object.assign(SXP,{CAV1:[240,0xe8b04a],CAVIN1:[130,0x8a6cf0],EHD2:[122,0x4fc47a],DNM2:[196,0x2bb8a8],ALB:[66,0xd8c878],CLTC:[190,0xc0504a]});
+Object.assign(SXN,{CAV1:'cavéoline-1 (complexe 8S)',CAVIN1:(LG?'cavins':'cavines'),EHD2:'EHD2',DNM2:(LG?'dynamin':'dynamine'),ALB:(LG?'albumin':'albumine'),CLTC:(LG?'clathrin':'clathrine')});
+dSx0.ex=dSx1.ex=1;      // visibles aussi hors de la cellule
+const wyM=kd(K(CF.mc),.92),wyY=[3,2.6,1,1],wyH=h=>kc(h),
+wB=(q,r,c)=>dS(dSx0,sxW(q),r*1e-3,c),wT=(a,b,r,c)=>dT(dSx1,sxW(a),sxW(b),r*1e-3,c),wL=(q,t,c)=>sxL(sxW(q),t,c),
+wyW=(a,w)=>w&&abs(atan2(sin(a-PI/2),cos(a-PI/2)))<w,      // fenêtre ouverte vers la caméra, pour voir l'intérieur
+// feuille de membrane : billes au pas s, demi-largeurs X et Z, sauf dans les trous [x, z, rayon]
+wyS=(s,X,Z,H,y0=0,col=wyM)=>{for(let x=-X;x<=X;x+=s)for(let z=-Z;z<=Z*.45;z+=s)H.some(h=>hypot(x-h[0],z-h[1])<h[2])||wB([x,y0,z],s*.56,col)},
+// portion de sphère (centre C, rayon R) située sous le plan y = y0 ; sphère entière si y0 est nul
+wyB=(C,R,s,y0,w,col=wyM)=>{let n=max(3,Math.round(PI*R/s));for(let i=0;i<=n;i++){let th=i*PI/n,y=C[1]-R*cos(th),r=R*sin(th);if(y0!=null&&y>y0)break;
+  let m=max(1,Math.round(TAU*r/s));for(let j=0;j<m;j++){let a=j*TAU/m+i*.5;wyW(a,w)||wB([C[0]+r*cos(a),y,C[2]+r*sin(a)],s*.56,col)}}},
+wyO=(c,R)=>abs(c)<R?sqrt(R*R-c*c):0,      // rayon de l'ouverture d'un puits dont la sphère est centrée à la hauteur c
+// point du manteau d'un puits : à la distance s du fond le long de la membrane, azimut a, écarté de off vers le cytosol ; il suit la membrane quand le puits s'aplatit
+wyP=(s,a,c,R,off,dy=0,x0=0)=>{let tm=c>=R?0:acos(cl(c/R,-1,1));if(s<=R*tm){let th=s/R,r=(R+off)*sin(th);return[x0+r*cos(a),c-dy-(R+off)*cos(th),r*sin(a)]}let r=R*sin(tm)+s-R*tm;return[x0+r*cos(a),-off,r*sin(a)]},
+wyU=(q,r=3.2)=>{wB(q,r,wyY);sxL(ma(sxW(q),vu,r*1.7e-3+z*.02),(LG?'you':'vous'),'e')},
+wyR=(C,ro,y,n,r,col,w,ph=0)=>{for(let i=0;i<n;i++){let a=i*TAU/n+ph;wyW(a,w)||wB([C[0]+ro*cos(a),y,C[2]+ro*sin(a)],r,col)}},      // anneau de billes
+wyG=n=>{let s=n*7919+13;return()=>(s=Math.imul(s,1103515245)+12345>>>0)/4294967296},      // générateur fixe : les nuages de points ne tremblent pas
+// ---------------- cavéole ----------------
+// o = {c : hauteur du centre de la sphère (34 : membrane plate ; −18 : cavéole ; −34 : col fermé), dy : descente après la scission, cx : écart des cavines, eh, dn : EHD2 et dynamine}
+wyCv=o=>{let R=34,c=o.c,dy=o.dy||0,ro=dy?0:wyO(c,R),w=.95,i,k;
+  wyS(7,126,56,ro?[[0,0,ro+3]]:[]);if(dy)wyB([0,c-dy,0],R,7,null,w);else if(c<R-1)wyB([0,c,0],R,7,0,w);
+  for(i=0;i<18;i++){let a=i*2.39996;wyW(a,w*.85)||wB(wyP(R*acos(1-(i+.5)/18*1.53),a,c,R,2.5,dy),4.1,wyH(SXP.CAV1[1]))}
+  if(o.cx<60)for(i=0;i<3;i++){let pv,va=1;for(k=0;k<=14;k++){let a=i*TAU/3+k*.3,q=wyP(R*2.13*(.1+.82*k/14),a,c,R,8+o.cx,dy),v=wyW(a,w*.85);pv&&!v&&!va&&wT(pv,q,1.3,wyH(SXP.CAVIN1[1]));pv=q;va=v}}
+  o.eh>0&&ro&&wyR([0,0,0],ro+5,-4,9,3.2*o.eh,wyH(SXP.EHD2[1]),w*.8);
+  o.dn>0&&wyR([0,0,0],max(ro,2)+5,-10,10,3.8*o.dn,wyH(SXP.DNM2[1]),w*.5,.3)},
+wyAl=(n,t,C,R)=>{let g=wyG(n);for(let i=0;i<n;i++){let a=[g()*150-75,40+g()*50,g()*60-30],b=[C[0]+(g()-.5)*R,C[1]+(g()-.5)*R,C[2]+(g()-.5)*R*.6];wB(lp(a,b,ss(cl(t*1.4-i/n*.4,0,1))),2.7,wyH(SXP.ALB[1]))}},
+WVT=[['Une cavéole','membrane plasmique','Une petite outre de 50 à 80 nm, ouverte sur l\'extérieur. Son manteau est fait de cavéoline-1 (doré), dont les oligomères en disque sont enchâssés dans le feuillet interne de la membrane, et de cavines (violet), qui la gainent de filaments. EHD2 (vert) se tient au col et la retient à la surface. La membrane y est riche en cholestérol et en sphingolipides. Les cavéoles abondent dans l\'endothélium, les adipocytes et les cellules musculaires.'],
+ ['La cargaison entre','membrane plasmique','Le col reste ouvert : ce qui baigne la cellule y pénètre, comme l\'albumine du plasma (sphères claires). Le vaisseau se glisse dans la cavéole.'],
+ ['Sous tension, la cavéole s\'aplatit','membrane plasmique','Une propriété que n\'ont pas les puits à clathrine : quand la membrane est étirée (gonflement de la cellule, étirement d\'un muscle), la cavéole se déplisse en quelques instants et rend sa surface à la membrane, qui ne se déchire pas. Les cavines se détachent ; les cavéolines restent dans la membrane. Quand la tension retombe, la cavéole se reforme. C\'est une réserve de membrane autant qu\'une voie d\'entrée.'],
+ ['Scission et trajet vers l\'endosome','sous la membrane','La plupart des cavéoles restent à la surface. Certaines se détachent : EHD2 quitte le col, la dynamine (bleu-vert) l\'étrangle, et la vésicule, toujours vêtue de son manteau, gagne un endosome précoce avec lequel elle fusionne. La cargaison est triée ; cavéolines et cavines peuvent retourner à la surface.']],
+WVS=[{k:'cv0',T:8,z:.03,c:[0,-8],leg:['CAV1','CAVIN1','EHD2'],d:a=>{wyCv({c:-18,cx:0,eh:1});wL([0,-64,0],'≈ 70 nm','r');wL([-98,34,0],'extérieur','r');wL([-98,-48,0],'cytosol','r');wL([58,-36,0],(LG?'cavins':'cavines'));wL([-46,-50,0],'cavéoline-1');wL([44,8,0],'EHD2')}},
+ {k:'cv1',T:9,z:.03,c:[0,4],leg:['CAV1','CAVIN1','EHD2','ALB'],d:a=>{wyCv({c:-18,cx:0,eh:1});wyAl(7,a,[0,-20,0],34);wyU(lp([34,74,0],[0,-16,0],ss(sxA(a,.25,.5))));a>.5&&wL([-58,26,0],(LG?'albumin':'albumine'),'r')}},
+ {k:'cv2',T:11,z:.03,c:[0,-8],leg:['CAV1','CAVIN1'],d:a=>{let t=ss(sxA(a,.2,.4));wyCv({c:-18+52*t,cx:t*70,eh:1-t});wL([-104,22,0],'⟵ membrane étirée','r');wL([104,22,0],'⟶','r');t>.9&&wL([0,-26,0],'cavéolines à plat, cavines libérées','e')}},
+ {k:'cv3',T:13,z:.05,c:[0,-120],h:1.2,leg:['CAV1','CAVIN1','DNM2',['endosome précoce','#8fb6c8']],d:a=>{let d1=sxA(a,.05,.15),t=ss(sxA(a,.2,.2)),dy=ss(sxA(a,.42,.4))*150,f=a>.84;
+   if(f)wyS(7,126,56,[]);else wyCv({c:-18-16*t,dy,cx:0,eh:1-d1,dn:dy>20?0:d1});
+   wyB([0,-290,0],96,9,null,.9,[.5,.66,.74,1]);f&&wyR([0,-290,0],60,-212,8,4.1,wyH(SXP.CAV1[1]),0);wyU([0,f?-270:-18-16*t-dy,0]);wL([0,-400,0],'endosome précoce','r');a>.08&&a<.42&&wL([44,-12,0],(LG?'dynamin':'dynamine'))}}],
+// ---------------- macropinocytose (échelle du micromètre ; protéines grossies) ----------------
+// o = {h : hauteur du repli (0 à 1), q : fermeture (0 à 1), v : profondeur du macropinosome après la fusion, r : son rayon}
+wyMp=o=>{let s=75,r0=640,H=o.h*950,q=o.q,w=1.05,cup=o.h>.03&&!o.v,i,j,g=wyG(5);
+  for(let x=-1650;x<=1650;x+=s)for(let zz=-1000;zz<=640;zz+=s){let r=hypot(x,zz);cup&&abs(r-r0)<50||wB([x,0,zz],s*.56,wyM)}
+  if(cup){let n=max(2,Math.round(H/s));for(i=1;i<=n;i++){let f=i/n,rc=r0*(1-q*f**1.7),y=H*f*(1-.28*q);
+      for(let d of[-48,48]){let r=max(0,rc+d*(1-.6*q*f)),m=max(1,Math.round(TAU*r/s));for(j=0;j<m;j++){let a=j*TAU/m+i*.4;wyW(a,w)||wB([r*cos(a),y,r*sin(a)],s*.56,wyM)}}}
+    for(i=0;i<16;i++){let a=i*TAU/16+.2;if(wyW(a,w*.8))continue;let pv=[r0*cos(a),-170,r0*sin(a)];for(j=1;j<=6;j++){let f=j/6*.92,rc=r0*(1-q*f**1.7),qq=[rc*cos(a),H*f*(1-.28*q),rc*sin(a)];wT(pv,qq,11,[.95,.63,.24,1]);pv=qq}}}
+  else if(!o.v)for(i=0;i<16;i++){let a=i*TAU/16+.2,l=o.ac||0;wT([r0*cos(a),-170,r0*sin(a)],[r0*cos(a),-170+150*l,r0*sin(a)],11,[.95,.63,.24,1])}
+  if(o.v){wyB([0,-o.v,0],o.r,s,null,w,wyM);for(i=0;i<26;i++)wB([(g()-.5)*o.r*1.2,-o.v+(g()-.5)*o.r*1.2,(g()-.5)*o.r*.7],20,wyH(SXP.ALB[1]))}},
+WMT=[['Un signal de croissance','membrane plasmique','Ici l\'échelle change : le micromètre. Un facteur de croissance comme l\'EGF (orange) se fixe à son récepteur. Par Ras et la PI3-kinase, le signal active la petite GTPase Rac1, qui fait polymériser l\'actine (filaments orangés) sous la membrane, en un cercle de plus d\'un micromètre. Les protéines sont grossies pour rester visibles.'],
+ ['La membrane se soulève','membrane plasmique','Poussée par l\'actine, la membrane se dresse en un repli circulaire, haut de près d\'un micromètre : une coupe ouverte vers l\'extérieur. Aucun récepteur ne trie ce qui s\'y trouve : la cellule s\'apprête à avaler une gorgée du liquide qui l\'entoure, avec tout ce qu\'il contient.'],
+ ['La coupe se referme','membrane plasmique','Les bords du repli se rejoignent et fusionnent : la gorgée est enfermée dans un macropinosome de plus de 0,2 µm de diamètre, bien plus vaste qu\'une vésicule à clathrine. L\'amiloride et ses dérivés bloquent cette voie. Les macrophages et les cellules dendritiques la pratiquent en permanence, pour échantillonner leur milieu ; les autres cellules, surtout quand un facteur de croissance les y pousse.'],
+ ['Le macropinosome mûrit','cytosol','Le macropinosome s\'enfonce dans la cellule, perd de l\'eau et rétrécit. Des tubules renvoient sa membrane à la surface ; sa lumière s\'acidifie, Rab5 cède la place à Rab7, puis il fusionne avec des lysosomes, où son contenu est digéré. Des cellules cancéreuses à Ras muté se nourrissent ainsi de l\'albumine du milieu ; des virus comme celui de la vaccine entrent par cette voie.']],
+WMS=[{k:'mp0',T:9,z:.42,c:[0,150],leg:[['EGF','#ff8a5c'],['récepteur de l\'EGF','#5aa0e0'],[(LG?'actin':'actine'),'#f2a03c']],d:a=>{wyMp({h:0,ac:sxA(a,.45,.4)});let g=wyG(3);
+   for(let i=0;i<12;i++){let x=(g()-.5)*1700,zz=(g()-.5)*900,t=ss(cl(a*2.2-i/12*.6,0,1));wB([x-16,26,zz],22,[.35,.63,.88,1]);wB([x+16,26,zz],22,[.35,.63,.88,1]);wB(lp([x+(g()-.5)*500,900+g()*300,zz],[x,62,zz],t),17,[1,.54,.36,1])}
+   wL([-900,520,0],'EGF','r');a>.4&&wL([0,-330,0],'Ras → PI3K → Rac1 → actine','e')}},
+ {k:'mp1',T:9,z:.42,c:[0,330],leg:[[(LG?'actin':'actine'),'#f2a03c']],d:a=>{let h=ss(sxA(a,.08,.6));wyMp({h,q:0});wyU([0,lp([1250],[330],ss(sxA(a,.4,.5)))[0],0],34);h>.8&&wL([0,1080,0],'repli circulaire, ≈ 1 µm de haut','r')}},
+ {k:'mp2',T:11,z:.42,c:[0,200],leg:[[(LG?'actin':'actine'),'#f2a03c'],'ALB'],d:a=>{let q=ss(sxA(a,.08,.45)),v=sxA(a,.6,.35);v>0?wyMp({v:-320+ss(v)*1020,r:400}):wyMp({h:1,q});wyU([0,v>0?320-ss(v)*1020:330,0],34);a>.55&&wL([0,-1180-0*v,0],'macropinosome','e')}},
+ {k:'mp3',T:12,z:.42,c:[0,-650],leg:['ALB',['Rab5','#6fbf8a'],['Rab7','#c078d0'],['lysosome','#8fb44a']],d:a=>{let t=ss(sxA(a,.1,.5)),r=400-110*t,C=[0,-700-200*t,0],l=ss(sxA(a,.6,.3));wyMp({v:-C[1],r});wyU(C,34);
+   for(let i=0;i<5;i++){let d=nm([cos(i*1.26+.5),sin(i*1.26+.5)*.8,-.2]),e=ma(C,d,r),k=sin(PI*min(1,t*1.3));k>.05&&wT(e,ma(e,d,260*k),26,wyM);wB(ma(C,nm([cos(i*1.26),sin(i*1.26),.45]),r+30),30,wyH(t<.55?0x6fbf8a:0xc078d0))}
+   for(let s of[-1,1])wB(lp([s*1100,C[1]-200,0],ma(C,[s*.8,-.6,0],r+150*(1-l)),l),150*(1-.5*l),[.56,.7,.29,1]);wL(ma(C,[0,-1,0],r+150),t<.5?'pH ≈ 6':'pH ≈ 5','r')}}],
+// ---------------- endocytose ultrarapide, au bouton synaptique ----------------
+wySv=[[-64,0],[-12,0],[38,0],[-40,-44],[14,-46],[-88,-40]],wyRs=[[-70,-86,0],[-20,-104,-30],[26,-92,-20],[70,-120,-10],[-48,-150,-10],[8,-160,-24]],
+wyGl=(n,t,x0,up)=>{let g=wyG(n+1);for(let i=0;i<n;i++){let d=[(g()-.5)*1.6,up*(.3+g()),(g()-.5)*1.2],k=cl(t*1.5-g()*.4,0,1);k>0&&k<1&&wB(ma([x0,up>0?2:-2,0],d,k*(up>0?17:22)),1,[1,.85,.2,1])}},
+// o = {fu : fusion de la vésicule d'exocytose (−20 fermée, 20 à plat), pc : centre du puits ultrarapide (40 à plat), pdy, dn, ves : vésicules de réserve dessinées}
+wyUf=o=>{let H=[],w=.9,i,r1=o.fu!=null?wyO(o.fu,20):0,r2=o.pc!=null&&!o.pdy?wyO(o.pc,40):0;r1&&H.push([-12,0,r1+3]);r2&&H.push([96,0,r2+3]);
+  wyS(7,154,62,H);wyS(11,154,62,[],24,[.45,.5,.62,1]);for(i=0;i<7;i++)wB([-70+i*22,29,(i%3-2)*18],4.4,[.3,.78,.95,1]);      // membrane postsynaptique et ses récepteurs AMPA
+  wySv.forEach(([x,zz],k)=>{if(k==1&&o.fu!=null){o.fu<19&&wyB([x,o.fu,0],20,7,0,w);return}wyB([x,-21,zz],20,7,null,k<3?w:0)});
+  o.ves&&wyRs.forEach(q=>wyB(q,20,7,null,0));
+  wB([-36,-2,0],4.6,[.17,.72,.66,1]);wB([14,-2,-14],4.6,[.17,.72,.66,1]);
+  if(o.pc!=null){if(o.pdy)wyB([96,o.pc-o.pdy,0],40,7,null,w);else if(o.pc<39)wyB([96,o.pc,0],40,7,0,w);
+    if(o.ac)for(i=0;i<8;i++){let a=i*TAU/8;wyW(a,.6)||wT([96+(r2+10)*cos(a),-6,(r2+10)*sin(a)],[96+(r2+26)*cos(a),-6-56*o.ac,(r2+26)*sin(a)],1.8,[.95,.63,.24,1])}
+    o.dn>0&&wyR([96,0,0],max(r2,2)+5,-9,10,3.8*o.dn,wyH(SXP.DNM2[1]),.5,.3)}},
+WUT=[['L\'exocytose','zone active du bouton','Un potentiel d\'action arrive. Les canaux calciques Cav2.1 (bleu-vert) s\'ouvrent, le calcium entre, et une vésicule arrimée fusionne avec la membrane en moins d\'une milliseconde. Elle mesure environ 40 nm et libère son glutamate (jaune) dans la fente, large de 20 nm, jusqu\'aux récepteurs d\'en face. Sa membrane s\'ajoute à celle du bouton : il faut la reprendre.'],
+ ['50 à 100 millisecondes plus tard','bord de la zone active','La membrane est reprise aussitôt, au bord de la zone active, par un puits bien plus large qu\'une vésicule synaptique, qui donne une seule grande vésicule. Aucun manteau de clathrine : il faut de l\'actine (orangé) et de la dynamine (bleu-vert), qui coupe le col. C\'est l\'endocytose ultrarapide ; le vaisseau en profite.'],
+ ['Vers l\'endosome','bouton synaptique','En une seconde environ, la grande vésicule fusionne avec un endosome du bouton. Le vaisseau est entré dans le neurone ; la membrane, elle, va être retaillée à la bonne dimension.'],
+ ['De nouvelles vésicules','bouton synaptique','En quelques secondes, la clathrine (rouge sombre) fait bourgeonner sur l\'endosome des vésicules de 40 nm. Débarrassées de leur manteau, elles sont remplies de glutamate par le transporteur VGLUT, que la pompe à protons V-ATPase alimente en énergie, puis rejoignent la réserve, prêtes pour un nouveau cycle. La clathrine sert donc ici à refaire des vésicules, pas à reprendre la membrane.']],
+WUS=[{k:'uf0',T:9,z:.05,c:[0,-30],leg:[['glutamate','#ffd933'],['Cav2.1','#2bb8a8'],['récepteurs AMPA','#4cc7f2']],d:a=>{let t=ss(sxA(a,.3,.3));wyUf({fu:-20+40*t,ves:1});a>.3&&wyGl(46,sxA(a,.34,.5),-12,1);
+   if(a<.4){let g=wyG(9);for(let i=0;i<8;i++)wB(lp([-36+(g()-.5)*14,16,0],[-36+(g()-.5)*8,-24,0],cl(a*3-g()*.3,0,1)),1.1,[.6,.9,1,1])}
+   wL([-36,-34,0],a<.3?'Ca²⁺ par Cav2.1':'Cav2.1','r');wL([-98,42,0],'neurone d\'en face','r');wL([-110,12,0],'fente, 20 nm','r');a>.45&&wL([24,14,0],'glutamate','e')}},
+ {k:'uf1',T:11,z:.05,c:[40,-34],leg:[[(LG?'actin':'actine'),'#f2a03c'],'DNM2'],d:a=>{let t=ss(sxA(a,.12,.3)),s=ss(sxA(a,.5,.14)),dy=ss(sxA(a,.66,.3))*70,c=40-64*t-16*s;wyUf({pc:c,pdy:dy,ac:dy?0:t,dn:dy>12?0:sxA(a,.4,.12),ves:1});
+   wyU(lp([130,60,0],[96,min(0,c)-dy,0],ss(sxA(a,.2,.3))));wL([96,-98-dy*.4,0],'grande vésicule, sans clathrine','r');a>.4&&a<.7&&wL([150,-16,0],(LG?'dynamin':'dynamine'))}},
+ {k:'uf2',T:9,z:.066,c:[40,-130],leg:[['endosome','#8fb6c8']],d:a=>{let t=ss(sxA(a,.15,.5)),f=a>.68,C=lp([96,-112,0],[64,-196,0],t);wyUf({ves:1});f||wyB(C,40,7,null,.9);wyB([60,-260,0],f?70:62,8,null,.9,[.5,.66,.74,1]);wyU(f?[60,-250,0]:C);wL([60,-346,0],'endosome','r')}},
+ {k:'uf3',T:13,z:.066,c:[40,-150],h:1.2,leg:['CLTC',['glutamate','#ffd933'],['V-ATPase et VGLUT','#b48ad6']],d:a=>{wyUf({ves:1});wyB([60,-260,0],66,8,null,.9,[.5,.66,.74,1]);wyU([60,-262,0]);
+   [[-.75,.5,0,0],[.8,.45,.2,.12]].forEach(([dx,dy,dz,t0],i)=>{let d=nm([dx,dy,dz]),b=ss(sxA(a,.05+t0,.3)),o=ss(sxA(a,.4+t0,.25)),u=ss(sxA(a,.5+t0,.2)),C=ma([60,-260,0],d,56+b*30+o*80);wyB(C,20,7,null,0);
+     if(u<1)for(let k=0;k<14;k++){let e=nm([cos(k*2.4)*sqrt(1-(k/7-1)**2),k/7-1,sin(k*2.4)*sqrt(1-(k/7-1)**2)]);(dt(e,d)>-.2||o>.5)&&wB(ma(C,e,23+u*40),3.3,wyH(SXP.CLTC[1]))}
+     wB(ma(C,[0,1,0],20),3,[.7,.54,.84,1]);if(u>0){let g=wyG(20+i);for(let k=0;k<12;k++)wB(lp(ma(C,[(g()-.5)*90,(g()-.5)*90,(g()-.5)*50],1),ma(C,[(g()-.5)*20,(g()-.5)*20,(g()-.5)*14],1),cl(u*1.4-g()*.3,0,1)),1,[1,.85,.2,1])}
+     i||(b>.5&&u<.5&&wL(ma(C,[-1,.4,0],44),(LG?'clathrin':'clathrine')),u>.6&&wL(ma(C,[-1,.6,0],40),'vésicule de 40 nm','e'))})}}],
+// ---------------- récepteurs de la surface : un récepteur par étape, son ligand, ce qu'il déclenche ----------------
+wH=(x,z0=0,c=[.72,.74,.82,1])=>wT([x,1.2,z0],[x,-6.4,z0],.62,c),      // hélice transmembranaire
+w7=(x,c,z0=0)=>{for(let k=0;k<7;k++)wT([x+1.55*cos(k*.9),1.3,z0+1.55*sin(k*.9)],[x+1.4*cos(k*.9+.5),-6.3,z0+1.4*sin(k*.9+.5)],.6,c)},      // faisceau de sept hélices
+wPh=(q,g)=>g>0&&wB(q,.75*g,[3,2.4,.4,1]),mx=(a,b,t)=>a+(b-a)*t,
+WRD={      // dessin de chaque récepteur : b liaison du ligand (0 à 1), g suite du signal (0 à 1), t temps
+tfr:(b)=>{let c=[0x5b8def,0x3f6fd8,0x86b4f5].map(wyH);for(let s of[-1,1]){wH(s*1.2);wT([s*1.2,1,0],[s*1.6,3.6,0],.5,c[1]);wB([s*2.4,5.6,0],2.2,c[0]);wB([s*5.1,7.7,.8],2.2,c[1]);wB([s*3.2,9.8,-.6],2.1,c[2]);
+    let q=lp([s*17,24,0],[s*8.3,5.3,0],b);wB(q,2.35,wyH(0xe9a15b));wB(ad(q,[s*2.7,2.9,0]),2.35,wyH(0xd9853a));wB(ad(q,[s*.4,.5,2]),.6,[2.6,.5,.3,1]);wB(ad(q,[s*3,3.3,2]),.6,[2.6,.5,.3,1])}
+  wL([0,13.4,0],'TfR1');b>.6&&(wL([12.4,10,0],(LG?'transferrin':'transferrine'),'e'),wL([-12.6,5,2],'Fe³⁺','r'))},
+epo:(b,g)=>{let c=wyH(0x4fc4a0),e=1-b;for(let s of[-1,1]){let x=s*(1.5+1.5*e);wH(x);wB([x,2.5,0],1.65,c);wB([s*(2.3+2.6*e),5.6,0],1.65,wyH(0x7fdcc0));wT([x,-6.2,0],[x*1.4,-9.5,0],.4,c);wB([s*(3.6+1.6*e),-10.6,0],3.3,wyH(0xc69a5c));wPh([s*(2.2+1.6*e),-7.4,1.5],g);
+    wB(lp([s*13,-22,0],[s*7.4,-15.6,0],g),2.9,wyH(0x9a7cf0));wPh(lp([s*13,-20,2],[s*6.4,-13.4,2],g),g>.9)}
+  wB(lp([0,19,0],[0,7.2,0],b),2.1,wyH(0xff8a5c));wL([0,mx(22,10.2,b),0],'EPO','e');wL([8.5,4,0],'récepteur de l\'EPO');wL([-9.6,-10.6,0],'JAK2');g>.5&&wL([12.6,-15.6,0],'STAT5')},
+kit:(b,g)=>{let c=[0x6f9be8,0x5a86d8,0x4a74c4,0x3b63ae,0x2f5398].map(wyH),e=1-b;for(let s of[-1,1]){let x=s*(1.4+3.4*e);wH(x);for(let k=0;k<5;k++)wB([x+s*(k>2?(k-2)*.9:0),2.2+2.75*k,0],1.42,c[4-k]);wB([x*1.15,-9.4,0],2.4,wyH(0xc69a5c));wPh([x*.55,-8.4,1.6],g);
+    wB(lp([s*3,24,0],[s*1.3,11.9,1.2],b),1.8,wyH(0xff8a5c))}
+  wL([0,mx(27,15.3,b),0],'SCF, en dimère','e');wL([9.4,6,0],'KIT');g>.5&&wL([0,-13.6,0],'kinases actives','r')},
+itg:(b,g)=>{let A=wyH(0x5aa0e0),Bc=wyH(0xe07a8a),P=(u,v)=>lp(u,v,ss(b));wH(-1.3);wH(1.3);
+  [[[-1.3,3,0],[-1.3,3,0]],[[-1.6,6,0],[-1.5,6.6,0]],[[-1.2,5.4,2.9],[-1.6,10.4,0]],[[-.6,4.4,5.6],[-1.9,14.2,0]]].forEach(([u,v],k)=>wB(P(u,v),k==3?2.8:1.5,A));
+  [[[1.3,3,0],[1.3,3,0]],[[1.6,6,0],[1.5,6.6,0]],[[1.5,5.6,3],[1.6,10.4,0]],[[2.3,5,5.4],[2.1,14,0]]].forEach(([u,v],k)=>wB(P(u,v),k==3?2.5:1.4,Bc));
+  wB(lp([9,-16,0],[2.6,-8.6,0],b),3.2,wyH(0xc69a5c));for(let k=0;k<3;k++)wB(lp([1+k*.4,30+3*k,0],[.4+k*.5,18.6+2.9*k,0],g),1.45,wyH(0xf2c14e));
+  wL([-8.4,mx(6,13,b),0],'intégrine α4β1');wL([9.4,-8.6,0],(LG?'talin':'taline'));g>.5&&wL([8.6,22,0],'VCAM-1 du macrophage','e')},
+ldl:(b)=>{let c=wyH(0x5aa0e0);wH(0);wT([0,1,0],[0,6.2,0],.45,c);wB([0,8.4,0],2.3,wyH(0x3f6fd8));for(let k=0;k<3;k++)wB([.8+.5*k,11.2+1.5*k,.6],.9,c);
+  let C=lp([-3,58,0],[-6.5,29.6,0],b);for(let k=0;k<7;k++)wB(lp([2.4-k*1.3,15.6+k*.5,.8],ma(C,nm([cos(-.5-k*.3),sin(-.5-k*.3),.25]),11.8),b*.999),.95,wyH(0x86b4f5));
+  wB(C,11,[.95,.8,.3,1]);for(let k=0;k<14;k++)wB(ma(C,[cos(k*TAU/14),.25*sin(k*TAU/7),sin(k*TAU/14)],11.3),1.5,wyH(0xc97b2e));
+  wL([8.6,8.4,0],'récepteur des LDL');wL(ad(C,[0,13.4,0]),'LDL, 22 nm','e');b>.7&&wL(ad(C,[15,-4,0]),'apoB-100','r')},
+ins:(b,g)=>{let c=[0x4a74c4,0x5a86d8,0x6f9be8,0x86b4f5,0xa4c6f8,0xc0d8fb].map(wyH),A=[[6,2.3,0],[5,5.4,0],[3.6,8.3,0],[2,10.8,0],[.2,12.7,1.2],[-1.8,10.5,2.2]],B=[[1.3,2.3,0],[1.4,5.4,0],[1.9,8.4,0],[3.7,10.6,0],[6.3,11.5,0],[8.7,10.8,.6]];
+  for(let s of[-1,1]){A.forEach((u,k)=>{let q=lp(u,B[k],b);wB([s*q[0],q[1],s*q[2]],k>2?1.9:1.6,c[k])});let x=s*mx(6,1.3,b);wH(x);wB([x*1.2+s,-9.2,0],2.4,wyH(0xc69a5c));wPh([x*.5,-8,1.8],g);wPh([x*1.6+s,-11,1.8],g);
+    wB(lp([s*15,24,0],[s*7.6,13.5,.4],b),1.25,wyH(0xff8a5c))}
+  wL([0,16.4,0],'récepteur de l\'insuline');b>.6&&wL([11.6,16,0],(LG?'insulin':'insuline'),'e');g>.5&&wL([0,-14,0],'kinases actives → IRS, PI3K, Akt','r')},
+gcg:(b,g)=>{w7(0,wyH(0x5a86d8));wB([.9,4.4,0],1.8,wyH(0x86b4f5));wT(lp([5,18,0],[1.8,7.6,0],b),lp([3,13,0],[.1,1.4,0],b),.55,wyH(0xff8a5c));
+  let e=ss(g),al=lp([1,-9.8,0],[9.4,-9,0],e);wB(lp([8,-18,0],al,b),2.5,wyH(0xc69a5c));wB(lp([4,-19,0],[-2.9,-10.8,0],b),2.3,wyH(0xa37c48));wB(lp([2,-18,0],[-5.2,-9.2,0],b),1.2,wyH(0x8a6a3e));
+  w7(12.5,wyH(0x4fc47a),.5);wB([12.5,-8.6,0],2.6,wyH(0x3aa864));if(e>.6){let r=wyG(4);for(let k=0;k<9;k++)wB(lp([12.5,-11,0],[12.5+(r()-.5)*14,-22-r()*6,(r()-.5)*8],(e-.6)*2.5*(.5+r()*.5)),.55,[3,2.4,.4,1])}
+  wL([-7.8,5,0],'récepteur du glucagon');wL([6.6,mx(20,11,b),0],'glucagon','e');wL([-8,-13.4,0],'protéine Gs');wL([17.4,2.6,0],'adénylate cyclase','r');e>.7&&wL([12.5,-26,0],(LG?'cAMP':'AMPc'),'e')},
+asg:(b)=>{let c=wyH(0x5aa0e0),C=lp([0,27,0],[0,15.6,0],b);for(let k=0;k<3;k++){let x=2*cos(k*TAU/3+.5),zz=2*sin(k*TAU/3+.5);wH(x*.6,zz*.6);wT([x*.6,1,zz*.6],[x,5.6,zz],.42,c);wB([x,7.1,zz],1.6,wyH(k?0x5aa0e0:0x7fc0f0));
+    let gq=lp(ad(C,[x*1.2,-5.6,zz*1.2]),[x,9.1,zz],b);wT(ad(C,[x*.6,-2.6,zz*.6]),gq,.3,[.6,.7,.9,1]);wB(gq,.8,[.98,.84,.2,1])}
+  wB(C,3.1,wyH(0xd8a878));wL([8.4,7,0],'récepteur des asialoglycoprotéines');wL(ad(C,[0,4.6,0]),'glycoprotéine sans acide sialique','e');b>.7&&wL([-6.6,10,0],'galactose','r')},
+trk:(b,g)=>{let c=[0x86b4f5,0x6f9be8,0x4a74c4].map(wyH),e=1-b;for(let s of[-1,1]){let x=s*(2.9+3*e);wH(x);wB([x,2.5,0],1.5,c[2]);wB([x+s*.3,5.4,0],1.5,c[1]);wB([x+s*.9,8.6,0],1.95,c[0]);wB([x*1.1,-9.2,0],2.35,wyH(0xc69a5c));wPh([x*.5,-8.2,1.6],g);
+    wB(lp([s*2,22,0],[s*1.15,3.3,.6],b),1.55,wyH(0xff8a5c))}
+  wL([0,mx(25,12,b),0],'BDNF, en dimère','e');wL([9.6,6,0],'TrkB');g>.5&&wL([0,-13.8,0],'Ras–ERK, PI3K–Akt, PLCγ','r')},
+cav:(b,g,t)=>{let c=wyH(0x2bb8a8);for(let k=0;k<4;k++)wB([2.2*cos(k*PI/2+PI/4),-2.6,2.2*sin(k*PI/2+PI/4)],2.3,k%2?c:wyH(0x45cdb8));wB([1.9,3.6,0],2.8,wyH(0x8fa3c0));wT([1.9,1.4,0],[4.4,-1,0],.4,wyH(0x8fa3c0));wB([-.6,-8.4,0],2.3,wyH(0xc69a5c));
+  if(b>.5)for(let k=0;k<9;k++){let u=(t*.9+k/9)%1;wB([0,13-28*u,0],.5,[.6,.9,1,1])}
+  wL([8.4,4.6,0],'α2δ','r');wL([-7,-2.6,0],'Cav2.1 (α1)');wL([-5.4,-9.4,0],'β','r');wL([0,15,0],b>.5?'Ca²⁺':'canal fermé','e')},
+mgl:(b,g)=>{let c=wyH(0x5a86d8);for(let s of[-1,1]){let x=s*mx(3.1,2.1,b);w7(x,c);wT([x,1.2,0],[s*mx(2.6,2,b),6,0],.5,wyH(0x86b4f5));wB([s*mx(2.4,1.9,b),7.6,0],1.9,wyH(0x86b4f5));wB([s*mx(4,2.4,b),10.9,0],1.9,wyH(0xa4c6f8));
+    wB(lp([s*10,20,0],[s*mx(3.4,2.3,b),9.2,1.4],b),.55,[1,.85,.2,1])}
+  wB(lp([9,-17,0],[2.6,-9.6,0],g),2.4,wyH(0xc69a5c));wB(lp([6,-19,0],[-1.2,-10.8,0],g),2.2,wyH(0xa37c48));
+  wL([0,14,0],'domaines « attrape-mouche »','r');wL([9.6,2,0],'mGluR2, en dimère');b>.6&&wL([-7.6,11,0],'glutamate','e');g>.5&&wL([8,-11,0],'protéine Gi/o','r')}},
+WRX=[      // récepteurs par cellule : [clé du dessin, titre, texte, légende, z]
+ [['tfr','TfR1 et la transferrine','Le récepteur de la transferrine est un dimère en forme de papillon. Chacune de ses ailes fixe une transferrine, protéine à deux lobes qui porte deux ions Fe³⁺ (rouge). L\'érythroblaste en expose plusieurs centaines de milliers : il lui faut du fer pour l\'hème de son hémoglobine. Le complexe est internalisé par un puits à clathrine : c\'est l\'entrée principale de cette cellule.',[['TfR1','#5b8def'],[(LG?'transferrin':'transferrine'),'#e9a15b'],['Fe³⁺','#ff5533']]],
+  ['epo','Le récepteur de l\'érythropoïétine','Sans ce signal, l\'érythroblaste meurt. Le récepteur de l\'EPO est un dimère déjà formé, dont chaque chaîne porte une kinase JAK2 (ocre) du côté du cytosol. L\'EPO, hormone fabriquée par le rein quand l\'oxygène manque, se loge entre les deux chaînes et les réoriente : les deux JAK2 se phosphorylent l\'une l\'autre (grains jaunes), puis phosphorylent STAT5 (violet), qui part vers le noyau activer les gènes de survie et de différenciation.',[['récepteur de l\'EPO','#4fc4a0'],['EPO','#ff8a5c'],['JAK2','#c69a5c'],['STAT5','#9a7cf0']]],
+  ['kit','KIT et le facteur de cellules souches','KIT est un récepteur à activité tyrosine kinase : cinq domaines immunoglobuline dehors, une kinase dedans. Le facteur de cellules souches (SCF), un dimère, rapproche deux KIT ; leurs kinases se phosphorylent l\'une l\'autre et le signal part. Il soutient la survie et la multiplication des précurseurs érythroïdes, aux côtés de l\'EPO.',[['KIT','#5a86d8'],['SCF','#ff8a5c'],['kinase','#c69a5c']]],
+  ['itg','Une intégrine se déplie','Les intégrines attachent la cellule à ses voisines et à la matrice. Au repos, l\'intégrine est repliée sur elle-même et lie mal son ligand. Quand la taline (ocre) se fixe à sa queue, du côté du cytosol, elle se déplie comme un couteau à cran d\'arrêt jusqu\'à près de 20 nm et saisit son ligand : ici VCAM-1, porté par le macrophage au centre de l\'îlot érythroblastique.',[['chaîne α4','#5aa0e0'],['chaîne β1','#e07a8a'],[(LG?'talin':'taline'),'#c69a5c'],['VCAM-1','#f2c14e']]]],
+ [['ldl','Le récepteur des LDL','Une LDL est une particule de 22 nm : un cœur d\'esters de cholestérol, ceinturé par une seule apolipoprotéine B-100. Le récepteur la saisit par ses sept répétitions riches en cystéines. Le complexe est internalisé par un puits à clathrine ; dans l\'endosome, l\'acidité fait lâcher prise au récepteur, qui retourne à la surface. Ses variants causent l\'hypercholestérolémie familiale.',[['récepteur des LDL','#5aa0e0'],['LDL','#f2cc4d'],['apoB-100','#c97b2e']],.0105],
+  ['ins','Le récepteur de l\'insuline','Deux chaînes α et deux chaînes β, soudées par des ponts disulfure. Sans insuline, sa partie externe dessine un V renversé, pieds écartés : les deux kinases, dans le cytosol, sont trop loin l\'une de l\'autre. L\'insuline le fait basculer en T : les pieds se rejoignent, les kinases se phosphorylent l\'une l\'autre, puis phosphorylent les protéines IRS. Par la PI3-kinase et Akt, l\'hépatocyte met alors le glucose en réserve sous forme de glycogène.',[['récepteur de l\'insuline','#6f9be8'],[(LG?'insulin':'insuline'),'#ff8a5c'],['kinase','#c69a5c']]],
+  ['gcg','Le récepteur du glucagon','À jeun, le glucagon donne l\'ordre inverse. Son récepteur traverse sept fois la membrane : c\'est un récepteur couplé aux protéines G. L\'hormone se glisse entre le domaine externe et les hélices ; le récepteur active alors la protéine Gs, dont la sous-unité α part stimuler l\'adénylate cyclase. L\'AMP cyclique (jaune) active la protéine kinase A : le glycogène est dégradé, le glucose rendu au sang.',[['récepteur du glucagon','#5a86d8'],['glucagon','#ff8a5c'],['protéine Gs','#c69a5c'],['adénylate cyclase','#4fc47a']]],
+  ['asg','Le récepteur des asialoglycoprotéines','Presque propre à l\'hépatocyte, qui en porte des centaines de milliers. Ses têtes sont des lectines : elles reconnaissent le galactose (jaune) qui apparaît au bout des sucres d\'une glycoprotéine du plasma quand elle a perdu ses acides sialiques. La protéine est internalisée par un puits à clathrine et détruite. Des médicaments à ARN interférent, munis de trois N-acétylgalactosamines, empruntent ce récepteur pour n\'entrer que dans le foie.',[['récepteur','#5aa0e0'],['glycoprotéine','#d8a878'],['galactose','#fad633']]]],
+ [['trk','TrkB et le BDNF','Le BDNF, une neurotrophine en dimère, rapproche deux récepteurs TrkB. Leurs kinases se phosphorylent l\'une l\'autre et lancent trois voies : Ras–ERK, PI3K–Akt et PLCγ. Le complexe actif est internalisé par un puits à clathrine et voyage jusqu\'au soma dans un endosome de signalisation : c\'est l\'entrée principale de ce neurone.',[['TrkB','#6f9be8'],['BDNF','#ff8a5c'],['kinase','#c69a5c']]],
+  ['cav','Le canal calcique Cav2.1','À la zone active du bouton. Sa grande sous-unité α1 forme le pore, avec quatre domaines sensibles au voltage ; α2δ dépasse à l\'extérieur, β se tient dans le cytosol. Quand le potentiel d\'action dépolarise la membrane, le pore s\'ouvre : le calcium entre et déclenche la fusion des vésicules synaptiques, à quelques dizaines de nanomètres de là.',[['Cav2.1 (α1)','#2bb8a8'],['α2δ','#8fa3c0'],['β','#c69a5c'],['Ca²⁺','#99e6ff']]],
+  ['mgl','Un récepteur métabotropique du glutamate','mGluR2 se tient sur le bouton, hors de la zone active : il mesure le glutamate qui déborde de la fente. C\'est un récepteur couplé aux protéines G d\'un genre particulier : il travaille en dimère, et chaque moitié porte un grand domaine externe en « attrape-mouche », qui se referme sur le glutamate. Les deux faisceaux d\'hélices se rapprochent et activent une protéine Gi/o : le bouton libère moins de glutamate. Le neurone se freine lui-même.',[['mGluR2','#5a86d8'],['glutamate','#ffd933'],['protéine Gi/o','#c69a5c']]]]][CT],
+WRT=WRX.map(r=>[r[1],'surface de la cellule',r[2]]),
+WRS=WRX.map(r=>({k:r[0],T:12,z:r[4]||.0072,c:[0,r[0]=='ldl'?10:3],leg:r[3],d:(a,S)=>{wyS(2.7,36,17,[],-2.6);WRD[r[0]](ss(sxA(a,.12,.3)),sxA(a,.5,.3),SX.t)}})),
+WYN=['un érythroblaste','un hépatocyte','un neurone'][CT];
+// entrée dans la cellule à la fin d'une voie guidée : même état qu'à la fin du trajet par la clathrine
+function wyIn(){vh=-rv*1.5;vesC();chG.n=0;chV.A=0;chR.n=0;dE.n=0;p=ma(e0,v0,-.26);f=ml(v0,-1);u=pp(f);cf=f;cu=u;z=.03;vel=0;ct=-1;reg=1;poi=1;
+  say(CF.in+' Touchez un objet pour sa fiche ; ☰ Atlas liste tout ce qu\'il y a à voir ; ⇤ pour ressortir de la cellule.',14)}
+{const xb=rxBtn('Entrer dans la cellule ▸','Sh1'),cl=()=>{sxEnd();wyIn()},o=()=>p.slice();
+ SXQ.wv={S:WVS,T:WVT,ti:'Entrer par une cavéole',solo:1,pit:-.28,o,xb,cl,sc:[0,-8],sz:.03,sd:()=>{wyCv({c:-18,cx:0,eh:1});wyU([0,-16,0])},
+  su:'Les cavéoles sont d\'abord un organe de la membrane : réserve de surface, capteur de tension, plate-forme de signalisation. Une petite part seulement se détache et entre. '+['Dans un érythroblaste, cette voie est montrée à titre de comparaison.','Des cavéoles ont été décrites sur l\'hépatocyte de rat ; elles y sont bien plus rares que sur l\'endothélium voisin.','Beaucoup de neurones expriment des cavéolines sans former de cavéoles reconnaissables : cette voie est montrée ici à titre de comparaison.'][CT]+' Le vaisseau peut entrer.'};
+ SXQ.wm={S:WMS,T:WMT,ti:'Entrer par macropinocytose',solo:1,pit:.2,o,xb,cl,zx:.6,sc:[0,200],sz:.42,sd:()=>{wyMp({h:1,q:.45});wyU([0,330,0],34)},
+  su:'La macropinocytose ne choisit pas : elle avale le milieu par gorgées d\'un micromètre. Elle sert à se nourrir, à surveiller le milieu, à renouveler la membrane. '+['Dans un érythroblaste, cette voie est montrée à titre de comparaison : son fer entre par le récepteur de la transferrine.','Dans l\'hépatocyte, elle est montrée à titre de comparaison : ses entrées sont surtout portées par des récepteurs.','Chez le neurone, elle a été décrite dans les cônes de croissance et les axones.'][CT]+' Le vaisseau peut entrer.'};
+ SXQ.wu={S:WUS,T:WUT,ti:'Endocytose ultrarapide',solo:1,o,xb,cl,sc:[30,-120],sz:.066,sd:()=>{wyUf({ves:1});wyB([60,-260,0],66,8,null,.9,[.5,.66,.74,1]);wyU([60,-262,0])},
+  su:'Au bouton synaptique, la membrane ajoutée par l\'exocytose est reprise en 50 à 100 millisecondes, sans clathrine ; la clathrine ne sert qu\'ensuite, à refaire des vésicules à partir de l\'endosome. D\'autres voies coexistent, plus lentes, selon l\'intensité de l\'activité. Le vaisseau est dans le bouton : il peut continuer vers le soma.'};
+ SXQ.wr={S:WRS,T:WRT,ti:'Récepteurs de la surface',solo:1,pit:.12,o,sc:[0,3],sz:.0072,sd:()=>{wyS(2.7,36,17,[],-2.6);WRD[WRX[0][0]](1,1,0)},
+  su:'Les protéines occupent au moins un quart de la surface d\'une membrane plasmique (mesuré sur le globule rouge). Chaque type de cellule a son répertoire de récepteurs : c\'est lui qui décide des signaux qu\'elle entend et de ce qu\'elle laisse entrer. Les formes dessinées sont schématiques, les tailles réalistes.'}}
+// menu des voies d'entrée
+$('wyb').onclick=()=>{if(!go||reg||ct>=0||PM||RX||NX||SX||AP)return;$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';$('pmt').textContent='Entrer dans '+WYN;
+  $('pmx').textContent='La membrane ne laisse passer ni les ions ni les grosses molécules : pour entrer, il faut se faire emporter par elle. Plusieurs voies existent ; chacune a sa machinerie, sa taille et sa vitesse. Choisissez la vôtre : la clathrine se pratique en vol, les autres sont montrées à l\'échelle du nanomètre, puis vous déposent dans la cellule.';
+  $('pmo').innerHTML=rxBtn('Clathrine : '+I.tfr[0],'Wc')+rxBtn('Cavéole','Sgwv')+rxBtn('Macropinocytose','Sgwm')+(CT>1?rxBtn('Endocytose ultrarapide (synapse)','Sgwu'):'')+rxBtn('Récepteurs de la surface','Sgwr')+rxBtn('Fermer','Sx')};
+{const h0=$('pmo').onclick;$('pmo').onclick=e=>{let b=e.target.closest('button');if(!b||b.dataset.r!='Wc')return h0(e);$('pm').style.display='none';$('gui').onclick()}}
+{const b0=btT;let hi=0;btT=()=>{b0();if(RX||NX||SX)return;let v=go&&!reg&&ct<0&&!AP&&!PM&&!(LU&&LU.bbb)&&ds(p,e0)<5;$('wyb').style.display=v?'block':'none';
+  v&&!hi&&ds(p,e0)<1.2&&(hi=1,say('Surface de la cellule : le bouton « ⇲ Voies d\'entrée » propose plusieurs façons d\'entrer et montre les récepteurs.',8))}}

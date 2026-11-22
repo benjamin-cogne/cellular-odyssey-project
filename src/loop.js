@@ -21,8 +21,8 @@ function draw(){TXH=reg&&(reg>1||shF(p)[1]<-2.5);let W=cv.clientWidth*Q|0,H=cv.c
   gl.disable(3042);gl.depthMask(true);
   for(L of LY)for(h of L.ch)vis(h)&&(L.al?L.two?(tl.push([h,h.k,1]),h.k>2*h.r&&tl.push([h,h.k-2*h.r,2])):tl.push([h,h.k,0]):dr(h));
   gl.enable(3042);gl.blendFunc(770,771);gl.depthMask(false);tl.sort((a,b)=>b[1]-a[1]).forEach(e=>dr(e[0],0,0,e[2]));gl.depthMask(true)}
-function cam(d){let k=min(1,d*8);cf=nm(lp(cf,f,k));cu=nm(lp(cu,u,k));vr=nm(cr(cf,cu));let w=cr(vr,cf),r=cr(f,u);vf=nm(ma(cf,w,NX||SX?0:-.2));vu=cr(vr,vf);
-  E=ad(ma(p,cf,-3.4*z*(1+.3*BO)),ml(w,NX||SX?0:1.05*z));       // influx nerveux : caméra à la hauteur du sujet, sans plongée
+function cam(d){let k=min(1,d*8);cf=nm(lp(cf,f,k));cu=nm(lp(cu,u,k));vr=nm(cr(cf,cu));let w=cr(vr,cf),r=cr(f,u);vf=nm(ma(cf,w,NX||SX&&!SX.fly?0:-.2));vu=cr(vr,vf);
+  E=ad(ma(p,cf,-3.4*z*(1+.3*BO)),ml(w,NX||SX&&!SX.fly?0:1.05*z));       // influx nerveux : caméra à la hauteur du sujet, sans plongée
   SM.splice(0,16,-r[0]*z,-r[1]*z,-r[2]*z,0,u[0]*z,u[1]*z,u[2]*z,0,f[0]*z,f[1]*z,f[2]*z,0,p[0],p[1],p[2],1)}
 function ctl(d){let o=(...a)=>a.some(k=>keys[k])|0,jx=cl(o('ArrowRight','KeyD')-o('ArrowLeft','KeyA')+tjx,-1,1),jy=cl(o('ArrowUp','KeyW')-o('ArrowDown','KeyS')+tjy,-1,1),bo=o('ControlLeft','ControlRight','KeyF')|tbo,      // turbo : Ctrl, F ou le bouton ⚡ (pousse aussi vers l'avant)
   th=cl(o('Space')-o('ShiftLeft','ShiftRight','KeyX')+tth+bo,-1,1),zm=cl(o('KeyE','Equal','NumpadAdd')-o('KeyQ','Minus','NumpadSubtract')+tzm,-1,1);
@@ -71,14 +71,14 @@ function tick(t){if(gen!=GEN)return;let d=min(.05,(t-last)/1e3)||0;last=t;
   aT+=d;if(++aN>40)Q=aT>1.3&&Q>.7?Q*.8:aT<.75&&Q<DPR?min(DPR,Q*1.15):Q,aT=aN=0;       // résolution adaptative
   if(go&&!NV)AP?apS(d):PM?pmS(d):RX?rxS(d):NX?nxS(d):SX?sxS(d):ct<0?ctl(d):cine(d);nvT(d);
   sim(d,ln(E)<GR+1.1,ds(E,PS)<4);PM&&pmD();oT();nolT();lamT();vesi(d);bcn();flm();RX&&rxD();NX&&nxD();SX&&sxD();synT();mgD();[dA.t,dA.j,dA.s,dB,dC.t,dC.j,dC.s,dD,dV,dE,dG,dF,dQa,dQb,dQe,dLm,dLb].forEach(up);
-  cam(d);FG=lp(FG,reg?TGT[reg]:LU?FB:TGT[0],min(1,d*2));draw();hud(d);requestAnimationFrame(tick)}
+  cam(d);FG=lp(FG,SX&&SX.Q.bg||(reg?TGT[reg]:LU?FB:TGT[0]),min(1,d*2));draw();hud(d);requestAnimationFrame(tick)}
 onkeydown=e=>{if(e.target.id=='q')return;keys[e.code]=1;/Arrow|Space/.test(e.code)&&e.preventDefault()};onkeyup=e=>{keys[e.code]=0};
 const PT=new Map;let pd0=0;        // mode polymérase : glisser = tourner, pincer = zoomer
 cv.onpointerdown=e=>{if(PM||RX||NX||SX)cv.setPointerCapture(e.pointerId),PT.set(e.pointerId,[e.clientX,e.clientY]),pd0=0;else go&&!NV&&pick(e)};
 cv.onpointermove=e=>{let a=PT.get(e.pointerId),x=e.clientX,y=e.clientY;if(!a||!(PM||RX||NX||SX))return;PT.set(e.pointerId,[x,y]);
   if(PT.size>1){let[q,r]=[...PT.values()],h=hypot(q[0]-r[0],q[1]-r[1])||1;pd0&&(z=cl(z*pd0/h,RX||NX?.0009:SX?.0015:.003,(RX||NX||SX).zx||.2),RX&&(RX.zt=0),NX&&(NX.zt=0),SX&&(SX.zt=0));pd0=h}else{let M=PM||RX||NX||SX;M.yaw+=(x-a[0])*.006;M.pit=cl(M.pit-(y-a[1])*.006,-1.2,1.2)}};
 cv.onpointerup=cv.onpointercancel=e=>{PT.delete(e.pointerId);pd0=0};
-onwheel=e=>{ct<0&&(reg?(z=cl(z*2**(-e.deltaY*.002),RX||NX?.0009:SX?.0015:.002,(RX||NX||SX).zx||.4),RX&&(RX.zt=0),NX&&(NX.zt=0),SX&&(SX.zt=0)):ZM=cl(ZM*2**(-e.deltaY*.002),.35,4))};
+onwheel=e=>{ct<0&&(reg||SX?(z=cl(z*2**(-e.deltaY*.002),RX||NX?.0009:SX?.0015:.002,(RX||NX||SX).zx||.4),RX&&(RX.zt=0),NX&&(NX.zt=0),SX&&(SX.zt=0)):ZM=cl(ZM*2**(-e.deltaY*.002),.35,4))};
 {let J=$('joy'),n=J.firstChild;
  J.onpointerdown=J.onpointermove=e=>{if(e.type[7]=='d')J.setPointerCapture(e.pointerId);else if(!J.hasPointerCapture(e.pointerId))return;
    let b=J.getBoundingClientRect(),x=(e.clientX-b.left)/b.width*2-1,y=(e.clientY-b.top)/b.height*2-1,l=max(1,hypot(x,y));tjx=x/l;tjy=-y/l;n.style.transform=`translate(${tjx*34}px,${-tjy*34}px)`};

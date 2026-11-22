@@ -540,3 +540,21 @@ hx:rem	ARID1B	135900	AD	Syndrome de Coffin-Siris 1	Coffin-Siris syndrome 1	30349
 hx:rem	SMARCA2	601358	AD	Syndrome de Nicolaides-Baraitser	Nicolaides-Baraitser syndrome	22366787	Van Houdt JK, Nat Genet 2012
 hx:rem	CHD7	214800	AD	Syndrome CHARGE	CHARGE syndrome	15300250	Vissers LE, Nat Genet 2004
 hx:rem	SRCAP	136140	AD	Syndrome de Floating-Harbor	Floating-Harbor syndrome	22265015	Hood RL, Am J Hum Genet 2012
+# intérieur des cellules gliales (src/glia.js) : astrocyte (ga), microglie (gm), oligodendrocyte (go)
+ga:gf	GFAP	203450	AD	Maladie d'Alexander	Alexander disease	11138011	Brenner M, Nat Genet 2001
+ga:kir	KCNJ10	612780	AR	Syndrome SeSAME (EAST)	SESAME syndrome (EAST)	19420365	Bockenhauer D, N Engl J Med 2009
+ga:glt	SLC1A2	617105	AD	Encéphalopathie développementale et épileptique 41	Developmental and epileptic encephalopathy 41	27476654	Epi4K Consortium, Am J Hum Genet 2016
+ga:glt	SLC1A3	612656	AD	Ataxie épisodique de type 6	Episodic ataxia type 6	16116111	Jen JC, Neurology 2005
+ga:gs	GLUL	610015	AR	Déficit congénital en glutamine	Congenital glutamine deficiency	16267323	Häberle J, N Engl J Med 2005
+ga:glu1	SLC2A1	606777	AD	Déficit en transporteur du glucose GLUT1	GLUT1 deficiency syndrome 1	10980529	Wang D, Hum Mutat 2000
+ga:ef	MLC1	604004	AR	Leucoencéphalopathie mégalencéphalique avec kystes sous-corticaux 1	Megalencephalic leukoencephalopathy with subcortical cysts 1	11254442	Leegwater PA, Am J Hum Genet 2001
+ga:ef	HEPACAM	613925	AR	Leucoencéphalopathie mégalencéphalique avec kystes sous-corticaux 2A	Megalencephalic leukoencephalopathy with subcortical cysts 2A	21419380	López-Hernández T, Am J Hum Genet 2011
+gm:trm	TREM2	618193	AR	Maladie de Nasu-Hakola 2	Nasu-Hakola disease 2	12080485	Paloneva J, Am J Hum Genet 2002
+gm:trm	TYROBP	221770	AR	Maladie de Nasu-Hakola 1	Nasu-Hakola disease 1	10888890	Paloneva J, Nat Genet 2000
+gm:csf	CSF1R	221820	AD	Leucoencéphalopathie héréditaire diffuse à sphéroïdes 1	Hereditary diffuse leukoencephalopathy with spheroids 1	25935893	Lynch DS, J Neurol Neurosurg Psychiatry 2016
+go:rer	PLP1	312080	XL	Maladie de Pelizaeus-Merzbacher	Pelizaeus-Merzbacher disease	29486744	Lyahyai J, BMC Pediatr 2018
+go:my	PLP1	312920	XL	Paraplégie spastique 2	Spastic paraplegia 2	24095575	Matsufuji M, Pediatr Neurol 2013
+go:gj	GJC2	608804	AR	Leucodystrophie hypomyélinisante 2	Hypomyelinating leukodystrophy 2	15192806	Uhlenberg B, Am J Hum Genet 2004
+go:per	ABCD1	300100	XL	Adrénoleucodystrophie liée à l'X	X-linked adrenoleukodystrophy	7825602	Ligtenberg MJ, Am J Hum Genet 1995
+go:pn	CNTNAP1	618186	AR	Neuropathie hypomyélinisante congénitale 3	Congenital hypomyelinating neuropathy 3	29511323	Low KJ, Eur J Hum Genet 2018
+go:pn	NFASC	618356	AR	Trouble du neurodéveloppement avec hypotonie centrale et périphérique	Neurodevelopmental disorder with central and peripheral motor dysfunction	30124836	Smigiel R, Hum Mol Genet 2018
