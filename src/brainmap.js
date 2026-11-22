@@ -59,7 +59,7 @@ const bnCh=Lbm0.ch.concat(Lbm1.ch,Lbm2.ch);bnCh.forEach(h=>h.A=0);
 let BNS={};try{BNS=JSON.parse(localStorage.oc_bn||'{}')}catch(e){}
 const bnQ=()=>sb(p,BNO),bnZ=()=>(z<.95?Math.round(z*10)+' mm':z.toFixed(1).replace('.',LG?'.':',')+' cm'),
 // structure la plus proche du vaisseau : noyau, organe, ou région du cortex d'après la bille la plus proche
-bnNr=()=>{let q=bnQ(),b=0,bd=.9+2.5*z,W={},R=max(2,6*z),w=0;for(let o of BNC){let ab=sb(o.b,o.a),t=o.a==o.b?0:cl(dt(sb(q,o.a),ab)/dt(ab,ab),0,1),d=ds(q,ma(o.a,ab,t))-o.r;if(d<bd)bd=d,b=o.i}if(b)return b;      // un noyau ou un organe tout proche l'emporte
+bnNr=()=>{let q=bnQ(),b=0,lim=.9+2.5*z,bd=1e9,W={},R=max(2,6*z),w=0;for(let o of BNC){let ab=sb(o.b,o.a),t=o.a==o.b?0:cl(dt(sb(q,o.a),ab)/dt(ab,ab),0,1),d=ds(q,ma(o.a,ab,t))-o.r;if(d<lim+.8*o.r&&d<bd)bd=d,b=o.i}if(b)return b;      // un noyau ou un organe tout proche l'emporte
   for(let e of BRM){let d=ds(q,e[0]);if(d<R){let k=e[4][0]||'l'+e[2];W[k]=(W[k]||0)+1/(d+.3)}}for(let k in W)if(W[k]>w)w=W[k],b=k;return b||'bn0'},      // sinon la région du cortex la mieux représentée autour du vaisseau
 bnVw=k=>{let O=BNC.filter(o=>o.i==k),o=O[O.length>>1];if(o){let c=lp(o.a,o.b,.5),r=o.r,d=nm([.25,.2,1]);return{q:ma(c,d,r+max(.5,r*1.1)),f:ml(d,-1),z:cl(r*.3,.06,.6),k:2.2}}      // point de vue devant un noyau ou un organe
   let c=BRM.reduce((m,e)=>(e[4][0]||'l'+e[2])==k?[ad(m[0],e[0]),m[1]+1]:m,[[0,0,0],0]);c=ml(c[0],1/c[1]);let d=nm(sb(c,[-.5,.5,-2.5]));return{q:ma(c,d,1.5),f:ml(d,-1),z:.25,k:2.2}},      // ou face à une région du cortex, depuis l'extérieur
