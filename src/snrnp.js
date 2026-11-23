@@ -164,7 +164,7 @@ function sxGo(q){let Q=SXQ[q],X=nm(cr(f,u)),O;AP=0;SXK=[];O=Q.o();document.body.
 function sxEnd(){let M=SX;M.Q.en&&M.Q.en(M);document.body.classList.remove('rx');z=M.z0;p=M.p0;f=M.fs;u=M.us;SX=0;dSx0.n=dSx1.n=0;QL.forEach(e=>e.style.display='none');shp.forEach(h=>h.A=1);SXK.forEach(h=>h.A=1);SXK=[];
   $('pm').style.display='none';$('hl').style.display='flex';$('hr').style.display=mk.style.display='';hT=0}
 function sxS(d){let M=SX,S=M.Q.S[M.st];if(M.Q.fs)return M.Q.fs(d,M);M.yaw-=(tjx+(keys.ArrowRight|0)-(keys.ArrowLeft|0))*d*1.5;M.pit=cl(M.pit+(tjy+(keys.ArrowUp|0)-(keys.ArrowDown|0))*d,-1.3,1.3);
-  if(tzm)M.zt=0,z=cl(z*2**(tzm*1.5*d),.0015,M.zx);if(M.zt){z*=(M.zt/z)**min(1,d*2.6);abs(z/M.zt-1)<.01&&(M.zt=0)}
+  if(tzm)M.zt=0,z=cl(z*2**(tzm*1.5*d),M.Q.zn||.0015,M.zx);if(M.zt){z*=(M.zt/z)**min(1,d*2.6);abs(z/M.zt-1)<.01&&(M.zt=0)}
   M.pz||(M.t+=d);if(S){M.ta=min(M.t/S.T,1);if(M.t>S.T*(S.h||1.45))M.t=0}        // l'état final reste affiché un moment, puis la boucle se rejoue
   M.Cc=lp(M.Cc,M.Ct,min(1,d*4.5));let v=rot(M.fb,M.ub,M.yaw),r=nm(cr(M.ub,v));v=rot(v,r,M.pit*.8);f=v;u=nm(cr(v,r));p=ad(M.Cc,innerWidth>innerHeight?ml(vr,-z*1.6):ml(vu,z*.9));vel=0;nI=0}
 function sxD(){let M=SX,S=M.Q.S[M.st];nxl=0;dSx0.n=dSx1.n=0;dSx0.c=dSx1.c=M.O;

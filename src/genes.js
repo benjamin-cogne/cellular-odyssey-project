@@ -116,17 +116,19 @@ function lbA(a){let m=TG.main||TG.G[0],g,q,s;if(!TG.U||AP)return;
 const sq=g=>{let k=g/2e3|0,v=SQC[k],c=TG.c,s=k*2e3;
   if(v===undefined)SQC[k]='',J(UC+'getData/sequence?genome=hg38;chrom='+c+';start='+s+';end='+(s+2e3)).then(d=>d.dna,e=>J(EN+'sequence/region/human/'+c.slice(3)+':'+(s+1)+'..'+(s+2e3)+':1?content-type=application/json').then(d=>d.seq)).then(d=>{if(TG.c==c)SQC[k]=d,AT=0},e=>0);
   return v?v[g-s]||'':''};
-function atom(){let U=TG.U,i=TG.ni,Rr=cl(z*7,.012,.03),k,j,W,g,x,y,pa,pb,m,c;dQ.n=0;dQ.c=AT=[p[0],p[1],p[2],Rr];
-  for(j=max(0,i-14);j<min(U.length,i+15);j++){W=U[j];if(ds(W.c,p)>Rr+.03)continue;pa=0;
-    for(k=0;k<W.n;k++){let[P,T,N]=ub(W,k);if(ds(P,p)>Rr+.001){pa=0;continue}
+function atom(){let U=TG.U,i=TG.ni,Rr=cl(z*7,.012,.03),za=z<.0045,k,j,W,g,x,y,pa,pb,m,c,pv,bn=1e9;dQ.n=dQs.n=0;dQ.c=dQs.c=AT=[p[0],p[1],p[2],Rr];AT.za=za;      // za : sous 4,5 nm, les paires proches sont dessinées atome par atome (nucleotides.js)
+  for(j=max(0,i-14);j<min(U.length,i+15);j++){W=U[j];if(ds(W.c,p)>Rr+.03)continue;pa=pv=0;
+    for(k=0;k<W.n;k++){let[P,T,N]=ub(W,k);if(ds(P,p)>Rr+.001){pa=pv=0;continue}
       g=W.g+k;let B=cr(T,N),th=g*.5984,s=sq(g).toUpperCase();c=W.cr<0?FQ[fU(g,g+1).f]:K(0xc6f);
-      x=ma(ma(P,N,.00095*cos(th)),B,.00095*sin(th));y=ma(ma(P,N,.00095*cos(th+2.3)),B,.00095*sin(th+2.3));m=lp(x,y,.5);
+      if(za&&ds(P,p)<.0065&&dQs.n<6300&&dQ.n<14500){let e=ds(P,p),a=th+1.15+PI;pv=ntFF(P,T,N,B,th,s,pv,W.ty&&k<148&&cos(a)>.955&&(k/10.5|0)%3!=2);      // arginine : petit sillon tourné vers les histones (dix sites sur quatorze)
+        if(e<bn)bn=e,AT.np=pv;if(pv.ar&&(!AT.ar||ds(pv.ar,p)<ds(AT.ar,p)))AT.ar=pv.ar;pa=0;continue}
+      pv=0;x=ma(ma(P,N,.00095*cos(th)),B,.00095*sin(th));y=ma(ma(P,N,.00095*cos(th+2.3)),B,.00095*sin(th+2.3));m=lp(x,y,.5);
       if(pa)dCy(dQ,pa,x,.00028,c),dCy(dQ,pb,y,.00028,[c[0]*.6,c[1]*.6,c[2]*.6,1]);
       dCy(dQ,x,m,.00017,BC[s]||BC['']);dCy(dQ,m,y,.00017,BC[CO[s]]||BC['']);pa=x;pb=y}}
-  gl.bindBuffer(34962,dQ.b);gl.bufferSubData(34962,0,dQ.f,0,max(16,dQ.n*16))}
+  gl.bindBuffer(34962,dQ.b);gl.bufferSubData(34962,0,dQ.f,0,max(16,dQ.n*16));up(dQs)}
 function nvT(d){if((nT-=d)>0)return;nT=.15;let U=TG.U;
   if(U&&reg>1){let b=1e9,i=0,j,e;if(ds(p,TG.C)<TG.Rl*2+.6)for(j=0;j<U.length;j++)e=ds(U[j].c,p),e<b&&(b=e,i=j);TG.ni=i;TG.nd=b;
-    if(z<.02&&b<.05){if(!AT||ds(p,AT)>AT[3]*.35||abs(AT[3]-cl(z*7,.012,.03))>.004)atom()}else if(AT)AT=0,dQ.n=0}
+    if(z<.02&&b<.05){if(!AT||ds(p,AT)>AT[3]*.35||abs(AT[3]-cl(z*7,.012,.03))>.004||AT.za!=(z<.0045)||AT.za&&ds(p,AT)>.0015)atom()}else if(AT)AT=0,dQ.n=0}
   else if(AT)AT=0,dQ.n=0}
 
 // ---------- fiches et séquence pour le noyau et le locus
