@@ -17,7 +17,7 @@ function draw(){TXH=reg&&(reg>1||shF(p)[1]<-2.5);let W=cv.clientWidth*Q|0,H=cv.c
   else gl.uniform4f(U.P,c[0]-E[0],c[1]-E[1],c[2]-E[2],ct>=0||!reg?rv:0),gl.uniform4f(U.C,Ce[0]-E[0],Ce[1]-E[1],Ce[2]-E[2],Re);
   HO.forEach((h,i)=>{HB[i*4]=h[0]-E[0];HB[i*4+1]=h[1]-E[1];HB[i*4+2]=h[2]-E[2];HB[i*4+3]=h[3]});gl.uniform4fv(U.H,HB);       // ouvertures du soma vers les prolongements
   SY.forEach((s,i)=>{SB.set(sb(s.Cp,E),i*8);SB[i*8+3]=s.Rp+.02;SB.set(sb(s.Cs,E),i*8+4);SB[i*8+7]=.3});SY[0]&&gl.uniform4fv(U.S,SB);
-  gl.uniform1f(U.N,PM?max(.8,3.4*z+.5):2.2*z+.02);TG.U?gl.uniform4f(U.Q,TG.C[0]-E[0],TG.C[1]-E[1],TG.C[2]-E[2],TG.Rl+.1):gl.uniform4f(U.Q,0,0,0,0);       // les fibres schématiques s'effacent près de la caméra et dans la poche du locus
+  gl.uniform1f(U.N,PM?max(.8,3.4*z+.5):2.2*z+.02);TG.U&&!TG.auto?gl.uniform4f(U.Q,TG.C[0]-E[0],TG.C[1]-E[1],TG.C[2]-E[2],TG.Rl+.1):gl.uniform4f(U.Q,0,0,0,0);       // les fibres schématiques s'effacent près de la caméra et dans la poche du locus
   gl.disable(3042);gl.depthMask(true);
   for(L of LY)for(h of L.ch)vis(h)&&(L.al?L.two?(tl.push([h,h.k,1]),h.k>2*h.r&&tl.push([h,h.k-2*h.r,2])):tl.push([h,h.k,0]):dr(h));
   gl.enable(3042);gl.blendFunc(770,771);gl.depthMask(false);tl.sort((a,b)=>b[1]-a[1]).forEach(e=>dr(e[0],0,0,e[2]));gl.depthMask(true)}

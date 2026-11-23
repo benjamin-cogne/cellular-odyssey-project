@@ -22,7 +22,7 @@ NTX={A:'T',T:'A',G:'C',C:'G',U:'A'},
 NTHB={A:[[0,'H6','O4'],[1,'H3','N1']],T:[[1,'H6','O4'],[0,'H3','N1']],U:[[1,'H6','O4'],[0,'H3','N1']],G:[[1,'H4','O6'],[0,'H1','N3'],[0,'H2','O2']],C:[[0,'H4','O6'],[1,'H1','N3'],[1,'H2','O2']]},      // [brin donneur, hydrogène, accepteur]
 NTE={C:[.36,[.5,.5,.56,1]],N:[.35,[.25,.45,1,1]],O:[.33,[.95,.22,.2,1]],P:[.44,[1,.55,.05,1]],H:[.2,[.95,.95,.95,1]]},      // rayon dessiné (Å) et couleur de chaque élément
 NTC2={},NTY=[1.7,1.5,.45,1],
-Lqs=Ly(M1,1e9,0,{G:2}),dQs=dy(Lqs,7000,[0,0,0],.1),
+Lqs=Ly(M1,1e9,0,{G:2}),dQs=dy(Lqs,16000,[0,0,0],.1),
 // modèle d'un nucléotide : atomes {n nom, e élément, q position, bs atome de la base} et liaisons ; f : 'B' (ADN) ou 'A' (ARN)
 ntM=(b,f)=>{let k=b+f,m=NTC2[k];if(m)return m;let a=[],bd=[],ix={},add=(n,q,e,bs)=>{ix[n]=a.length;a.push({n,e:e||n[0],q,bs})},lk=s=>s.split(',').forEach(t=>{let[i,j]=t.split('-');bd.push([ix[i],ix[j]])}),u2=v=>{let l=hypot(v[0],v[1]);return[v[0]/l,v[1]/l]};
   NTB[b][0].split(',').forEach(s=>{let[n,x,y]=s.split(' ');add(n,[+x,+y,0],0,n!="C1'")});lk(NTB[b][1]);
@@ -34,7 +34,8 @@ ntM=(b,f)=>{let k=b+f,m=NTC2[k];if(m)return m;let a=[],bd=[],ix={},add=(n,q,e,bs
 // une paire de bases. F : position locale (Å) → monde ; b : base du brin I. o = {f forme, S et T : dessin d'une sphère et d'un bâton, k échelle (monde par Å),
 //  s1, s2 : 0 pour ne pas dessiner un brin ; hb : avancement des liaisons hydrogène (0 à 1) ; me : méthyle sur le C5 des cytosines (0 à 1) ; c(brin, atome, base) : couleur imposée ; gr : squelette en gris}
 // Retourne les positions utiles : g(brin, nom d'atome), hb [[H, accepteur]].
-ntPr=(F,b,o)=>{let f=o.f||'B',b2=f=='A'&&b=='A'?'U':NTX[b],M=[ntM(b,f),ntM(b2,f)],W=[M[0].a.map(a=>F(a.q)),M[1].a.map(a=>F([a.q[0],-a.q[1],-a.q[2]]))],k=o.k,bb=[b,b2],H=[],
+ntPr=(F,b,o)=>{let f=o.f||'B',b2=f=='A'&&b=='A'?'U':NTX[b],M=[ntM(b,f),ntM(b2,f)],W=[0,1].map(s=>M[s].a.map(a=>!a.bs&&o.ov&&o.ov(s,a.n)||F(s?[a.q[0],-a.q[1],-a.q[2]]:a.q))),      // ov : squelette réel (nucléosome)
+   k=o.k,bb=[b,b2],H=[],
    col=(s,a)=>{let c=o.c&&o.c(s,a,bb[s]);if(c)return c;c=NTE[a.e][1];if(a.e=='C')c=a.bs?lp(c,BC[bb[s]=='U'?'T':bb[s]]||c,.62).concat(1):o.gr?[.33,.35,.4,1]:c;else if(o.gr&&!a.bs&&a.e!='P')c=lp(c,[.35,.36,.4],.45).concat(1);return c};
   for(let s=0;s<2;s++){if(s?o.s2===0:o.s1===0)continue;let C=M[s].a.map(a=>col(s,a));
     M[s].a.forEach((a,i)=>o.S(W[s][i],NTE[a.e][0]*k*(a.n=="O2'"&&o.o2?1.5:1),C[i]));M[s].bd.forEach(([i,j])=>o.T(W[s][i],W[s][j],.11*k,kd(lp(C[i],C[j],.5),.75)));
@@ -48,23 +49,21 @@ ntAr=(F,o)=>{let W=NTR.map(a=>F([a[1],a[2],a[3]])),c=[1.25,.6,1.05,1];NTR.forEac
   for(let i of[6,7])for(let j=1;j<4;j++)o.S(lp(W[i],F([-2.5,i<7?2.4:-2.6,1.7]),j/4),.085*o.k,NTY);return W[5]};
 // ---------- vol libre : une paire de bases autour du vaisseau. P, T, N, B : point de l'axe et repère de la paire (genes.js) ; th : phase de l'hélice ; s : base ; pv : paire précédente
 const NFO={k:1e-4,S:(q,r,c)=>dS(dQs,q,r,c),T:(a,b,r,c)=>dCy(dQ,a,b,r,c)};
-function ntFF(P,T,N,B,th,s,pv,arg){let a=th+1.15+PI,ex=ad(ml(N,cos(a)),ml(B,sin(a))),ey=cr(T,ex),F=q=>[P[0]+(ex[0]*q[0]+ey[0]*q[1]+T[0]*q[2])*1e-4,P[1]+(ex[1]*q[0]+ey[1]*q[1]+T[1]*q[2])*1e-4,P[2]+(ex[2]*q[0]+ey[2]*q[1]+T[2]*q[2])*1e-4],
-   kn=NTX[s]&&s!='U',b=kn?s:'ACGT'[(th*7.3|0)&3],r;NFO.gr=!kn;NFO.c=kn?0:(st,at)=>at.e=='C'&&at.bs?[.42,.44,.5,1]:0;r=ntPr(F,b,NFO);r.b=b;r.kn=kn;r.F=F;r.P=P;r.ex=ex;
-  if(pv)dCy(dQ,pv.g(0,"O3'"),r.g(0,'P'),.11e-4,[.6,.4,.2,1]),dCy(dQ,r.g(1,"O3'"),pv.g(1,'P'),.11e-4,[.6,.4,.2,1]);
-  if(arg)r.ar=ntAr(F,NFO);return r}
+function ntFF(Fm,g,s,pv,ov){let{o,ex,ey,ez}=Fm,F=q=>[o[0]+(ex[0]*q[0]+ey[0]*q[1]+ez[0]*q[2])*1e-4,o[1]+(ex[1]*q[0]+ey[1]*q[1]+ez[1]*q[2])*1e-4,o[2]+(ex[2]*q[0]+ey[2]*q[1]+ez[2]*q[2])*1e-4],
+   kn=NTX[s]&&s!='U',b=kn?s:'ACGT'[(g*7+(g>>3))&3],r;NFO.gr=!kn;NFO.c=kn?0:(st,at)=>at.e=='C'&&at.bs?[.42,.44,.5,1]:0;NFO.ov=ov;r=ntPr(F,b,NFO);r.b=b;r.kn=kn;r.F=F;r.P=o;r.ex=ex;
+  if(pv)dCy(dQ,pv.g(0,"O3'"),r.g(0,'P'),.11e-4,[.6,.4,.2,1]),dCy(dQ,r.g(1,"O3'"),pv.g(1,'P'),.11e-4,[.6,.4,.2,1]);return r}
 // étiquettes et fiche de la paire la plus proche du vaisseau (AT.np, rempli par atom())
 let ntOn=0,ntHi=0;
 function ntD(){let A=AT&&AT.za&&!SX&&!RX&&!NX&&!PM&&reg>1?AT:0;if(!AT&&dQs.n)dQs.n=0;if(!A){ntOn&&(ntOn=0,SX||RX||NX||QL.forEach(e=>e.style.display='none'));return}ntOn=1;nxl=0;
   ntHi||(ntHi=1,say('Échelle des atomes : chaque paire de bases est dessinée avec ses liaisons hydrogène (pointillés jaunes). Le bouton « ⌬ Nucléotides » les explique pas à pas.',10));
   let r=A.np;if(r){let m=lp(r.g(0,"C1'"),r.g(1,"C1'"),.5),n=r.hb.length;sxL(lp(r.g(0,'N1'),r.g(0,'C4'),.5),r.kn?r.b:'?');sxL(lp(r.g(1,'N1'),r.g(1,'C4'),.5),r.kn?r.b2:'?');
     sxL(ma(m,vu,-z*.55),n+' liaisons hydrogène','e');sxL(ma(r.P,r.ex,.0011),'grand sillon','r');sxL(ma(r.P,r.ex,-.0011),'petit sillon','r');sxL(ma(r.g(0,'P'),vu,z*.3),'phosphate','r')}
-  A.ar&&sxL(ma(A.ar,vu,z*.35),'arginine','e');for(let i=nxl;i<QL.length;i++)QL[i].style.display='none'}
-function ntI(){let r=AT.np,a=AT.ar&&ds(AT.ar,p)<.0025;
-  if(a)return['Arginine d\'une histone, dans le petit sillon','Tous les dix nucléotides environ, le petit sillon de l\'ADN se tourne vers les histones. Une arginine s\'y glisse souvent (dans dix de ces quatorze sillons, d\'après la structure à 1,9 Å ; lesquels, ici, est arbitraire) : sa charge positive est attirée par le sillon, d\'autant plus négatif qu\'il est étroit. Les histones tiennent surtout l\'ADN par ses phosphates, directement ou par des molécules d\'eau : presque n\'importe quelle séquence peut donc s\'enrouler.'];
+  let h=A.nr;h&&h.d<.003&&sxL(ma(h.q,vu,z*.35),NCT[h.r.c&3]+' · '+NCA[h.r.a][LG]+' '+h.r.n,'e');for(let i=nxl;i<QL.length;i++)QL[i].style.display='none'}
+function ntI(){let r=AT.np,h=AT.nr;if(h&&(!r||h.d<AT.bn))return ncI(h);if(!r)return 0;
   if(!r.kn)return['Paire de bases (séquence non chargée)','La séquence de cette région n\'a pas pu être chargée : les bases dessinées ici sont un exemple. Chaque paire associe une grande base (purine : A ou G) et une petite (pyrimidine : T ou C), retenues par des liaisons hydrogène (pointillés).'];
   return/[AT]/.test(r.b)?['Paire A–T : deux liaisons hydrogène','Adénine et thymine se font face. Deux liaisons hydrogène les retiennent (pointillés) : un hydrogène porté par un azote est attiré par un oxygène ou un azote de la base d\'en face. Le méthyle de la thymine pointe dans le grand sillon. Chaque liaison est faible ; ce sont leur nombre et surtout l\'empilement des bases qui tiennent la double hélice.']
    :['Paire G–C : trois liaisons hydrogène','Guanine et cytosine se font face, retenues par trois liaisons hydrogène (pointillés) : une de plus que la paire A–T. La paire occupe pourtant la même largeur entre les deux sucres, ce qui permet à n\'importe quelle séquence de tenir dans la même double hélice.']}
-{const n0=nuI;nuI=()=>AT&&AT.za&&AT.np&&TG.nd<.012?ntI():n0()}
+{const n0=nuI;nuI=()=>AT&&AT.za&&(AT.np||AT.nr)&&TG.nd<.012&&ntI()||n0()}
 // ---------- vue guidée
 const NSO={k:1e-4,S:(q,r,c)=>dS(dSx0,q,r,c),T:(a,b,r,c)=>dT(dSx1,a,b,r,c)},
 ntFr=(O,ex,ey,ez)=>q=>sxW([O[0]+(ex[0]*q[0]+ey[0]*q[1]+ez[0]*q[2])*.1,O[1]+(ex[1]*q[0]+ey[1]*q[1]+ez[1]*q[2])*.1,O[2]+(ex[2]*q[0]+ey[2]*q[1]+ez[2]*q[2])*.1]),
