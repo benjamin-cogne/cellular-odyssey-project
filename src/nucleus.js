@@ -26,7 +26,7 @@ const CBP=NU.find(o=>o.i=='cb').a;
 // territoires chromosomiques (46,XX) : chaque chromosome est une fibre continue, 1 nœud par Mb
 const CHR=[248,242,198,190,182,171,159,145,138,134,135,133,114,107,102,90,83,80,59,64,47,51,156],
 CEN=[123,94,91,50,49,60,60,45,43,40,53,36,18,17,19,37,25,18,26,28,12,15,61],CN=[],NH=new Map,seeds=[],ACR=[12,13,14,20,21],cnm=ci=>ci>21?'X':ci+1;
-let XI,BD=0,CHS=0;      // CHS : [chromosome, mégabase, nombre] des segments remplacés par la chaîne de nucléosomes
+let XI,BD=0;
 function walk(P,d,n,sd,Rt,st){let o=[P],i,k,q,b,s,e;
   for(i=1;i<n;i++){b=0;
     for(k=0;k<7;k++){e=nm(ad(d,ml(rd(),.8)));q=ma(P,e,st);s=R()-max(0,ds(q,sd)-Rt)*9-(inN(q,.06)?0:50);if(!b||s>b[0])b=[s,q,e]}
@@ -52,9 +52,8 @@ bcol=(ci,mb,xi)=>{let l=.56,b=bnd(ci,mb),g;
   return hs(ci/23,xi?.3:.7,xi?l*.6:l)},
 cat=(a,b,c,d,t)=>a.map((_,i)=>.5*(2*b[i]+(c[i]-a[i])*t+(2*a[i]-5*b[i]+4*c[i]-d[i])*t*t+(3*b[i]-a[i]-3*c[i]+d[i])*t*t*t));
 function drawChr(re){re&&[Lk,Lkj,Lkf].forEach(clr);
-  CN.forEach(({ci,p,xi},cn)=>{let n=p.length,i,k,a,b,c,r;
-    for(i=0;i<n-1;i++){if(CHS&&CHS[0]==cn&&i>=CHS[1]&&i<CHS[1]+CHS[2])continue;c=bcol(ci,i+.5,xi);      // ces mégabases sont dessinées en chaîne de nucléosomes (chrfibre.js)
-      r=c[0]>.9&&c[1]<.3?.026:.04;Cy(Lkf,p[i],p[i+1],r,c);
+  CN.forEach(({ci,p,xi})=>{let n=p.length,i,k,a,b,c,r;
+    for(i=0;i<n-1;i++){c=bcol(ci,i+.5,xi);r=c[0]>.9&&c[1]<.3?.026:.04;Cy(Lkf,p[i],p[i+1],r,c);
       a=p[i];for(k=1;k<4;k++)b=k<3?cat(p[max(0,i-1)],p[i],p[i+1],p[min(n-1,i+2)],k/3):p[i+1],Cy(Lk,a,b,r,c),S(Lkj,b,r,c),a=b}});
   re&&fin()}
 drawChr();

@@ -5,8 +5,7 @@ trk=(t,c,s,e)=>J(UC+'getData/track?genome=hg38;track='+t+(c?';chrom='+c+';start=
 nf=x=>Math.round(x).toLocaleString(LG?'en-US':'fr-FR'),fkb=x=>x<1e3?x+(LG?' bp':' pb'):x<1e6?(x/1e3).toFixed(1).replace('.',LG?'.':',')+' kb':(x/1e6).toFixed(2).replace('.',LG?'.':',')+' Mb',
 esc=s=>(s+'').replace(/[<&]/g,c=>c=='<'?'&lt;':'&amp;'),
 c2i=c=>(c=c.replace('chr',''),c=='X'?22:c>0&&c<23?c-1:-1),
-dQ=dy(Ldq,36000,[0,0,0],.1),RS=.00418,PHI=1.866*TAU,      // superhélice du nucléosome : rayon 4,18 nm, 1,866 tour pour 147 pb, 2,59 nm par tour (ajustés sur la structure 1KX5, voir tools/mk-nucleosome.py)
-
+dQ=dy(Ldq,16000,[0,0,0],.1),RS=.00418,PHI=1.65*TAU,
 FQ=[K(0x778),0,K(0xfb7),K(0xfd3),K(0x59c),K(0x6c8)],EC={PLS:[1.7,.15,.15,1],pELS:[1.7,1,.1,1],dELS:[1.5,1.35,.2,1],'CTCF-only':[.2,.9,1.7,1]},ecol=t=>EC[t]||[1.6,.95,.95,1],
 EL={PLS:'Signature de promoteur (PLS)',pELS:'Enhancer proximal (pELS, à moins de 2 kb d\'un TSS)',dELS:'Enhancer distal (dELS)','CTCF-only':'Site CTCF seul (isolateur, ancre de boucle)'},
 // lecture des réponses : piste MANE (bigGenePred), cCRE ENCODE, gène Ensembl
@@ -58,7 +57,7 @@ const fU=(x,y)=>{let r={f:0,gi:-1,k:-1},gi,g,k;                          // anno
     r.f=4;r.gi=gi;r.k=g.ex.filter(e=>e[1]<=x).length-1}
   if(!r.f&&r.cg)r.f=5;return r},
 ub=(U,k)=>{let{P,t,u}=U;if(!U.ty)return[ma(P,t,k*.00034),t,u];                // géométrie du pb k d'une unité : [position, tangente, normale]
-  let A=cr(t,u),a=min(k,147)/147*PHI,e=ad(ml(u,-cos(a)),ml(t,sin(a))),T=nm(ad(ad(ml(u,sin(a)),ml(t,cos(a))),ml(A,-.095))),q=ad(ma(ma(P,u,RS),e,RS),ml(A,-.002594*a/TAU));
+  let A=cr(t,u),a=min(k,147)/147*PHI,e=ad(ml(u,-cos(a)),ml(t,sin(a))),T=nm(ad(ad(ml(u,sin(a)),ml(t,cos(a))),ml(A,-.095))),q=ad(ma(ma(P,u,RS),e,RS),ml(A,-.0025*a/TAU));
   return[k>147?ma(q,T,(k-147)*.00034):q,T,e]},
 gpos=g=>{let U=TG.U,lo=0,hi,m;if(!U||g<TG.a||g>=TG.b)return 0;hi=U.length-1;while(lo<hi)m=lo+hi+1>>1,U[m].g<=g?lo=m:hi=m-1;return ub(U[lo],g-U[lo].g)},
 tss=g=>g.st>0?g.s:g.e-1,xn=(g,k)=>g.st>0?k+1:g.ex.length-k;
@@ -70,20 +69,14 @@ function mkFib(){let{a,b,cc,C,Rl}=TG,N=(b-a)/197,rh=.7*Rl,tu=N*.005*min(1,(1500/
     for(k=0;k<6;k++){o=ty?{P,t,u:rot(u,t,rr(0,TAU)),ty:1}:{P,t:nm(ad(t,ml(rd(),.6))),ty:0};if(!ty)o.u=pp(o.t);let x=ub(o,n),s=-ds(x[0],tg);if(!B||s>B[0])B=[s,o,x]}
     Object.assign(W,B[1]);W.c=ty?ad(ma(P,W.u,RS),ml(cr(W.t,W.u),-.002)):ma(P,W.t,n*.00017);W.f=fU(g,g+n);U.push(W);
     P=B[2][0];t=B[2][1];u=ty?ml(B[2][2],-1):B[2][2];g+=n}
-  TG.U=U;fibGeo()}
-// géométrie fixe de la fibre (TG.U) : de loin un point par nucléosome, de près le disque d'histones et l'ADN enroulé ; H1 sur la plupart des nucléosomes ; grille TG.H pour retrouver les unités voisines
-function fibGeo(){let U=TG.U,cc=TG.cc,H=TG.H=new Map,xi=TG.auto&&CN[TG.ac].xi,au=TG.auto;[Lq0,Lq0c,Lq1,Lq1h,Lq1c,Lqm].forEach(clr);
-  U.forEach((W,i)=>{let c=W.f.f||!au?FQ[W.f.f]:kd(lp(FQ[0],bcol(TG.ci,W.g/1e6,xi),.6),[1.15,.78,.95][W.dm%3]),      // sans annotation : teinte de la bande du chromosome, nuancée d'un domaine à l'autre
-      k,a,b,hk=floor(W.c[0]/.03)+'_'+floor(W.c[1]/.03)+'_'+floor(W.c[2]/.03),l=H.get(hk);l||H.set(hk,l=[]);l.push(i);
-    i&&ds(U[i-1].c,W.c)<.06&&Cy(Lq0c,U[i-1].c,W.c,au?.0014:.0035,W.cr<0?c:K(0xc6f));
-    if(W.ty){let A=cr(W.t,W.u);S(Lq0,W.c,.0055,c);El(Lq1h,W.c,ml(W.u,.0034),ml(A,.0027),ml(cr(W.u,A),.0034),[c[0]*.7,c[1]*.7,c[2]*.7,1]);      // octamère : s'efface près du vaisseau, où les histones sont dessinées (nucleosome.js)
-      a=W.P;for(k=1;k<13;k++)b=ub(W,k<12?k*13:W.n)[0],Cy(Lq1c,a,b,.001,c),a=b;
-      if(W.h1=(Math.imul(W.g,2654435761)>>>0)%100<85){let[q,,e]=ub(W,73);S(Lq1,ma(q,e,.0024),.0015,K(0xb9d))}}      // histone de liaison H1, sur la dyade, entre l'ADN qui entre et celui qui sort
+  TG.U=U;[Lq0,Lq0c,Lq1,Lq1c,Lqm].forEach(clr);
+  U.forEach((W,i)=>{let c=FQ[W.f.f],k,a,b;i&&Cy(Lq0c,U[i-1].c,W.c,.0035,W.cr<0?c:K(0xc6f));
+    if(W.ty){let A=cr(W.t,W.u);S(Lq0,W.c,.0055,c);El(Lq1,W.c,ml(W.u,.0034),ml(A,.0027),ml(cr(W.u,A),.0034),[c[0]*.7,c[1]*.7,c[2]*.7,1]);
+      a=W.P;for(k=1;k<13;k++)b=ub(W,k<12?k*13:W.n)[0],Cy(Lq1c,a,b,.001,c),a=b}
     else{Cy(Lq1c,W.P,ub(W,W.n)[0],.001,W.cr<0?c:K(0xc6f));
       if(W.cr<0)S(Lq0,W.c,.003,c);else{let e=cc[W.cr],q=ma(W.c,W.u,.005),r=.0035+e.sc/3e5;S(Lq0,q,r+.002,ecol(e.t));S(Lq1,q,r,ecol(e.t));e.ct&&S(Lq1,ma(W.c,W.u,-.004),.003,EC['CTCF-only'])}}});
   for(let g of TG.G){let q=gpos(tss(g));q&&S(Lqm,ma(q[0],q[2],.0028),.0016,[3,3,3,1]);                    // TSS (blanc) ; sites donneurs GT (rose) et accepteurs AG (cyan)
     g.ex.forEach((e,k)=>{for(let j of[0,1]){if(j?k==g.ex.length-1:!k)continue;let x=gpos(j?e[1]+1:e[0]-2);x&&S(Lqm,ma(x[0],x[2],.0022),.0012,(j?g.st>0:g.st<0)?[3,.5,1.5,1]:[.3,2,3,1])}})}
-  TG.AN&&TG.AN.forEach(q=>{let[x,,y]=fr(q[1]);for(let k=0;k<22;k++)S(Lqm,ad(q[0],ad(ml(x,.02*cos(k*TAU/22)),ml(y,.02*sin(k*TAU/22)))),.0026,K(0x5ce));for(let s of[-1,1])S(Lqm,ma(q[0],q[1],s*.009),.0042,EC['CTCF-only'])});      // pied de boucle : anneau de cohésine, deux CTCF
   fin()}
 function hl(){clr(Lkh);let t=TG,ci=t.ci;for(let c of[ci*2,ci*2+1]){let{p,xi}=CN[c];for(let i=0;i<p.length-1;i++){let h=t.e>i*1e6&&t.s<(i+1)*1e6,o=bcol(ci,i+.5,xi);Cy(Lkh,p[i],p[i+1],h?.09:.05,h?[1.7,.45,.12,1]:[o[0]*1.5,o[1]*1.5,o[2]*1.5,1])}}fin()}
 async function goT(t){let ci=c2i(t.c),L=t.e-t.s,fl=cl(L*.15,1e4,1e5)|0,a=max(0,t.s-fl),b=t.e+fl,G=[],cc=[],cp=[],src='UCSC',m=$('qm');
@@ -121,22 +114,21 @@ function lbA(a){let m=TG.main||TG.G[0],g,q,s;if(!TG.U||AP)return;
 
 // ---------- ADN à l'échelle atomique autour du vaisseau (séquence réelle chargée à la demande)
 const sq=g=>{let k=g/2e3|0,v=SQC[k],c=TG.c,s=k*2e3;
-  if(v===undefined)SQC[k]='',J(UC+'getData/sequence?genome=hg38;chrom='+c+';start='+s+';end='+(s+2e3)).then(d=>d.dna,e=>J(EN+'sequence/region/human/'+c.slice(3)+':'+(s+1)+'..'+(s+2e3)+':1?content-type=application/json').then(d=>d.seq)).then(d=>{if(TG.c==c)SQC[k]=d,AT&&(AT.rb=1)},e=>0);
+  if(v===undefined)SQC[k]='',J(UC+'getData/sequence?genome=hg38;chrom='+c+';start='+s+';end='+(s+2e3)).then(d=>d.dna,e=>J(EN+'sequence/region/human/'+c.slice(3)+':'+(s+1)+'..'+(s+2e3)+':1?content-type=application/json').then(d=>d.seq)).then(d=>{if(TG.c==c)SQC[k]=d,AT=0},e=>0);
   return v?v[g-s]||'':''};
-function atom(){let U=TG.U,i=TG.ni,Rr=cl(z*4,.012,.02),za=z<.0045,k,j,W,g,x,y,pa,pb,m,c,pv,bn=1e9;dQ.n=dQs.n=0;dQ.c=dQs.c=AT=[p[0],p[1],p[2],Rr];AT.za=za;      // za : sous 4,5 nm, les paires proches sont dessinées atome par atome (nucleotides.js)
-  let L=[],lj=-9,H=TG.H,n=ceil((Rr+.03)/.03),a,b,e;for(a=-n;a<=n;a++)for(b=-n;b<=n;b++)for(e=-n;e<=n;e++){let l=H.get((floor(p[0]/.03)+a)+'_'+(floor(p[1]/.03)+b)+'_'+(floor(p[2]/.03)+e));l&&l.forEach(j=>ds(U[j].c,p)<Rr+.03&&L.push(j))}L.sort((x,y)=>x-y);
-  for(j of L){W=U[j];pa=0;if(j!=lj+1)pv=0;lj=j;
-    for(k=0;k<W.n;k++){if(ds(ub(W,k)[0],p)>Rr+.002){pa=pv=0;continue}
-      let F=nuFr(U,j,k),P=F.o,e=ds(P,p);g=W.g+k;let s=sq(g).toUpperCase();c=W.cr<0?FQ[fU(g,g+1).f]:K(0xc6f);      // repère de la paire : réel sur le nucléosome (nucleosome.js)
-      if(za&&e<.0065&&dQs.n<9000&&dQ.n<20000){pv=ntFF(F,g,s,pv,W.ty&&k<147&&ncOv(W,k));if(e<bn)bn=e,AT.np=pv;pa=0;continue}
-      pv=0;x=ma(ma(P,F.ex,-.0004),F.ey,.00086);y=ma(ma(P,F.ex,-.0004),F.ey,-.00086);m=lp(x,y,.5);
+function atom(){let U=TG.U,i=TG.ni,Rr=cl(z*7,.012,.03),za=z<.0045,k,j,W,g,x,y,pa,pb,m,c,pv,bn=1e9;dQ.n=dQs.n=0;dQ.c=dQs.c=AT=[p[0],p[1],p[2],Rr];AT.za=za;      // za : sous 4,5 nm, les paires proches sont dessinées atome par atome (nucleotides.js)
+  for(j=max(0,i-14);j<min(U.length,i+15);j++){W=U[j];if(ds(W.c,p)>Rr+.03)continue;pa=pv=0;
+    for(k=0;k<W.n;k++){let[P,T,N]=ub(W,k);if(ds(P,p)>Rr+.001){pa=pv=0;continue}
+      g=W.g+k;let B=cr(T,N),th=g*.5984,s=sq(g).toUpperCase();c=W.cr<0?FQ[fU(g,g+1).f]:K(0xc6f);
+      if(za&&ds(P,p)<.0065&&dQs.n<6300&&dQ.n<14500){let e=ds(P,p),a=th+1.15+PI;pv=ntFF(P,T,N,B,th,s,pv,W.ty&&k<148&&cos(a)>.955&&(k/10.5|0)%3!=2);      // arginine : petit sillon tourné vers les histones (dix sites sur quatorze)
+        if(e<bn)bn=e,AT.np=pv;if(pv.ar&&(!AT.ar||ds(pv.ar,p)<ds(AT.ar,p)))AT.ar=pv.ar;pa=0;continue}
+      pv=0;x=ma(ma(P,N,.00095*cos(th)),B,.00095*sin(th));y=ma(ma(P,N,.00095*cos(th+2.3)),B,.00095*sin(th+2.3));m=lp(x,y,.5);
       if(pa)dCy(dQ,pa,x,.00028,c),dCy(dQ,pb,y,.00028,[c[0]*.6,c[1]*.6,c[2]*.6,1]);
       dCy(dQ,x,m,.00017,BC[s]||BC['']);dCy(dQ,m,y,.00017,BC[CO[s]]||BC['']);pa=x;pb=y}}
-  AT.bn=bn;for(j of L)if(U[j].ty){let h=ncH(U[j],za,Rr);if(h&&(!AT.nr||h.d<AT.nr.d))AT.nr=h}      // les histones
   gl.bindBuffer(34962,dQ.b);gl.bufferSubData(34962,0,dQ.f,0,max(16,dQ.n*16));up(dQs)}
-function nvT(d){if((nT-=d)>0)return;nT=.15;chrT();let U=TG.U;
+function nvT(d){if((nT-=d)>0)return;nT=.15;let U=TG.U;
   if(U&&reg>1){let b=1e9,i=0,j,e;if(ds(p,TG.C)<TG.Rl*2+.6)for(j=0;j<U.length;j++)e=ds(U[j].c,p),e<b&&(b=e,i=j);TG.ni=i;TG.nd=b;
-    if(z<.02&&b<.05){if(!AT||AT.rb||ds(p,AT)>AT[3]*.35||abs(AT[3]-cl(z*4,.012,.02))>.003||AT.za!=(z<.0045)||AT.za&&ds(p,AT)>.0015)atom()}else if(AT)AT=0,dQ.n=0}
+    if(z<.02&&b<.05){if(!AT||ds(p,AT)>AT[3]*.35||abs(AT[3]-cl(z*7,.012,.03))>.004||AT.za!=(z<.0045)||AT.za&&ds(p,AT)>.0015)atom()}else if(AT)AT=0,dQ.n=0}
   else if(AT)AT=0,dQ.n=0}
 
 // ---------- fiches et séquence pour le noyau et le locus
