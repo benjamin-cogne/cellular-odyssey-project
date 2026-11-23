@@ -159,7 +159,7 @@ function rxL(s){let a=[],b=[],st=[],pv=-1,od=1,rc={},i=0,c,j,n,sd=7;for(c of s)s
     if(g)P[i]=ma(P[i],d,g),P[j]=ma(P[j],d,-g)}}
   c=P.reduce((m,q)=>ad(m,q),[0,0,0]);P=P.map(q=>ma(q,c,-1/n));return{a,b,P,R:P.reduce((m,q,i)=>max(m,ln(q)+a[i].r),0)}}
 const rxSp=s=>s.split(' ').map(w=>{let[x,y]=w.split('*'),k=y||x,m=MOL[k];m[2]=m[2]||rxL(m[1]);return{k,M:m[2],lab:(y?x+' ':'')+m[0]}}),
-rxHere=()=>{let l=ORG?ORG.i:reg>1?'nuc':'cyt';return RXP.filter(P=>P[1]==l&&(P[2]<0||P[2]==CT))},
+rxHere=()=>{let l=ORG?ORG.pl||ORG.i:reg>1?'nuc':'cyt';return RXP.filter(P=>P[1]==l&&(P[2]<0||P[2]==CT))},
 rxBtn=(t,r)=>'<button data-r="'+r+'">'+t+'</button>';
 // lieu de chaque voie : [lieu par défaut, {c: 1re étape du cycle, a: structure d'ancrage, k: étape placée devant elle, s: ancrage étape par étape, w: lieux particuliers}]
 const RXW={krb:[`matrice mitochondriale`,{c:1,a:'c2',k:6,w:{0:`matrice, complexe de la pyruvate déshydrogénase`,6:`membrane interne : cette enzyme est le complexe II, juste en dessous`}}],
@@ -173,7 +173,7 @@ nak:[`membrane plasmique`,{}],cat:[`peroxysome`,{a:'per'}],pol:[`nucléoplasme, 
 rrn:[`composant fibrillaire dense`,{s:['po1','fbl','dkc','ssu','p60'],w:{0:`frontière entre FC et DFC`,3:`processome SSU`,4:`composant granulaire`}}]},
 rxA=(k,q,mx)=>{let b=0,bd=mx;for(let L of ORG?[OC]:reg>1?[NU,DN,dyc]:[CY,dyc])for(let o of L)if(o.i==k){let c=o.e?o.c:lp(o.a,o.b,.5),d=ds(c,q);if(d<bd)bd=d,b={c,r:o.e?max(o.s[0],o.s[1],o.s[2]):o.r}}return b},
 rxK=s=>s?s.split(' ').map(w=>w.split('*').pop()):[];
-function rxMenu(){let L=rxHere(),l=ORG?ORG.i:reg>1?'nuc':'cyt',o=RXP.filter(P=>P[1]!=l&&(P[2]<0||P[2]==CT)).length;$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';
+function rxMenu(){let L=rxHere(),l=ORG?ORG.pl||ORG.i:reg>1?'nuc':'cyt',o=RXP.filter(P=>P[1]!=l&&(P[2]<0||P[2]==CT)).length;$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';
   $('pmt').textContent='Réactions chimiques dans '+RXN[l];$('pmx').textContent='Choisissez une voie : vous verrez ses réactions à l\'échelle des atomes, là où elles ont lieu. Chaque étape laisse sa trace : la voie se dessine peu à peu. '+o+' autres voies vous attendent dans les autres compartiments (mitochondrie, réticulum, Golgi, cytosol, noyau, nucléole).';
   $('pmo').innerHTML=L.map(P=>rxBtn((MEN&&MGR[P[0]]?'🧬 ':'')+P[3]+' ('+P[6].length+')','p'+P[0])).join('')+rxBtn('Fermer','x')}
 // La voie est posée dans le décor : stations en cercle pour un cycle, en arc pour une voie linéaire, ou devant la structure où chaque étape a lieu.
