@@ -99,7 +99,7 @@ PRC.forEach(([d,r,l,k],i)=>SH.push({a:ma(Cc,d,Rc-r-.2),b:i||CT>2?ma(Cc,d,Rc+l-r)
 // rg : 1 = décor cytoplasmique, 2 = intérieur du noyau, 3 = noyau vu de loin ; ex : visible depuis l'extérieur de la cellule
 const Lmem=Ly(M5,1e9,0,{al:1,G:1,two:1,ex:1,rg:1}),Lhd=Ly(MO,.22,.03,{G:1,ex:1,rg:1}),Lpr=Ly(M1,2.5,.4,{ex:1,rg:1}),Lmt=Ly(MW,1e9,0,{al:1,ex:1,rg:1}),Lox=Ly(M1,40,4,{ex:1,rg:1}),Lox0=Ly(M0,14,3,{ex:1,rg:1}),Loxc=Ly(MC,40,4,{ex:1,rg:1}),Lprc=Ly(MD,.7,.4,{ex:1,rg:1}),
 Lves=Ly(M3,1e9,0,{al:1,G:2,z0:1,two:1,ex:1}),Lcg=Ly(MC,1e9,0,{G:2,z0:1,ex:1}),Lcr=Ly(M1,1e9,0,{G:2,z0:1,ex:1}),
-Lo=Ly(M2,60,4,{rg:1}),Lo1=Ly(M2,2.2,2,{rg:1}),Lo0=Ly(M1,60,2,{nl:Lo1,rg:1}),Lcs=Ly(M1,3.5,2,{rg:1}),La=Ly(M2,60,4,{al:1,rg:1}),Lt=Ly(MC,25,4,{rg:1}),Lmf=Ly(MK,30,5,{rg:1}),Lv=Ly(M1,9,3,{rg:1}),Lr=Ly(M0,2.6,1.6,{rg:1}),
+Lo=Ly(M2,60,4,{rg:1}),Lo1=Ly(M2,2.2,2,{rg:1}),Lo0=Ly(M1,60,2,{nl:Lo1,rg:1}),Lcs=Ly(M1,3.5,2,{rg:1}),La=Ly(M2,60,4,{al:1,rg:1}),Lt=Ly(MC,25,4,{rg:1}),Lmf=Ly(MK,30,5,{rg:1}),Lmfa=Ly(MKa,30,5,{rg:1}),Lv=Ly(M1,9,3,{rg:1}),Lr=Ly(M0,2.6,1.6,{rg:1}),
 Lne=Ly(M4,1e9,0,{al:1,two:1}),Lp1=Ly(M0,1,1.2),Lp1c=Ly(MD,1,1.2),Lpa=Ly(M1,1,1.2,{al:1}),Lp0=Ly(M0,60,1.2,{nl:Lp1}),
 Lon=Ly(M2,60,0),Lan=Ly(M2,60,0,{al:1}),Lk=Ly(MC,1.3,1,{dim:1,G:3}),Lkj=Ly(M0,1.3,1,{dim:1,G:3}),Lkf=Ly(MD,60,1,{nl:Lk,dim:1,G:3}),Lkh=Ly(MC,60,0,{G:3}),
 Lq1=Ly(M1,.16,.15,{rg:2,vz:60}),Lq1h=Ly(M1,.16,.15,{rg:2,vz:60,G:1}),Lq1c=Ly(MD,.16,.15,{rg:2,vz:60,G:1}),Lq0=Ly(M0,12,.25,{rg:2,nl:Lq1}),Lq0c=Ly(MD,12,.25,{rg:2,nl:Lq1}),Lqm=Ly(M0,.8,.25,{rg:2,vz:200}),Ldq=Ly(MD,1e9,0,{G:2}),Lg=Ly(M0,3.5,1,{rg:2}),

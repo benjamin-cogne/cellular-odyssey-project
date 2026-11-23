@@ -179,7 +179,7 @@ function rxMenu(){let L=rxHere(),l=ORG?ORG.i:reg>1?'nuc':'cyt',o=RXP.filter(P=>P
 // La voie est posée dans le décor : stations en cercle pour un cycle, en arc pour une voie linéaire, ou devant la structure où chaque étape a lieu.
 function rxGo(P,lv){AP=0;document.body.classList.add('rx');let W=RXW[P[0]][1],N=P[6],n=N.length,i,j,md=ORG?9:2,p1=W.r&&rxA(W.r,p,md),A=W.a?rxA(W.a,p,md):W.s?rxA(W.s[0],p1?p1.c:p,md):0,F=f.slice(),X,Y,St=[],
    SP=N.map(s=>[rxSp(s[1]),rxSp(s[2])]),US=SP.map(([a,b])=>{let x=a.concat(b);return(max(x.reduce((m,y)=>m+y.M.R,0)/x.length*1.35,max(...x.map(y=>y.M.R))*.72)+180)*1e-6}),U=max(...US),D=5.4*U,
-   mb=A&&ORG&&ORG.i!='nol',nr=a=>{let c=ORG.i=='mit'?rxA('crs',a.c,9):0;return ml(ORG.Y,c?sign(dt(sb(a.c,c.c),ORG.Y))||1:-sign(dt(sb(a.c,ORG.c),ORG.Y))||1)},ref;       // normale de la membrane qui porte l'enzyme, vers la lumière ou la matrice
+   mb=A&&ORG&&ORG.i!='nol'&&!ORG.cy,nr=a=>{let c=ORG.i=='mit'?rxA('crs',a.c,9):0;return ml(ORG.Y,c?sign(dt(sb(a.c,c.c),ORG.Y))||1:-sign(dt(sb(a.c,ORG.c),ORG.Y))||1)},ref;       // normale de la membrane qui porte l'enzyme, vers la lumière ou la matrice
   if(mb){Y=nr(A);F=ma(f,Y,-dt(f,Y));F=ln(F)>.2?nm(F):ORG.X;X=cr(Y,F);ref=a=>ma(a.c,nr(a),a.r+1.7*U)}       // dans un organite : la membrane sert de sol, on regarde le long de la lumière
   else{if(A&&ds(A.c,p)>.002)F=nm(sb(A.c,p));X=cr(u,F);X=ln(X)>.05?nm(X):pp(F);Y=cr(F,X);ref=a=>ma(a.c,F,-(a.r+1.7*U))}
   if(W.s){let pv=0,pS=p;for(i=0;i<n;i++){let a=i?rxA(W.s[i],pS,.09):A,S=a?pv&&ds(a.c,pv.c)<1e-6?ma(pS,X,1.7*D):ref(a):i?ma(pS,X,1.7*D):p.slice();if(i&&ds(S,pS)<1.6*D)S=ma(pS,X,1.7*D);St.push({S,T:X,O:Y,A:ma(S,X,-D/2),B:ma(S,X,D/2)});pv=a;pS=S}}

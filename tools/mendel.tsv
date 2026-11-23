@@ -614,3 +614,33 @@ ex@3	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopat
 ex@3	TNNC1	611879	AD	Cardiomyopathie dilatée 1Z	Dilated cardiomyopathy 1Z	15542288	Mogensen J, J Am Coll Cardiol 2004
 ply@3	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopathy 13	18572189	Landstrom AP, J Mol Cell Cardiol 2008
 ply@3	TNNC1	611879	AD	Cardiomyopathie dilatée 1Z	Dilated cardiomyopathy 1Z	15542288	Mogensen J, J Am Coll Cardiol 2004
+# --- intérieur du sarcomère (cardiomyocyte) et ses voies de réactions ---
+thk@3	MYH7	192600	AD	Cardiomyopathie hypertrophique 1	Hypertrophic cardiomyopathy 1	1975517	Geisterfer-Lowrance AA, Cell 1990
+thk@3	MYL2	608758	AD	Cardiomyopathie hypertrophique 10	Hypertrophic cardiomyopathy 10	8673105	Poetter K, Nat Genet 1996
+thk@3	MYL3	608751	AD	Cardiomyopathie hypertrophique 8	Hypertrophic cardiomyopathy 8	8673105	Poetter K, Nat Genet 1996
+czn@3	MYBPC3	115197	AD	Cardiomyopathie hypertrophique 4	Hypertrophic cardiomyopathy 4	7493025	Watkins H, Nat Genet 1995
+thn@3	ACTC1	613424	AD	Cardiomyopathie dilatée 1R	Dilated cardiomyopathy 1R	9563954	Olson TM, Science 1998
+thn@3	TPM1	115196	AD	Cardiomyopathie hypertrophique 3	Hypertrophic cardiomyopathy 3	8205619	Thierfelder L, Cell 1994
+thn@3	TNNT2	115195	AD	Cardiomyopathie hypertrophique 2	Hypertrophic cardiomyopathy 2	8205619	Thierfelder L, Cell 1994
+thi@3	TTN	604145	AD	Cardiomyopathie dilatée 1G	Dilated cardiomyopathy 1G	22335739	Herman DS, N Engl J Med 2012
+thi@3	RBM20	613172	AD	Cardiomyopathie dilatée 1DD	Dilated cardiomyopathy 1DD	19712804	Brauch KM, J Am Coll Cardiol 2009
+zdk@3	ACTN2	612158	AD	Cardiomyopathie dilatée 1AA	Dilated cardiomyopathy 1AA	14567970	Mohapatra B, Mol Genet Metab 2003
+zdk@3	CSRP3	612124	AD	Cardiomyopathie hypertrophique 12	Hypertrophic cardiomyopathy 12	12642359	Geier C, Circulation 2003
+zdk@3	LDB3	601493	AD	Cardiomyopathie dilatée 1C	Dilated cardiomyopathy 1C	14662268	Vatta M, J Am Coll Cardiol 2003
+zdk@3	NEXN	613122	AD	Cardiomyopathie dilatée 1CC	Dilated cardiomyopathy 1CC	19881492	Hassel D, Nat Med 2009
+xbr@3	MYH7	192600	AD	Cardiomyopathie hypertrophique 1	Hypertrophic cardiomyopathy 1	1975517	Geisterfer-Lowrance AA, Cell 1990
+xbr@3	MYH7	613426	AD	Cardiomyopathie dilatée 1S	Dilated cardiomyopathy 1S	11106718	Kamisago M, N Engl J Med 2000
+tnx@3	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopathy 13	18572189	Landstrom AP, J Mol Cell Cardiol 2008
+tnx@3	TNNI3	613690	AD	Cardiomyopathie hypertrophique 7	Hypertrophic cardiomyopathy 7	9241277	Kimura A, Nat Genet 1997
+tnx@3	TNNT2	115195	AD	Cardiomyopathie hypertrophique 2	Hypertrophic cardiomyopathy 2	8205619	Thierfelder L, Cell 1994
+rx:xbc:2	MYH7	192600	AD	Cardiomyopathie hypertrophique 1	Hypertrophic cardiomyopathy 1	1975517	Geisterfer-Lowrance AA, Cell 1990
+rx:xbc:3	MYH7	613426	AD	Cardiomyopathie dilatée 1S	Dilated cardiomyopathy 1S	11106718	Kamisago M, N Engl J Med 2000
+rx:tnn:0	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopathy 13	18572189	Landstrom AP, J Mol Cell Cardiol 2008
+rx:tnn:0	TNNC1	611879	AD	Cardiomyopathie dilatée 1Z	Dilated cardiomyopathy 1Z	15542288	Mogensen J, J Am Coll Cardiol 2004
+rx:tnn:1	TNNI3	613690	AD	Cardiomyopathie hypertrophique 7	Hypertrophic cardiomyopathy 7	9241277	Kimura A, Nat Genet 1997
+rx:tnn:1	TNNI3	115210	AD	Cardiomyopathie restrictive familiale 1	Familial restrictive cardiomyopathy 1	12531876	Mogensen J, J Clin Invest 2003
+rx:tnn:1	TPM1	115196	AD	Cardiomyopathie hypertrophique 3	Hypertrophic cardiomyopathy 3	8205619	Thierfelder L, Cell 1994
+rx:tnn:2	TNNT2	115195	AD	Cardiomyopathie hypertrophique 2	Hypertrophic cardiomyopathy 2	8205619	Thierfelder L, Cell 1994
+rx:pka:0	TNNI3	613690	AD	Cardiomyopathie hypertrophique 7	Hypertrophic cardiomyopathy 7	9241277	Kimura A, Nat Genet 1997
+rx:pka:1	MYBPC3	115197	AD	Cardiomyopathie hypertrophique 4	Hypertrophic cardiomyopathy 4	7493025	Watkins H, Nat Genet 1995
+rx:pka:2	MYL2	608758	AD	Cardiomyopathie hypertrophique 10	Hypertrophic cardiomyopathy 10	8673105	Poetter K, Nat Genet 1996
