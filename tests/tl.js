@@ -1,5 +1,5 @@
 // Outil commun des tests : ouvre le jeu dans Chrome sans écran (rendu logiciel), choisit une cellule et renvoie la page.
-//   open(ct,{vp,mobile,file,mock,lang}) → {b,pg,errs,ev} ; ct : 0 érythroblaste, 1 hépatocyte, 2 neurone
+//   open(ct,{vp,mobile,file,mock,lang}) → {b,pg,errs,ev} ; ct : 0 érythroblaste, 1 hépatocyte, 2 neurone, 3 cardiomyocyte
 //   ev(fn,arg) exécute fn dans la portée interne du jeu (dist/dev.html seulement, via window.__ev)
 //   CHROME_PATH=/chemin/vers/chrome pour utiliser un Chrome installé plutôt que le Chromium de Playwright
 const path=require('path'),{chromium}=require('playwright');

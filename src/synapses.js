@@ -76,7 +76,7 @@ function synT(){for(let s of SY){let k=s.fu;if(k==s.fk)continue;s.fk=k;let h=s.d
           if(k>-.2){dT(g,L(.011*cw*(1-.4*zp),.011*sw*(1-.4*zp),-.0006),ad(ma(c,e,rv*.92),ml(t,rv*.36)),.0013,K(0xe54));dS(h,L(.013*cos(w+.5),.013*sin(w+.5),-.006+.004*zp),.0026,K(0xfa3));dS(h,L(.0085*cw,.0085*sw,-.004),.0014*(1-zp),K(0xfff))}}}}
     up(h);up(g)}}
 
-if(CT>1){let[x,,y]=fr(A0),g=14.4,ns=ad(ml(x,cos(g)),ml(y,sin(g))),B=ad(ma(Cc,A0,Rc+6),ml(ns,1.1)),Ca=ma(B,ns,1.4457),ua=cr(A0,ns),s,k;
+if(CT==2){let[x,,y]=fr(A0),g=14.4,ns=ad(ml(x,cos(g)),ml(y,sin(g))),B=ad(ma(Cc,A0,Rc+6),ml(ns,1.1)),Ca=ma(B,ns,1.4457),ua=cr(A0,ns),s,k;
   // ---- synapse reçue : bouton « en passant » d'un axone afférent, sur une épine de notre dendrite apicale
   s=mkSyn(Ca,.45,ml(ns,-1),0,A0);S(Lmem,Ca,.45,K(0x9b8,.5));OX.push({a:Ca,b:Ca,r:.45,i:'abt',bg:1});
   Cy(Lmt,ma(B,ns,-.06),ma(s.Cs,ns,-.26),.07,K(CF.mc,.8));pgl(ma(B,ns,-.13));
@@ -96,7 +96,7 @@ if(CT>1){let[x,,y]=fr(A0),g=14.4,ns=ad(ml(x,cos(g)),ml(y,sin(g))),B=ad(ma(Cc,A0,
     for(k=-3;k<4;k++)Cy(Lsc,pt(-.19,k*.045,-.032),pt(.19,k*.045,-.032),.0016,K(0xcdf)),ci(pt(0,k*.045,-.032),.01,'ank')}}
 
 // ---- fiches des synapses et de la membrane excitable
-CT>1&&Object.assign(I,{
+CT==2&&Object.assign(I,{
  btn:[`Bouton synaptique`,`Terminaison présynaptique de notre axone : ≈ 200 vésicules synaptiques, dont une dizaine arrimées à la zone active, face à l'épine d'un neurone voisin. Entrez-y par le puits à clathrine, ou approchez la fente par l'extérieur : le vaisseau rapetisse jusqu'à pouvoir s'y glisser. Chaque molécule de la synapse a sa fiche. Le bouton ⚡ fait suivre un influx nerveux de bout en bout.`],
  spn:[`Épine dendritique d'un neurone voisin`,`Tête de ≈ 0,5 µm portée par un col étroit ; sa membrane épouse notre bouton à 20 nm de distance. Sous cette membrane, la densité postsynaptique : récepteurs AMPA et NMDA, puis l'échafaudage en couches PSD-95, GKAP, Shank et Homer, relié à l'actine. L'insertion ou le retrait de récepteurs AMPA sous-tend la potentialisation et la dépression à long terme.`],
  spo:[`Épine dendritique de notre neurone`,`Une des ≈ 10 000 épines de notre neurone, et sa synapse excitatrice. Son col étroit (≈ 0,1 à 0,2 µm) en fait un compartiment biochimique : le Ca²⁺ entré par les récepteurs NMDA y reste confiné, ce qui rend la plasticité propre à chaque synapse. C'est ici que commence le parcours ⚡ de l'influx nerveux.`],

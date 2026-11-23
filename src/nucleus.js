@@ -26,7 +26,7 @@ const CBP=NU.find(o=>o.i=='cb').a;
 // territoires chromosomiques (46,XX) : chaque chromosome est une fibre continue, 1 nœud par Mb
 const CHR=[248,242,198,190,182,171,159,145,138,134,135,133,114,107,102,90,83,80,59,64,47,51,156],
 CEN=[123,94,91,50,49,60,60,45,43,40,53,36,18,17,19,37,25,18,26,28,12,15,61],CN=[],NH=new Map,seeds=[],ACR=[12,13,14,20,21],cnm=ci=>ci>21?'X':ci+1;
-let XI,BD=0;
+let XI,BD=0,CHS=0;      // CHS : [chromosome, mégabase, nombre] des segments remplacés par la chaîne de nucléosomes
 function walk(P,d,n,sd,Rt,st){let o=[P],i,k,q,b,s,e;
   for(i=1;i<n;i++){b=0;
     for(k=0;k<7;k++){e=nm(ad(d,ml(rd(),.8)));q=ma(P,e,st);s=R()-max(0,ds(q,sd)-Rt)*9-(inN(q,.06)?0:50);if(!b||s>b[0])b=[s,q,e]}
@@ -52,8 +52,9 @@ bcol=(ci,mb,xi)=>{let l=.56,b=bnd(ci,mb),g;
   return hs(ci/23,xi?.3:.7,xi?l*.6:l)},
 cat=(a,b,c,d,t)=>a.map((_,i)=>.5*(2*b[i]+(c[i]-a[i])*t+(2*a[i]-5*b[i]+4*c[i]-d[i])*t*t+(3*b[i]-a[i]-3*c[i]+d[i])*t*t*t));
 function drawChr(re){re&&[Lk,Lkj,Lkf].forEach(clr);
-  CN.forEach(({ci,p,xi})=>{let n=p.length,i,k,a,b,c,r;
-    for(i=0;i<n-1;i++){c=bcol(ci,i+.5,xi);r=c[0]>.9&&c[1]<.3?.026:.04;Cy(Lkf,p[i],p[i+1],r,c);
+  CN.forEach(({ci,p,xi},cn)=>{let n=p.length,i,k,a,b,c,r;
+    for(i=0;i<n-1;i++){if(CHS&&CHS[0]==cn&&i>=CHS[1]&&i<CHS[1]+CHS[2])continue;c=bcol(ci,i+.5,xi);      // ces mégabases sont dessinées en chaîne de nucléosomes (chrfibre.js)
+      r=c[0]>.9&&c[1]<.3?.026:.04;Cy(Lkf,p[i],p[i+1],r,c);
       a=p[i];for(k=1;k<4;k++)b=k<3?cat(p[max(0,i-1)],p[i],p[i+1],p[min(n-1,i+2)],k/3):p[i+1],Cy(Lk,a,b,r,c),S(Lkj,b,r,c),a=b}});
   re&&fin()}
 drawChr();
@@ -78,6 +79,7 @@ occ.push([CS,.5]);
 {let ctr=(c,a)=>{let[x,,y]=fr(a);for(let k=0;k<9;k++)for(let m=0;m<3;m++){let h=k*TAU/9+m*.26,q=ad(ma(c,x,cos(h)*(.085+m*.021)),ml(y,sin(h)*(.085+m*.021)));Cy(Lt,ma(q,a,-.21),ma(q,a,.21),.0115,K(0x8d6))}};
  ctr(ma(CS,a1,-.05),a1);ctr(ad(ma(CS,a1,.3),ml(cD,.05)),a2);S(La,CS,.45,K(0xbd8,.14));cS(CY,CS,.38,'cen');
  if(CT<2)for(let s=0;s<(CT?5:3);s++){let g=ad(ma(CS,cD,s<3?.25:-2*Rn-2.2),ad(ml(a1,cos(s*2.1+.5)*1.05),ml(a2,sin(s*2.1+.5)*1.05)));gol(g,nm(sb(Nc,g)))}      // Golgi près du centrosome
+ else if(CT>2)for(let s=0;s<4;s++){let x=pp(A0),g=ad(ma(Nc,A0,(s<2?1:-1)*(Rn+1.25)),ml(ad(ml(x,cos(s*3.1)),ml(cr(A0,x),sin(s*3.1))),1.1));gol(g,nm(sb(Nc,g)))}      // cardiomyocyte : aux deux pôles du noyau
  else for(let s=0;s<6;s++){let x=pp(A0),g=ma(Nc,ad(ml(x,cos(s*1.05)),ml(cr(A0,x),sin(s*1.05))),Rn+1.15);gol(g,nm(sb(Nc,g)))}}                              // neurone : couronne périnucléaire
 for(let i=0;i<CF.mt;i++){let d=rd(),b=ma(Cc,d,Rc-.1),a=ma(CS,nm(sb(b,CS)),.3),m=lp(a,b,.5),pts=[],k,t;       // microtubules rayonnant du centrosome
   if(ds(m,Nc)<Rn+1)m=ma(Nc,nm(sb(m,Nc)),Rn+1.4);let c=sb(ml(m,2),ml(ad(a,b),.5));

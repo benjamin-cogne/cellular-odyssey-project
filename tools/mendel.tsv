@@ -558,3 +558,59 @@ go:gj	GJC2	608804	AR	Leucodystrophie hypomyélinisante 2	Hypomyelinating leukody
 go:per	ABCD1	300100	XL	Adrénoleucodystrophie liée à l'X	X-linked adrenoleukodystrophy	7825602	Ligtenberg MJ, Am J Hum Genet 1995
 go:pn	CNTNAP1	618186	AR	Neuropathie hypomyélinisante congénitale 3	Congenital hypomyelinating neuropathy 3	29511323	Low KJ, Eur J Hum Genet 2018
 go:pn	NFASC	618356	AR	Trouble du neurodéveloppement avec hypotonie centrale et périphérique	Neurodevelopmental disorder with central and peripheral motor dysfunction	30124836	Smigiel R, Hum Mol Genet 2018
+# --- cardiomyocyte (cellule 3) et vue « influx cardiaque » (hb) ---
+mem@3	SCN5A	601144	AD	Syndrome de Brugada 1	Brugada syndrome 1	9521325	Chen Q, Nature 1998
+mem@3	KCNJ2	170390	AD	Syndrome d'Andersen-Tawil	Andersen-Tawil syndrome	11371347	Plaster NM, Cell 2001
+sel@3	PLN	609909	AD	Cardiomyopathie dilatée 1P	Dilated cardiomyopathy 1P	12610310	Schmitt JP, Science 2003
+sel@3	ATP2A2	124200	AD	Maladie de Darier	Darier disease	10080178	Sakuntabhai A, Nat Genet 1999
+sel@3	CASQ2	611938	AR	Tachycardie ventriculaire polymorphe catécholergique 2	Catecholaminergic polymorphic ventricular tachycardia 2	11704930	Lahat H, Am J Hum Genet 2001
+myf@3	TTN	604145	AD	Cardiomyopathie dilatée 1G	Dilated cardiomyopathy 1G	22335739	Herman DS, N Engl J Med 2012
+saa@3	MYH7	192600	AD	Cardiomyopathie hypertrophique 1	Hypertrophic cardiomyopathy 1	1975517	Geisterfer-Lowrance AA, Cell 1990
+saa@3	MYBPC3	115197	AD	Cardiomyopathie hypertrophique 4	Hypertrophic cardiomyopathy 4	7493025	Watkins H, Nat Genet 1995
+sai@3	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopathy 13	18572189	Landstrom AP, J Mol Cell Cardiol 2008
+sai@3	TNNC1	611879	AD	Cardiomyopathie dilatée 1Z	Dilated cardiomyopathy 1Z	15542288	Mogensen J, J Am Coll Cardiol 2004
+sai@3	TNNT2	115195	AD	Cardiomyopathie hypertrophique 2	Hypertrophic cardiomyopathy 2	8205619	Thierfelder L, Cell 1994
+sai@3	TNNI3	613690	AD	Cardiomyopathie hypertrophique 7	Hypertrophic cardiomyopathy 7	9241277	Kimura A, Nat Genet 1997
+sai@3	TPM1	115196	AD	Cardiomyopathie hypertrophique 3	Hypertrophic cardiomyopathy 3	8205619	Thierfelder L, Cell 1994
+sai@3	ACTC1	613424	AD	Cardiomyopathie dilatée 1R	Dilated cardiomyopathy 1R	9563954	Olson TM, Science 1998
+saz@3	DES	604765	AD	Cardiomyopathie dilatée 1I	Dilated cardiomyopathy 1I	10430757	Li D, Circulation 1999
+ttu@3	CACNA1C	601005	AD	Syndrome de Timothy	Timothy syndrome	15454078	Splawski I, Cell 2004
+dya@3	RYR2	604772	AD	Tachycardie ventriculaire polymorphe catécholergique 1	Catecholaminergic polymorphic ventricular tachycardia 1	11208676	Priori SG, Circulation 2001
+dya@3	CASQ2	611938	AR	Tachycardie ventriculaire polymorphe catécholergique 2	Catecholaminergic polymorphic ventricular tachycardia 2	11704930	Lahat H, Am J Hum Genet 2001
+icd@3	PKP2	609040	AD	Dysplasie ventriculaire droite arythmogène 9	Arrhythmogenic right ventricular dysplasia 9	15489853	Gerull B, Nat Genet 2004
+dsm@3	PKP2	609040	AD	Dysplasie ventriculaire droite arythmogène 9	Arrhythmogenic right ventricular dysplasia 9	15489853	Gerull B, Nat Genet 2004
+dsm@3	DSP	607450	AD	Dysplasie ventriculaire droite arythmogène 8	Arrhythmogenic right ventricular dysplasia 8	12373648	Rampazzo A, Am J Hum Genet 2002
+dsm@3	DSG2	610193	AD	Dysplasie ventriculaire droite arythmogène 10	Arrhythmogenic right ventricular dysplasia 10	16505173	Pilichou K, Circulation 2006
+dsm@3	DSC2	610476	AD	Dysplasie ventriculaire droite arythmogène 11	Arrhythmogenic right ventricular dysplasia 11	17033975	Syrris P, Am J Hum Genet 2006
+dsm@3	JUP	601214	AR	Maladie de Naxos	Naxos disease	10902626	McKoy G, Lancet 2000
+cos@3	DMD	302045	XL	Cardiomyopathie dilatée 3B, liée à l'X	Dilated cardiomyopathy 3B, X-linked	8361506	Muntoni F, N Engl J Med 1993
+hb:rep	KCNJ2	170390	AD	Syndrome d'Andersen-Tawil	Andersen-Tawil syndrome	11371347	Plaster NM, Cell 2001
+hb:ph0	SCN5A	601144	AD	Syndrome de Brugada 1	Brugada syndrome 1	9521325	Chen Q, Nature 1998
+hb:ph0	SCN5A	603830	AD	Syndrome du QT long 3	Long QT syndrome 3	7889574	Wang Q, Cell 1995
+hb:ph2	CACNA1C	601005	AD	Syndrome de Timothy	Timothy syndrome	15454078	Splawski I, Cell 2004
+hb:ph3	KCNH2	613688	AD	Syndrome du QT long 2	Long QT syndrome 2	7889573	Curran ME, Cell 1995
+hb:ph3	KCNQ1	192500	AD	Syndrome du QT long 1	Long QT syndrome 1	8528244	Wang Q, Nat Genet 1996
+hb:ph3	KCNQ1	220400	AR	Syndrome de Jervell et Lange-Nielsen 1	Jervell and Lange-Nielsen syndrome 1	9020846	Neyroud N, Nat Genet 1997
+hb:dya	RYR2	604772	AD	Tachycardie ventriculaire polymorphe catécholergique 1	Catecholaminergic polymorphic ventricular tachycardia 1	11208676	Priori SG, Circulation 2001
+hb:dya	CASQ2	611938	AR	Tachycardie ventriculaire polymorphe catécholergique 2	Catecholaminergic polymorphic ventricular tachycardia 2	11704930	Lahat H, Am J Hum Genet 2001
+hb:tnc	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopathy 13	18572189	Landstrom AP, J Mol Cell Cardiol 2008
+hb:tnc	TNNC1	611879	AD	Cardiomyopathie dilatée 1Z	Dilated cardiomyopathy 1Z	15542288	Mogensen J, J Am Coll Cardiol 2004
+hb:tnc	TNNI3	613690	AD	Cardiomyopathie hypertrophique 7	Hypertrophic cardiomyopathy 7	9241277	Kimura A, Nat Genet 1997
+hb:tnc	TNNT2	115195	AD	Cardiomyopathie hypertrophique 2	Hypertrophic cardiomyopathy 2	8205619	Thierfelder L, Cell 1994
+hb:tnc	TPM1	115196	AD	Cardiomyopathie hypertrophique 3	Hypertrophic cardiomyopathy 3	8205619	Thierfelder L, Cell 1994
+hb:sar	MYH7	192600	AD	Cardiomyopathie hypertrophique 1	Hypertrophic cardiomyopathy 1	1975517	Geisterfer-Lowrance AA, Cell 1990
+hb:sar	MYBPC3	115197	AD	Cardiomyopathie hypertrophique 4	Hypertrophic cardiomyopathy 4	7493025	Watkins H, Nat Genet 1995
+hb:sar	TTN	604145	AD	Cardiomyopathie dilatée 1G	Dilated cardiomyopathy 1G	22335739	Herman DS, N Engl J Med 2012
+hb:rel	PLN	609909	AD	Cardiomyopathie dilatée 1P	Dilated cardiomyopathy 1P	12610310	Schmitt JP, Science 2003
+hb:rel	ATP2A2	124200	AD	Maladie de Darier	Darier disease	10080178	Sakuntabhai A, Nat Genet 1999
+hb:fib	PKP2	609040	AD	Dysplasie ventriculaire droite arythmogène 9	Arrhythmogenic right ventricular dysplasia 9	15489853	Gerull B, Nat Genet 2004
+hb:fib	DSP	607450	AD	Dysplasie ventriculaire droite arythmogène 8	Arrhythmogenic right ventricular dysplasia 8	12373648	Rampazzo A, Am J Hum Genet 2002
+hb:nsa	HCN4	163800	AD	Maladie du sinus 2	Sick sinus syndrome 2	12750403	Schulze-Bahr E, J Clin Invest 2003
+hb:nav	LMNA	115200	AD	Cardiomyopathie dilatée 1A, avec troubles de la conduction	Dilated cardiomyopathy 1A, with conduction disease	10580070	Fatkin D, N Engl J Med 1999
+hb:rpo	KCNQ1	192500	AD	Syndrome du QT long 1	Long QT syndrome 1	8528244	Wang Q, Nat Genet 1996
+hb:rpo	KCNH2	613688	AD	Syndrome du QT long 2	Long QT syndrome 2	7889573	Curran ME, Cell 1995
+hb:tot	DMD	302045	XL	Cardiomyopathie dilatée 3B, liée à l'X	Dilated cardiomyopathy 3B, X-linked	8361506	Muntoni F, N Engl J Med 1993
+ex@3	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopathy 13	18572189	Landstrom AP, J Mol Cell Cardiol 2008
+ex@3	TNNC1	611879	AD	Cardiomyopathie dilatée 1Z	Dilated cardiomyopathy 1Z	15542288	Mogensen J, J Am Coll Cardiol 2004
+ply@3	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopathy 13	18572189	Landstrom AP, J Mol Cell Cardiol 2008
+ply@3	TNNC1	611879	AD	Cardiomyopathie dilatée 1Z	Dilated cardiomyopathy 1Z	15542288	Mogensen J, J Am Coll Cardiol 2004

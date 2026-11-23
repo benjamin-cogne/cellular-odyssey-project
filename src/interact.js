@@ -168,7 +168,7 @@ $('xit').onclick=()=>{if(reg!=1||ORG||AP||PM||ct>=0)return;$('fd').style.opacity
   say('Sortie par la voie de recyclage : comme les récepteurs qui regagnent la surface, vous quittez la cellule dans un endosome de recyclage (Rab11) qui fusionne avec la membrane plasmique. Le puits ◎ reste ouvert pour revenir.',10)},400)};
 $('bld').onclick=()=>{$('ld').textContent='Le sang vous emporte : choisissez votre destination.';$('ov').style.display='grid'};
 $('tcy').onclick=()=>{$('fd').style.opacity=1;setTimeout(()=>{let i=LU;p=ma(TCY,v0,i?-.7:.75);f=ml(v0,i?-1:1);u=pp(f);cf=f;cu=u;vel=0;poi=0;$('fd').style.opacity=0;
-  say(i?'Transcytose : capté par un récepteur TfR1 côté sang, enfermé dans une vésicule, vous traversez la cellule endothéliale et ressortez côté cerveau, entre les pieds des astrocytes. Cap sur le bouton synaptique ◎.':'Transcytose en sens inverse : vous voilà dans la lumière du capillaire.',10)},400)};
+  say(i?(CT>2?'Transcytose : enfermé dans une cavéole côté sang, vous traversez la cellule endothéliale et ressortez dans l\'interstitium du myocarde. Cap sur le cardiomyocyte ◎.':'Transcytose : capté par un récepteur TfR1 côté sang, enfermé dans une vésicule, vous traversez la cellule endothéliale et ressortez côté cerveau, entre les pieds des astrocytes. Cap sur le bouton synaptique ◎.'):'Transcytose en sens inverse : vous voilà dans la lumière du capillaire.',10)},400)};
 // ================= atlas : toutes les structures présentes, celles déjà vues, un repère vers les autres =================
 const AK=[],AG={};
 {let a=(k,g)=>{I[k]&&!AG[k]&&!/^cu\d/.test(k)&&(AG[k]=g,AK.push(k))};
