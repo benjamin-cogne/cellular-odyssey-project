@@ -19,10 +19,11 @@ npm run build
 
 ## Contenu
 
-- **Trois cellules, une patiente.** Un érythroblaste de la moelle osseuse (gène *HBB*), un hépatocyte du foie (*HAMP*) et un neurone du cortex (*FOS*), reliés par la circulation.
+- **Quatre cellules, une patiente.** Un érythroblaste de la moelle osseuse (gène *HBB*), un hépatocyte du foie (*HAMP*), un neurone du cortex (*FOS*) et un cardiomyocyte ventriculaire (*TNNC1*), reliés par la circulation.
+- **Le cœur, du canal ionique à l'organe entier.** Le cardiomyocyte est posé dans son myocarde (capillaires, péricyte, cellules voisines, fibroblastes, macrophage résident, fibre sympathique, collagène) et se visite de l'intérieur : myofibrilles et sarcomères, mitochondries en files, réticulum sarcoplasmique, tubules T et dyades, costamères, cavéoles, disques intercalaires. Le bouton « ⚡ Suivre l'influx cardiaque » ouvre 18 étapes guidées, dessinées à leur taille réelle autour de cette même cellule : potentiel de repos et quatre phases du potentiel d'action sur un oscilloscope, libération de calcium induite par le calcium, troponine C et glissement des filaments, relaxation, jonctions communicantes, vague de cellule en cellule puis dans le tissu, et enfin un zoom arrière continu à travers la paroi du ventricule jusqu'au cœur entier, battant, avec son tissu de conduction, ses artères coronaires et son électrocardiogramme.
 - **Cytoplasme et organites.** On entre dans les mitochondries, le réticulum, le Golgi et le nucléole ; chaque structure a une fiche, rassemblée dans un atlas.
 - **Noyau.** Pores, lamina (lamines A et B, LBR, émerine), nucléole (FC / DFC / GC, transcription par Pol I, flux des pré-ribosomes), speckles, corps de Cajal, corps PML, paraspeckles.
-- **Gènes, base par base.** Les trois gènes intégrés utilisent la séquence réelle hg38 : signaux du promoteur, exons, introns, sites d'épissage. Le mode « Je suis l'ARN polymérase II » parcourt initiation, coiffe, pause, épissage, polyadénylation et terminaison.
+- **Gènes, base par base.** Les quatre gènes intégrés utilisent la séquence réelle hg38 : signaux du promoteur, exons, introns, sites d'épissage. Le mode « Je suis l'ARN polymérase II » parcourt initiation, coiffe, pause, épissage, polyadénylation et terminaison.
 - **N'importe quel gène.** Une recherche charge un autre gène humain par l'API du UCSC Genome Browser (repli sur Ensembl). C'est le seul accès réseau du jeu.
 - **21 voies chimiques à l'échelle moléculaire**, montrées là où elles se produisent : cycle de Krebs, chaîne respiratoire, β-oxydation, synthèse de l'hème, cycle de l'urée, N-glycosylation, glycolyse, traduction, ubiquitination, pompe Na⁺/K⁺, polymérisation de l'ARN, coiffe, cycle de méthylation de l'ADN (DNMT, trois oxydations par TET, TDG, réparation par excision de base), acétylation et méthylation des histones (dont les déméthylases LSD1 et JmjC), phosphorylation et ubiquitination des histones, modification de l'ARNr, etc. Chacune a un niveau commenté et un niveau expert avec quiz.
 - **Surface de la cellule et voies d'entrée.** Hors de la cellule, le bouton « ⇲ Voies d'entrée » laisse choisir sa route. L'endocytose par la clathrine se fait en vol ; les cavéoles, la macropinocytose et, dans le neurone, l'endocytose ultrarapide de la synapse sont des animations guidées à l'échelle du nanomètre, qui se terminent dans la cellule. Une quatrième vue montre les récepteurs de surface de la cellule en cours, leur ligand et le signal qu'ils déclenchent (TfR1, récepteur de l'EPO, KIT, intégrine ; récepteurs des LDL, de l'insuline, du glucagon et des asialoglycoprotéines ; TrkB, Cav2.1, mGluR2).
@@ -44,7 +45,8 @@ C'est un support pédagogique, pas une référence.
 
 - Les géométries sont schématiques, les nombres de molécules réduits, les animations ralenties de plusieurs ordres de grandeur.
 - Les chiffres des fiches sont des ordres de grandeur. Certains ont été vérifiés dans la littérature à l'écriture du jeu, d'autres non.
-- Les 57 références utilisées figurent dans le jeu, sur l'écran d'accueil, sous *Sources*, avec leur PMID.
+- Dans la vue de l'influx cardiaque, les tailles, les durées et l'ordre des événements suivent la littérature, mais la forme des protéines (des billes) et du cœur (des ellipsoïdes et des tubes), le tracé du réseau de Purkinje, les courbes de l'oscilloscope et de l'électrocardiogramme sont dessinés à la main ; quelques valeurs de manuel sans source primaire retrouvée (potentiel de repos voisin de −85 mV, vitesse de conduction le long des fibres, épaisseur de la paroi) sont données comme approximatives.
+- Les 364 références utilisées figurent dans le jeu, sur l'écran d'accueil, sous *Sources*, avec leur PMID.
 - Le focus mendélien reprend des associations gène–maladie classées « vertes » par [PanelApp Australia](https://panelapp-aus.org/) (Mendeliome v2.901 et panels spécialisés, novembre 2026). C'est une sélection de deux à quatre maladies connues par structure, pas une liste complète, et ce n'est pas un outil de diagnostic. `npm run check-mendel` revérifie la table auprès de PanelApp Australia.
 - Le contenu n'a pas été relu par des pairs. Les corrections sont bienvenues : ouvrez une issue avec une référence.
 
@@ -52,7 +54,7 @@ C'est un support pédagogique, pas une référence.
 
 | Chemin | Contenu |
 | --- | --- |
-| `src/` | Sources du jeu : `shell.html` (page, CSS, textes fixes) et 31 fichiers JavaScript. Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
+| `src/` | Sources du jeu : `shell.html` (page, CSS, textes fixes) et 33 fichiers JavaScript. Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
 | `src/seq/` | Séquences génomiques de *HBB*, *HAMP* et *FOS* (hg38, gène et promoteur en amont). |
 | `build.js` | Concatène les sources, applique la passe de traduction et minifie. |
 | `i18n/` | Traductions anglaises et outils qui les appliquent. |
