@@ -19,10 +19,11 @@ npm run build
 
 ## What is in it
 
-- **Three cells, one patient.** An erythroblast in the bone marrow (gene *HBB*), a hepatocyte in the liver (*HAMP*) and a cortical neuron (*FOS*), linked by the bloodstream.
+- **Four cells, one patient.** An erythroblast in the bone marrow (gene *HBB*), a hepatocyte in the liver (*HAMP*), a cortical neuron (*FOS*) and a ventricular cardiomyocyte (*TNNC1*), linked by the bloodstream.
+- **The heart, from ion channel to whole organ.** The cardiomyocyte sits in its myocardium (capillaries, pericyte, neighbouring cells, fibroblasts, resident macrophage, sympathetic fibre, collagen) and can be entered: myofibrils with their sarcomeres, mitochondria in rows, sarcoplasmic reticulum, T-tubules and dyads, costameres, caveolae, intercalated discs. A "⚡ Follow the cardiac impulse" button opens 18 guided steps drawn at real size around that one cell: resting potential and the four phases of the action potential on an oscilloscope, calcium-induced calcium release, troponin C and the sliding filaments, relaxation, gap junctions, the wave from cell to cell and through the tissue, then a continuous zoom out through the ventricular wall to a whole beating heart with its conduction system, coronary arteries and electrocardiogram.
 - **Cytoplasm and organelles.** Mitochondria, endoplasmic reticulum, Golgi and the nucleolus can be entered; every structure has a clickable card, collected in an atlas.
 - **Nucleus.** Pores, lamina (A- and B-type lamins, LBR, emerin), nucleolus (FC / DFC / GC, Pol I transcription, pre-ribosome flux), speckles, Cajal bodies, PML bodies, paraspeckles.
-- **Genes, base by base.** The three built-in genes use the real hg38 sequence, with promoter signals, exons, introns and splice sites. An "I am RNA polymerase II" mode walks through initiation, capping, pausing, splicing, polyadenylation and termination.
+- **Genes, base by base.** The four built-in genes use the real hg38 sequence, with promoter signals, exons, introns and splice sites. An "I am RNA polymerase II" mode walks through initiation, capping, pausing, splicing, polyadenylation and termination.
 - **Any gene.** A search box loads another human gene through the UCSC Genome Browser API (Ensembl as fallback). This is the only network access in the game.
 - **21 chemical pathways at molecular scale**, shown where they happen: Krebs cycle, respiratory chain, β-oxidation, haem synthesis, urea cycle, N-glycosylation, glycolysis, translation, ubiquitination, Na⁺/K⁺ pump, RNA polymerisation, capping, the DNA methylation cycle (DNMT, three TET oxidations, TDG, base excision repair), histone acetylation and methylation (including the LSD1 and JmjC demethylases), histone phosphorylation and ubiquitination, rRNA modification and more. Each has a narrated level and an expert level with a quiz.
 - **Cell surface and ways in.** Outside the cell, a "⇲ Ways in" button lets the player choose a route. Clathrin-mediated endocytosis is flown in the scenery; caveolae, macropinocytosis and, in the neuron, ultrafast synaptic endocytosis are guided animations at nanometre scale that end inside the cell. A fourth view shows the surface receptors of the current cell with their ligand and the signal they start (TfR1, EPO receptor, KIT, integrin; LDL, insulin, glucagon and asialoglycoprotein receptors; TrkB, Cav2.1, mGluR2).
@@ -44,7 +45,8 @@ This is a teaching aid, not a reference.
 
 - Geometries are schematic, molecule counts are reduced and animations are slowed down by several orders of magnitude.
 - Numbers on the cards are orders of magnitude. Some were checked against the literature when the game was written; others were not.
-- The 57 references used are listed in the game, on the start screen under *Sources*, with their PMID.
+- In the cardiac impulse view, sizes, durations and the order of events follow the literature, but the shape of the proteins (beads) and of the heart (ellipsoids and tubes), the course of the Purkinje network, and the oscilloscope and electrocardiogram traces are drawn by hand; several textbook values that could not be traced to a primary source (resting potential near −85 mV, conduction velocity along the fibres, wall thickness) are given as approximate.
+- The references used (364) are listed in the game, on the start screen under *Sources*, with their PMID.
 - The Mendelian focus lists gene–disease associations rated Green in [PanelApp Australia](https://panelapp-aus.org/) (Mendeliome v2.901 and specialised panels, November 2026). It is a selection of two to four well-known disorders per structure, not a complete list, and it is not a diagnostic resource. `npm run check-mendel` re-checks the table against PanelApp Australia.
 - The content has not been peer reviewed. Corrections are welcome: please open an issue with a reference.
 
@@ -52,7 +54,7 @@ This is a teaching aid, not a reference.
 
 | Path | Content |
 | --- | --- |
-| `src/` | Game sources: `shell.html` (page, CSS, static text) and 31 JavaScript files. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
+| `src/` | Game sources: `shell.html` (page, CSS, static text) and 33 JavaScript files. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). |
 | `src/seq/` | Genomic sequences of *HBB*, *HAMP* and *FOS* (hg38, gene plus upstream promoter). |
 | `build.js` | Concatenates the sources, applies the translation pass and minifies. |
 | `i18n/` | English translations and the tools that apply them. |
@@ -66,7 +68,7 @@ Developed and tested with Node.js 22.
 
 | Command | Result |
 | --- | --- |
-| `npm run build` | `dist/index.html`, the minified single file to publish (≈ 1.06 MB, ≈ 430 kB gzipped). |
+| `npm run build` | `dist/index.html`, the minified single file to publish (≈ 1.16 MB, ≈ 470 kB gzipped). |
 | `npm run dev` | `dist/dev.html`, not minified, with the test hook `window.__ev`. |
 | `npm run check-seq` | Checks reading frames, splice sites and promoter signals of the embedded sequences. |
 | `npm run mendel` | Regenerates `src/mendel-data.js`, `i18n/en/mendel.json` and `docs/MENDELIAN.md` from `tools/mendel.tsv`. Run it after editing the table, then build. |

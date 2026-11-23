@@ -246,5 +246,5 @@ bpMk('go','Oligodendrocyte',[],[5,6,24],1.2,75,
   'La myéline n\'est pas qu\'un isolant : l\'oligodendrocyte nourrit aussi l\'axone qu\'il enveloppe, loin du corps cellulaire du neurone.')}
 // ---------------- entrée depuis le tissu du neurone ----------------
 {const b0=btT,K={tas:'ga',tps:'ga',tef:'ga',tmg:'gm',tol:'go',tmy:'go',tnr:'go'};let cur=0,hi=0;
- btT=()=>{b0();if(RX||NX||SX)return;let k=go&&CT>1&&!reg&&ct<0&&!AP&&!PM&&nI&&K[nI.i],P=k&&BPL[k],e=$('glb');cur=P;e.style.display=P?'block':'none';if(P){let s='⤓ Entrer : '+P.n;e.textContent!=s&&(e.textContent=s);hi||(hi=1,say('Cellule gliale : le bouton « ⤓ Entrer » vous emmène à l\'intérieur, voir ses organites et ce qu\'elle fait.',8))}};
+ btT=()=>{b0();if(RX||NX||SX)return;let k=go&&CT==2&&!reg&&ct<0&&!AP&&!PM&&nI&&K[nI.i],P=k&&BPL[k],e=$('glb');cur=P;e.style.display=P?'block':'none';if(P){let s='⤓ Entrer : '+P.n;e.textContent!=s&&(e.textContent=s);hi||(hi=1,say('Cellule gliale : le bouton « ⤓ Entrer » vous emmène à l\'intérieur, voir ses organites et ce qu\'elle fait.',8))}};
  $('glb').onclick=()=>cur&&bpGo(cur.id)}

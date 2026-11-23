@@ -53,7 +53,7 @@ const Lni=Ly(M1,1e9,0,{}),Lng=Ly(M3,1e9,0,{al:1}),dNi=dy(Lni,2600,[0,0,0],90),dN
   `Le signal électrique est converti en signal chimique, puis de nouveau en signal électrique : la synapse chimique est à sens unique, réglable (probabilité de libération, nombre de récepteurs) et plastique à court terme (facilitation par le Ca²⁺ résiduel, dépression par épuisement des vésicules prêtes). Le délai synaptique tient surtout à l'ouverture des canaux Ca²⁺ et à la fusion ; la traversée de la fente ne prend que des microsecondes. Un bouton de l'hippocampe compte en moyenne une zone active de ≈ 0,04 µm², une dizaine de vésicules arrimées et ≈ 200 vésicules en tout (Schikorski et Stevens 1997).`,
   `D'où vient l'essentiel du délai synaptique ?`,`De l'ouverture des canaux Ca²⁺ et de la fusion de la vésicule`,`De la diffusion du glutamate à travers la fente`,`Du trajet du potentiel d'action dans le bouton`]];
 osc.id='osc';osc.width=660;osc.height=192;$('pm').insertBefore(osc,$('pmo'));
-if(CT>1){const s0=SY[0],s1=SY[1],[dx,,dy]=fr(A0),axd=s=>ma(Cc,A0,Rc+s),axa=s=>ma(Cc,dax,Rc+s),sph=k=>{let g=k*2.4;return ad(axd(k),ml(ad(ml(dx,cos(g)),ml(dy,sin(g))),1.72))},ns=nm(sb(s0.Cs,axd(6))),
+if(CT==2){const s0=SY[0],s1=SY[1],[dx,,dy]=fr(A0),axd=s=>ma(Cc,A0,Rc+s),axa=s=>ma(Cc,dax,Rc+s),sph=k=>{let g=k*2.4;return ad(axd(k),ml(ad(ml(dx,cos(g)),ml(dy,sin(g))),1.72))},ns=nm(sb(s0.Cs,axd(6))),
    T0=(OX.find(o=>o.i=='tib')||{a:ma(Cc,dx,Rc+.4)}).a,at=nm(sb(AIS.pt(0,.01,0),AIS.c)),an=(a,v)=>nm(sb(AIS.pt(a,v,.01),AIS.pt(a,v,0))),up0=()=>ml(s0.n,-1),
    vs0=x=>{let v=-70,k;for(k=0;k<9;k++)v+=nep(x-3-6*k,4.5,1,20);return v-nep(x-22,6,1.5,12)},vxt=(()=>{for(let x=0;x<60;x+=.05)if(vs0(x)>=-55)return x;return 60})(),vso=x=>x<vxt?vs0(x):nap(x-vxt+.656),nq=s0.nmd.reduce((m,q)=>dt(q,s0.vw)<dt(m,s0.vw)?q:m),a0=s0.amp.find(a=>!a.nd)||s0.amp[0];
   NXS.push(
@@ -132,6 +132,6 @@ function nxD(){let M=NX,S=NXS[M.st];nxl=0;dNi.n=dNg.n=0;dNi.c=dNg.c=M.Cc;S&&S.d(
   if(r=='iq')return nxEnd();if(r=='ig')return nxEnd(1);if(r=='ir'){M.st=-1;return nxN(1)}if(r=='ib')return nxN(-1);
   if(r=='iz'){M.pz=!M.pz;b.textContent=M.pz?'▶ Reprendre':'⏸ Pause';return}
   if(r=='ino'){b.textContent='✗ '+b.textContent;b.disabled=1;return}nxN(1)}}
-$('nxb').onclick=()=>{if(!go||PM||RX||NX||AP||CT<2)return;$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';$('pmt').textContent='Suivre un influx nerveux';
+$('nxb').onclick=()=>{if(!go||PM||RX||NX||AP||CT<2)return;if(CT>2)return sxIn('hb');$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';$('pmt').textContent='Suivre un influx nerveux';
   $('pmx').textContent='Un stimulus arrive par une synapse de la dendrite apicale. Suivez le signal étape par étape : libération du glutamate, potentiel postsynaptique, sommation, seuil au segment initial, potentiel d\'action, conduction dans l\'axone, jusqu\'à la synapse que notre bouton forme sur le neurone suivant. À chaque étape, un oscilloscope trace le potentiel de membrane. Faites pivoter la scène, zoomez.';
   $('pmo').innerHTML=rxBtn('Normal : animation commentée','il0')+rxBtn('Expert : mécanismes et quiz','il1')+rxBtn('Visiter notre synapse','iv1')+rxBtn('Visiter la synapse reçue','iv0')+rxBtn('Fermer','ix')};

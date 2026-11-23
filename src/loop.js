@@ -33,9 +33,9 @@ function ctl(d){let o=(...a)=>a.some(k=>keys[k])|0,jx=cl(o('ArrowRight','KeyD')-
   for(let n=cl(Math.ceil(abs(vel)*d/(.3*z)),1,6),i=0;i<n;i++)p=ma(p,f,vel*d/n),phys()}       // déplacement par petits pas : même en turbo on ne traverse pas un obstacle fin
 
 // ================= interface =================
-const REG=[['Moelle osseuse','Espace de Disse','Neuropile'][CT],'Cytoplasme','Noyau'],RKN={ais:'Axone, segment initial',axn:'Axone',den:'Dendrite',btn:'Bouton synaptique',cyt:'Soma'},
+const REG=[['Moelle osseuse','Espace de Disse','Neuropile','Myocarde'][CT],'Cytoplasme','Noyau'],RKN=CT>2?{myf:'Myofibrilles',saa:'Sarcomère, bande A',sai:'Sarcomère, bande I',saz:'Sarcomère, strie Z',cyt:'Zone périnucléaire'}:{ais:'Axone, segment initial',axn:'Axone',den:'Dendrite',btn:'Bouton synaptique',cyt:'Soma'},
 POI=[[()=>LU&&LU.bbb?'PASSAGE · point de transcytose':'ENTRÉE · puits à clathrine',()=>LU&&LU.bbb?TCY:e0],['Pore nucléaire',()=>ma(Nc,pore()[1],Rn)],['Gène '+G.sy,()=>[0,0,0]],['Nucléole',()=>NOL],['Corps de Cajal',()=>CBP],['Corps de Barr',()=>XI],['Centrosome et Golgi',()=>CS],['Polysomes '+G.sy,()=>PS]]
- .concat(CT>1?[['Segment initial de l\'axone',()=>ma(Cc,dax,Rc+3)],['Bouton synaptique',()=>Cb],['Fente synaptique (notre bouton)',()=>SY[1].cc],['Synapse reçue (épine)',()=>SY[0].cc],['Dendrite apicale',()=>ma(Cc,A0,Rc+7)]]:CT?[['Canalicule biliaire',()=>ma(Cc,cD,Rc-.3)]]:[],[['Vaisseau sanguin',()=>VS[0].A]]),NP=POI.length,FB=[.3,.07,.06],
+ .concat(CT>2?[['Disque intercalaire',()=>ma(Cc,A0,Rc+41.5)],['Myofibrilles',()=>ma(Cc,A0,Rc+12)],['Tubule T et dyade',()=>CDY]]:CT>1?[['Segment initial de l\'axone',()=>ma(Cc,dax,Rc+3)],['Bouton synaptique',()=>Cb],['Fente synaptique (notre bouton)',()=>SY[1].cc],['Synapse reçue (épine)',()=>SY[0].cc],['Dendrite apicale',()=>ma(Cc,A0,Rc+7)]]:CT?[['Canalicule biliaire',()=>ma(Cc,cD,Rc-.3)]]:[],[['Vaisseau sanguin',()=>VS[0].A]]),NP=POI.length,FB=[.3,.07,.06],
 CDS=G.ex.map(([a,b])=>SEQ.slice(G.up+max(a,G.cs),G.up+max(min(b,G.ce),max(a,G.cs)))).join(''),
 fnm=i=>{let f=ft(i);return f<2?['chromatine flanquante','promoteur'][f]:f>4?'aval du gène':f==4?'intron '+(XN[i]+1):f==2?i<G.cs?'5′UTR':'3′UTR':'exon '+(XN[i]+1)},
 cp=m=>m<CM?'-'+(CM-m):m<CME?''+(m-CM+1):'*'+(m-CME+1),          // numérotation HGVS c. d'une position de l'ARNm
@@ -58,7 +58,7 @@ function hud(d){
   s!=hS&&($('st').textContent=hS=s);
   let k;if(ct>=0)k='pit';else if(nI&&(!reg||nD<(/mt|nf|sv|ifl|prt|frt/.test(nI.i)?1.5*z+.01:min(8*z+.03,.4))))k=nI.i;else if(ORG)k=ORG.i+'I';else if(!reg){let m=ds(p,Ce)-Re,e=ds(p,e0);k=LU?'tlu':e<.13?'pit':m<.07?'mem':e<.75?'tfr':'ext'}
   else k=reg<2&&rk()!='cyt'?rk():reg<2&&ds(p,Cc)>Rc-.15-z?mdk(p):abs(ds(p,Nc)-Rn+.02)<.2+z?pore()[0]<.12?'npc':reg>1?'lam':'ne':reg<2?'cyt':'nuc';
-  sn(k);let t=I[k],ti=t[0],tx=t[1],o=reg>1&&ct<0&&(k=='nuc'||k=='spk')&&nuI();if(o)ti=o[0],tx=o[1];let mg=mgH(pinT>0?pinK:o?0:k);if(pinT>0)pinT-=.2,ti='▸ '+pin[0],tx=pin[1];btT();
+  k=='myf'&&z<.3&&reg==1&&(k=rk());sn(k);let t=I[k],ti=t[0],tx=t[1],o=reg>1&&ct<0&&(k=='nuc'||k=='spk')&&nuI();if(o)ti=o[0],tx=o[1];let mg=mgH(pinT>0?pinK:o?0:k);if(pinT>0)pinT-=.2,ti='▸ '+pin[0],tx=pin[1];btT();
   ti+tx+mg!=hI&&($('it').textContent=ti,$('ix').textContent=tx,$('im').innerHTML=mg,hI=ti+tx+mg);
   let q='';if(reg>1&&z<.6&&ln(p)<GR){let b=1e9,j=0,i,g=GP.p,e;for(i=0;i<g.length;i++)e=g[i],x=e[0]-p[0],y=e[1]-p[1],w=e[2]-p[2],x=x*x+y*y+w*w,x<b&&(b=x,j=i);
     if(z>=.1)!PM&&sqrt(b)<.6&&(q='<b>'+G.sy+'</b><br>'+'Rétrécissez le vaisseau sous 100 nm pour lire la séquence (Q, − ou molette).');          // avertissement de taille

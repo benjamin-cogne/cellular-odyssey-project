@@ -90,7 +90,7 @@ say=(t,s=4)=>{$('cap').textContent=t;$('cap').style.opacity=1;sayT=s},
 vesC=()=>{let c=ma(e0,v0,vh);VM[12]=c[0];VM[13]=c[1];VM[14]=c[2];return c},
 cpt=(o,q)=>{if(!o.a)return o.c;let ab=sb(o.b,o.a);return ma(o.a,ab,cl(dt(sb(q,o.a),ab)/(dt(ab,ab)||1),0,1))},          // point le plus proche de l'axe d'une forme
 shF=q=>{let b,m=1e9,o,v;for(o of SH)v=ds(q,cpt(o,q))-o.R,v<m&&(m=v,b=o);return[b,m]},                                           // forme de la cellule (soma, prolongement, bouton) qui contient q
-rk=()=>{let o=shF(p)[0];return o.k?o.k=='axn'&&dt(sb(p,Cc),o.d)<Rc+8?'ais':o.k:'cyt'},
+rk=()=>{let o=shF(p)[0];return o.k?o.k=='axn'&&dt(sb(p,Cc),o.d)<Rc+8?'ais':o.k=='myf'&&z<.3?cdZ(p,o):o.k:'cyt'},
 mdk=q=>{if(CT!=1)return'mem';let c=abs(dt(nm(sb(q,Cc)),v0));return c>.62?'mem':c<.06?'bc':'lat'},                                   // domaine membranaire de l'hépatocyte
 pore=()=>{let q=sb(p,Nc),b=PD[0],m=-2,d,s;for(d of PD)(s=dt(d,q))>m&&(m=s,b=d);return[ln(sb(q,ml(b,m))),b,m]};      // pore le plus proche : [écart latéral, axe, position axiale]
 function hit(L,r){let h=0,T=8*z+.03,o;
@@ -106,7 +106,7 @@ function phys(){let r=z*.42,h=0;nI=0;nD=1e9;if(ORG)return pO(r);
     for(o of SH){c=cpt(o,p);m=ds(p,c)-o.R;if(m<dS)dS=m;if(m<r+.003)p=ma(c,nm(sb(p,c)),o.R+r+.003)}
     for(o of OX){c=cpt(o,p);m=ds(p,c)-o.r;let k=o.dc&&o.dc[1]-ds(p,o.dc[0]);if(k>m)m=k,c=0;if(m<dO)dO=m;{let w=o.bg?m+.03:m;if(w<nD&&m<.5+.35*o.r)nD=w,nI=o}if(m<r+.003&&!o.sf)p=c?ma(c,nm(sb(p,c)),o.r+r+.003):ma(o.dc[0],nm(sb(p,o.dc[0])),o.dc[1]-r-.003)}       // dc : cupule creusée dans une épine (fente synaptique)
     for(o of VS){let ab=sb(o.b,o.a),e;c=ma(o.a,ab,cl(dt(sb(p,o.a),ab)/dt(ab,ab),0,1));e=ds(p,c)-o.R;m=abs(e)-o.th;if(e<0)LU=o;if(m<dO)dO=m;if(m<nD&&m<min(1.2,.3*o.R))nD=m,nI=o;
-      if(m<r+.002&&(o.bbb||z>.16))p=ma(c,nm(sb(p,c)),o.R+(e<0?-1:1)*(o.th+r+.002)),(o.bbb?ds(p,TCY)>1.4&&say('Barrière hémato-encéphalique : jonctions serrées, aucun passage. Rejoignez l\'anneau doré (repère ◎) pour traverser par transcytose.',5):AP||say('Paroi du vaisseau : le vaisseau est trop gros pour la traverser. Rétrécissez-le sous 160 nm (Q, − ou molette).',3))}
+      if(m<r+.002&&(o.bbb||z>.16))p=ma(c,nm(sb(p,c)),o.R+(e<0?-1:1)*(o.th+r+.002)),(o.bbb?ds(p,TCY)>1.4&&say(CT>2?'Endothélium continu, sans fenêtre : aucun passage ici. Rejoignez l\'anneau doré (repère ◎) pour traverser par transcytose.':'Barrière hémato-encéphalique : jonctions serrées, aucun passage. Rejoignez l\'anneau doré (repère ◎) pour traverser par transcytose.',5):AP||say('Paroi du vaisseau : le vaisseau est trop gros pour la traverser. Rétrécissez-le sous 160 nm (Q, − ou molette).',3))}
     if(lu!=-1&&!lu!=!LU&&!(LU||lu).bbb&&go)say(CT?'Vous passez par une fenêtre de la cellule endothéliale : 100 à 150 nm de diamètre.':'Vous traversez la paroi mince et discontinue du sinusoïde.',5);
     if(dS<=nD)nI=0;DM=min(max(min(dS,dO),.55),ds(p,e0));for(o of SY)DM=min(DM,max(.016,(ds(p,o.cc)-.17)*.42));       // près d'une synapse, le vaisseau rapetisse jusqu'à pouvoir entrer dans la fenteif(ds(p,TC)>TR)p=ma(TC,nm(sb(p,TC)),TR);
     {let q=sb(p,e0),a=dt(q,v0),l=ln(sb(q,ml(v0,a)));if(a>0&&a<.6&&l<.6)p=ma(p,nm(sb(ma(e0,v0,a),p)),min(l,.012+l*.06))}       // capture par le récepteur : à moins de 600 nm, le vaisseau est ramené dans l'axe du puits

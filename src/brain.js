@@ -168,5 +168,5 @@ function bnMenu(){if(!go||PM||RX||NX||AP)return;SX&&sxEnd();$('pm').style.displa
   $('pmo').innerHTML=rxBtn('Carte du cerveau : vol libre','B0')+BQ.slice(1).map((q,i)=>rxBtn(q[1]+' ('+q[2].length+')','B'+(i+1))).join('')+rxBtn(BQ[0][1]+' ('+BQ[0][2].length+')','Sibc')+rxBtn('Fermer','Sx')}
 $('bnb').onclick=bnMenu;
 {const h0=$('pmo').onclick;$('pmo').onclick=e=>{let b=e.target.closest('button');if(!b||b.dataset.r!='Wb')return h0(e);bnMenu()}}
-{const b0=btT;btT=()=>{b0();if(RX||NX||SX)return;$('bnb').style.display=BRAIN&&go&&CT>1&&!AP&&!PM&&ct<0&&!ORG?'block':'none'}}
+{const b0=btT;btT=()=>{b0();if(RX||NX||SX)return;$('bnb').style.display=BRAIN&&go&&CT==2&&!AP&&!PM&&ct<0&&!ORG?'block':'none'}}
 if(BRAIN&&window.BRN){let iv=setInterval(()=>{if(go){clearInterval(iv);bnMenu()}},400)}

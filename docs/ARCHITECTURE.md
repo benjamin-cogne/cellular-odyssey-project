@@ -19,10 +19,11 @@ The code is deliberately compact: short helper names, long lines, comments in Fr
 | File | Role |
 | --- | --- |
 | `engine.js` | Vector helpers, seeded random generator, WebGL2 setup, shaders, meshes, layers, instance writers, dynamic chunks. |
-| `cells.js` | Per-cell configuration (`CF`), the three built-in genes and their annotated signals, cell-specific cards. |
+| `cells.js` | Per-cell configuration (`CF`), the four built-in genes and their annotated signals, cell-specific cards. |
 | `world.js` | Common cards (`I`), world constants, cell shape, collider lists, plasma membrane and entry pit. |
 | `nucleus.js` | Nuclear interior (chromatin, nucleolus shell, speckles, Cajal, PML, paraspeckles), common cytoplasmic organelles, the ship. |
 | `cell-structures.js` | Structures specific to the hepatocyte and to the neuron (processes, spines, axon, bouton). |
+| `cardio.js` | The ventricular cardiomyocyte (cell 3, gene *TNNC1*): a rod of two arms (`PRC`) filled with a hexagonal lattice of myofibrils with sarcomeres in register, mitochondria in rows, sarcoplasmic reticulum, T-tubules and dyads at the Z-lines (`CDL`), costameres, caveolae and the two intercalated discs; `cdZ` gives the sarcomere zone (A band, I band, Z-disc) of a point; `cdTis` builds the myocardium (three capillaries, pericyte, neighbouring cardiomyocytes, fibroblasts, macrophage, sympathetic fibre, collagen) and its cards. |
 | `synapses.js` | The two detailed synapses, the axon initial segment patch, their cards. |
 | `tissues.js` | Surrounding tissue, blood vessel and blood. Ends with the final `fin()`. |
 | `physics.js` | Dynamic objects, game state, controls, collisions, automatic ship sizing. |
@@ -32,8 +33,9 @@ The code is deliberately compact: short helper names, long lines, comments in Fr
 | `interact.js` | Picking and cards, atlas, organelle interiors (mitochondrion, ER, Golgi), mode buttons. |
 | `nucleolus-lamina.js` | Nucleolus interior and its animation, procedural lamina near the envelope. |
 | `reactions.js` | Chemical reaction mode: molecules (`MOL`), pathways (`RXP`), placement in the scenery, quiz. |
-| `impulse.js` | Nerve impulse mode: the 12 steps, their animations, the oscilloscope. |
+| `impulse.js` | Nerve impulse mode: the 12 steps, their animations, the oscilloscope (the canvas is reused by the cardiac impulse view). |
 | `snrnp.js` | Engine of the guided nanometre-scale views (`SXQ` registry, camera, panel, labels) and the snRNP assembly view in the Cajal body: RNA builder (helices, loops, single strands), protein table, eight steps. |
+| `heartbeat.js` | Cardiac impulse view (`SXQ.hb`, cardiomyocyte only): 18 steps drawn at real size (1 unit = 1 µm) around one cell of the left ventricular wall (`HBO`). Scenes in the cell frame (`fA`, `fB`, `fN`): membrane patch with channels and pump (`hbMe`), dyad (`hbDy`), thin and thick filaments (`hbTn`), sarcomere (`hbSa`), gap junction (`hbGj`), cells end to end (`hbFi`), tissue block (`hbTi`), fibre sheets (`hbFs`). The whole heart is built once (`hbBuild`) in millimetres in its own frame (`hLx`, `hLy`, `hLz`) from ellipsoids and tubes: ventricles, atria, great vessels, coronary arteries, conduction system with arrival times (`HCS`), beads carrying activation and repolarisation times (`HP`). `hbH(t)` draws it at time *t* of a beat, opaque or in glass; the ventricle and atrium blocks beat through their block matrices (`HM_V`, `HM_A`). `hbOs` draws the oscilloscope and the electrocardiogram. |
 | `histone.js` | Histone-code view: the nucleosome (DNA superhelix, octamer, tails residue by residue), marks, writers, readers and erasers, fifteen steps. |
 | `decode.js` | "Decode this chromatin" quiz, a guided view with its own panel (`SXQ.hq`, expert level `SXQ.hQ`): rounds `HQ` (marks, right answer, decoys, explanation), states `HQA`. |
 | `nucleotides.js` | DNA and RNA at atomic scale. Model: base atoms in the standard base-pair reference frame (`NTB`), an ideal sugar-phosphate backbone in B form for DNA and A form for RNA (`NTK`, computed offline by `tools/nt-geometry.py`), polar hydrogens and hydrogen bonds (`NTH`, `NTHB`); `ntM` builds a nucleotide, `ntPr` draws a base pair through any frame and returns its key positions, `ntHx` a straight helix, `ntAr` a histone arginine in the minor groove. Free flight: `ntFF` is called by `atom()` in `genes.js` for the pairs within 6.5 nm of the ship once it is smaller than 4.5 nm (spheres in `dQs`, sticks in `dQ`), `ntD` places the labels each frame and `ntI` supplies the card. Guided view `SXQ.nt` (ten steps), opened by `#ntb`. |
@@ -75,7 +77,7 @@ One flag is non-zero at a time and replaces the normal flight controls in the fr
 | `PM` | "I am RNA polymerase II" | `interact.js` |
 | `RX` | Chemical reactions | `reactions.js` |
 | `NX` | Nerve impulse | `impulse.js` |
-| `SX` | Guided nanometre-scale views: snRNP assembly (`SXQ.sn`), histone code (`SXQ.hx`), chromatin quiz (`SXQ.hq`, `SXQ.hQ`), entry routes and receptors (`SXQ.wv`, `wm`, `wu`, `wr`), brain tours (`SXQ.bc`, `bv`, `bm`, `bl`, `bb`, `bs`, `bh`) | `snrnp.js`, `histone.js`, `decode.js`, `entry.js`, `brain.js` |
+| `SX` | Guided nanometre-scale views: snRNP assembly (`SXQ.sn`), histone code (`SXQ.hx`), chromatin quiz (`SXQ.hq`, `SXQ.hQ`), entry routes and receptors (`SXQ.wv`, `wm`, `wu`, `wr`), cardiac impulse (`SXQ.hb`), brain tours (`SXQ.bc`, `bv`, `bm`, `bl`, `bb`, `bs`, `bh`) | `snrnp.js`, `heartbeat.js`, `histone.js`, `decode.js`, `entry.js`, `brain.js` |
 
 `RX`, `NX` and `SX` share the side panel (`#pm`), the label pool (`QL`) and the orbit and zoom gestures.
 

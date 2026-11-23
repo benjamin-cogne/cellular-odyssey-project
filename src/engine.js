@@ -35,9 +35,10 @@ function ico(l){
   for(let i=0;i<60;i+=3)g.push([v[f[i]],v[f[i+1]],v[f[i+2]]]);
   while(l--)g=g.flatMap(([a,b,c])=>{let x=nm(ad(a,b)),y=nm(ad(b,c)),z=nm(ad(c,a));return[[a,x,z],[b,y,x],[c,z,y],[x,y,z]]});
   return g}
+function cylc(n){let o=cyl(n),c=i=>[cos(i/n*TAU),sin(i/n*TAU)];for(let i=1;i<n-1;i++)for(let y of[0,1]){let[a,b]=c(i),[d,e]=c(i+1);o.push(1,y,0,a,y,b,d,y,e)}return o}      // cylindre fermé aux deux bouts
 function cyl(n){let o=[];for(let i=0;i<n;i++){let a=i/n*TAU,b=(i+1)/n*TAU,x=cos(a),z=sin(a),X=cos(b),Z=sin(b);o.push(x,0,z,x,1,z,X,0,Z,X,0,Z,x,1,z,X,1,Z)}return o}
 const mesh=(a,t)=>{let b=gl.createBuffer();gl.bindBuffer(34962,b);gl.bufferData(34962,new Float32Array(a.flat(2)),35044);return{b,n:a.flat(2).length/3,t}};
-const I1F=ico(1),M0=mesh(ico(0),0),M1=mesh(I1F,0),M2=mesh(ico(2),0),M3=mesh(ico(3),0),M4=mesh(ico(4),0),M5=mesh(ico(5),0),MC=mesh(cyl(7),1),MD=mesh(cyl(5),1),MW=mesh(cyl(28),1),MO=mesh([1,0,0,0,1,0,0,0,1,0,1,0,-1,0,0,0,0,1,-1,0,0,0,-1,0,0,0,1,0,-1,0,1,0,0,0,0,1,0,1,0,1,0,0,0,0,-1,-1,0,0,0,1,0,0,0,-1,0,-1,0,-1,0,0,0,0,-1,1,0,0,0,-1,0,0,0,-1],0);
+const I1F=ico(1),M0=mesh(ico(0),0),M1=mesh(I1F,0),M2=mesh(ico(2),0),M3=mesh(ico(3),0),M4=mesh(ico(4),0),M5=mesh(ico(5),0),MC=mesh(cyl(7),1),MD=mesh(cyl(5),1),MW=mesh(cyl(28),1),MK=mesh(cylc(18),1),MO=mesh([1,0,0,0,1,0,0,0,1,0,1,0,-1,0,0,0,0,1,-1,0,0,0,-1,0,0,0,1,0,-1,0,1,0,0,0,0,1,0,1,0,1,0,0,0,0,-1,-1,0,0,0,1,0,0,0,-1,0,-1,0,-1,0,0,0,0,-1,1,0,0,0,-1,0,0,0,-1],0);
 
 const sh=(t,s)=>{let o=gl.createShader(t);gl.shaderSource(o,'#version 300 es\nprecision highp float;'+s);gl.compileShader(o);return o},PG=gl.createProgram();
 gl.attachShader(PG,sh(35633,`layout(location=0)in vec3 p;layout(location=1)in vec4 a;layout(location=2)in vec4 b;layout(location=3)in vec4 c;layout(location=4)in vec4 k;

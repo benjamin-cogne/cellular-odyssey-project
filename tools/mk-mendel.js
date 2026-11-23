@@ -7,7 +7,7 @@
 // Les associations viennent de PanelApp Australia (gènes « verts ») : node tools/check-mendel.js les revérifie en ligne.
 const fs=require('fs'),path=require('path'),P=(...a)=>path.join(__dirname,'..',...a);
 const rows=fs.readFileSync(P('tools/mendel.tsv'),'utf8').split('\n').filter(l=>l.trim()&&l[0]!='#').map(l=>l.split('\t'));
-const MG={},MGC=[{},{},{}],MGR={},MGX={},EN={},refs={},J=JSON.stringify;
+const MG={},MGC=[{},{},{},{}],MGR={},MGX={},EN={},refs={},J=JSON.stringify;
 const ent=r=>'['+J(r[1])+','+J(r[4])+','+J(r[3])+','+(+r[2]||0)+','+(+r[6]||0)+']';
 for(const r of rows){const k=r[0];let T,kk=k;
   if(k.startsWith('rx:')){const[,p,s]=k.split(':');T=(MGR[p]=MGR[p]||{});kk=s}

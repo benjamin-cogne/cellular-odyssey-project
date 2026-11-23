@@ -79,6 +79,7 @@ occ.push([CS,.5]);
 {let ctr=(c,a)=>{let[x,,y]=fr(a);for(let k=0;k<9;k++)for(let m=0;m<3;m++){let h=k*TAU/9+m*.26,q=ad(ma(c,x,cos(h)*(.085+m*.021)),ml(y,sin(h)*(.085+m*.021)));Cy(Lt,ma(q,a,-.21),ma(q,a,.21),.0115,K(0x8d6))}};
  ctr(ma(CS,a1,-.05),a1);ctr(ad(ma(CS,a1,.3),ml(cD,.05)),a2);S(La,CS,.45,K(0xbd8,.14));cS(CY,CS,.38,'cen');
  if(CT<2)for(let s=0;s<(CT?5:3);s++){let g=ad(ma(CS,cD,s<3?.25:-2*Rn-2.2),ad(ml(a1,cos(s*2.1+.5)*1.05),ml(a2,sin(s*2.1+.5)*1.05)));gol(g,nm(sb(Nc,g)))}      // Golgi près du centrosome
+ else if(CT>2)for(let s=0;s<4;s++){let x=pp(A0),g=ad(ma(Nc,A0,(s<2?1:-1)*(Rn+1.25)),ml(ad(ml(x,cos(s*3.1)),ml(cr(A0,x),sin(s*3.1))),1.1));gol(g,nm(sb(Nc,g)))}      // cardiomyocyte : aux deux pôles du noyau
  else for(let s=0;s<6;s++){let x=pp(A0),g=ma(Nc,ad(ml(x,cos(s*1.05)),ml(cr(A0,x),sin(s*1.05))),Rn+1.15);gol(g,nm(sb(Nc,g)))}}                              // neurone : couronne périnucléaire
 for(let i=0;i<CF.mt;i++){let d=rd(),b=ma(Cc,d,Rc-.1),a=ma(CS,nm(sb(b,CS)),.3),m=lp(a,b,.5),pts=[],k,t;       // microtubules rayonnant du centrosome
   if(ds(m,Nc)<Rn+1)m=ma(Nc,nm(sb(m,Nc)),Rn+1.4);let c=sb(ml(m,2),ml(ad(a,b),.5));

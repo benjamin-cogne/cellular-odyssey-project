@@ -10,7 +10,7 @@ if(CT==1){
 }      // endothélium sinusoïdal fenêtré
 
 // ================= structures propres au neurone =================
-if(CT>1){
+if(CT==2){
   S(Lmem,Cb,Rb,K(CF.mc,.8));
   PRC.forEach(([d,r,l,ty],i)=>{let J=ma(Cc,d,sqrt(Rc*Rc-r*r)),Ee=ma(Cc,d,Rc+l),[x,,y]=fr(d),ax=s=>ma(Cc,d,Rc+s),k,s;
     Cy(Lmt,J,Ee,r,K(CF.mc,.8));HO.push(ma(Cc,d,Rc).concat(r));                                             // paroi du prolongement, ouverture dans le soma
