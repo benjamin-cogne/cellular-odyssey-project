@@ -13,13 +13,13 @@ if(CT>2){$('nxb').textContent=LG?'⚡ Follow the cardiac impulse':'⚡ Suivre l\
     // myofibrilles : réseau hexagonal ; sarcomères en registre d'une myofibrille à l'autre
     for(i=-6;i<=6;i++)for(j=-6;j<=6;j++){let a=(i+(j&1)*.5)*1.45,b=j*1.256;if(hypot(a,b)>r-.75)continue;n++;
       Cy(Lmf,P(1,a,b),P(40.6,a,b),.4,cI);cC(CY,P(1,a,b),P(40.6,a,b),.5,'myf');
-      for(k=0;k<18;k++){s=1+k*CSL;Cy(Lmf,P(s+.3,a,b),P(s+1.9,a,b),.5,cA);Cy(Lmf,P(s+1.06,a,b),P(s+1.14,a,b),.505,cM);Cy(Lmf,P(s-.04,a,b),P(s+.04,a,b),.56,cZ)}Cy(Lmf,P(40.56,a,b),P(40.64,a,b),.56,cZ);
+      for(k=0;k<18;k++){s=1+k*CSL;Cy(Lmfa,P(s+.3,a,b),P(s+1.9,a,b),.5,cA);Cy(Lmfa,P(s+1.06,a,b),P(s+1.14,a,b),.505,cM);Cy(Lmf,P(s-.04,a,b),P(s+.04,a,b),.56,cZ)}Cy(Lmf,P(40.56,a,b),P(40.64,a,b),.56,cZ);
       if((i+j)&1)for(k=(i&1);k<18;k+=2)mito(P(1+k*CSL+1.1,a+.72,b+.42),d,.75,.2);                           // mitochondries en files entre les myofibrilles
       if(n%4==0){for(k=0;k<4;k++){let g=k*TAU/4+.4;Cy(Lt,P(1.2,a+.6*cos(g),b+.6*sin(g)),P(40.4,a+.6*cos(g),b+.6*sin(g)),.03,cS2)}cC(CY,P(1.2,a+.6,b),P(40.4,a+.6,b),.08,'sel')}}      // réticulum longitudinal (quelques manchons)
     // tubules T et dyades, à chaque strie Z ; costamères sous la membrane
     for(k=0;k<19;k++){s=1+k*CSL;for(j=0;j<5;j++){let g=j*TAU/5+k*.7,c=cos(g),sn=sin(g),a=P(s,c*r,sn*r),b=P(s,c*r*.3,sn*r*.3);Cy(Lt,a,b,.1,cT);(j+k)%2||cC(CY,a,b,.1,'ttu');
-        for(let h of[.82,.6,.4]){let q=P(s+.13,c*r*h,sn*r*h);El(Lo,q,ml(x,.26),ml(d,.05),ml(y,.26),K(0xec6));for(let m=0;m<5;m++)S(Lr,ad(P(s+.07,c*r*h,sn*r*h),ad(ml(x,.16*cos(m*1.26)),ml(y,.16*sin(m*1.26)))),.02,K(0xb4d));
-          CDL.push(q);if(h==.6)cS(CY,q,.3,'dya',{sf:1});if(!ai&&k==5&&j==0&&h==.82)CDY=q}}
+        for(let h of[.82,.6,.4]){let q=P(s+.135,c*r*h,sn*r*h);El(Lo,q,ml(x,.26),ml(d,.02),ml(y,.26),K(0xec6));      // citerne du réticulum jonctionnel : son bord est à 15 nm du tubule T
+          CDL.push([q,d,nm(ad(ml(x,c),ml(y,sn)))]);if(h==.6)cS(CY,q,.3,'dya',{sf:1});if(!ai&&k==5&&j==0&&h==.82)CDY=q}}
       for(j=0;j<20;j++){let g=j*TAU/20;S(Lr,P(s,cos(g)*(r-.04),sin(g)*(r-.04)),.045,K(0x8bd))}k%3||[0,1.6,3.2,4.8].forEach(g=>cS(CY,P(s,cos(g)*(r-.1),sin(g)*(r-.1)),.25,'cos',{sf:1}))}
     for(i=0;i<260;i++){let g=rr(0,TAU),q=P(rr(1,40),cos(g)*(r-.02),sin(g)*(r-.02));S(Lr,q,.035,K(0xfc8));i%9||cS(CY,q,.12,'cvl',{sf:1})}      // cavéoles
     // disque intercalaire : plaque, jonctions adhérentes au bout des myofibrilles, desmosomes, plaques de jonctions communicantes

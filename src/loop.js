@@ -54,9 +54,9 @@ function hud(d){
   $('fl').style.opacity=flT>0?(flT-=d)*2:0;
   if((hT-=d)>0)return;hT=.2;
   s=ar+'◎ '+(na.call?na():na)+' · '+fm(ds(T,p));s!=hM&&(mk.textContent=hM=s);mk.className=!reg&&!poi?'go':'';
-  s=(ORG?{mit:'Mitochondrie',rer:'Réticulum endoplasmique',gol:'Appareil de Golgi',nol:'Nucléole'}[ORG.i]:reg==1&&CT>1?RKN[rk()]:!reg&&LU?RL:REG[reg])+' · vaisseau '+fm(z)+' ('+(z<.0031?'≈ diamètre de l\'ADN':z<.009?'≈ une protéine':z<.016?'≈ un nucléosome':z<.036?'≈ un ribosome':z<.08?'≈ une vésicule':z<.16?'≈ un pore nucléaire':z<.3?'≈ un lysosome':z<.7?'≈ largeur d\'une mitochondrie':z<1.6?'≈ une bactérie':'≈ une plaquette')+')';
+  s=(ORG?{mit:'Mitochondrie',rer:'Réticulum endoplasmique',gol:'Appareil de Golgi',nol:'Nucléole',myf:'Sarcomère',lys:'Lysosome',dya:'Dyade',icd:'Disque intercalaire'}[ORG.pl||ORG.i]:reg==1&&CT>1?RKN[rk()]:!reg&&LU?RL:REG[reg])+' · vaisseau '+fm(z)+' ('+(z<.0031?'≈ diamètre de l\'ADN':z<.009?'≈ une protéine':z<.016?'≈ un nucléosome':z<.036?'≈ un ribosome':z<.08?'≈ une vésicule':z<.16?'≈ un pore nucléaire':z<.3?'≈ un lysosome':z<.7?'≈ largeur d\'une mitochondrie':z<1.6?'≈ une bactérie':'≈ une plaquette')+')';
   s!=hS&&($('st').textContent=hS=s);
-  let k;if(ct>=0)k='pit';else if(nI&&(!reg||nD<(/mt|nf|sv|ifl|prt|frt/.test(nI.i)?1.5*z+.01:min(8*z+.03,.4))))k=nI.i;else if(ORG)k=ORG.i+'I';else if(!reg){let m=ds(p,Ce)-Re,e=ds(p,e0);k=LU?'tlu':e<.13?'pit':m<.07?'mem':e<.75?'tfr':'ext'}
+  let k;if(ct>=0)k='pit';else if(nI&&(!reg||nD<(/mt|nf|sv|ifl|prt|frt/.test(nI.i)?1.5*z+.01:min(8*z+.03,.4))))k=nI.i;else if(ORG)k=(ORG.pl||ORG.i)+'I';else if(!reg){let m=ds(p,Ce)-Re,e=ds(p,e0);k=LU?'tlu':e<.13?'pit':m<.07?'mem':e<.75?'tfr':'ext'}
   else k=reg<2&&rk()!='cyt'?rk():reg<2&&ds(p,Cc)>Rc-.15-z?mdk(p):abs(ds(p,Nc)-Rn+.02)<.2+z?pore()[0]<.12?'npc':reg>1?'lam':'ne':reg<2?'cyt':'nuc';
   k=='myf'&&z<.3&&reg==1&&(k=rk());sn(k);let t=I[k],ti=t[0],tx=t[1],o=reg>1&&ct<0&&(k=='nuc'||k=='spk')&&nuI();if(o)ti=o[0],tx=o[1];let mg=mgH(pinT>0?pinK:o?0:k);if(pinT>0)pinT-=.2,ti='▸ '+pin[0],tx=pin[1];btT();
   ti+tx+mg!=hI&&($('it').textContent=ti,$('ix').textContent=tx,$('im').innerHTML=mg,hI=ti+tx+mg);

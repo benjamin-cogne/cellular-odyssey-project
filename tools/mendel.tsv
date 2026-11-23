@@ -614,3 +614,82 @@ ex@3	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopat
 ex@3	TNNC1	611879	AD	Cardiomyopathie dilatée 1Z	Dilated cardiomyopathy 1Z	15542288	Mogensen J, J Am Coll Cardiol 2004
 ply@3	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopathy 13	18572189	Landstrom AP, J Mol Cell Cardiol 2008
 ply@3	TNNC1	611879	AD	Cardiomyopathie dilatée 1Z	Dilated cardiomyopathy 1Z	15542288	Mogensen J, J Am Coll Cardiol 2004
+# --- intérieur du sarcomère (cardiomyocyte) et ses voies de réactions ---
+thk@3	MYH7	192600	AD	Cardiomyopathie hypertrophique 1	Hypertrophic cardiomyopathy 1	1975517	Geisterfer-Lowrance AA, Cell 1990
+thk@3	MYL2	608758	AD	Cardiomyopathie hypertrophique 10	Hypertrophic cardiomyopathy 10	8673105	Poetter K, Nat Genet 1996
+thk@3	MYL3	608751	AD	Cardiomyopathie hypertrophique 8	Hypertrophic cardiomyopathy 8	8673105	Poetter K, Nat Genet 1996
+czn@3	MYBPC3	115197	AD	Cardiomyopathie hypertrophique 4	Hypertrophic cardiomyopathy 4	7493025	Watkins H, Nat Genet 1995
+thn@3	ACTC1	613424	AD	Cardiomyopathie dilatée 1R	Dilated cardiomyopathy 1R	9563954	Olson TM, Science 1998
+thn@3	TPM1	115196	AD	Cardiomyopathie hypertrophique 3	Hypertrophic cardiomyopathy 3	8205619	Thierfelder L, Cell 1994
+thn@3	TNNT2	115195	AD	Cardiomyopathie hypertrophique 2	Hypertrophic cardiomyopathy 2	8205619	Thierfelder L, Cell 1994
+thi@3	TTN	604145	AD	Cardiomyopathie dilatée 1G	Dilated cardiomyopathy 1G	22335739	Herman DS, N Engl J Med 2012
+thi@3	RBM20	613172	AD	Cardiomyopathie dilatée 1DD	Dilated cardiomyopathy 1DD	19712804	Brauch KM, J Am Coll Cardiol 2009
+zdk@3	ACTN2	612158	AD	Cardiomyopathie dilatée 1AA	Dilated cardiomyopathy 1AA	14567970	Mohapatra B, Mol Genet Metab 2003
+zdk@3	CSRP3	612124	AD	Cardiomyopathie hypertrophique 12	Hypertrophic cardiomyopathy 12	12642359	Geier C, Circulation 2003
+zdk@3	LDB3	601493	AD	Cardiomyopathie dilatée 1C	Dilated cardiomyopathy 1C	14662268	Vatta M, J Am Coll Cardiol 2003
+zdk@3	NEXN	613122	AD	Cardiomyopathie dilatée 1CC	Dilated cardiomyopathy 1CC	19881492	Hassel D, Nat Med 2009
+xbr@3	MYH7	192600	AD	Cardiomyopathie hypertrophique 1	Hypertrophic cardiomyopathy 1	1975517	Geisterfer-Lowrance AA, Cell 1990
+xbr@3	MYH7	613426	AD	Cardiomyopathie dilatée 1S	Dilated cardiomyopathy 1S	11106718	Kamisago M, N Engl J Med 2000
+tnx@3	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopathy 13	18572189	Landstrom AP, J Mol Cell Cardiol 2008
+tnx@3	TNNI3	613690	AD	Cardiomyopathie hypertrophique 7	Hypertrophic cardiomyopathy 7	9241277	Kimura A, Nat Genet 1997
+tnx@3	TNNT2	115195	AD	Cardiomyopathie hypertrophique 2	Hypertrophic cardiomyopathy 2	8205619	Thierfelder L, Cell 1994
+rx:xbc:2	MYH7	192600	AD	Cardiomyopathie hypertrophique 1	Hypertrophic cardiomyopathy 1	1975517	Geisterfer-Lowrance AA, Cell 1990
+rx:xbc:3	MYH7	613426	AD	Cardiomyopathie dilatée 1S	Dilated cardiomyopathy 1S	11106718	Kamisago M, N Engl J Med 2000
+rx:tnn:0	TNNC1	613243	AD	Cardiomyopathie hypertrophique 13	Hypertrophic cardiomyopathy 13	18572189	Landstrom AP, J Mol Cell Cardiol 2008
+rx:tnn:0	TNNC1	611879	AD	Cardiomyopathie dilatée 1Z	Dilated cardiomyopathy 1Z	15542288	Mogensen J, J Am Coll Cardiol 2004
+rx:tnn:1	TNNI3	613690	AD	Cardiomyopathie hypertrophique 7	Hypertrophic cardiomyopathy 7	9241277	Kimura A, Nat Genet 1997
+rx:tnn:1	TNNI3	115210	AD	Cardiomyopathie restrictive familiale 1	Familial restrictive cardiomyopathy 1	12531876	Mogensen J, J Clin Invest 2003
+rx:tnn:1	TPM1	115196	AD	Cardiomyopathie hypertrophique 3	Hypertrophic cardiomyopathy 3	8205619	Thierfelder L, Cell 1994
+rx:tnn:2	TNNT2	115195	AD	Cardiomyopathie hypertrophique 2	Hypertrophic cardiomyopathy 2	8205619	Thierfelder L, Cell 1994
+rx:pka:0	TNNI3	613690	AD	Cardiomyopathie hypertrophique 7	Hypertrophic cardiomyopathy 7	9241277	Kimura A, Nat Genet 1997
+rx:pka:1	MYBPC3	115197	AD	Cardiomyopathie hypertrophique 4	Hypertrophic cardiomyopathy 4	7493025	Watkins H, Nat Genet 1995
+rx:pka:2	MYL2	608758	AD	Cardiomyopathie hypertrophique 10	Hypertrophic cardiomyopathy 10	8673105	Poetter K, Nat Genet 1996
+# --- lysosome (toutes les cellules) ; dyade, disque intercalaire, voies cardiaques de la mitochondrie, signal β-adrénergique (cardiomyocyte) ---
+lgx	LAMP2	300257	XL	Maladie de Danon	Danon disease	10972294	Nishino I, Nature 2000
+lgg	GAA	232300	AR	Maladie de Pompe (glycogénose II)	Pompe disease (glycogen storage disease II)	18929906	van der Ploeg AT, Lancet 2008
+ltr	NPC1	257220	AR	Maladie de Niemann-Pick de type C1	Niemann-Pick disease type C1	9211849	Carstea ED, Science 1997
+ltr	CTNS	219800	AR	Cystinose néphropathique	Nephropathic cystinosis	9537412	Town M, Nat Genet 1998
+lhy	CTSD	610127	AR	Céroïde-lipofuscinose neuronale 10	Neuronal ceroid lipofuscinosis 10	16670177	Siintola E, Brain 2006
+lhy	GLA	301500	XL	Maladie de Fabry	Fabry disease	21092187	Germain DP, Orphanet J Rare Dis 2010
+lch	LIPA	620151	AR	Maladie de Wolman	Wolman disease	8146180	Anderson RA, PNAS 1994
+rx:lyd:0	GAA	232300	AR	Maladie de Pompe (glycogénose II)	Pompe disease (glycogen storage disease II)	18929906	van der Ploeg AT, Lancet 2008
+rx:lyd:1	GLA	301500	XL	Maladie de Fabry	Fabry disease	21092187	Germain DP, Orphanet J Rare Dis 2010
+rx:lyd:2	CTSD	610127	AR	Céroïde-lipofuscinose neuronale 10	Neuronal ceroid lipofuscinosis 10	16670177	Siintola E, Brain 2006
+rx:lyd:3	LIPA	620151	AR	Maladie de Wolman	Wolman disease	8146180	Anderson RA, PNAS 1994
+rx:lyd:3	NPC1	257220	AR	Maladie de Niemann-Pick de type C1	Niemann-Pick disease type C1	9211849	Carstea ED, Science 1997
+ryr@3	RYR2	604772	AD	Tachycardie ventriculaire polymorphe catécholergique 1	Catecholaminergic polymorphic ventricular tachycardia 1	11208676	Priori SG, Circulation 2001
+ryr@3	CALM1	614916	AD	Tachycardie ventriculaire polymorphe catécholergique 4	Catecholaminergic polymorphic ventricular tachycardia 4	23040497	Nyegaard M, Am J Hum Genet 2012
+dcv@3	CACNA1C	601005	AD	Syndrome de Timothy	Timothy syndrome	15454078	Splawski I, Cell 2004
+csq@3	CASQ2	611938	AR	Tachycardie ventriculaire polymorphe catécholergique 2	Catecholaminergic polymorphic ventricular tachycardia 2	11704930	Lahat H, Am J Hum Genet 2001
+csq@3	TRDN	615441	AR	Tachycardie ventriculaire polymorphe catécholergique 5	Catecholaminergic polymorphic ventricular tachycardia 5	22422768	Roux-Buisson N, Hum Mol Genet 2012
+jph@3	JPH2	613873	AD	Cardiomyopathie hypertrophique 17	Hypertrophic cardiomyopathy 17	17509612	Landstrom AP, J Mol Cell Cardiol 2007
+dsr@3	ATP2A2	124200	AD	Maladie de Darier	Darier disease	10080178	Sakuntabhai A, Nat Genet 1999
+dsr@3	PLN	609909	AD	Cardiomyopathie dilatée 1P	Dilated cardiomyopathy 1P	12610310	Schmitt JP, Science 2003
+rx:cic:0	CACNA1C	601005	AD	Syndrome de Timothy	Timothy syndrome	15454078	Splawski I, Cell 2004
+rx:cic:1	RYR2	604772	AD	Tachycardie ventriculaire polymorphe catécholergique 1	Catecholaminergic polymorphic ventricular tachycardia 1	11208676	Priori SG, Circulation 2001
+rx:cic:1	CALM1	614916	AD	Tachycardie ventriculaire polymorphe catécholergique 4	Catecholaminergic polymorphic ventricular tachycardia 4	23040497	Nyegaard M, Am J Hum Genet 2012
+rx:cic:2	CASQ2	611938	AR	Tachycardie ventriculaire polymorphe catécholergique 2	Catecholaminergic polymorphic ventricular tachycardia 2	11704930	Lahat H, Am J Hum Genet 2001
+rx:cic:2	TRDN	615441	AR	Tachycardie ventriculaire polymorphe catécholergique 5	Catecholaminergic polymorphic ventricular tachycardia 5	22422768	Roux-Buisson N, Hum Mol Genet 2012
+rx:srp:0	ATP2A2	124200	AD	Maladie de Darier	Darier disease	10080178	Sakuntabhai A, Nat Genet 1999
+rx:srp:2	PLN	609909	AD	Cardiomyopathie dilatée 1P	Dilated cardiomyopathy 1P	12610310	Schmitt JP, Science 2003
+gjp@3	GJA1	164200	AD	Dysplasie oculo-dento-digitale	Oculodentodigital dysplasia	12457340	Paznekas WA, Am J Hum Genet 2003
+dcd@3	DSG2	610193	AD	Dysplasie ventriculaire droite arythmogène 10	Arrhythmogenic right ventricular dysplasia 10	16505173	Pilichou K, Circulation 2006
+dcd@3	DSC2	610476	AD	Dysplasie ventriculaire droite arythmogène 11	Arrhythmogenic right ventricular dysplasia 11	17033975	Syrris P, Am J Hum Genet 2006
+dpl@3	PKP2	609040	AD	Dysplasie ventriculaire droite arythmogène 9	Arrhythmogenic right ventricular dysplasia 9	15489853	Gerull B, Nat Genet 2004
+dpl@3	DSP	607450	AD	Dysplasie ventriculaire droite arythmogène 8	Arrhythmogenic right ventricular dysplasia 8	12373648	Rampazzo A, Am J Hum Genet 2002
+dpl@3	JUP	601214	AR	Maladie de Naxos	Naxos disease	10902626	McKoy G, Lancet 2000
+ncd@3	CDH2	618929	AD	Syndrome avec agénésie du corps calleux et anomalies cardiaques, oculaires et génitales	Agenesis of corpus callosum, cardiac, ocular and genital syndrome	31585109	Accogli A, Am J Hum Genet 2019
+nvp@3	SCN5A	601144	AD	Syndrome de Brugada 1	Brugada syndrome 1	9521325	Chen Q, Nature 1998
+rx:cxl:0	GJA1	164200	AD	Dysplasie oculo-dento-digitale	Oculodentodigital dysplasia	12457340	Paznekas WA, Am J Hum Genet 2003
+rx:cdh:1	DSG2	610193	AD	Dysplasie ventriculaire droite arythmogène 10	Arrhythmogenic right ventricular dysplasia 10	16505173	Pilichou K, Circulation 2006
+rx:cdh:1	DSC2	610476	AD	Dysplasie ventriculaire droite arythmogène 11	Arrhythmogenic right ventricular dysplasia 11	17033975	Syrris P, Am J Hum Genet 2006
+rx:cdh:1	PKP2	609040	AD	Dysplasie ventriculaire droite arythmogène 9	Arrhythmogenic right ventricular dysplasia 9	15489853	Gerull B, Nat Genet 2004
+rx:car:0	SLC22A5	212140	AR	Déficit systémique primaire en carnitine	Systemic primary carnitine deficiency	9916797	Nezu J, Nat Genet 1999
+rx:car:1	SLC25A20	212138	AR	Déficit en translocase carnitine-acylcarnitine	Carnitine-acylcarnitine translocase deficiency	9399886	Huizing M, Am J Hum Genet 1997
+rx:car:2	CPT2	600649	AR	Déficit en carnitine palmitoyltransférase II, forme infantile	Carnitine palmitoyltransferase II deficiency, infantile	8358442	Taroni F, Nat Genet 1993
+rx:ket:1	OXCT1	245050	AR	Déficit en succinyl-CoA:3-cétoacide CoA-transférase	Succinyl-CoA:3-oxoacid CoA transferase deficiency	8751852	Kassovska-Bratinova S, Am J Hum Genet 1996
+rx:ket:2	ACAT1	203750	AR	Déficit en β-cétothiolase (acidurie α-méthylacétoacétique)	Beta-ketothiolase deficiency (alpha-methylacetoacetic aciduria)	1979337	Fukao T, J Clin Invest 1990
+rx:clp:0	TAFAZZIN	302060	XL	Syndrome de Barth	Barth syndrome	8630491	Bione S, Nat Genet 1996
+rx:bar:2	ADCY5	606703	AD	Dyskinésie familiale avec myokymies faciales	Familial dyskinesia with facial myokymia	22782511	Chen YZ, Arch Neurol 2012
+rx:bar:3	PRKAR1A	160980	AD	Complexe de Carney de type 1	Carney complex type 1	10973256	Kirschner LS, Nat Genet 2000
+rx:bar:4	PDE3A	112410	AD	Syndrome hypertension et brachydactylie	Hypertension and brachydactyly syndrome	25961942	Maass PG, Nat Genet 2015

@@ -159,7 +159,7 @@ function rxL(s){let a=[],b=[],st=[],pv=-1,od=1,rc={},i=0,c,j,n,sd=7;for(c of s)s
     if(g)P[i]=ma(P[i],d,g),P[j]=ma(P[j],d,-g)}}
   c=P.reduce((m,q)=>ad(m,q),[0,0,0]);P=P.map(q=>ma(q,c,-1/n));return{a,b,P,R:P.reduce((m,q,i)=>max(m,ln(q)+a[i].r),0)}}
 const rxSp=s=>s.split(' ').map(w=>{let[x,y]=w.split('*'),k=y||x,m=MOL[k];m[2]=m[2]||rxL(m[1]);return{k,M:m[2],lab:(y?x+' ':'')+m[0]}}),
-rxHere=()=>{let l=ORG?ORG.i:reg>1?'nuc':'cyt';return RXP.filter(P=>P[1]==l&&(P[2]<0||P[2]==CT))},
+rxHere=()=>{let l=ORG?ORG.pl||ORG.i:reg>1?'nuc':'cyt';return RXP.filter(P=>P[1]==l&&(P[2]<0||P[2]==CT))},
 rxBtn=(t,r)=>'<button data-r="'+r+'">'+t+'</button>';
 // lieu de chaque voie : [lieu par défaut, {c: 1re étape du cycle, a: structure d'ancrage, k: étape placée devant elle, s: ancrage étape par étape, w: lieux particuliers}]
 const RXW={krb:[`matrice mitochondriale`,{c:1,a:'c2',k:6,w:{0:`matrice, complexe de la pyruvate déshydrogénase`,6:`membrane interne : cette enzyme est le complexe II, juste en dessous`}}],
@@ -173,13 +173,13 @@ nak:[`membrane plasmique`,{}],cat:[`peroxysome`,{a:'per'}],pol:[`nucléoplasme, 
 rrn:[`composant fibrillaire dense`,{s:['po1','fbl','dkc','ssu','p60'],w:{0:`frontière entre FC et DFC`,3:`processome SSU`,4:`composant granulaire`}}]},
 rxA=(k,q,mx)=>{let b=0,bd=mx;for(let L of ORG?[OC]:reg>1?[NU,DN,dyc]:[CY,dyc])for(let o of L)if(o.i==k){let c=o.e?o.c:lp(o.a,o.b,.5),d=ds(c,q);if(d<bd)bd=d,b={c,r:o.e?max(o.s[0],o.s[1],o.s[2]):o.r}}return b},
 rxK=s=>s?s.split(' ').map(w=>w.split('*').pop()):[];
-function rxMenu(){let L=rxHere(),l=ORG?ORG.i:reg>1?'nuc':'cyt',o=RXP.filter(P=>P[1]!=l&&(P[2]<0||P[2]==CT)).length;$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';
+function rxMenu(){let L=rxHere(),l=ORG?ORG.pl||ORG.i:reg>1?'nuc':'cyt',o=RXP.filter(P=>P[1]!=l&&(P[2]<0||P[2]==CT)).length;$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';
   $('pmt').textContent='Réactions chimiques dans '+RXN[l];$('pmx').textContent='Choisissez une voie : vous verrez ses réactions à l\'échelle des atomes, là où elles ont lieu. Chaque étape laisse sa trace : la voie se dessine peu à peu. '+o+' autres voies vous attendent dans les autres compartiments (mitochondrie, réticulum, Golgi, cytosol, noyau, nucléole).';
   $('pmo').innerHTML=L.map(P=>rxBtn((MEN&&MGR[P[0]]?'🧬 ':'')+P[3]+' ('+P[6].length+')','p'+P[0])).join('')+rxBtn('Fermer','x')}
 // La voie est posée dans le décor : stations en cercle pour un cycle, en arc pour une voie linéaire, ou devant la structure où chaque étape a lieu.
 function rxGo(P,lv){AP=0;document.body.classList.add('rx');let W=RXW[P[0]][1],N=P[6],n=N.length,i,j,md=ORG?9:2,p1=W.r&&rxA(W.r,p,md),A=W.a?rxA(W.a,p,md):W.s?rxA(W.s[0],p1?p1.c:p,md):0,F=f.slice(),X,Y,St=[],
    SP=N.map(s=>[rxSp(s[1]),rxSp(s[2])]),US=SP.map(([a,b])=>{let x=a.concat(b);return(max(x.reduce((m,y)=>m+y.M.R,0)/x.length*1.35,max(...x.map(y=>y.M.R))*.72)+180)*1e-6}),U=max(...US),D=5.4*U,
-   mb=A&&ORG&&ORG.i!='nol',nr=a=>{let c=ORG.i=='mit'?rxA('crs',a.c,9):0;return ml(ORG.Y,c?sign(dt(sb(a.c,c.c),ORG.Y))||1:-sign(dt(sb(a.c,ORG.c),ORG.Y))||1)},ref;       // normale de la membrane qui porte l'enzyme, vers la lumière ou la matrice
+   mb=A&&ORG&&ORG.i!='nol'&&!ORG.cy,nr=a=>{let c=ORG.i=='mit'?rxA('crs',a.c,9):0;return ml(ORG.Y,c?sign(dt(sb(a.c,c.c),ORG.Y))||1:-sign(dt(sb(a.c,ORG.c),ORG.Y))||1)},ref;       // normale de la membrane qui porte l'enzyme, vers la lumière ou la matrice
   if(mb){Y=nr(A);F=ma(f,Y,-dt(f,Y));F=ln(F)>.2?nm(F):ORG.X;X=cr(Y,F);ref=a=>ma(a.c,nr(a),a.r+1.7*U)}       // dans un organite : la membrane sert de sol, on regarde le long de la lumière
   else{if(A&&ds(A.c,p)>.002)F=nm(sb(A.c,p));X=cr(u,F);X=ln(X)>.05?nm(X):pp(F);Y=cr(F,X);ref=a=>ma(a.c,F,-(a.r+1.7*U))}
   if(W.s){let pv=0,pS=p;for(i=0;i<n;i++){let a=i?rxA(W.s[i],pS,.09):A,S=a?pv&&ds(a.c,pv.c)<1e-6?ma(pS,X,1.7*D):ref(a):i?ma(pS,X,1.7*D):p.slice();if(i&&ds(S,pS)<1.6*D)S=ma(pS,X,1.7*D);St.push({S,T:X,O:Y,A:ma(S,X,-D/2),B:ma(S,X,D/2)});pv=a;pS=S}}

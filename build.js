@@ -7,9 +7,9 @@ fs.mkdirSync(P('dist'),{recursive:true});
 (async()=>{
 const rd=f=>fs.readFileSync(P(f),'utf8'),seq=f=>rd(f).trim().toUpperCase();
 // ordre de concaténation à l'intérieur de boot(CT,GX) : il compte (déclarations const/let utilisées par les fichiers suivants)
-const ORDER=['cells','world','nucleus','chromatin','cell-structures','cardio','synapses','tissues','physics','loop','genes','interact','nucleolus-lamina','reactions','impulse','snrnp','heartbeat','histone','decode','entry','brain','brainmap','places','glia','chromstate','mendel-data','mendel'];
+const ORDER=['cells','world','nucleus','chromatin','cell-structures','cardio','synapses','tissues','physics','loop','genes','interact','nucleolus-lamina','reactions','impulse','snrnp','heartbeat','sarcomere','interiors','interiors-text','histone','decode','entry','brain','brainmap','places','glia','chromstate','mendel-data','mendel'];
 const inner=ORDER.map(f=>rd('src/'+f+'.js')).join('\n').replace('__SEQ0__',seq('src/seq/hbb.txt')).replace('__SEQ1__',seq('src/seq/hamp.txt')).replace('__SEQ2__',seq('src/seq/fos.txt')).replace('__SEQ3__',seq('src/seq/tnnc1.txt'));
-const {scan}=require('./i18n/ext.js'),EN=fs.existsSync(P('i18n/en.json'))?JSON.parse(rd('i18n/en.json')):{S:{},T:{}},TOK={'Glycogène':'Glycogen','Protéine':'Protein','ARNt':'tRNA','Cible':'Target','ARN':'RNA','ADN':'DNA','Pompe':'Pump'};
+const {scan}=require('./i18n/ext.js'),EN=fs.existsSync(P('i18n/en.json'))?JSON.parse(rd('i18n/en.json')):{S:{},T:{}},TOK={'Glycogène':'Glycogen','Protéine':'Protein','ARNt':'tRNA','Cible':'Target','ARN':'RNA','ADN':'DNA','Pompe':'Pump','Myosine':'Myosin','Actine':'Actin'};
 let miss=[];
 const tr=src=>{const it=scan(src).sort((a,b)=>b.s-a.s);miss=[];       // de la fin vers le début : les positions restent valides
   for(const i of it){let en,o=src.slice(i.s,i.e);
