@@ -693,3 +693,57 @@ rx:clp:0	TAFAZZIN	302060	XL	Syndrome de Barth	Barth syndrome	8630491	Bione S, Na
 rx:bar:2	ADCY5	606703	AD	Dyskinésie familiale avec myokymies faciales	Familial dyskinesia with facial myokymia	22782511	Chen YZ, Arch Neurol 2012
 rx:bar:3	PRKAR1A	160980	AD	Complexe de Carney de type 1	Carney complex type 1	10973256	Kirschner LS, Nat Genet 2000
 rx:bar:4	PDE3A	112410	AD	Syndrome hypertension et brachydactylie	Hypertension and brachydactyly syndrome	25961942	Maass PG, Nat Genet 2015
+# La cellule au travail (life.js) : lignes reprises des fiches et des voies déjà vérifiées pour les mêmes gènes
+lfepo	EPOR	133100	AD	Érythrocytose familiale 1	Familial erythrocytosis 1	8506290	de la Chapelle A, Proc Natl Acad Sci U S A 1993
+lftfc	TFRC	616740	AR	Déficit immunitaire 46	Immunodeficiency 46	26642240	Jabara HH, Nat Genet 2016
+lftfc	SLC11A2	206100	AR	Anémie hypochrome microcytaire avec surcharge en fer 1	Hypochromic microcytic anaemia with iron overload 1	15459009	Mims MP, Blood 2005
+lfhem	ALAS2	300751	XL	Anémie sidéroblastique liée à l'X	X-linked sideroblastic anaemia	7949148	Cotter PD, Blood 1994
+lfhem	ALAD	612740	AR	Porphyrie par déficit en ALA déshydratase	ALA dehydratase deficiency porphyria	2063868	Plewinska M, Am J Hum Genet 1991
+lfhem	HMBS	176000	AD	Porphyrie aiguë intermittente	Acute intermittent porphyria	27539938	Chen B, Hum Mutat 2016
+lfhem	UROS	263700	AR	Porphyrie érythropoïétique congénitale (maladie de Günther)	Congenital erythropoietic porphyria (Günther disease)	28334762	Blouin JM, Hum Mol Genet 2017
+lfhem	UROD	176100	AD	Porphyrie cutanée tardive familiale	Familial porphyria cutanea tarda	9792863	Mendez M, Am J Hum Genet 1998
+lfhem	CPOX	121300	AD	Coproporphyrie héréditaire	Hereditary coproporphyria	9888388	Rosipal R, Hum Mutat 1999
+lfhem	PPOX	176200	AD	Porphyrie variegata	Variegate porphyria	12357337	von und zu Fraunberg M, Eur J Hum Genet 2002
+lfhem	FECH	177000	AR	Protoporphyrie érythropoïétique 1	Erythropoietic protoporphyria 1	20105171	Whatley SD, Br J Dermatol 2010
+lfhbg	HBB	613985	AR	β-thalassémie	Beta-thalassaemia	23637309	Thein SL, Cold Spring Harb Perspect Med 2013
+lfhbg	HBB	603903	AR	Drépanocytose	Sickle cell disease	29542687	Kato GJ, Nat Rev Dis Primers 2018
+lfhbg	HBA1	604131	AR	α-thalassémie	Alpha-thalassaemia	29032940	Farashi S, Blood Cells Mol Dis 2018
+lfbmp	HAMP	613313	AR	Hémochromatose juvénile de type 2B	Juvenile haemochromatosis type 2B	12469120	Roetto A, Nat Genet 2003
+lfbmp	HFE	235200	AR	Hémochromatose de type 1	Haemochromatosis type 1	18199861	Allen KJ, N Engl J Med 2008
+lfbmp	SLC40A1	606069	AD	Hémochromatose de type 4 (maladie de la ferroportine)	Haemochromatosis type 4 (ferroportin disease)	11431687	Njajou OT, Nat Genet 2001
+lfgcg	PYGL	232700	AR	Glycogénose de type VI (maladie de Hers)	Glycogen storage disease VI (Hers disease)	9529348	Burwinkel B, Am J Hum Genet 1998
+lfgcg	G6PC1	232200	AR	Glycogénose de type Ia (von Gierke)	Glycogen storage disease Ia (von Gierke)	8733042	Chevalier-Porst F, J Med Genet 1996
+lfgcg	SLC2A2	227810	AR	Syndrome de Fanconi-Bickel	Fanconi-Bickel syndrome	30950137	Enogieru OJ, Hum Mutat 2019
+lfins	GCK	125851	AD	Diabète MODY 2	Maturity-onset diabetes of the young type 2	19790256	Osbak KK, Hum Mutat 2009
+lfins	GYS2	240600	AR	Glycogénose de type 0 hépatique	Glycogen storage disease 0, liver	32395408	Kamenets EA, JIMD Rep 2020
+lfbil	SLC10A1	619256	AR	Hypercholanémie familiale 2	Familial hypercholanaemia 2	24867799	Vaz FM, Hepatology 2015
+lfbil	ABCB11	601847	AR	Cholestase intrahépatique familiale progressive 2	Progressive familial intrahepatic cholestasis 2	9806540	Strautnieks SS, Nat Genet 1998
+lfure	CPS1	237300	AR	Déficit en carbamoyl-phosphate synthétase 1	Carbamoyl phosphate synthetase 1 deficiency	8486760	Hoshide R, J Clin Invest 1993
+lfure	OTC	311250	XL	Déficit en ornithine transcarbamylase	Ornithine transcarbamylase deficiency	26059767	Caldovic L, J Genet Genomics 2015
+lfure	ASS1	215700	AR	Citrullinémie de type I	Citrullinaemia type I	2358466	Kobayashi K, J Biol Chem 1990
+lfure	ASL	207900	AR	Acidurie argininosuccinique	Argininosuccinic aciduria	2263616	Walker DC, Proc Natl Acad Sci U S A 1990
+lfure	ARG1	207800	AR	Argininémie	Argininaemia	2365823	Haraguchi Y, J Clin Invest 1990
+lfcrb	CACNA1C	601005	AD	Syndrome de Timothy	Timothy syndrome	15454078	Splawski I, Cell 2004
+lfcrb	CREBBP	180849	AD	Syndrome de Rubinstein-Taybi 1	Rubinstein-Taybi syndrome 1	10699051	Petrij F, J Med Genet 2000
+lfcrb	EP300	613684	AD	Syndrome de Rubinstein-Taybi 2	Rubinstein-Taybi syndrome 2	24476420	Negri G, Clin Genet 2015
+lftrk	NTRK2	617830	AD	Encéphalopathie développementale et épileptique 58	Developmental and epileptic encephalopathy 58	29100083	Hamdan FF, Am J Hum Genet 2017
+lfaxt	KIF5A	604187	AD	Paraplégie spastique 10	Spastic paraplegia 10	30057544	Cuchanski M, Case Rep Neurol 2018
+lfaxt	KIF1A	610357	AR	Paraplégie spastique 30	Spastic paraplegia 30	22258533	Klebe S, Eur J Hum Genet 2012
+lfnap	SCN8A	614558	AD	Encéphalopathie développementale et épileptique 13	Developmental and epileptic encephalopathy 13	31904124	Gardella E, Epilepsia 2019
+lfnap	SCN2A	613721	AD	Encéphalopathie développementale et épileptique 11	Developmental and epileptic encephalopathy 11	15028761	Kamiya K, J Neurosci 2004
+lfnap	KCNQ2	613720	AD	Encéphalopathie développementale et épileptique 7	Developmental and epileptic encephalopathy 7	24318194	Orhan G, Ann Neurol 2014
+lfnap	KCNA1	160120	AD	Ataxie épisodique de type 1	Episodic ataxia type 1	11026449	Eunson LH, Ann Neurol 2000
+lfnap	ATP1A3	614820	AD	Hémiplégie alternante de l'enfant 2	Alternating hemiplegia of childhood 2	22842232	Heinzen EL, Nat Genet 2012
+lfloc	FMR1	300624	XL	Syndrome de l'X fragile	Fragile X syndrome	28176767	Quartier A, Eur J Hum Genet 2017
+lfbar	PLN	609909	AD	Cardiomyopathie dilatée 1P	Dilated cardiomyopathy 1P	12610310	Schmitt JP, Science 2003
+lfbar	TNNI3	613690	AD	Cardiomyopathie hypertrophique 7	Hypertrophic cardiomyopathy 7	9241277	Kimura A, Nat Genet 1997
+lfbar	MYBPC3	115197	AD	Cardiomyopathie hypertrophique 4	Hypertrophic cardiomyopathy 4	7493025	Watkins H, Nat Genet 1995
+lfbar	RYR2	604772	AD	Tachycardie ventriculaire polymorphe catécholergique 1	Catecholaminergic polymorphic ventricular tachycardia 1	11208676	Priori SG, Circulation 2001
+lfbar	PRKAR1A	160980	AD	Complexe de Carney de type 1	Carney complex type 1	10973256	Kirschner LS, Nat Genet 2000
+lfbar	PDE3A	112410	AD	Syndrome hypertension et brachydactylie	Hypertension and brachydactyly syndrome	25961942	Maass PG, Nat Genet 2015
+lfnrg	SLC22A5	212140	AR	Déficit systémique primaire en carnitine	Systemic primary carnitine deficiency	9916797	Nezu J, Nat Genet 1999
+lfnrg	SLC25A20	212138	AR	Déficit en translocase carnitine-acylcarnitine	Carnitine-acylcarnitine translocase deficiency	9399886	Huizing M, Am J Hum Genet 1997
+lfnrg	CPT2	600649	AR	Déficit en carnitine palmitoyltransférase II, forme infantile	Carnitine palmitoyltransferase II deficiency, infantile	8358442	Taroni F, Nat Genet 1993
+lfnrg	ACADVL	201475	AR	Déficit en acyl-CoA déshydrogénase des acides gras à très longue chaîne (VLCAD)	Very long-chain acyl-CoA dehydrogenase (VLCAD) deficiency	8845838	Andresen BS, Hum Mol Genet 1996
+lfsec	SAR1B	246700	AR	Maladie de rétention des chylomicrons	Chylomicron retention disease	12692552	Jones B, Nat Genet 2003
+lfsec@0	SEC23B	224100	AR	Anémie dysérythropoïétique congénitale de type II	Congenital dyserythropoietic anaemia type II	19561605	Schwarz K, Nat Genet 2009

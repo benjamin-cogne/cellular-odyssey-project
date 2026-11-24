@@ -132,6 +132,6 @@ function nxD(){let M=NX,S=NXS[M.st];nxl=0;dNi.n=dNg.n=0;dNi.c=dNg.c=M.Cc;S&&S.d(
   if(r=='iq')return nxEnd();if(r=='ig')return nxEnd(1);if(r=='ir'){M.st=-1;return nxN(1)}if(r=='ib')return nxN(-1);
   if(r=='iz'){M.pz=!M.pz;b.textContent=M.pz?'▶ Reprendre':'⏸ Pause';return}
   if(r=='ino'){b.textContent='✗ '+b.textContent;b.disabled=1;return}nxN(1)}}
-$('nxb').onclick=()=>{if(!go||PM||RX||NX||AP||CT<2)return;if(CT>2)return sxIn('hb');$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';$('pmt').textContent='Suivre un influx nerveux';
+$('nxb').onclick=()=>{if(!go||PM||RX||NX||AP||CT<2)return;if(CT>2)return hsIn();$('pm').style.display='block';$('pm').classList.remove('mn');$('pmc').style.display='none';$('pmt').textContent='Suivre un influx nerveux';
   $('pmx').textContent='Un stimulus arrive par une synapse de la dendrite apicale. Suivez le signal étape par étape : libération du glutamate, potentiel postsynaptique, sommation, seuil au segment initial, potentiel d\'action, conduction dans l\'axone, jusqu\'à la synapse que notre bouton forme sur le neurone suivant. À chaque étape, un oscilloscope trace le potentiel de membrane. Faites pivoter la scène, zoomez.';
   $('pmo').innerHTML=rxBtn('Normal : animation commentée','il0')+rxBtn('Expert : mécanismes et quiz','il1')+rxBtn('Visiter notre synapse','iv1')+rxBtn('Visiter la synapse reçue','iv0')+rxBtn('Fermer','ix')};

@@ -5,7 +5,7 @@
 // le disque intercalaire est une plaque plane (il est en marches d'escalier) ; les cellules voisines sont écartées, comme dans les autres tissus du jeu.
 const CSL=2.2,CDL=[];let CDY=0;      // longueur du sarcomère ; dyades (pour l'influx) ; une dyade repère
 // zone du sarcomère où se trouve un point d'un bras : strie Z, bande I ou bande A (pour la fiche affichée quand le vaisseau est petit)
-function cdZ(q,o){let s=dt(sb(q,Cc),o.d)-Rc-1,f=((s%CSL)+CSL)%CSL;return s<0||s>40?'myf':f<.16||f>CSL-.16?'saz':f<.3||f>CSL-.3?'sai':'saa'}
+function cdZ(q,o){let w=sb(q,Cc),s=dt(w,o.d)-Rc-1,f=((s%CSL)+CSL)%CSL;return ln(sb(w,ml(o.d,s+Rc+1)))>o.R-.3?'mem':s<0||s>40?'myf':f<.16||f>CSL-.16?'saz':f<.3||f>CSL-.3?'sai':'saa'}
 if(CT>2){$('nxb').textContent=LG?'⚡ Follow the cardiac impulse':'⚡ Suivre l\'influx cardiaque';
   const cA=K(0xa34),cI=K(0xe9a),cZ=K(0x523),cT=K(0x9cd),cS2=K(0xdc7),cM=K(0x612);
   PRC.forEach(([d,r,l],ai)=>{let J=ma(Cc,d,sqrt(Rc*Rc-r*r)),Ee=ma(Cc,d,Rc+l),[x,,y]=fr(d),ax=s=>ma(Cc,d,Rc+s),P=(s,a,b)=>ad(ax(s),ad(ml(x,a),ml(y,b))),i,j,k,s,n=0;

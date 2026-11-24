@@ -7,6 +7,7 @@
 // Ce qui est exact : les tailles, les durées, l'ordre des événements, les valeurs citées dans les textes (voir la liste des sources).
 // Ce qui est schématique : la forme des protéines (des billes), la forme du cœur (des ellipsoïdes et des tubes), le tracé du réseau de Purkinje,
 // les courbes de l'oscilloscope et de l'électrocardiogramme (dessinées à la main pour avoir la bonne allure et les bonnes durées).
+let hbX=0;      // ce que heartstory.js réutilise : la courbe du potentiel d'action et l'oscilloscope
 if(CT>2){
 const HBO=[0,-4e5,0],
  LhB=Ly(M4,1e9,0,{sx:1,ex:1}),LhGs=Ly(M2,1e9,0,{sx:1,ex:1,al:1}),LhS=Ly(M2,1e9,0,{sx:1,ex:1}),LhT=Ly(MK,1e9,0,{sx:1,ex:1}),LhG=Ly(M4,1e9,0,{sx:1,ex:1,al:1}),LhGt=Ly(MW,1e9,0,{sx:1,ex:1,al:1}),
@@ -270,4 +271,5 @@ SXQ.hb={S:HBS,T:HBT,ti:'Influx cardiaque',solo:1,zn:.004,zx:1.6e5,bg:[.035,.025,
    if(S)for(let n in HG)HG[n].forEach(h=>h.A=0);
    S?S.d(M.ta,M):hbH((hbC*190)%860,0,['ao','tp','vg','vd','od'],{});hbOs(M,S||{o:oEC(()=>(hbC*190)%860)});
    for(let h of[dHb,dHt,dHo,dHe])up(h)}};
+hbX={vAP,hbOs};
 }

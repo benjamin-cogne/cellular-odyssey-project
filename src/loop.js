@@ -33,7 +33,7 @@ function ctl(d){let o=(...a)=>a.some(k=>keys[k])|0,jx=cl(o('ArrowRight','KeyD')-
   for(let n=cl(Math.ceil(abs(vel)*d/(.3*z)),1,6),i=0;i<n;i++)p=ma(p,f,vel*d/n),phys()}       // déplacement par petits pas : même en turbo on ne traverse pas un obstacle fin
 
 // ================= interface =================
-const REG=[['Moelle osseuse','Espace de Disse','Neuropile','Myocarde'][CT],'Cytoplasme','Noyau'],RKN=CT>2?{myf:'Myofibrilles',saa:'Sarcomère, bande A',sai:'Sarcomère, bande I',saz:'Sarcomère, strie Z',cyt:'Zone périnucléaire'}:{ais:'Axone, segment initial',axn:'Axone',den:'Dendrite',btn:'Bouton synaptique',cyt:'Soma'},
+const REG=[['Moelle osseuse','Espace de Disse','Neuropile','Myocarde'][CT],'Cytoplasme','Noyau'],RKN=CT>2?{myf:'Myofibrilles',saa:'Sarcomère, bande A',sai:'Sarcomère, bande I',saz:'Sarcomère, strie Z',mem:'Sous le sarcolemme',cyt:'Zone périnucléaire'}:{ais:'Axone, segment initial',axn:'Axone',den:'Dendrite',btn:'Bouton synaptique',cyt:'Soma'},
 POI=[[()=>LU&&LU.bbb?'PASSAGE · point de transcytose':'ENTRÉE · puits à clathrine',()=>LU&&LU.bbb?TCY:e0],['Pore nucléaire',()=>ma(Nc,pore()[1],Rn)],['Gène '+G.sy,()=>[0,0,0]],['Nucléole',()=>NOL],['Corps de Cajal',()=>CBP],['Corps de Barr',()=>XI],['Centrosome et Golgi',()=>CS],['Polysomes '+G.sy,()=>PS]]
  .concat(CT>2?[['Disque intercalaire',()=>ma(Cc,A0,Rc+41.5)],['Myofibrilles',()=>ma(Cc,A0,Rc+12)],['Tubule T et dyade',()=>CDY]]:CT>1?[['Segment initial de l\'axone',()=>ma(Cc,dax,Rc+3)],['Bouton synaptique',()=>Cb],['Fente synaptique (notre bouton)',()=>SY[1].cc],['Synapse reçue (épine)',()=>SY[0].cc],['Dendrite apicale',()=>ma(Cc,A0,Rc+7)]]:CT?[['Canalicule biliaire',()=>ma(Cc,cD,Rc-.3)]]:[],[['Vaisseau sanguin',()=>VS[0].A]]),NP=POI.length,FB=[.3,.07,.06],
 CDS=G.ex.map(([a,b])=>SEQ.slice(G.up+max(a,G.cs),G.up+max(min(b,G.ce),max(a,G.cs)))).join(''),
@@ -54,9 +54,9 @@ function hud(d){
   $('fl').style.opacity=flT>0?(flT-=d)*2:0;
   if((hT-=d)>0)return;hT=.2;
   s=ar+'◎ '+(na.call?na():na)+' · '+fm(ds(T,p));s!=hM&&(mk.textContent=hM=s);mk.className=!reg&&!poi?'go':'';
-  s=(ORG?{mit:'Mitochondrie',rer:'Réticulum endoplasmique',gol:'Appareil de Golgi',nol:'Nucléole',myf:'Sarcomère',lys:'Lysosome',dya:'Dyade',icd:'Disque intercalaire'}[ORG.pl||ORG.i]:reg==1&&CT>1?RKN[rk()]:!reg&&LU?RL:REG[reg])+' · vaisseau '+fm(z)+' ('+(z<.0031?'≈ diamètre de l\'ADN':z<.009?'≈ une protéine':z<.016?'≈ un nucléosome':z<.036?'≈ un ribosome':z<.08?'≈ une vésicule':z<.16?'≈ un pore nucléaire':z<.3?'≈ un lysosome':z<.7?'≈ largeur d\'une mitochondrie':z<1.6?'≈ une bactérie':'≈ une plaquette')+')';
+  s=(ct>=0?ENP?'Endosome précoce':'Vésicule d\'endocytose':ORG?{mit:'Mitochondrie',rer:'Réticulum endoplasmique',gol:'Appareil de Golgi',nol:'Nucléole',myf:'Sarcomère',lys:'Lysosome',dya:'Dyade',icd:'Disque intercalaire'}[ORG.pl||ORG.i]:reg==1&&CT>1?RKN[rk()]:!reg&&LU?RL:REG[reg])+' · vaisseau '+fm(z)+' ('+(z<.0031?'≈ diamètre de l\'ADN':z<.009?'≈ une protéine':z<.016?'≈ un nucléosome':z<.036?'≈ un ribosome':z<.08?'≈ une vésicule':z<.16?'≈ un pore nucléaire':z<.3?'≈ un lysosome':z<.7?'≈ largeur d\'une mitochondrie':z<1.6?'≈ une bactérie':'≈ une plaquette')+')';
   s!=hS&&($('st').textContent=hS=s);
-  let k;if(ct>=0)k='pit';else if(nI&&(!reg||nD<(/mt|nf|sv|ifl|prt|frt/.test(nI.i)?1.5*z+.01:min(8*z+.03,.4))))k=nI.i;else if(ORG)k=(ORG.pl||ORG.i)+'I';else if(!reg){let m=ds(p,Ce)-Re,e=ds(p,e0);k=LU?'tlu':e<.13?'pit':m<.07?'mem':e<.75?'tfr':'ext'}
+  let k;if(ct>=0)k=ENP?'esI':'pit';else if(XK&&I[XK])k=XK;else if(nI&&(!reg||nD<(/mt|nf|sv|ifl|prt|frt/.test(nI.i)?1.5*z+.01:min(8*z+.03,.4))))k=nI.i;else if(ORG)k=(ORG.pl||ORG.i)+'I';else if(!reg){let m=ds(p,Ce)-Re,e=ds(p,e0);k=LU?'tlu':e<.13?'pit':m<.07?'mem':e<.75?'tfr':'ext'}
   else k=reg<2&&rk()!='cyt'?rk():reg<2&&ds(p,Cc)>Rc-.15-z?mdk(p):abs(ds(p,Nc)-Rn+.02)<.2+z?pore()[0]<.12?'npc':reg>1?'lam':'ne':reg<2?'cyt':'nuc';
   k=='myf'&&z<.3&&reg==1&&(k=rk());sn(k);let t=I[k],ti=t[0],tx=t[1],o=reg>1&&ct<0&&(k=='nuc'||k=='spk')&&nuI();if(o)ti=o[0],tx=o[1];let mg=mgH(pinT>0?pinK:o?0:k);if(pinT>0)pinT-=.2,ti='▸ '+pin[0],tx=pin[1];btT();
   ti+tx+mg!=hI&&($('it').textContent=ti,$('ix').textContent=tx,$('im').innerHTML=mg,hI=ti+tx+mg);
@@ -69,7 +69,7 @@ function hud(d){
   q=q||lqS();q!=hQ&&($('sq').innerHTML=hQ=q)}
 function tick(t){if(gen!=GEN)return;let d=min(.05,(t-last)/1e3)||0;last=t;
   aT+=d;if(++aN>40)Q=aT>1.3&&Q>.7?Q*.8:aT<.75&&Q<DPR?min(DPR,Q*1.15):Q,aT=aN=0;       // résolution adaptative
-  if(go&&!NV)AP?apS(d):PM?pmS(d):RX?rxS(d):NX?nxS(d):SX?sxS(d):ct<0?ctl(d):cine(d);nvT(d);
+  if(go&&!NV)AP?apS(d):PM?pmS(d):RX?rxS(d):NX?nxS(d):SX?sxS(d):ct<0?ctl(d):(cine(d),ctl(d));nvT(d);
   sim(d,ln(E)<GR+1.1,ds(E,PS)<4);PM&&pmD();oT();nolT();lamT();vesi(d);bcn();flm();RX&&rxD();NX&&nxD();SX&&sxD();synT();mgD();[dA.t,dA.j,dA.s,dB,dC.t,dC.j,dC.s,dD,dV,dE,dG,dF,dQa,dQb,dQe,dLm,dLb].forEach(up);
   cam(d);FG=lp(FG,SX&&SX.Q.bg||(reg?TGT[reg]:LU?FB:TGT[0]),min(1,d*2));draw();hud(d);requestAnimationFrame(tick)}
 onkeydown=e=>{if(e.target.id=='q')return;keys[e.code]=1;/Arrow|Space/.test(e.code)&&e.preventDefault()};onkeyup=e=>{keys[e.code]=0};

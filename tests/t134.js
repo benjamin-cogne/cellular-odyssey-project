@@ -20,7 +20,8 @@ const {open}=require('./tl.js');const lang=process.argv[2]||'fr';
  o=await at([2,5.5,1],[0,0,0],.3);ok('centre : zone périnucléaire',/nucl/i.test(o.st),o);
  o=await ev(()=>({mg:!!(MGC[3]&&MGC[3].sai&&MGC[3].dsm&&MGX.hb&&MGX.hb.ph3&&MGX.hb.tnc),n:Object.keys(MGX.hb||{}).length}));ok('focus mendélien : fiches et étapes de la vue',o.mg&&o.n>=12,o);
  // --- la vue « influx cardiaque »
- await ev(()=>{$('nxb').onclick();return 1});await pg.waitForTimeout(300);o=await ev(()=>({t:$('pmt').textContent,x:$('pmx').textContent.length,b:$('pmo').textContent}));ok('écran d\'accueil de la vue',o.x>300&&/Commencer|Start|Begin/.test(o.b),o.t);
+ await ev(()=>{$('nxb').onclick();return 1});await pg.waitForTimeout(300);await pg.evaluate(()=>document.querySelector('#pmo button[data-r="Sihb"]').click());await pg.waitForTimeout(300);      // le bouton ouvre d'abord le récit dans la cellule (t137) ; « Vue guidée » mène ici
+ o=await ev(()=>({t:$('pmt').textContent,x:$('pmx').textContent.length,b:$('pmo').textContent}));ok('écran d\'accueil de la vue',o.x>300&&/Commencer|Start|Begin/.test(o.b),o.t);
  await ev(()=>{sxGo('hb');return 1});await pg.waitForTimeout(1500);
  o=await ev(()=>{let Q=SXQ.hb,ch=LY.filter(L=>L.sx).flatMap(L=>L.ch).filter(h=>h.m&&h.m.length==16).length;return{steps:Q.S.length,texts:Q.T.length,keys:Q.S.map(S=>S.k).join(),solo:SX.solo,movable:ch}});
  ok('18 étapes, 18 textes',o.steps==18&&o.texts==18,o.keys);ok('le cœur est construit (blocs mobiles des ventricules et des oreillettes)',o.movable>=8,o.movable);
