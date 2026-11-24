@@ -101,7 +101,7 @@ function hit(L,r){let h=0,T=8*z+.03,o;
       if(m<0&&!o.sf)p=ma(c,l?ml(d,1/l):[0,1,0],o.r+r),h=o;if(o.hb&&m<0)m=.07}
     if(m<nD)nD=m,nI=o}
   return h}
-function phys(){let r=z*.42,h=0;nI=0;nD=1e9;if(ORG)return pO(r);
+function phys(){let r=z*.42,h=0;nI=0;nD=1e9;if(ORG)return pO(r);if(ct>=0)return pV(r);
   if(!reg){let dS=1e9,dO=1e9,o,c,m,lu=LU;LU=0;        // hors de la cellule : notre cellule (SH), ses voisines (OX), les vaisseaux (VS)
     for(o of SH){c=cpt(o,p);m=ds(p,c)-o.R;if(m<dS)dS=m;if(m<r+.003)p=ma(c,nm(sb(p,c)),o.R+r+.003)}
     for(o of OX){c=cpt(o,p);m=ds(p,c)-o.r;let k=o.dc&&o.dc[1]-ds(p,o.dc[0]);if(k>m)m=k,c=0;if(m<dO)dO=m;{let w=o.bg?m+.03:m;if(w<nD&&m<.5+.35*o.r)nD=w,nI=o}if(m<r+.003&&!o.sf)p=c?ma(c,nm(sb(p,c)),o.r+r+.003):ma(o.dc[0],nm(sb(p,o.dc[0])),o.dc[1]-r-.003)}       // dc : cupule creusée dans une épine (fente synaptique)
@@ -120,11 +120,18 @@ function phys(){let r=z*.42,h=0;nI=0;nD=1e9;if(ORG)return pO(r);
         if(h&&lt<.1&&z>.041)say('Pore nucléaire : canal central ≈ 40 nm. Rétrécissez le vaisseau à 40 nm ou moins (Q, − ou molette).')}}
     let a=reg<2?hit(CY,r):hit(NU,r),b=reg>1&&ln(p)<GR+.2&&hit(DN,r),c=hit(dyc,r);reg>1&&hit(LMC,r);if(a||b||c)p=ma(p,u,abs(vel)*.004);h=a||b||c||h;
     if(h)vel*=.985}}
-// endocytose scénarisée
-const CAP=[[0,CF.cap[0]],[2,CF.cap[1]],[5.6,'Scission : la GTPase dynamine (anneau vert) étrangle le col puis le sectionne.'],[7.5,'Vésicule recouverte libre dans le cytosol.'],[9,'Désassemblage du manteau de clathrine par Hsc70 et l\'auxiline (ATP).'],[12,CF.cap[2]],[17,'Échappement endosomal — licence narrative : seuls certains virus (adénovirus) rompent ainsi l\'endosome.']];
-function cine(d){let o=ct;ct+=d;for(let[t,s]of CAP)o<=t&&ct>t&&say(s,t==12?5:t==17?3:9);
-  vh=ct<7?rv*(.6-1.95*ss((ct-2)/5)):-rv*1.35-.15*ss((ct-7)/2);
-  let c=vesC(),g=ma(c,v0,-(rv-.012-.45*z)),k=ss(ct/2);p=lp(cp0,g,k);f=nm(lp(cf0,ml(v0,-1),k));u=nm(cr(cr(f,u),f));
-  chG.n=chG.N*cl(1-(ct-9)/3,0,1)|0;chV.A=cl(1-(ct-17)/2,0,1);chR.n=chR.N*cl(1-(ct-17)/2,0,1)|0;dE.n=0;
+// endocytose : le puits se referme sur le vaisseau, la vésicule perd son manteau et rejoint l'endosome précoce ; le joueur garde les commandes tout du long
+// (enfermé dans la vésicule, puis dans l'endosome : pV), et sort de l'endosome quand il le décide (endX)
+let ENP=0,XK=0;const dEn=dy(Ldb,220,ECN,.5),
+CAP=[[0,CF.cap[0]],[.9,CF.cap[1]],[1.9,'Scission : la GTPase dynamine (anneau vert) étrangle le col puis le sectionne. Vous restez aux commandes dans la vésicule.'],[3.2,'Désassemblage du manteau de clathrine par Hsc70 et l\'auxiline (ATP).'],[4.9,CF.cap[2]],[11,'Vous êtes dans l\'endosome précoce : explorez-le, puis touchez « ⇥ Quitter l\'endosome » pour gagner le cytosol.']];
+function pV(r){let c=ENP?ECN:vesC(),R=max(.004,(ENP?ERA:rv)-.006-r),d=sb(p,c),l=ln(d);if(l>R)p=ma(c,d,R/l);nI=0;nD=1e9}       // confinement dans la vésicule ou dans l'endosome
+function cine(d){let o=ct,c0=vesC();ct+=d;for(let[t,s]of CAP)o<=t&&ct>t&&say(s,t>4?11:5);z=min(z,ENP?.07:.03);
+  vh=ct<1.9?rv*(.6-1.6*ss(ct/1.9)):-rv-(.44-ERA-.01)*ss((ct-1.9)/2.6);let c=vesC();
+  if(!ENP){p=ad(p,sb(c,c0));ct>4.7&&(ENP=1,poi=1,hT=0)}       // la vésicule emporte le vaisseau, puis fusionne avec l'endosome
+  chG.n=chG.N*cl(1-(ct-3)/1.2,0,1)|0;chV.A=cl(1-(ct-4.5)/.8,0,1);chR.n=chR.N*cl(1-(ct-5.5)/3,0,1)|0;dE.n=0;dEn.n=0;
   if(vh<-.3*rv&&vh>-1.03*rv)for(let i=0;i<14;i++)dS(dE,ad(ma(e0,v0,-.004),ad(ml(tX,cos(i*.449)*(sqrt(max(0,rv*rv-vh*vh))+.007)),ml(tZ,sin(i*.449)*(sqrt(max(0,rv*rv-vh*vh))+.007)))),.0045,K(0x5d7));
-  if(ct>19)ct=-1,reg=1,poi=1,say(CF.in+' Touchez un objet pour sa fiche ; ☰ Atlas liste tout ce qu\'il y a à voir ; ⇤ pour ressortir de la cellule.',14)}
+  if(ENP){for(let i=0;i<EVP.length;i++)for(let k=0;k<5;k++){let a=(ct*.45+k/5+i*.13)%1;dS(dEn,ad(ma(ECN,EVP[i],ERA-.012-.07*a),[.006*sin(ct+k+i),.006*cos(ct*1.3+k),0]),.0022,[2.4,2.6,3,1])}       // protons pompés : la lumière s'acidifie
+    for(let i=0;i<26;i++){let h=sin(i*127.1)*43758.5453,g=h-floor(h),e=ss((ct-5.5-3*g)/2.5),d=nm([sin(i*2.1),cos(i*1.7),sin(i*.9+1)]);dS(dEn,ma(ECN,d,ERA*(.93-.6*e*(.4+.6*g))),.0045,[1.6,1.3,.3,1])}}       // la cargaison se détache de ses récepteurs
+  up(dEn)}
+function endX(){if(ct<0||!ENP)return;ct=-1;reg=1;poi=1;ENP=0;chV.A=0;chG.n=chR.n=0;dEn.n=0;up(dEn);vel=0;fly(ma(ECN,v0,-ERA-.12),.03,()=>say(CF.in+' Touchez un objet pour sa fiche ; ☰ Atlas liste tout ce qu\'il y a à voir ; ⇤ pour ressortir de la cellule.',14));
+  say('Échappement endosomal — licence narrative : seuls certains virus (adénovirus) rompent ainsi l\'endosome.',5)}

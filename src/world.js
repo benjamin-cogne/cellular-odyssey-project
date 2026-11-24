@@ -85,7 +85,8 @@ Object.assign(I,CF.I,G.i);if(G.sy!='HBB')for(let k in VAR)delete VAR[k];
 const Rc=CF.Rc,Rn=4,Nc=[1.3,.5,-.9],Cc=ad(Nc,CF.of),A0=nm([.15,1,.1]),dax=nm(ad(ml(A0,-1),[.25,0,.1])),Rb=.65,
 // neurone : prolongements [direction, rayon, longueur, type] — axone, dendrite apicale, trois dendrites basales
 PRC=CT>2?[[A0,8.6,42,'myf'],[ml(A0,-1),8.6,42,'myf']]:CT>1?[[dax,.4,22,'axn'],[A0,1.1,16,'den']].concat([.9,3,5.1].map(g=>{let x=pp(A0);return[nm(ad(ml(A0,-.5),ad(ml(x,cos(g)),ml(cr(A0,x),sin(g))))),.55,11,'den']})):[],
-Cb=ma(Cc,dax,Rc+22+sqrt(Rb*Rb-.16)),Ce=CT==2?Cb:Cc,Re=CT==2?Rb:Rc,v0=CT>2?pp(A0):CT>1?pp(dax):nm([1,(1+sqrt(5))/2,0]),e0=ma(Ce,v0,Re),rv=.05,SH=[{c:Cc,R:Rc}],OX=[],HO=[],
+Cb=ma(Cc,dax,Rc+22+sqrt(Rb*Rb-.16)),Ce=CT==2?Cb:Cc,Re=CT==2?Rb:Rc,v0=CT>2?pp(A0):CT>1?pp(dax):nm([1,(1+sqrt(5))/2,0]),e0=ma(Ce,v0,Re),rv=.05,ECN=ma(e0,v0,-.44),ERA=.17,EVP=[],      // puits d'entrée, rayon de la vésicule ; endosome précoce où elle aboutit (centre, rayon, pompes à protons)
+SH=[{c:Cc,R:Rc}],OX=[],HO=[],
 [tX,,tZ]=fr(v0),NOL=ad(Nc,[-1.6,1.2,.9]),WX=nm([.2,1,.3]),
 CY=[],NU=[],DN=[],occ=[],EX=[],
 cS=(l,p,r,i,x)=>l.push(Object.assign({a:p,b:p,r,i,q:p,R:r},x)),
