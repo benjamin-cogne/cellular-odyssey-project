@@ -1,0 +1,27 @@
+// ================= noyau : lire les territoires =================
+// Les chromosomes sont engendrés et dessinés dans nucleus.js (nuage du territoire de loin, fibre de près, chromatine A fine et B épaisse, plaques sous la lamina).
+// Ici : les étiquettes des territoires proches (remises à life.js par XLB, qui gère l'affichage des étiquettes en vol libre), l'idéogramme du chromosome où se trouve
+// le vaisseau (bandes G, centromère, repère de position, compartiment) sous la ligne d'état, et les textes du noyau propres à chaque cellule.
+let XLB=[];
+{const idg=document.createElement('canvas'),STN={gneg:'#e8eaf0',gpos25:'#b9bcc8',gpos50:'#8a8e9c',gpos75:'#5d6170',gpos100:'#2c2f3a',acen:'#e0415a',gvar:'#6f86a8',stalk:'#9aa7bd'};let idK='';
+ idg.id='idg';idg.width=640;idg.height=64;idg.style.cssText='position:static;display:none;width:min(44vw,320px);height:32px;margin:2px 0;background:#012b;border-radius:8px';$('hl').insertBefore(idg,$('inf'));
+ // chromosome et mégabase les plus proches du vaisseau (même recherche que la fiche du chromosome)
+ const near=()=>{let b=0,i,j,k,l,o;for(i=-1;i<2;i++)for(j=-1;j<2;j++)for(k=-1;k<2;k++)if(l=NH.get((floor(p[0]/.4)+i)+'_'+(floor(p[1]/.4)+j)+'_'+(floor(p[2]/.4)+k)))for(o of l){let e=ds(o[2],p);if(e<.45+4*z&&(!b||e<b[0]))b=[e,o]}return b&&b[1]},
+ draw=()=>{let on=go&&reg>1&&ct<0&&!ORG&&!SX&&!NX&&!PM&&!RX,o=on&&near();if(!o){idK&&(idK='',idg.style.display='none');return}
+   let N=CN[o[0]],ci=N.ci,mb=o[1],L=CHR[ci],bd=bnd(ci,mb+.5),k=o[0]+'_'+mb+LG;if(k==idK)return;idK=k;idg.style.display='block';
+   let g=idg.getContext('2d'),W=640,x0=118,x1=W-14,X=m=>x0+(x1-x0)*m/248,y=30,h=18;g.clearRect(0,0,W,64);
+   for(let b of BD[ci]){g.fillStyle=STN[b[3]];let a=X(b[0]),w=X(b[1])-a;if(b[3]=='acen'){g.beginPath();g.moveTo(a,y);g.lineTo(a+w,y+h/2);g.lineTo(a,y+h);g.fill();g.beginPath();g.moveTo(a+w,y);g.lineTo(a,y+h/2);g.lineTo(a+w,y+h);g.fill()}else g.fillRect(a,y,w+.6,h)}
+   g.strokeStyle='#9fe9';g.lineWidth=1.5;g.strokeRect(x0,y,X(L)-x0,h);g.fillStyle='#fd6';g.beginPath();let xm=X(mb+.5);g.moveTo(xm,y-2);g.lineTo(xm-7,y-13);g.lineTo(xm+7,y-13);g.fill();g.fillRect(xm-1,y,2,h);
+   g.font='bold 24px sans-serif';g.fillStyle=N.xi?'#f9c':'#9df';g.textAlign='left';g.fillText('chr '+cnm(ci),10,y+h-1);g.font='17px sans-serif';g.fillStyle='#cde';
+   g.fillText((bd?cnm(ci)+bd[2]+' · ':'')+mb+' Mb · '+(N.xi?'X inactif':N.B[mb]?'B : compacte':'A : ouverte'),x0,y+h+15)},
+ // étiquettes : les territoires dont le centre est proche, le plus proche d'abord
+ lab=()=>{XLB.length=0;if(!go||reg<2||ct>=0||ORG||z<.035)return;let D=1.3+12*z;CN.forEach((N,c)=>{let d=ds(N.g,p);d<D&&XLB.push([d+.4,N.g,'chr '+cnm(N.ci)+(N.xi?' · X inactif':'')+'​'.repeat(c%4+(c>45?4:0))])})};
+ {const o0=oT;oT=()=>{o0();lab()}}
+ {const h0=hud;hud=d=>{h0(d);draw()}}
+ I.chr[1]=`Chaque chromosome est une fibre continue repliée dans son propre territoire (1 nœud par mégabase, repliement schématique). De loin, le territoire est un nuage de sa couleur ; de près, la fibre apparaît : fine et claire là où la chromatine est ouverte (compartiment A, bandes R riches en gènes), épaisse, sombre et grumeleuse là où elle est compacte (compartiment B, bandes G sombres), rouge au centromère. Le compartiment est ici déduit des bandes G : c'est une approximation. Entre les territoires et entre les domaines de chromatine circulent ARN et protéines : c'est là, à la surface des domaines, que se fait l'essentiel de la transcription. La place des territoires dépend du noyau : dans les noyaux sphériques, le chromosome 19 est plutôt au centre et le 18 en périphérie ; dans les noyaux aplatis des fibroblastes, les petits chromosomes sont au centre et les grands en périphérie.`;
+ I.nhc=[`Hétérochromatine périnucléolaire (NAD)`,`Autour du nucléole, comme sous la lamina, s'accumule de la chromatine compacte : les domaines associés au nucléole (NAD), environ 4 % du génome, faits de familles de gènes particulières et de répétitions satellites. Les locus accrochés au nucléole ou à la périphérie du noyau bougent nettement moins que ceux du nucléoplasme. Dans des cellules de souris, le X inactif vient au contact du nucléole dans 80 à 90 % des cas en milieu et en fin de phase S.`];
+ I.nuc[1]=`Canaux interchromatiniens où diffusent ARN, facteurs de transcription et d'épissage, entre les territoires des chromosomes décondensés (interphase). `+[
+  `46 chromosomes, 6,1 milliards de paires de bases, soit environ 2 m d'ADN. Noyau d'érythroblaste : la chromatine se condense en gros blocs sombres et la transcription se restreint ; au terme de la différenciation, le noyau, condensé et inactif, sera expulsé de la cellule (énucléation).`,
+  `Noyau d'hépatocyte, dessiné ici tétraploïde : 92 chromosomes, quatre exemplaires de chaque autosome, dans un noyau de volume double. Environ 30 % des hépatocytes humains sont polyploïdes, par leur noyau ou parce qu'ils ont deux noyaux.`,
+  `46 chromosomes, 6,1 milliards de paires de bases, soit environ 2 m d'ADN. Noyau de neurone : grand et clair en histologie, presque toute la chromatine y est ouverte, l'hétérochromatine se réduit à un mince liseré sous la lamina et le nucléole est volumineux ; le X inactif est placé ici contre le nucléole.`,
+  `46 chromosomes, 6,1 milliards de paires de bases, soit environ 2 m d'ADN. Noyau de cardiomyocyte : hétérochromatine d'abondance intermédiaire. Sa forme allongée dans l'axe de la cellule n'est pas représentée.`][CT]}

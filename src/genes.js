@@ -27,7 +27,6 @@ AL=[[/di.?george|v[eé]lo.?card|22q11/i,'DGS 22q11.2'],[/williams/i,'Williams 7q
  [/rubinstein/i,'CREBBP 16p13.3'],[/langer/i,'TRPS1 8q24'],[/rett/i,'MECP2 Xq28']];
 let TG=0,AT=0,CL=0,ENG={},AP=0,NV=0,SQC={},RES=[],nT=0,OFl=0;
 // bandes cytogénétiques réelles (si l'API répond) : recolore les chromosomes
-trk('cytoBand').then(v=>{if(gen!=GEN)return;BD=CHR.map(_=>[]);v.forEach(b=>{let i=c2i(b.chrom);i>=0&&BD[i].push([b.chromStart/1e6,b.chromEnd/1e6,b.name,b.gieStain])});BD.forEach(l=>l.sort((a,b)=>a[0]-b[0]));drawChr(1);TG.on&&hl()}).catch(e=>0);
 
 // ---------- recherche
 async function gS(q){let o=[],Q=q.toUpperCase(),seen={};
@@ -85,7 +84,7 @@ function fibGeo(){let U=TG.U,cc=TG.cc,H=TG.H=new Map,xi=TG.auto&&CN[TG.ac].xi,au
     g.ex.forEach((e,k)=>{for(let j of[0,1]){if(j?k==g.ex.length-1:!k)continue;let x=gpos(j?e[1]+1:e[0]-2);x&&S(Lqm,ma(x[0],x[2],.0022),.0012,(j?g.st>0:g.st<0)?[3,.5,1.5,1]:[.3,2,3,1])}})}
   TG.AN&&TG.AN.forEach(q=>{let[x,,y]=fr(q[1]);for(let k=0;k<22;k++)S(Lqm,ad(q[0],ad(ml(x,.02*cos(k*TAU/22)),ml(y,.02*sin(k*TAU/22)))),.0026,K(0x5ce));for(let s of[-1,1])S(Lqm,ma(q[0],q[1],s*.009),.0042,EC['CTCF-only'])});      // pied de boucle : anneau de cohésine, deux CTCF
   fin()}
-function hl(){clr(Lkh);let t=TG,ci=t.ci;for(let c of[ci*2,ci*2+1]){let{p,xi}=CN[c];for(let i=0;i<p.length-1;i++){let h=t.e>i*1e6&&t.s<(i+1)*1e6,o=bcol(ci,i+.5,xi);Cy(Lkh,p[i],p[i+1],h?.09:.05,h?[1.7,.45,.12,1]:[o[0]*1.5,o[1]*1.5,o[2]*1.5,1])}}fin()}
+function hl(){clr(Lkh);clr(Lkn);let t=TG,ci=t.ci;CN.forEach(({p,xi,ci:k})=>{if(k!=ci)return;for(let i=0;i<p.length-1;i++){let h=t.e>i*1e6&&t.s<(i+1)*1e6,o=bcol(ci,i+.5,xi),c=h?[1.7,.45,.12,1]:[o[0]*1.5,o[1]*1.5,o[2]*1.5,1];Cy(Lkn,p[i],p[i+1],h?.09:.05,c);S(Lkh,p[i],h?.26:.17,c);S(Lkh,lp(p[i],p[i+1],.5),h?.26:.17,c)}});fin()}      // de près : un tube ; de loin : un nuage plus gros que celui du territoire
 async function goT(t){let ci=c2i(t.c),L=t.e-t.s,fl=cl(L*.15,1e4,1e5)|0,a=max(0,t.s-fl),b=t.e+fl,G=[],cc=[],cp=[],src='UCSC',m=$('qm');
   if(ci<0){m.textContent='Ce chromosome n\'existe pas dans ce caryotype 46,XX.';return}
   m.textContent='Chargement des annotations…';
@@ -146,7 +145,7 @@ function uI(W){let F=W.f,g=F.gi<0?0:TG.G[F.gi],m=TG.main,k,x=' '+TG.c+':'+nf(W.g
   if(F.f==2||F.f==3)return[g.sym+' · exon '+xn(g,F.k)+'/'+g.ex.length,(g.ex[F.k][1]-g.ex[F.k][0])+(LG?' bp, ':' pb, ')+(F.f==3?'codant':'non traduit (UTR)')+' · transcrit '+g.id+', brin '+(g.st>0?'+':'−')+'. Repères : site accepteur AG (cyan) en 5′ de l\'exon, site donneur GT (rose) en 3′.'+x];
   if(F.f==4&&g.ex[F.k]&&g.ex[F.k+1]){k=g.st>0?F.k+1:g.ex.length-1-F.k;return[g.sym+' · intron '+k+'/'+(g.ex.length-1),fkb(g.ex[F.k+1][0]-g.ex[F.k][1])+' · commence par GT (donneur), finit par AG (accepteur) ; transcrit puis excisé du pré-ARNm.'+x]}
   return['Chromatine intergénique','Fibre de nucléosomes (≈200 pb par unité) entre deux gènes.'+x]}
-function cI(o){let N=CN[o[0]],mb=o[1],bd=bnd(N.ci,mb+.5);return N.xi?I.xi:['Chromosome '+cnm(N.ci)+' — '+CHR[N.ci]+' Mb','Ici : ≈ '+mb+' Mb'+(bd?', bande '+cnm(N.ci)+bd[2]:'')+'. '+I.chr[1]]}
+function cI(o){let N=CN[o[0]],mb=o[1],bd=bnd(N.ci,mb+.5);return N.xi?I.xi:['Chromosome '+cnm(N.ci)+' — '+CHR[N.ci]+' Mb','Ici : ≈ '+mb+' Mb'+(bd?', bande '+cnm(N.ci)+bd[2]:'')+(N.B[mb]?', chromatine compacte (compartiment B)':', chromatine ouverte (compartiment A)')+'. '+I.chr[1]]}
 function nuI(){let U=TG.U,b=0,i,j,k,l,o;if(U&&TG.nd<.03+6*z)return uI(U[TG.ni]);
   for(i=-1;i<2;i++)for(j=-1;j<2;j++)for(k=-1;k<2;k++)if(l=NH.get((floor(p[0]/.4)+i)+'_'+(floor(p[1]/.4)+j)+'_'+(floor(p[2]/.4)+k)))for(o of l){let e=ds(o[2],p);if(e<.3+4*z&&(!b||e<b[0]))b=[e,o]}
   if(b)return cI(b[1])}

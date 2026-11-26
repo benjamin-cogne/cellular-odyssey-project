@@ -1,7 +1,7 @@
 // endocytose pilotable, destination choisie à l'écran d'accueil, récit de l'influx cardiaque dans le décor (physics.js, goto.js, heartstory.js).
 //  1. endocytose : capture au puits, le joueur garde les commandes dans la vésicule (il tourne, il reste confiné), arrivée dans l'endosome en moins de six secondes,
 //     fiche et bouton « Quitter l'endosome », confinement dans l'endosome, sortie vers le cytosol ;
-//  2. destinations : goT pose le vaisseau près du lieu et entre dans l'organite (liste réduite ; « all » en troisième argument pour toutes), repli quand le lieu n'existe pas ;
+//  2. destinations : goD pose le vaisseau près du lieu et entre dans l'organite (liste réduite ; « all » en troisième argument pour toutes), repli quand le lieu n'existe pas ;
 //  3. cardiomyocyte : récit en cinq étapes — arrivée contre le sarcolemme, canaux dessinés, battement recalé, sodium qui entre, oscilloscope, fiche du canal, étapes suivantes
 //     avec leur bouton d'entrée, lien vers la vue guidée, fin du récit ;
 //  4. écran d'accueil : une seconde page démarre avec une destination choisie dans la liste ; les cellules où elle n'existe pas sont estompées.
@@ -24,10 +24,10 @@ const {open}=require('./tl.js');const lang=process.argv[2]||'fr',CT=process.argv
  o=await ev(()=>({ct,reg,ENP,out:ds(p,ECN)>ERA,A:chV.A,n:LY.flatMap(L=>L.ch).filter(h=>h.cap==220)[0].n}));ok('sortie : cytosol, vaisseau hors de l\'endosome',o.ct<0&&o.reg==1&&!o.ENP&&o.out&&!o.n,o);
  // --- 2. destinations
  const T=CT>2?(ALL?['cyt','mit','rer','gol','lys','nuc','nol','gen','myf','dya','icd']:['mit','gen','dya','icd']):(ALL?['cyt','mit','rer','gol','lys','nuc','nol','gen','myf']:['lys','nol','myf']),R=[];
- for(const k of T){await ev(k=>{ORG=0;OC=[];AP=0;goT(k);return 1},k);await pg.waitForTimeout(1500);await land();
+ for(const k of T){await ev(k=>{ORG=0;OC=[];AP=0;goD(k);return 1},k);await pg.waitForTimeout(1500);await land();
    o=await ev(()=>({reg,org:ORG&&(ORG.pl||ORG.i),ct}));let w=k=='cyt'||k=='myf'&&CT<3?!o.org&&o.reg==1:k=='nuc'||k=='gen'?!o.org&&o.reg==2:o.org==k;w&&o.ct<0||bad++;R.push(k+(w?'':' ✗ '+JSON.stringify(o)))}
  ok('arrivée directe sur chaque destination (organite ouvert, noyau, gène ; repli sur le cytoplasme)',!R.some(x=>/✗/.test(x)),R);
- if(CT==2){await ev(()=>{ORG=0;OC=[];AP=0;goT('nxi');return 1});await pg.waitForTimeout(1500);o=await ev(()=>({d:$('pm').style.display,b:[...$('pmo').querySelectorAll('button')].length}));ok('neurone : la destination « influx nerveux » ouvre son écran d\'accueil',o.d=='block'&&o.b>=2,o);await click('#pmo button[data-r="Sx"]')}
+ if(CT==2){await ev(()=>{ORG=0;OC=[];AP=0;goD('nxi');return 1});await pg.waitForTimeout(1500);o=await ev(()=>({d:$('pm').style.display,b:[...$('pmo').querySelectorAll('button')].length}));ok('neurone : la destination « influx nerveux » ouvre son écran d\'accueil',o.d=='block'&&o.b>=2,o);await click('#pmo button[data-r="Sx"]')}
  // --- 3. récit de l'influx cardiaque
  if(CT>2){const chan=()=>ev(()=>{let L=LY.flatMap(L=>L.ch),d=sb(p,Cc),s=dt(d,A0),w=sb(d,ml(A0,s));return{beads:L.filter(h=>h.cap==3400)[0].n,halo:L.filter(h=>h.cap==260)[0].n,ro:+ln(w).toFixed(3),s,face:+dt(f,nm(w)).toFixed(2),z:+z.toFixed(3),t:sT%7,
      st:$('st').textContent.split(' · ')[0],pmt:$('pmt').textContent,osc:osc.style.display,hl:parseInt($('hl').style.top)||0,pmb:$('pm').getBoundingClientRect().bottom|0,cap:$('cap').textContent,it:$('it').textContent,XK:XK&&I[XK][0],poi:POI[poi][0]}}),wv=s=>1+(s+51)/102*.3;

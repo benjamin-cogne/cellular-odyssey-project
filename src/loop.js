@@ -1,7 +1,7 @@
 // ================= rendu =================
 const MM=new Float32Array(16),VV=new Float32Array(16),TGT=[CF.fg,[.02,.08,.12],[.07,.04,.14]],HB=new Float32Array(24);
 const ev=L=>min(L.vis,L.vz*z);
-function vis(h){if(!h.n||h.A<=0||SX&&SX.solo&&!h.L.sx)return 0;let m=h.m,d=sb(m?[m[12],m[13],m[14]]:h.c,E),l=ln(d),s=l-h.r,L=h.L;h.d=d;h.k=l+h.r;
+function vis(h){if(!h.n||h.A<=0||SX&&SX.solo&&!h.L.sx||h.L.zn&&z<h.L.zn||h.L.zx&&z>=h.L.zx)return 0;let m=h.m,d=sb(m?[m[12],m[13],m[14]]:h.c,E),l=ln(d),s=l-h.r,L=h.L;h.d=d;h.k=l+h.r;
   let g=L.rg,q=ds(p,Nc);if(L.io&&(L.io>0)!=(ORG&&ORG.i=='nol')||L.tx&&TXH||!L.ex&&!h.ex&&!reg&&ct<1.5&&!NX||g==1&&reg>1&&q<Rn-.35||g==2&&reg<2&&q>Rn+.3||g==3&&(reg>1||q<Rn+.25))return 0;if(m)return 1;if(s>ev(L)||s>FAR||s>4.5*FR()||L.nl&&s<.85*ev(L.nl))return 0;
   return!(l>h.r&&acos(cl(dt(d,vf)/l,-1,1))-asin(h.r/l)>HF)}
 function dr(h,i,a,cf){let L=h.L,m=h.m,d=h.d;if(m)MM.set(m);else MM.fill(0),MM[0]=MM[5]=MM[10]=MM[15]=1;MM[12]=d[0];MM[13]=d[1];MM[14]=d[2];

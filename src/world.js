@@ -82,7 +82,7 @@ VAR={'-88':'c.-138C>T (−88) : β⁺-thal','-87':'c.-137C>G (−87) : β⁺-tha
 Object.assign(I,CF.I,G.i);if(G.sy!='HBB')for(let k in VAR)delete VAR[k];
 
 // ================= constantes du monde (µm) =================
-const Rc=CF.Rc,Rn=4,Nc=[1.3,.5,-.9],Cc=ad(Nc,CF.of),A0=nm([.15,1,.1]),dax=nm(ad(ml(A0,-1),[.25,0,.1])),Rb=.65,
+const Rc=CF.Rc,Rn=CT==1?5:4,Nc=[1.3,.5,-.9],Cc=ad(Nc,CF.of),A0=nm([.15,1,.1]),dax=nm(ad(ml(A0,-1),[.25,0,.1])),Rb=.65,
 // neurone : prolongements [direction, rayon, longueur, type] — axone, dendrite apicale, trois dendrites basales
 PRC=CT>2?[[A0,8.6,42,'myf'],[ml(A0,-1),8.6,42,'myf']]:CT>1?[[dax,.4,22,'axn'],[A0,1.1,16,'den']].concat([.9,3,5.1].map(g=>{let x=pp(A0);return[nm(ad(ml(A0,-.5),ad(ml(x,cos(g)),ml(cr(A0,x),sin(g))))),.55,11,'den']})):[],
 Cb=ma(Cc,dax,Rc+22+sqrt(Rb*Rb-.16)),Ce=CT==2?Cb:Cc,Re=CT==2?Rb:Rc,v0=CT>2?pp(A0):CT>1?pp(dax):nm([1,(1+sqrt(5))/2,0]),e0=ma(Ce,v0,Re),rv=.05,ECN=ma(e0,v0,-.44),ERA=.17,EVP=[],      // puits d'entrée, rayon de la vésicule ; endosome précoce où elle aboutit (centre, rayon, pompes à protons)
@@ -102,7 +102,8 @@ const Lmem=Ly(M5,1e9,0,{al:1,G:1,two:1,ex:1,rg:1}),Lhd=Ly(MO,.22,.03,{G:1,ex:1,r
 Lves=Ly(M3,1e9,0,{al:1,G:2,z0:1,two:1,ex:1}),Lcg=Ly(MC,1e9,0,{G:2,z0:1,ex:1}),Lcr=Ly(M1,1e9,0,{G:2,z0:1,ex:1}),
 Lo=Ly(M2,60,4,{rg:1}),Lo1=Ly(M2,2.2,2,{rg:1}),Lo0=Ly(M1,60,2,{nl:Lo1,rg:1}),Lcs=Ly(M1,3.5,2,{rg:1}),La=Ly(M2,60,4,{al:1,rg:1}),Lt=Ly(MC,25,4,{rg:1}),Lmf=Ly(MK,30,5,{rg:1}),Lmfa=Ly(MKa,30,5,{rg:1}),Lv=Ly(M1,9,3,{rg:1}),Lr=Ly(M0,2.6,1.6,{rg:1}),
 Lne=Ly(M4,1e9,0,{al:1,two:1}),Lp1=Ly(M0,1,1.2),Lp1c=Ly(MD,1,1.2),Lpa=Ly(M1,1,1.2,{al:1}),Lp0=Ly(M0,60,1.2,{nl:Lp1}),
-Lon=Ly(M2,60,0),Lan=Ly(M2,60,0,{al:1}),Lk=Ly(MC,1.3,1,{dim:1,G:3}),Lkj=Ly(M0,1.3,1,{dim:1,G:3}),Lkf=Ly(MD,60,1,{nl:Lk,dim:1,G:3}),Lkh=Ly(MC,60,0,{G:3}),
+Lon=Ly(M2,60,0),Lan=Ly(M2,60,0,{al:1}),Lk=Ly(MC,1.6,1,{dim:1,G:3,vz:60}),Lkj=Ly(M0,1.6,1,{dim:1,G:3,vz:60}),Lkf=Ly(M0,60,1,{nl:Lk,dim:1,G:3,zn:.02}),Lkt=Ly(MD,60,1,{nl:Lk,dim:1,G:3,zx:.02}),Lkh=Ly(M0,60,1,{G:3,nl:Lk,zn:.02}),Lkn=Ly(MC,1.6,1,{G:3,vz:60}),Lrim=Ly(M1,14,1,{rg:2}),      // chromosomes : fibre de près (Lk, Lkj), nuage du territoire de loin (Lkf) — remplacé par un tube fin (Lkt) quand le vaisseau fait moins de 20 nm, pour ne pas boucher la vue ; surbrillance de loin et de près ; hétérochromatine sous la lamina
+
 Lq1=Ly(M1,.16,.15,{rg:2,vz:60}),Lq1h=Ly(M1,.16,.15,{rg:2,vz:60,G:1}),Lq1c=Ly(MD,.16,.15,{rg:2,vz:60,G:1}),Lq0=Ly(M0,12,.25,{rg:2,nl:Lq1}),Lq0c=Ly(MD,12,.25,{rg:2,nl:Lq1}),Lqm=Ly(M0,.8,.25,{rg:2,vz:200}),Ldq=Ly(MD,1e9,0,{G:2}),Lg=Ly(M0,3.5,1,{rg:2}),
 Ld=Ly(MD,.26,.03,{vz:40,rg:2}),Ldf=Ly(MD,6,.03,{nl:Ld,rg:2}),Lh=Ly(M1,1.2,.1,{vz:150,rg:2}),Lhf=Ly(M0,8,.1,{nl:Lh,rg:2}),Lm=Ly(M0,.45,.1,{vz:60,rg:2}),
 Lsh=Ly(M2,1e9,0,{z0:1,ex:1}),Lshc=Ly(MC,1e9,0,{z0:1,ex:1}),Lsha=Ly(M2,1e9,0,{al:1,z0:1,ex:1}),Ldb=Ly(MO,.6,0,{vz:120}),Ldm=Ly(M1,12,0),

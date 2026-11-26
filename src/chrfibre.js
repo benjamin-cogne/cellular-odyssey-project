@@ -27,7 +27,7 @@ async function chrAn(T){await new Promise(r=>setTimeout(r,800));if(TG!==T)return
     T.G=x.filter(v=>v.maneStat=='MANE Select').map(pM);T.cc=y.map(pC).sort((x,y)=>x.s-y.s);T.cp=w.map(v=>[v.chromStart,v.chromEnd,v.cpgNum]);T.main=T.G[0];T.an=1;chrFib();
     say('Annotations de cette région chargées : '+T.G.length+' gènes, '+T.cc.length+' éléments régulateurs. La chaîne est recolorée.',6)}catch(e){}}
 function chrOn(c,i){let N=CN[c],n=N.p.length,ai=cl(i-1,0,max(0,n-1-CHW)),aw=min(CHW,n-1-ai),ci=N.ci,C=N.p[min(n-1,ai+1)],lab='chr'+cnm(ci)+' · '+ai+'–'+(ai+aw)+' Mb';if(aw<1)return;
-  clr(Lkh);TG={lab,sub:'',c:'chr'+cnm(ci),s:ai*1e6,e:(ai+aw)*1e6,ci,a:ai*1e6,b:(ai+aw)*1e6,G:[],cc:[],cp:[],on:0,N:C,M:C,C,Rl:.14,auto:1,ac:c,ai,aw,ri:-1,xi:-1};SQC={};
+  clr(Lkh);clr(Lkn);TG={lab,sub:'',c:'chr'+cnm(ci),s:ai*1e6,e:(ai+aw)*1e6,ci,a:ai*1e6,b:(ai+aw)*1e6,G:[],cc:[],cp:[],on:0,N:C,M:C,C,Rl:.14,auto:1,ac:c,ai,aw,ri:-1,xi:-1};SQC={};
   CHS=[c,ai,aw];drawChr(1);chrFib();POI[NP]=[lab,()=>TG.M];chrAn(TG);
   chHi||(chHi=1,say('Le chromosome se résout en sa chaîne de nucléosomes : un point par nucléosome, repliée en domaines en boucle. Rétrécissez encore : le nucléosome et ses histones, l\'ADN, puis les atomes.',11))}
 function chrOff(){[Lq0,Lq0c,Lq1,Lq1h,Lq1c,Lqm].forEach(clr);TG=0;CHS=0;drawChr(1);AT=0;dQ.n=0;$('lb').style.display='none'}

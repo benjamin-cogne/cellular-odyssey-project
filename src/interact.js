@@ -176,7 +176,7 @@ const AK=[],AG={};
  ['ext','tlu','mem','tfr','pit','lat','cyt','ais','axn','den','btn','ne','npc','nuc'].forEach(k=>a(k,'Milieux et membranes'));
  ['syf','abt','aax','spo','spn','ast','glt','dv','snr','cpx','syt','m18','m13','rim','rbp','cav','vat','vgl','bsn','lip','syn1','ccp','dyn','nrx','nlg','cad','amp','trp','nmd','mgl','p95','gkp','shk','hmr','cmk','sac','spa'].forEach(k=>a(k,'Synapses'));['nav','kvc','nka','k2p','ank'].forEach(k=>a(k,'Membrane excitable'));
  for(let[L,g]of[[VS.concat(OX),'Autour de la cellule'],[CY,'Dans le cytoplasme'],[NU,'Dans le noyau'],[DN,'Sur le gène '+G.sy]])for(let o of L)a(o.i,g);
- ['lam','lmA','lmB','lbr','lad','eme','linc'].forEach(k=>a(k,'Enveloppe et lamina'));['nolI','fc','rdn','po1','ssu','fbl','dkc','pdf','p60','p40','npm','r5s'].forEach(k=>a(k,'Dans le nucléole'));
+ ['lam','lmA','lmB','lbr','lad','nhc','eme','linc'].forEach(k=>a(k,'Enveloppe et lamina'));['nolI','fc','rdn','po1','ssu','fbl','dkc','pdf','p60','p40','npm','r5s'].forEach(k=>a(k,'Dans le nucléole'));
  ['ves','pol','rna','spl','mrn','ply'].forEach(k=>a(k,'En mouvement'))}
 function atN(){$('atb').textContent='☰ Atlas '+AK.filter(k=>SN[k]).length+'/'+AK.length}
 function sn(k){if(k&&(AG[k]||MEN&&MG[k])&&!SN[k]){SN[k]=1;try{localStorage.oc_sn=JSON.stringify(SN)}catch(e){}atN();mgN()}}
