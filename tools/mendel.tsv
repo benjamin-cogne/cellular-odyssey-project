@@ -747,3 +747,18 @@ lfnrg	CPT2	600649	AR	Déficit en carnitine palmitoyltransférase II, forme infan
 lfnrg	ACADVL	201475	AR	Déficit en acyl-CoA déshydrogénase des acides gras à très longue chaîne (VLCAD)	Very long-chain acyl-CoA dehydrogenase (VLCAD) deficiency	8845838	Andresen BS, Hum Mol Genet 1996
 lfsec	SAR1B	246700	AR	Maladie de rétention des chylomicrons	Chylomicron retention disease	12692552	Jones B, Nat Genet 2003
 lfsec@0	SEC23B	224100	AR	Anémie dysérythropoïétique congénitale de type II	Congenital dyserythropoietic anaemia type II	19561605	Schwarz K, Nat Genet 2009
+# Vue « Naissance d'un ribosome » (ribosome.js) : lignes reprises des fiches déjà vérifiées pour les mêmes gènes
+rb:tx	TCOF1	154500	AD	Syndrome de Treacher Collins 1	Treacher Collins syndrome 1	15150774	Dixon J, Am J Med Genet A 2004
+rb:tx	POLR1C	248390	AR	Syndrome de Treacher Collins 3	Treacher Collins syndrome 3	21131976	Dauwerse JG, Nat Genet 2011
+rb:tx	POLR1D	613717	AD	Syndrome de Treacher Collins 2	Treacher Collins syndrome 2	21131976	Dauwerse JG, Nat Genet 2011
+rb:mod	DKC1	305000	XL	Dyskératose congénitale liée à l'X	X-linked dyskeratosis congenita	9590285	Heiss NS, Nat Genet 1998
+rb:mod	NHP2	613987	AR	Dyskératose congénitale autosomique récessive 2	Dyskeratosis congenita, autosomal recessive 2	18523010	Vulliamy T, Proc Natl Acad Sci U S A 2008
+rb:asm	RPS19	105650	AD	Anémie de Diamond-Blackfan 1	Diamond-Blackfan anaemia 1	9988267	Draptchinskaia N, Nat Genet 1999
+rb:asm	RPL5	612561	AD	Anémie de Diamond-Blackfan 6	Diamond-Blackfan anaemia 6	19061985	Gazda HT, Am J Hum Genet 2008
+rb:asm	RPL11	612562	AD	Anémie de Diamond-Blackfan 7	Diamond-Blackfan anaemia 7	19061985	Gazda HT, Am J Hum Genet 2008
+rb:asm	RPS26	613309	AD	Anémie de Diamond-Blackfan 10	Diamond-Blackfan anaemia 10	20116044	Doherty L, Am J Hum Genet 2010
+rb:asm	RPS24	610629	AD	Anémie de Diamond-Blackfan 3	Diamond-Blackfan anaemia 3	17186470	Gazda HT, Am J Hum Genet 2006
+rb:asm	RPL35A	612528	AD	Anémie de Diamond-Blackfan 5	Diamond-Blackfan anaemia 5	18535205	Farrar JE, Blood 2008
+rb:cyt	SBDS	260400	AR	Syndrome de Shwachman-Diamond	Shwachman-Diamond syndrome	12496757	Boocock GR, Nat Genet 2003
+rb:cyt	DNAJC21	617052	AR	Insuffisance médullaire 3	Bone marrow failure syndrome 3	27346687	Tummala H, Am J Hum Genet 2016
+rb:rib	RPSA	271400	AD	Asplénie congénitale isolée	Isolated congenital asplenia	23579497	Bolze A, Science 2013

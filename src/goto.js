@@ -4,10 +4,11 @@
 I.esI=[`Endosome précoce`,CF.cap[2]+` Vous êtes dans sa lumière, que les pompes à protons V-ATPase (billes dorées, sur la membrane) acidifient vers pH 6 : les points bleutés sont ces protons, les billes jaunes la cargaison qui se détache de ses récepteurs. Des tubules repartent vers la surface avec les récepteurs à recycler ; le reste mûrira en endosome tardif, puis fusionnera avec un lysosome. Vous avez les commandes : le bouton « ⇥ Quitter l'endosome » vous fait passer dans le cytosol.`];
 {const b0=btT;btT=()=>{b0();if(ct>=0&&ENP&&!AP&&!RX&&!NX&&!SX){let e=$('ent');e.style.display='block';e.textContent='⇥ Quitter l\'endosome'}}}
 {const c0=$('ent').onclick;$('ent').onclick=()=>ct>=0?ENP&&endX():c0()}
-function goD(k){let o,q,d,nm_={cyt:'le cytoplasme',lif:'la cellule au travail',kar:'la mitose et le caryotype',mit:'une mitochondrie',rer:'le réticulum endoplasmique',gol:'l\'appareil de Golgi',lys:'un lysosome',nuc:'le noyau',nol:'le nucléole',gen:'le gène '+G.sy,myf:'un sarcomère',dya:'une dyade',icd:'le disque intercalaire',hbs:'l\'influx cardiaque',nxi:'l\'influx nerveux'}[k],
+function goD(k){let o,q,d,nm_={cyt:'le cytoplasme',lif:'la cellule au travail',kar:'la mitose et le caryotype',rbs:'la naissance d\'un ribosome',mit:'une mitochondrie',rer:'le réticulum endoplasmique',gol:'l\'appareil de Golgi',lys:'un lysosome',nuc:'le noyau',nol:'le nucléole',gen:'le gène '+G.sy,myf:'un sarcomère',dya:'une dyade',icd:'le disque intercalaire',hbs:'l\'influx cardiaque',nxi:'l\'influx nerveux'}[k],
    inn=()=>{reg=1;ct=-1;ENP=0;chV.A=0;chG.n=chR.n=0;vel=0;poi=1;hT=0},at=(P,dir,zz)=>{p=P;f=nm(dir);u=pp(f);cf=f;cu=u;z=zz;vel=0},ent=()=>setTimeout(()=>{btT();eC&&!ORG&&!AP&&$('ent').onclick()},500);
   if(!nm_||!go)return;
   if(k=='kar'&&CT)k='nuc';
+  if(k=='rbs'){k='nol';let n=0,w=()=>ORG&&ORG.i=='nol'&&!AP?sxIn('rb'):n++<40&&setTimeout(w,600);setTimeout(w,1500)}      // entrer dans le nucléole, puis ouvrir la vue
   if(k=='nuc'||k=='nol'||k=='gen'||k=='kar'){reg=2;ct=-1;ENP=0;chV.A=0;chG.n=chR.n=0;seenN=1;poi=k=='nol'?3:2;hT=0;
     if(k=='gen')q=ad(ml(WX,.16),ml(t0,-.12)),at(q,ml(q,-1),.03);else if(k=='nol')d=nm(sb(Nc,NOL)),at(ma(NOL,d,1.22),ml(d,-1),.1),ent();else d=nm(sb(e0,Nc)),at(ma(Nc,d,Rn-.7),ml(d,-1),.12),k=='kar'&&setTimeout(()=>sxIn('mi'),600)}
   else{inn();

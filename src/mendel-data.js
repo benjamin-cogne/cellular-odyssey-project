@@ -371,4 +371,9 @@ hb:{rep:[["KCNJ2","Syndrome d'Andersen-Tawil","AD",170390,11371347]],
  nsa:[["HCN4","Maladie du sinus 2","AD",163800,12750403]],
  nav:[["LMNA","Cardiomyopathie dilatée 1A, avec troubles de la conduction","AD",115200,10580070]],
  rpo:[["KCNQ1","Syndrome du QT long 1","AD",192500,8528244],["KCNH2","Syndrome du QT long 2","AD",613688,7889573]],
- tot:[["DMD","Cardiomyopathie dilatée 3B, liée à l'X","XL",302045,8361506]]}};
+ tot:[["DMD","Cardiomyopathie dilatée 3B, liée à l'X","XL",302045,8361506]]},
+rb:{tx:[["TCOF1","Syndrome de Treacher Collins 1","AD",154500,15150774],["POLR1C","Syndrome de Treacher Collins 3","AR",248390,21131976],["POLR1D","Syndrome de Treacher Collins 2","AD",613717,21131976]],
+ mod:[["DKC1","Dyskératose congénitale liée à l'X","XL",305000,9590285],["NHP2","Dyskératose congénitale autosomique récessive 2","AR",613987,18523010]],
+ asm:[["RPS19","Anémie de Diamond-Blackfan 1","AD",105650,9988267],["RPL5","Anémie de Diamond-Blackfan 6","AD",612561,19061985],["RPL11","Anémie de Diamond-Blackfan 7","AD",612562,19061985],["RPS26","Anémie de Diamond-Blackfan 10","AD",613309,20116044],["RPS24","Anémie de Diamond-Blackfan 3","AD",610629,17186470],["RPL35A","Anémie de Diamond-Blackfan 5","AD",612528,18535205]],
+ cyt:[["SBDS","Syndrome de Shwachman-Diamond","AR",260400,12496757],["DNAJC21","Insuffisance médullaire 3","AR",617052,27346687]],
+ rib:[["RPSA","Asplénie congénitale isolée","AD",271400,23579497]]}};

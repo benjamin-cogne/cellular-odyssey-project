@@ -34,6 +34,7 @@ function pick(e){let x=e.clientX/cv.clientWidth*2-1,y=1-e.clientY/cv.clientHeigh
     if(o.e){let q=sb(E,o.c),s=o.s,O=[dt(q,o.X)/s[0],dt(q,o.Y)/s[1],dt(q,o.Z)/s[2]],V=[dt(D,o.X)/s[0],dt(D,o.Y)/s[1],dt(D,o.Z)/s[2]],a=dt(V,V),h=dt(O,V),d=h*h-a*(dt(O,O)-1);
       if(d>0)t=(-h-sqrt(d))/a,T(t>0?t:(-h+sqrt(d))/a,o)}
     else for(k=0;k<5;k++){T(sp(lp(o.a,o.b,k/4),max(o.r,z*.3))+(o.bg?1e3:0),o);if(o.a==o.b)break}
+  if(ORG&&ORG.i=='nol'){for(o of NOG)T(sp(o.a,max(o.r,z*.25)),o);if(!b[1]||b[1]==ORG){let q=pt(6*z),m=min(...NUN.map(U=>ds(U,q)));b=[1,{i:m<.145?'fc':m<.245?'dfcI':'gcI',a:q,b:q}]}}      // nucléole : toute particule dessinée se touche ; dans le vide, la fiche de la phase visée
   if(!ORG&&reg>1){CN.forEach((N,c)=>N.p.forEach((q,i)=>T(sp(q,.05),{ch:[c,i,q]})));TG.U&&TG.U.forEach(W=>T(sp(W.c,.006),{un:W}));t=sp(Nc,Rn-.04,1);if(t<1e9){let d=nm(sb(pt(t),Nc));T(t,{i:PD.some(q=>dt(q,d)>.99985)?'npc':'lam'})}}
   if(!ORG&&reg==1){t=sp(Nc,Rn);if(t<1e9){let d=nm(sb(pt(t),Nc));T(t,{i:PD.some(q=>dt(q,d)>.99985)?'npc':'ne'})}t=sp(Cc,Rc,1);t<1e9&&T(t,{i:mdk(pt(t))})}
   if(!reg){t=sp(Ce,Re);if(t<1e9&&!(b[1]&&b[1].sf&&b[0]<t+.12))k=ds(pt(t),e0),T(t,{i:k<.07?'pit':k<.6?'tfr':'mem'})}
